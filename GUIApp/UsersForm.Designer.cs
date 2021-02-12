@@ -182,6 +182,7 @@ namespace GUIApp
             // 
             // UsersPictureBox
             // 
+            this.UsersPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.UsersPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.UsersPictureBox.Location = new System.Drawing.Point(575, 45);
             this.UsersPictureBox.Name = "UsersPictureBox";
