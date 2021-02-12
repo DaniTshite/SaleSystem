@@ -1,0 +1,124 @@
+﻿using Dapper;
+using DataLibrary.Models;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DataLibrary.Data
+{
+    public class SqlDataAccess
+    {
+        public static List<Item> loadedItems { set; get; } = null;
+        public static List<Supplier> loadedSuppliers { set; get; } = null;
+        public static List<Category> loadedCategories { set; get; } = null;
+        public static List<Users> loadedUsers { set; get; } = null;
+        public static string GetConnectionString(string name = "AspDb")
+        {
+            return ConfigurationManager.ConnectionStrings[name].ConnectionString;
+        }
+        public static List<T> LoadData<T>(string sql)
+        {
+            using (IDbConnection cn = new SqlConnection(GetConnectionString()))
+            {
+                var output = cn.Query<T>(sql).ToList();
+                return output;
+            }
+        }
+        public static List<OrderLine> LoadEntryQuantities()
+        {
+            using (IDbConnection cn = new SqlConnection(GetConnectionString()))
+            {
+                string sql = @"spOrderLine_GetEntryQuantityByItem";
+                var query = cn.Query<Item, OrderLine, OrderLine>(sql,
+                         (I, OL) =>
+                         {
+                                OL.SelectedItem = I;
+                                return OL;
+                         },
+                         splitOn: "PurchasedQuantity").AsQueryable();
+
+                return query.ToList();
+            }
+        }
+        public static List<OrderLine> LoadEntryPrices()
+        {
+            using (IDbConnection cn = new SqlConnection(GetConnectionString()))
+            {
+                string sql = @"spOrderLine_GetEntryPriceByItem";
+                var query = cn.Query<Item, OrderLine, OrderLine>(sql,
+                         (I, OL) =>
+                         {
+                             OL.SelectedItem = I;
+                             return OL;
+                         },
+                         splitOn: "PurchasePrice").AsQueryable();
+
+                return query.ToList();
+            }
+        }
+        public static List<OrderLine> LoadMultiData(string orderNumber)
+        {
+            using (IDbConnection cn = new SqlConnection(GetConnectionString()))
+            {
+                var p = new
+                {
+                    OrderNumber = orderNumber
+                };
+                string sql = @"spOrders_GetAllByOrderNumber @OrderNumber";
+                var query = cn.Query<Item, Orders, Supplier, OrderLine, OrderLine>(sql,
+                   (I, O, S, OL) =>
+                                 {
+                                     OL.SelectedItem = I;
+                                     OL.Order = O;
+                                     OL.Order.SelectedSupplier = S;
+                                     return OL;
+                                 },
+                                 p,
+                                 splitOn: "OrderNumber,SupplierId,PurchasedQuantity").AsQueryable();
+
+                return query.ToList();
+            }
+        }
+        //public static List<S> LoadMultiData<O, P, Q, S>(string sql, Func<O,P,Q,S> typeBuilder)
+        //{
+        //    using (IDbConnection cn = new SqlConnection(GetConnectionString()))
+        //    {
+
+        //        var query = cn.Query<O, P, Q, S, S>(sql, typeBuilder).AsQueryable();
+
+        //        return query.ToList();
+        //    }
+        //}
+        public static int RegisterData<T>(string sql, T Data)
+        {
+            using (IDbConnection cn = new SqlConnection(GetConnectionString()))
+            {
+                return cn.Execute(sql, Data);
+            }
+        }
+
+        public static void MultipleSets()
+        {
+            using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
+            {
+                string sql = @"spAlltables_GetAll";
+
+                using (var lists = cnn.QueryMultiple(sql))
+                {
+                    loadedItems = lists.Read<Item>().ToList();
+                    loadedSuppliers = lists.Read<Supplier>().ToList();
+                    loadedCategories = lists.Read<Category>().ToList();
+                    loadedUsers = lists.Read<Users>().ToList();
+                }
+
+            }
+
+        }
+
+    }
+}
