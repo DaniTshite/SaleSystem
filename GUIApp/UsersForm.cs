@@ -1,10 +1,12 @@
 ﻿using DataLibrary.Data;
 using DataLibrary.Models;
+using LogicLibrary.Processes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,7 @@ namespace GUIApp
     public partial class UsersForm : Form
     {
         List<Users> users = new List<Users>();
+        string imgLoc;
         public UsersForm()
         {
             InitializeComponent();
@@ -35,7 +38,7 @@ namespace GUIApp
         {
             try
             {
-                string imgLoc;
+                
                 OpenFileDialog fd = new OpenFileDialog();
                 fd.Filter = "JPG Files(*.jpg)|*.jpg|GIF Files (*.gif)|*.gif|All Files(*.*)|*.*";
                 fd.Title = "Select Employee picture";
@@ -67,6 +70,57 @@ namespace GUIApp
 
             //    ResetAll();
             //}
+            
+            if (Isvalidated())
+            {
+                byte[] img = null;
+                FileStream fs = new FileStream(imgLoc, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
+                img = br.ReadBytes((int)fs.Length);
+                Users data = new Users
+                {
+                    TypeUser = TypeUserCmb.Text,
+                    AccessCode = UsersProcessor.GenerateAccessCode(),
+                    Name = NameTxt.Text,
+                    LastName = LastNameTxt.Text,
+                    DoB = DoBTimePicker.Value,
+                    IsActive = 1,
+                    Photo = img
+                };
+                UsersProcessor.SaveUser(data);
+                MessageBox.Show("1 Record has been added Successfully !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+        }
+
+        private bool Isvalidated()
+        {
+            if (TypeUserCmb.SelectedIndex == -1)
+            {
+                MessageBox.Show("The Select a User Type Please !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                TypeUserCmb.Focus();
+                return false;
+            }
+            if (NameTxt.Text == string.Empty)
+            {
+                MessageBox.Show("The Name is Required", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                NameTxt.Focus();
+                return false;
+            }
+            if (LastNameTxt.Text == string.Empty)
+            {
+                MessageBox.Show("The lastName is Required", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LastNameTxt.Focus();
+                return false;
+            }
+            if (DoBTimePicker.Text=="")
+            {
+                MessageBox.Show("The Date of Birth Please !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DoBTimePicker.Focus();
+                return false;
+            }
+           
+            return true;
         }
     }
 }

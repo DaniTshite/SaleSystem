@@ -45,8 +45,9 @@
     <Compile Include="Processes\ItemProcessor.cs" />
     <Compile Include="Processes\LoginProcessor.cs" />
     <Compile Include="Processes\OrderLineProcessor.cs" />
-    <Compile Include="Processes\OrderProcessor.cs" />
+    <Compile Include="Processes\OrdersProcessor.cs" />
     <Compile Include="Processes\SupplierProcessor.cs" />
+    <Compile Include="Processes\UsersProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

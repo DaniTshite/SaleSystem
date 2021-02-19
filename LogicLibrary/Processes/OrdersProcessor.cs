@@ -11,14 +11,9 @@ using System.Threading.Tasks;
 
 namespace LogicLibrary.Processes
 {
-    public class OrderProcessor
+    public class OrdersProcessor
     {
-        //public static string GenerateOrderNumber()
-        //{
-        //    Random random = new Random();
-        //    int orderNumber = random.Next(10000000);
-        //    return "ORD" + orderNumber.ToString();
-        //}
+        
         public static void SaveOrder(Orders model)
         {
              var data = new 

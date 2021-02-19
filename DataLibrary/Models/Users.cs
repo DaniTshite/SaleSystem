@@ -16,7 +16,7 @@ namespace DataLibrary.Models
         public string LastName { get; set; }
         public DateTime DoB { get; set; }
         public int IsActive { get; set; }
-        
+        public byte[] Photo { get; set; }
         public string FullName
         {
             get { return $"{Name}  {LastName}"; }

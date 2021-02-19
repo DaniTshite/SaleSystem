@@ -70,7 +70,7 @@ namespace GUIApp
         private void OrderFrm_Load(object sender, EventArgs e)
         {
             ItemsGridView.DataSource = null;
-            //ItemsGridView.DataSource = OrderProcessor.GetCombinedItems(items);
+            //ItemsGridView.DataSource = OrdersProcessor.GetCombinedItems(items);
             //ItemsGridView.Columns[4].Visible = false;
             //ItemsGridView.Columns[5].Visible = false;
             //ItemsGridView.Columns[6].Visible = false;
@@ -110,7 +110,7 @@ namespace GUIApp
                 }
                 if (ItemSelectedAgain == false)
                 {
-                    if (OrderProcessor.IsStockQuantityEnough(int.Parse(PurchasedQuantityTxt.Text), int.Parse(StockQuantityTxt.Text)) == true)
+                    if (OrdersProcessor.IsStockQuantityEnough(int.Parse(PurchasedQuantityTxt.Text), int.Parse(StockQuantityTxt.Text)) == true)
                     {
                         ItemsGridView.DataSource = null;
                         gridOrderItems.Add(line);
@@ -224,12 +224,11 @@ namespace GUIApp
                     SubTotal = decimal.Parse(STotalTxt.Text),
                     Tax = decimal.Parse(TaxTxt.Text),
                     Total = decimal.Parse(GdTotalTxt.Text),
-                    //SupplierId = int.Parse(ListSuppliersCmb.SelectedValue.ToString()),
                     SelectedSupplier = (Supplier)ListSuppliersCmb.SelectedValue,
                     Details = gridItems
                 };
 
-                OrderProcessor.SaveOrder(data);
+                OrdersProcessor.SaveOrder(data);
                 MessageBox.Show("1 Record has been added Successfully !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetControls();
             }
@@ -400,7 +399,7 @@ namespace GUIApp
             }
             else
             {
-                orderDetails1 = OrderProcessor.GetOrderDetails(SearchOrderNumberTxt.Text);
+                orderDetails1 = OrdersProcessor.GetOrderDetails(SearchOrderNumberTxt.Text);
                 if (orderDetails1.Count == 0 || orderDetails1 == null)
                 {
                     MessageBox.Show(" Order Number  " + SearchOrderNumberTxt.Text + "  does not exist in the System", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -499,7 +498,7 @@ namespace GUIApp
         {
             Initialize();
             ItemsGridView.DataSource = null;
-            var p = OrderProcessor.GetItemsToReorder(items);
+            var p = OrdersProcessor.GetItemsToReorder(items);
             if (p.Count == 0)
             {
                 MessageBox.Show("There are no items to Reorder !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -528,7 +527,7 @@ namespace GUIApp
         private void InactiveItemsListBtn_Click(object sender, EventArgs e)
         {
             Initialize();
-            var p = OrderProcessor.GetInactiveItems(items);
+            var p = OrdersProcessor.GetInactiveItems(items);
             ItemsGridView.DataSource = null;
             if (p.Count == 0)
             {
@@ -557,7 +556,7 @@ namespace GUIApp
 
         private void printItemsToReorderDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            List<OrderLine> itemsToReorder = OrderProcessor.GetItemsToReorder(items) as dynamic;
+            List<OrderLine> itemsToReorder = OrdersProcessor.GetItemsToReorder(items) as dynamic;
             //int s = itemsToReorder[0].Id;
             //int t = s;
             e.Graphics.DrawString("Page   " + ((itemsPrintedSoFar % 7) == 0 ? (itemsPrintedSoFar / 7) + 1 : (itemsPrintedSoFar / 7) + 2),
@@ -614,7 +613,7 @@ namespace GUIApp
 
         private void PrintPreviewItemsToReorder_Click(object sender, EventArgs e)
         {
-            List<OrderLine> itemsToReorder = OrderProcessor.GetItemsToReorder(items);
+            List<OrderLine> itemsToReorder = OrdersProcessor.GetItemsToReorder(items);
             if (itemsToReorder.Count > 0)
             {
                 printPreviewDialogOrder.Document = printItemsToReorderDocument;
