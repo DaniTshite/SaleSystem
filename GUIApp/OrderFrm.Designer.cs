@@ -86,11 +86,11 @@ namespace GUIApp
             this.InactiveItemsGroupBox = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.FilterOrdersByDateGroupBox = new System.Windows.Forms.GroupBox();
-            this.UsersLinkLbl = new System.Windows.Forms.LinkLabel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.InferiorDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.SuperiorDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.InferiorDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.UsersLinkLbl = new System.Windows.Forms.LinkLabel();
             this.TotalOrdersLbl = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -451,7 +451,7 @@ namespace GUIApp
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Blue;
-            this.label9.Location = new System.Drawing.Point(26, 92);
+            this.label9.Location = new System.Drawing.Point(32, 91);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(133, 20);
             this.label9.TabIndex = 11;
@@ -723,6 +723,50 @@ namespace GUIApp
             this.FilterOrdersByDateGroupBox.TabStop = false;
             this.FilterOrdersByDateGroupBox.Text = "Filter Orders By Date";
             // 
+            // SuperiorDateTimePicker
+            // 
+            this.SuperiorDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SuperiorDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SuperiorDateTimePicker.Location = new System.Drawing.Point(26, 128);
+            this.SuperiorDateTimePicker.Name = "SuperiorDateTimePicker";
+            this.SuperiorDateTimePicker.Size = new System.Drawing.Size(284, 27);
+            this.SuperiorDateTimePicker.TabIndex = 31;
+            this.SuperiorDateTimePicker.ValueChanged += new System.EventHandler(this.SuperiorDateTimePicker_ValueChanged);
+            // 
+            // InferiorDateTimePicker
+            // 
+            this.InferiorDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.InferiorDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InferiorDateTimePicker.Location = new System.Drawing.Point(29, 51);
+            this.InferiorDateTimePicker.Name = "InferiorDateTimePicker";
+            this.InferiorDateTimePicker.Size = new System.Drawing.Size(284, 27);
+            this.InferiorDateTimePicker.TabIndex = 25;
+            this.InferiorDateTimePicker.ValueChanged += new System.EventHandler(this.InferiorDateTimePicker_ValueChanged);
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(25, 93);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(79, 20);
+            this.label14.TabIndex = 30;
+            this.label14.Text = "End Date";
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(25, 23);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(86, 20);
+            this.label13.TabIndex = 28;
+            this.label13.Text = "Start Date";
+            // 
             // UsersLinkLbl
             // 
             this.UsersLinkLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -737,59 +781,16 @@ namespace GUIApp
             this.UsersLinkLbl.Text = "New User";
             this.UsersLinkLbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.UsersLinkLbl_LinkClicked);
             // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(25, 23);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(86, 20);
-            this.label13.TabIndex = 28;
-            this.label13.Text = "Start Date";
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(25, 93);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(79, 20);
-            this.label14.TabIndex = 30;
-            this.label14.Text = "End Date";
-            // 
-            // InferiorDateTimePicker
-            // 
-            this.InferiorDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.InferiorDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InferiorDateTimePicker.Location = new System.Drawing.Point(29, 51);
-            this.InferiorDateTimePicker.Name = "InferiorDateTimePicker";
-            this.InferiorDateTimePicker.Size = new System.Drawing.Size(284, 27);
-            this.InferiorDateTimePicker.TabIndex = 25;
-            // 
-            // SuperiorDateTimePicker
-            // 
-            this.SuperiorDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SuperiorDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SuperiorDateTimePicker.Location = new System.Drawing.Point(26, 128);
-            this.SuperiorDateTimePicker.Name = "SuperiorDateTimePicker";
-            this.SuperiorDateTimePicker.Size = new System.Drawing.Size(284, 27);
-            this.SuperiorDateTimePicker.TabIndex = 31;
-            this.SuperiorDateTimePicker.ValueChanged += new System.EventHandler(this.SuperiorDateTimePicker_ValueChanged);
-            // 
             // TotalOrdersLbl
             // 
             this.TotalOrdersLbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TotalOrdersLbl.AutoSize = true;
-            this.TotalOrdersLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.TotalOrdersLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.TotalOrdersLbl.ForeColor = System.Drawing.Color.Blue;
             this.TotalOrdersLbl.Location = new System.Drawing.Point(644, 505);
             this.TotalOrdersLbl.Name = "TotalOrdersLbl";
-            this.TotalOrdersLbl.Size = new System.Drawing.Size(49, 46);
+            this.TotalOrdersLbl.Size = new System.Drawing.Size(31, 29);
             this.TotalOrdersLbl.TabIndex = 34;
             this.TotalOrdersLbl.Text = "R";
             // 

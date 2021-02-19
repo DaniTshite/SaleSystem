@@ -678,6 +678,7 @@ namespace GUIApp
             if (date1 > date2)
             {
                 MessageBox.Show("Start date cannot be ulterior to End date !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ItemsGridView.DataSource = null;
             }
             else
             {
@@ -687,6 +688,7 @@ namespace GUIApp
                 if (listOrders.Count == 0)
                 {
                     MessageBox.Show("No Order throughout this period !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ItemsGridView.DataSource = null;
                 }
                 else
                 {
@@ -712,6 +714,51 @@ namespace GUIApp
                 
             }
             
+        }
+
+        private void InferiorDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            int counter = 1;
+            DateTime date1 = InferiorDateTimePicker.Value;
+            DateTime date2 = SuperiorDateTimePicker.Value;
+            if (date1 > date2)
+            {
+                MessageBox.Show("Start date cannot be ulterior to End date !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ItemsGridView.DataSource = null;
+            }
+            else
+            {
+                double totalOrders = 0;
+                List<Orders> listOrders = OrdersProcessor.GetFilteredOrdersByDate(date1, date2);
+                List<OrdersByMonth> ordersToDisplay = new List<OrdersByMonth>();
+                if (listOrders.Count == 0)
+                {
+                    MessageBox.Show("No Order throughout this period !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ItemsGridView.DataSource = null;
+                }
+                else
+                {
+                    foreach (var item in listOrders)
+                    {
+                        OrdersByMonth p = new OrdersByMonth
+                        {
+                            Counter = counter,
+                            OrderNumber = item.OrderNumber,
+                            OrderDate = item.OrderDate.Date,
+                            Total = Convert.ToDouble(item.Total),
+                            SupplierName = item.SelectedSupplier.SupplierName,
+                            SupplierTelephone = item.SelectedSupplier.SupplierTelephone
+                        };
+                        counter += 1;
+                        ordersToDisplay.Add(p);
+                    }
+                    totalOrders = ordersToDisplay.Sum(x => x.Total);
+                    TotalOrdersLbl.Text = "R " + totalOrders.ToString();
+                    ItemsGridView.DataSource = null;
+                    ItemsGridView.DataSource = ordersToDisplay;
+                }
+
+            }
         }
     }
 }
