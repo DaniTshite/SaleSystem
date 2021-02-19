@@ -187,6 +187,7 @@ namespace GUIApp
             this.UsersPictureBox.Location = new System.Drawing.Point(575, 45);
             this.UsersPictureBox.Name = "UsersPictureBox";
             this.UsersPictureBox.Size = new System.Drawing.Size(182, 169);
+            this.UsersPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.UsersPictureBox.TabIndex = 0;
             this.UsersPictureBox.TabStop = false;
             // 
@@ -219,6 +220,7 @@ namespace GUIApp
             this.UpdateUsersBtn.TabIndex = 3;
             this.UpdateUsersBtn.Text = "Update";
             this.UpdateUsersBtn.UseVisualStyleBackColor = true;
+            this.UpdateUsersBtn.Click += new System.EventHandler(this.UpdateUsersBtn_Click);
             // 
             // UpdateUsersCmb
             // 
@@ -227,6 +229,7 @@ namespace GUIApp
             this.UpdateUsersCmb.Name = "UpdateUsersCmb";
             this.UpdateUsersCmb.Size = new System.Drawing.Size(381, 24);
             this.UpdateUsersCmb.TabIndex = 0;
+            this.UpdateUsersCmb.SelectedValueChanged += new System.EventHandler(this.UpdateUsersCmb_SelectedValueChanged);
             // 
             // UsersForm
             // 
@@ -241,6 +244,7 @@ namespace GUIApp
             this.Name = "UsersForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Users";
+            this.Load += new System.EventHandler(this.UsersForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UsersPictureBox)).EndInit();

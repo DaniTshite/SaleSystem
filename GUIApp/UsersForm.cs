@@ -18,6 +18,7 @@ namespace GUIApp
     {
         List<Users> users = new List<Users>();
         string imgLoc;
+        Users SelectedUser;
         public UsersForm()
         {
             InitializeComponent();
@@ -95,7 +96,11 @@ namespace GUIApp
 
         private bool Isvalidated()
         {
+            bool isNullOrEmpty;
+            if (TypeUserCmb.Text == "")
+
             if (TypeUserCmb.SelectedIndex == -1)
+
             {
                 MessageBox.Show("The Select a User Type Please !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 TypeUserCmb.Focus();
@@ -113,14 +118,91 @@ namespace GUIApp
                 LastNameTxt.Focus();
                 return false;
             }
+            if (DoBTimePicker.Text == "")
+
             if (DoBTimePicker.Text=="")
+
             {
                 MessageBox.Show("The Date of Birth Please !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DoBTimePicker.Focus();
                 return false;
             }
-           
+
+            if (isNullOrEmpty = UsersPictureBox == null || UsersPictureBox.Image == null)
+            {
+                MessageBox.Show("The photo is Required !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SelectPictureBtn.Focus();
+                return false;
+            }
+
             return true;
+        }
+
+        private void UpdateUsersCmb_SelectedValueChanged(object sender, EventArgs e)
+        {
+            SelectedUser = (Users)UpdateUsersCmb.SelectedItem;
+            TypeUserCmb.Text = SelectedUser.TypeUser;
+            AccessCodeTxt.Text = SelectedUser.AccessCode;
+            NameTxt.Text = SelectedUser.Name;
+            LastNameTxt.Text = SelectedUser.LastName;
+            DoBTimePicker.Text = SelectedUser.DoB.ToShortDateString();
+            byte[] img = (byte[])(SelectedUser.Photo);
+            if (img == null) UsersPictureBox.Image = null;
+            else
+            {
+                MemoryStream ms = new MemoryStream(img);
+                UsersPictureBox.Image = Image.FromStream(ms);
+            }
+            if (SelectedUser.IsActive == 1)
+            {
+                IsActiveChkBtn.Checked = true;
+            }
+            else
+            {
+                IsActiveChkBtn.Checked = false;
+            }
+        }
+
+        private void UpdateUsersBtn_Click(object sender, EventArgs e)
+        {
+            if (Isvalidated())
+            {
+                byte[] img = null;
+                FileStream fs = new FileStream(imgLoc, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
+                img = br.ReadBytes((int)fs.Length);
+                Users data = new Users
+                {
+
+                    UserId = SelectedUser.UserId,
+                    TypeUser = TypeUserCmb.Text,
+                    AccessCode = AccessCodeTxt.Text,
+                    Name = NameTxt.Text,
+                    LastName = LastNameTxt.Text,
+                    DoB = DoBTimePicker.Value,
+                    IsActive = IsActiveChkBtn.Checked == true ? 1 : 0,
+                    Photo = img
+                };
+                UsersProcessor.UpdateUser(data);
+                MessageBox.Show("1 Record has been updated Successfully !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+        }
+
+        private void UsersForm_Load(object sender, EventArgs e)
+        {
+            ResetControls();
+        }
+        private void ResetControls()
+        {
+            TypeUserCmb.Text = "";
+            TypeUserCmb.Focus();
+            IsActiveChkBtn.Checked = false;
+            AccessCodeTxt.Clear();
+            NameTxt.Clear();
+            LastNameTxt.Clear();
+            UpdateUsersCmb.Text = "";
+            UsersPictureBox.Image = null;
         }
     }
 }

@@ -206,16 +206,16 @@ namespace GUIApp
 
         private void UpdateIsActiveBtn_Click(object sender, EventArgs e)
         {
-            if(UpdateItemCmb.Text == string.Empty)
+            if (UpdateItemCmb.Text == string.Empty)
             {
                 MessageBox.Show(" Select an Item Please ! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UpdateItemCmb.Focus();
             }
             else
             {
-                if(UpdateItemStatusChk.Checked==true)
+                if (UpdateItemStatusChk.Checked == true)
                 {
-                    ItemProcessor.UpdateItemStatus(int.Parse(UpdateItemCmb.SelectedValue.ToString()),1);
+                    ItemProcessor.UpdateItemStatus(int.Parse(UpdateItemCmb.SelectedValue.ToString()), 1);
                     MessageBox.Show(" The Item has been activated successfully ! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateItemStatusChk.Checked = false;
                 }

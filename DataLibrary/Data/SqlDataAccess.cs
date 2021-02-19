@@ -84,16 +84,7 @@ namespace DataLibrary.Data
                 return query.ToList();
             }
         }
-        //public static List<S> LoadMultiData<O, P, Q, S>(string sql, Func<O,P,Q,S> typeBuilder)
-        //{
-        //    using (IDbConnection cn = new SqlConnection(GetConnectionString()))
-        //    {
-
-        //        var query = cn.Query<O, P, Q, S, S>(sql, typeBuilder).AsQueryable();
-
-        //        return query.ToList();
-        //    }
-        //}
+        
         public static int RegisterData<T>(string sql, T Data)
         {
             using (IDbConnection cn = new SqlConnection(GetConnectionString()))

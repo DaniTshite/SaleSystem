@@ -26,6 +26,23 @@ namespace LogicLibrary.Processes
             SqlDataAccess.RegisterData(sql, data);
         }
 
+        public static void UpdateUser(Users model)
+        {
+            var data = new
+            {
+                UserId = model.UserId,
+                TypeUser = model.TypeUser,
+                AccessCode = model.AccessCode,
+                Name = model.Name,
+                LastName = model.LastName,
+                DoB = model.DoB,
+                IsActive = model.IsActive,
+                Photo = model.Photo
+            };
+            string sql = @"spUsers_update @UserId,@TypeUser,@AccessCode,@Name,@LastName,@DoB,@IsActive,@Photo";
+            SqlDataAccess.RegisterData(sql, data);
+        }
+
         public static string GenerateAccessCode()
         {
             Random random = new Random();
