@@ -61,6 +61,7 @@
     <Compile Include="Models\IOrder.cs" />
     <Compile Include="Models\ItemsReport.cs" />
     <Compile Include="Models\OrderCart.cs" />
+    <Compile Include="Models\OrdersByMonth.cs" />
     <Compile Include="ModifyGridQuantity.cs">
       <SubType>Form</SubType>
     </Compile>

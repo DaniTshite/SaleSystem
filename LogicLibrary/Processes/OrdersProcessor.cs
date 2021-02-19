@@ -36,6 +36,11 @@ namespace LogicLibrary.Processes
             var output = SqlDataAccess.LoadMultiData(orderNumber);
             return output;
         }
+        public static List<Orders> GetFilteredOrdersByDate(DateTime inferiorDate, DateTime superiorDate)
+        {
+            var output = SqlDataAccess.FilterOrdersByDate(inferiorDate,superiorDate);
+            return output;
+        }
 
         public static List<OrderLine> GetItemsToReorder(List<Item> items)
         {
@@ -94,34 +99,7 @@ namespace LogicLibrary.Processes
             return ItemsToOrder;
         }
 
-        //public static List<OrderLineCart> GetCombinedItems(List<Item> items)
-        //{
-        //    SqlDataAccess.MultipleSets();
-        //    List<OrderLineCart> CombinedItems = new List<OrderLineCart>();
-        //    var listItemQuantities = OrderLineProcessor.GetEntryQuantityByItem();
-        //    int counter = 1;
-        //    foreach (var itemQuantity in listItemQuantities)
-        //    {
-        //        foreach (var i in items)
-        //        {
-        //            if ((itemQuantity.ItemId == i.Itemid) &&(i.IsActive == 1))
-        //            {
-        //                OrderLineCart r = new OrderLineCart
-        //                {
-        //                    Id = counter,
-        //                    StockCode = i.StockCode,
-        //                    Descript = i.Descript,
-        //                    PurchasedQuantity = itemQuantity.PurchasedQuantity,
-        //                    ReOrderLevel = i.ReOrderlevel,
-        //                    ItemId=i.Itemid
-        //                };
-        //                CombinedItems.Add(r);
-        //                counter += 1;
-        //            }
-        //        }
-        //    }
-        //    return CombinedItems;
-        //}
+       
         public static bool IsStockQuantityEnough(int firstNumber,int secondNumber)
         {
              return (firstNumber > secondNumber) ? false : true;

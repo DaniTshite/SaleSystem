@@ -29,6 +29,31 @@ namespace DataLibrary.Data
                 return output;
             }
         }
+        public static List<Orders> FilterOrdersByDate(DateTime inferiorDate,DateTime superiorDate)
+        {
+            
+            using (IDbConnection cn = new SqlConnection(GetConnectionString()))
+            {
+                var p = new
+                {
+                    InferiorDate = inferiorDate,
+                    SuperiorDate = superiorDate
+                };
+                
+                string sql = @"spOrders_FilterByDate @InferiorDate,@SuperiorDate";
+                var query = cn.Query<Orders,Supplier,Orders>(sql,
+                         (O,S) =>
+                         {
+                             O.SelectedSupplier = S;
+                             return O;
+                         },
+                         p,
+                         splitOn: "SupplierId").AsQueryable();
+
+                return query.ToList();
+            }
+           
+        }
         public static List<OrderLine> LoadEntryQuantities()
         {
             using (IDbConnection cn = new SqlConnection(GetConnectionString()))
