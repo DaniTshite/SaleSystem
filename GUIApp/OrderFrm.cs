@@ -97,21 +97,23 @@ namespace GUIApp
                     LineTotal = decimal.Parse(PurchasedQuantityTxt.Text) * decimal.Parse(purchasePriceTxt.Text)
                 };
 
-                foreach (DataGridViewRow row in ItemsGridView.Rows)
+                if (OrdersProcessor.IsStockQuantityEnough(int.Parse(PurchasedQuantityTxt.Text), int.Parse(StockQuantityTxt.Text)) == true)
                 {
-                    if (Convert.ToString(row.Cells["Descript"].Value) == Convert.ToString(ListItemsCmb.Text))
+                    foreach (DataGridViewRow row in ItemsGridView.Rows)
                     {
-                        row.Cells["PurchasedQuantity"].Value = Convert.ToInt16(row.Cells["PurchasedQuantity"].Value) + Convert.ToInt16(PurchasedQuantityTxt.Text);
-                        row.Cells["LineTotal"].Value = Convert.ToDecimal(purchasePriceTxt.Text) * Convert.ToDecimal(row.Cells["PurchasedQuantity"].Value);
-                        row.Cells["Id"].Value = row.Cells["Id"].Value;
-                        ItemSelectedAgain = true;
+                        if (Convert.ToString(row.Cells["Descript"].Value) == Convert.ToString(ListItemsCmb.Text))
+                        {
+                            row.Cells["PurchasedQuantity"].Value = Convert.ToInt16(row.Cells["PurchasedQuantity"].Value) + Convert.ToInt16(PurchasedQuantityTxt.Text);
+                            row.Cells["LineTotal"].Value = Convert.ToDecimal(purchasePriceTxt.Text) * Convert.ToDecimal(row.Cells["PurchasedQuantity"].Value);
+                            row.Cells["Id"].Value = row.Cells["Id"].Value;
+                            ItemSelectedAgain = true;
+                        }
+
                     }
 
-                }
-                if (ItemSelectedAgain == false)
-                {
-                    if (OrdersProcessor.IsStockQuantityEnough(int.Parse(PurchasedQuantityTxt.Text), int.Parse(StockQuantityTxt.Text)) == true)
+                    if (ItemSelectedAgain == false)
                     {
+
                         ItemsGridView.DataSource = null;
                         gridOrderItems.Add(line);
                         ItemsGridView.DataSource = gridOrderItems;
@@ -119,21 +121,22 @@ namespace GUIApp
                         ItemsGridView.Columns[5].DefaultCellStyle.Format = "c2";
                         itemCounter += 1;
                         SaveOrderBtn.Enabled = true;
+
                     }
-                    else
-                    {
-                        MessageBox.Show(" There is no enough stock !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        PurchasedQuantityTxt.Clear();
-                        StockQuantityTxt.Clear();
-                        PurchasedQuantityTxt.Focus();
-                    }
+                    decimal subTotal = gridOrderItems.Sum(x => x.LineTotal);
+                    STotalTxt.Text = subTotal.ToString();
+                    GdTotalTxt.Text = subTotal.ToString();
+                    ListSuppliersCmb.SelectedIndex = -1;
+                    purchasePriceTxt.Clear();
+                    PurchasedQuantityTxt.Clear();
                 }
-                decimal subTotal = gridOrderItems.Sum(x => x.LineTotal);
-                STotalTxt.Text = subTotal.ToString();
-                GdTotalTxt.Text = subTotal.ToString();
-                ListSuppliersCmb.SelectedIndex = -1;
-                purchasePriceTxt.Clear();
-                PurchasedQuantityTxt.Clear();
+                else
+                {
+                    MessageBox.Show(" There is no enough stock !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    PurchasedQuantityTxt.Clear();
+                    StockQuantityTxt.Clear();
+                    PurchasedQuantityTxt.Focus();
+                }
 
             }
         }
