@@ -70,22 +70,7 @@ namespace DataLibrary.Data
                 return query.ToList();
             }
         }
-        public static List<OrderLine> LoadEntryPrices()
-        {
-            using (IDbConnection cn = new SqlConnection(GetConnectionString()))
-            {
-                string sql = @"spOrderLine_GetEntryPriceByItem";
-                var query = cn.Query<Item, OrderLine, OrderLine>(sql,
-                         (I, OL) =>
-                         {
-                             OL.SelectedItem = I;
-                             return OL;
-                         },
-                         splitOn: "PurchasePrice").AsQueryable();
-
-                return query.ToList();
-            }
-        }
+        
         public static List<OrderLine> LoadMultiData(string orderNumber)
         {
             using (IDbConnection cn = new SqlConnection(GetConnectionString()))

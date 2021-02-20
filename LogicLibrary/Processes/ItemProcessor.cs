@@ -44,12 +44,19 @@ namespace LogicLibrary.Processes
         }
         public static decimal CalculateSalePrice(int itemId)
         {
-            List<OrderLine> output = (SqlDataAccess.LoadEntryPrices()).Where(x => x.SelectedItem.Itemid == itemId).ToList();
-                
-            decimal price = output[0].PurchasePrice;
-            int profit = output[0].SelectedItem.Profit;
-            decimal salePrice = price + ( price *  profit /100);
-            return salePrice;
+            List<OrderLine> output = (SqlDataAccess.LoadEntryQuantities()).Where(x => x.SelectedItem.Itemid == itemId).ToList();
+            if (output.Count == 0 || output == null)
+            {
+                return 0;
+            }
+            else
+            {
+                decimal price = output[0].PurchasePrice;
+                int profit = output[0].SelectedItem.Profit;
+                decimal salePrice = price + (price * profit / 100);
+                return salePrice;
+            }
+            
         }
     }
 }

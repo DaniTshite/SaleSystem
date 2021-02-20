@@ -9,15 +9,18 @@ namespace DataLibrary.Models
     public class Sales
     {
         public int SaleId { get; set; }
+        public int InvoiceNumber { get; set; }
         public DateTime SaleDate { get; set; }
         public int Discount { get; set; }
-        public decimal Subtotal { get; set; }
+        public decimal SubTotal { get; set; }
         public decimal Tax { get; set; }
         public decimal Total { get; set; }
         public string PaymentMode { get; set; }
         public string DeliveryMode { get; set; }
-        public int AccountId { get; set; }
-        public int QuotationId { get; set; }
-        public int UserId { get; set; }
+        public List<SaleLine> Details { get; set; }
+        public CustomerAccount SelectedAccount { get; set; }
+        public Quotations SelectedQuotation { get; set; }
+        public Users SelectedUser { get; set; }
+        
     }
 }

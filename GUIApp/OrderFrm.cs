@@ -231,7 +231,7 @@ namespace GUIApp
                     Details = gridItems
                 };
 
-                OrdersProcessor.SaveOrder(data);
+                OrdersProcessor.SaveSupplyOrder(data);
                 MessageBox.Show("1 Record has been added Successfully !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetControls();
             }
@@ -480,6 +480,7 @@ namespace GUIApp
             if (!IsItemFound)
             {
                 StockQuantityTxt.Text = "0";
+                purchasePriceTxt.Text = "0";
             }
         }
 

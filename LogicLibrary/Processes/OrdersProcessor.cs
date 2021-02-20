@@ -14,7 +14,7 @@ namespace LogicLibrary.Processes
     public class OrdersProcessor
     {
         
-        public static void SaveOrder(Orders model)
+        public static void SaveSupplyOrder(Orders model)
         {
              var data = new 
             {

@@ -17,7 +17,11 @@ namespace GUIApp
     public partial class SaleFrm : Form
     {
         List<Item> listItems ;
-        List<OrderCart> saleItems;
+        //list of items to display in the shopping cart
+        List<OrderCart> itemsToDisplay;
+        //list of items in the shopping cart but to be saved in the DB
+        List<SaleLine> itemsToSave ;
+        //counter used to count items in the shopping cart
         int itemCounter = 1;
         public SaleFrm()
         {
@@ -33,7 +37,9 @@ namespace GUIApp
             ItemsListBox.DataSource = listItems;
             ItemsListBox.DisplayMember = "Descript";
             ItemsListBox.ValueMember = "ItemId";
-            saleItems = new List<OrderCart>();
+            itemsToDisplay = new List<OrderCart>();
+            itemsToSave = new List<SaleLine>();
+            ResetAllControls();
             ItemsListBox.SelectedValueChanged += ItemsListBox_SelectedValueChanged;
         }
 
@@ -50,13 +56,15 @@ namespace GUIApp
                     {
                         StockQuantityLbl.Text = itemQuantity.PurchasedQuantity.ToString();
                         //RetailPriceLbl.Text = String.Format("{0:C2}", ItemProcessor.CalculateSalePrice(itemQuantity.SelectedItem.Itemid));
-                        RetailPriceLbl.Text = (ItemProcessor.CalculateSalePrice(itemQuantity.SelectedItem.Itemid)).ToString();
+                        //string.Format("{0:0.##}", 256.58);
+                        RetailPriceLbl.Text = string.Format("{0:0.##}", ItemProcessor.CalculateSalePrice(itemQuantity.SelectedItem.Itemid));
                         IsItemFound = true;
                     }
                 }
                 if (!IsItemFound)
                 {
                     StockQuantityLbl.Text = "0";
+                    RetailPriceLbl.Text = "0";
                 }
             }
            
@@ -79,6 +87,7 @@ namespace GUIApp
                     LineTotal = decimal.Parse(SaleQuantityTxt.Text) * decimal.Parse(RetailPriceLbl.Text)
                 };
 
+
                 if (OrdersProcessor.IsStockQuantityEnough(int.Parse(SaleQuantityTxt.Text), int.Parse(StockQuantityLbl.Text)) == true)
                 {
                     foreach (DataGridViewRow row in ItemsGridView.Rows)
@@ -94,22 +103,29 @@ namespace GUIApp
                     }
                     if (ItemSelectedAgain == false)
                     {
+                        //saleline object to save into the DB
+                        SaleLine p = new SaleLine
+                        {
 
+                        };
                         ItemsGridView.DataSource = null;
-                        saleItems.Add(line);
-                        ItemsGridView.DataSource = saleItems;
+                        itemsToDisplay.Add(line);
+                        ItemsGridView.DataSource = itemsToDisplay;
                         ItemsGridView.Columns[4].DefaultCellStyle.Format = "c2";
                         ItemsGridView.Columns[5].DefaultCellStyle.Format = "c2";
                         itemCounter += 1;
-                        
+                        CashBtn.Enabled = true;
+                        CreditBtn.Enabled = true;
+
                     }
-                    decimal subTotal = saleItems.Sum(x => x.LineTotal);
+                    decimal subTotal = itemsToDisplay.Sum(x => x.LineTotal);
                     SubTotalLbl.Text = String.Format("{0:C2}", subTotal);
                     TotalLbl.Text = String.Format("{0:C2}", subTotal);
                     ItemsListBox.SelectedIndex = -1;
                     RetailPriceLbl.Text = "";
                     StockQuantityLbl.Text = "";
                     SaleQuantityTxt.Clear();
+                    
                 }
                 else
                 {
@@ -157,6 +173,45 @@ namespace GUIApp
                 }
             }
             return true;
+        }
+
+        private void ResetAllControls()
+        {
+            StockQuantityLbl.Text = "0";
+            SubTotalLbl.Text = "0";
+            TotalLbl.Text = "0";
+            TaxLbl.Text = "0";
+            ItemsListBox.SelectedIndex = -1;
+            RetailPriceLbl.Text = "";
+            StockQuantityLbl.Text = "";
+            SaleQuantityTxt.Clear();
+            InvoiceNumberLbl.Text = "INVOICE No : " + SalesProcessor.GetInvoiceNumber().ToString();
+        }
+
+        private void ResetBtn_Click(object sender, EventArgs e)
+        {
+            ResetAllControls();
+            itemsToDisplay = new List<OrderCart>();
+            ItemsGridView.DataSource = null;
+            
+        }
+
+        private void CashBtn_Click(object sender, EventArgs e)
+        {
+            //Sales data = new Sales
+            //{
+            //    OrderNumber = OrderNumberTxt.Text,
+            //    OrderDate = OrderDatePicker.Value.Date,
+            //    SubTotal = decimal.Parse(STotalTxt.Text),
+            //    Tax = decimal.Parse(TaxTxt.Text),
+            //    Total = decimal.Parse(GdTotalTxt.Text),
+            //    SelectedSupplier = (Supplier)ListSuppliersCmb.SelectedValue,
+            //    Details = itemsToDisplay;
+            //};
+
+            //SalesProcessor.SaveSaleOrder(data);
+            //MessageBox.Show("1 Record has been added Successfully !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //ResetAllControls();
         }
     }
 }
