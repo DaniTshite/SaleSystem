@@ -45,10 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Processes\CategoryProcessor.cs" />
+    <Compile Include="Processes\CustomerAccountProcessor.cs" />
     <Compile Include="Processes\ItemProcessor.cs" />
     <Compile Include="Processes\LoginProcessor.cs" />
     <Compile Include="Processes\OrderLineProcessor.cs" />
     <Compile Include="Processes\OrdersProcessor.cs" />
+    <Compile Include="Processes\QuotationsProcessor.cs" />
     <Compile Include="Processes\SaleLineProcessor.cs" />
     <Compile Include="Processes\SalesProcessor.cs" />
     <Compile Include="Processes\SupplierProcessor.cs" />

@@ -33,9 +33,12 @@ namespace LogicLibrary.Processes
                 data.Add("@Total",model.Total);
                 data.Add("@PaymentMode",model.PaymentMode);
                 data.Add("@DeliveryMode",model.DeliveryMode);
-                data.Add("@AccountId",model.SelectedAccount.AccountId);
-                data.Add("@QuotationId",model.SelectedQuotation.QuotationId);
-                data.Add("@UserId",model.SelectedUser.UserId);
+                //data.Add("@AccountId",model.SelectedAccount.AccountId);
+                //data.Add("@QuotationId",model.SelectedQuotation.QuotationId);
+                //data.Add("@UserId",model.SelectedUser.UserId);
+                data.Add("@AccountId", 1);
+                data.Add("@QuotationId",1);
+                data.Add("@UserId",1);
                 data.Add("@SaleId",0,dbType:DbType.Int32,direction:ParameterDirection.Output);
                 cn.Execute("spSales_insert",data,commandType:CommandType.StoredProcedure);
 

@@ -9,8 +9,8 @@ namespace DataLibrary.Models
 {
     public class SaleLine
     {
-        public Item SelectedItem { get; set; }
-        public  Sales Sale { get; set; }
+        public Item SelectedItem { get; set; } = new Item();
+        public Sales Sale { get; set; } = new Sales();
         [DisplayName("QUANTITY")]
         public int SaleQuantity { get; set; }
         [DisplayName("UNIT PRICE")]

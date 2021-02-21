@@ -18,11 +18,11 @@ namespace LogicLibrary.Processes
                 {
                     SaleId=sale.SaleId,
                     ItemId = item.SelectedItem.Itemid,
-                    RetailPrice = item.RetailPrice,
                     SaleQuantity = item.SaleQuantity,
+                    RetailPrice = item.RetailPrice,
                     LineTotal = item.LineTotal
                 };
-                string sql = @"spOrderLine_insert @SaleId,@ItemId,@SaleQuantity,@RetailPrice,@LineTotal";
+                string sql = @"spSaleLine_insert @SaleId,@ItemId,@SaleQuantity,@RetailPrice,@LineTotal";
                 SqlDataAccess.RegisterData(sql, data);
             }
         }

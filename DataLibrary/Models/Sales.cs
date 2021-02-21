@@ -18,9 +18,9 @@ namespace DataLibrary.Models
         public string PaymentMode { get; set; }
         public string DeliveryMode { get; set; }
         public List<SaleLine> Details { get; set; }
-        public CustomerAccount SelectedAccount { get; set; }
-        public Quotations SelectedQuotation { get; set; }
-        public Users SelectedUser { get; set; }
+        public CustomerAccount SelectedAccount { get; set; } = new CustomerAccount();
+        public Quotations SelectedQuotation { get; set; } = new Quotations();
+        public Users SelectedUser { get; set; } = new Users();
         
     }
 }

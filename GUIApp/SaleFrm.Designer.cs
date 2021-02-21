@@ -35,6 +35,10 @@ namespace GUIApp
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.UsersCmb = new System.Windows.Forms.ComboBox();
+            this.CustomerAccountsCmb = new System.Windows.Forms.ComboBox();
+            this.QuotationsCmb = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TotalOrdersLbl = new System.Windows.Forms.Label();
             this.TotalLbl = new System.Windows.Forms.Label();
@@ -62,6 +66,7 @@ namespace GUIApp
             this.CashBtn = new System.Windows.Forms.Button();
             this.CreditBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsGridView)).BeginInit();
@@ -74,6 +79,7 @@ namespace GUIApp
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.panel3);
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.ItemsGridView);
@@ -82,6 +88,49 @@ namespace GUIApp
             this.groupBox1.Size = new System.Drawing.Size(1137, 807);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.UsersCmb);
+            this.panel3.Controls.Add(this.CustomerAccountsCmb);
+            this.panel3.Controls.Add(this.QuotationsCmb);
+            this.panel3.Location = new System.Drawing.Point(523, 649);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(393, 152);
+            this.panel3.TabIndex = 50;
+            // 
+            // UsersCmb
+            // 
+            this.UsersCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.UsersCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.UsersCmb.FormattingEnabled = true;
+            this.UsersCmb.Location = new System.Drawing.Point(17, 17);
+            this.UsersCmb.Name = "UsersCmb";
+            this.UsersCmb.Size = new System.Drawing.Size(338, 28);
+            this.UsersCmb.TabIndex = 49;
+            this.UsersCmb.TextChanged += new System.EventHandler(this.UsersCmb_TextChanged);
+            // 
+            // CustomerAccountsCmb
+            // 
+            this.CustomerAccountsCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CustomerAccountsCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.CustomerAccountsCmb.FormattingEnabled = true;
+            this.CustomerAccountsCmb.Location = new System.Drawing.Point(17, 112);
+            this.CustomerAccountsCmb.Name = "CustomerAccountsCmb";
+            this.CustomerAccountsCmb.Size = new System.Drawing.Size(338, 28);
+            this.CustomerAccountsCmb.TabIndex = 47;
+            // 
+            // QuotationsCmb
+            // 
+            this.QuotationsCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.QuotationsCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.QuotationsCmb.FormattingEnabled = true;
+            this.QuotationsCmb.Location = new System.Drawing.Point(17, 62);
+            this.QuotationsCmb.Name = "QuotationsCmb";
+            this.QuotationsCmb.Size = new System.Drawing.Size(338, 28);
+            this.QuotationsCmb.TabIndex = 48;
             // 
             // panel2
             // 
@@ -465,7 +514,9 @@ namespace GUIApp
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sales Form";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.SaleFrm_Load);
             this.groupBox1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -506,5 +557,9 @@ namespace GUIApp
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label InvoiceNumberLbl;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ComboBox UsersCmb;
+        private System.Windows.Forms.ComboBox CustomerAccountsCmb;
+        private System.Windows.Forms.ComboBox QuotationsCmb;
     }
 }

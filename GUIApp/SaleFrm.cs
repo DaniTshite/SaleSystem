@@ -16,13 +16,20 @@ namespace GUIApp
 {
     public partial class SaleFrm : Form
     {
-        List<Item> listItems ;
+        //list of active items
+        List<Item> activeItems ;
+        //other lists
+        List<Quotations> quotations;
+        List<Users> users;
+        List<CustomerAccount> customerAccounts;
         //list of items to display in the shopping cart
         List<OrderCart> itemsToDisplay;
         //list of items in the shopping cart but to be saved in the DB
         List<SaleLine> itemsToSave ;
         //counter used to count items in the shopping cart
         int itemCounter = 1;
+        //current invoice number
+        int CurrentInvoiceNumber;
         public SaleFrm()
         {
             InitializeComponent();
@@ -32,11 +39,27 @@ namespace GUIApp
         private void Initialize()
         {
             ItemsListBox.SelectedValueChanged -=ItemsListBox_SelectedValueChanged;
-            listItems = new List<Item>();
-            listItems = ItemProcessor.LoadData();
-            ItemsListBox.DataSource = listItems;
+            //lists instanciation
+            
+            SqlDataAccess.MultipleSets();
+            users = SqlDataAccess.loadedUsers;
+            quotations = SqlDataAccess.loadedQuotations;
+            customerAccounts = SqlDataAccess.loadedCustomerAccounts;
+            activeItems = new List<Item>();
+            activeItems = ItemProcessor.LoadData();
+            ItemsListBox.DataSource = activeItems;
             ItemsListBox.DisplayMember = "Descript";
             ItemsListBox.ValueMember = "ItemId";
+            UsersCmb.DataSource = users;
+            UsersCmb.DisplayMember = "FullName";
+            UsersCmb.ValueMember = "userId";
+            //UsersCmb.Text = "Please, select a user";
+            QuotationsCmb.DataSource = quotations;
+            QuotationsCmb.DisplayMember = "QuotationId";
+            QuotationsCmb.ValueMember = "QuotationId";
+            CustomerAccountsCmb.DataSource = customerAccounts;
+            CustomerAccountsCmb.DisplayMember = "FirstName";
+            CustomerAccountsCmb.ValueMember = "AccountId";
             itemsToDisplay = new List<OrderCart>();
             itemsToSave = new List<SaleLine>();
             ResetAllControls();
@@ -77,6 +100,7 @@ namespace GUIApp
             {
 
                 bool ItemSelectedAgain = false;
+                //instanciation of ordercart object that represents 1 line in the cart
                 OrderCart line = new OrderCart
                 {
                     Id = itemCounter,
@@ -87,9 +111,10 @@ namespace GUIApp
                     LineTotal = decimal.Parse(SaleQuantityTxt.Text) * decimal.Parse(RetailPriceLbl.Text)
                 };
 
-
+                //checks if quantity to be sold is less than the stock
                 if (OrdersProcessor.IsStockQuantityEnough(int.Parse(SaleQuantityTxt.Text), int.Parse(StockQuantityLbl.Text)) == true)
                 {
+                    //checks if the selected item is already in the cart 
                     foreach (DataGridViewRow row in ItemsGridView.Rows)
                     {
                         if (Convert.ToString(row.Cells["Descript"].Value) == Convert.ToString(ItemsListBox.Text))
@@ -101,24 +126,36 @@ namespace GUIApp
                         }
 
                     }
+                    //checks if the selected ittm is not in the cart 
                     if (ItemSelectedAgain == false)
                     {
-                        //saleline object to save into the DB
+                        //instanciation of saleline object to save into the DB
                         SaleLine p = new SaleLine
                         {
-
+                            SelectedItem= (Item)ItemsListBox.SelectedItem,
+                            RetailPrice= decimal.Parse(RetailPriceLbl.Text),
+                            SaleQuantity=line.PurchasedQuantity,
+                            LineTotal=line.LineTotal
                         };
+                        //list of items to save into the DB
+                        itemsToSave.Add(p);
+                        
+                        //list of items to display in the cart
                         ItemsGridView.DataSource = null;
                         itemsToDisplay.Add(line);
                         ItemsGridView.DataSource = itemsToDisplay;
+                        //add currency symbol to retail price and net total
                         ItemsGridView.Columns[4].DefaultCellStyle.Format = "c2";
                         ItemsGridView.Columns[5].DefaultCellStyle.Format = "c2";
+                        //increment counter in the cart
                         itemCounter += 1;
                         CashBtn.Enabled = true;
                         CreditBtn.Enabled = true;
 
                     }
                     decimal subTotal = itemsToDisplay.Sum(x => x.LineTotal);
+                    //formatting these labels as currencies with 2 decimals after the comma
+
                     SubTotalLbl.Text = String.Format("{0:C2}", subTotal);
                     TotalLbl.Text = String.Format("{0:C2}", subTotal);
                     ItemsListBox.SelectedIndex = -1;
@@ -185,7 +222,8 @@ namespace GUIApp
             RetailPriceLbl.Text = "";
             StockQuantityLbl.Text = "";
             SaleQuantityTxt.Clear();
-            InvoiceNumberLbl.Text = "INVOICE No : " + SalesProcessor.GetInvoiceNumber().ToString();
+            CurrentInvoiceNumber = SalesProcessor.GetInvoiceNumber();
+            InvoiceNumberLbl.Text = "INVOICE No : " + CurrentInvoiceNumber; ;
         }
 
         private void ResetBtn_Click(object sender, EventArgs e)
@@ -198,20 +236,40 @@ namespace GUIApp
 
         private void CashBtn_Click(object sender, EventArgs e)
         {
-            //Sales data = new Sales
-            //{
-            //    OrderNumber = OrderNumberTxt.Text,
-            //    OrderDate = OrderDatePicker.Value.Date,
-            //    SubTotal = decimal.Parse(STotalTxt.Text),
-            //    Tax = decimal.Parse(TaxTxt.Text),
-            //    Total = decimal.Parse(GdTotalTxt.Text),
-            //    SelectedSupplier = (Supplier)ListSuppliersCmb.SelectedValue,
-            //    Details = itemsToDisplay;
-            //};
+            Sales data = new Sales
+            {
+                InvoiceNumber=CurrentInvoiceNumber,
+                Discount=1,
+                SubTotal=10,
+                Tax=1,
+                Total=10,
+                PaymentMode="cash",
+                DeliveryMode="cash and carry",
 
-            //SalesProcessor.SaveSaleOrder(data);
-            //MessageBox.Show("1 Record has been added Successfully !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //ResetAllControls();
+                Details = itemsToSave
+            };
+
+         SalesProcessor.SaveSaleOrder(data);
+         MessageBox.Show("1 Record has been added Successfully !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+         ItemsGridView.DataSource = null;
+         ResetAllControls();
+        }
+
+        private void UsersCmb_TextChanged(object sender, EventArgs e)
+        {
+            if (UsersCmb.SelectedIndex < 0)
+            {
+                UsersCmb.Text = "Please, select any value";
+            }
+            else
+            {
+                UsersCmb.Text = UsersCmb.SelectedText;
+            }
+        }
+
+        private void SaleFrm_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

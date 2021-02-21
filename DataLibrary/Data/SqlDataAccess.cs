@@ -17,6 +17,8 @@ namespace DataLibrary.Data
         public static List<Supplier> loadedSuppliers { set; get; } = null;
         public static List<Category> loadedCategories { set; get; } = null;
         public static List<Users> loadedUsers { set; get; } = null;
+        public static List<Quotations> loadedQuotations { set; get; } = null;
+        public static List<CustomerAccount> loadedCustomerAccounts { set; get; } = null;
         public static string GetConnectionString(string name = "AspDb")
         {
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
@@ -115,6 +117,8 @@ namespace DataLibrary.Data
                     loadedSuppliers = lists.Read<Supplier>().ToList();
                     loadedCategories = lists.Read<Category>().ToList();
                     loadedUsers = lists.Read<Users>().ToList();
+                    loadedQuotations= lists.Read<Quotations>().ToList();
+                    loadedCustomerAccounts = lists.Read<CustomerAccount>().ToList();
                 }
 
             }
