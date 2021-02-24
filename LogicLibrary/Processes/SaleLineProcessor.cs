@@ -12,17 +12,17 @@ namespace LogicLibrary.Processes
     {
         public static void SaveSaleLine(Sales sale)
         {
-            foreach (var item in sale.Details)
+            foreach (var item in sale.SaleOrderDetails)
             {
                 var data = new
                 {
-                    SaleId=sale.SaleId,
                     ItemId = item.SelectedItem.Itemid,
+                    SaleId = sale.SaleId,
                     SaleQuantity = item.SaleQuantity,
                     RetailPrice = item.RetailPrice,
                     LineTotal = item.LineTotal
                 };
-                string sql = @"spSaleLine_insert @SaleId,@ItemId,@SaleQuantity,@RetailPrice,@LineTotal";
+                string sql = @"spSaleLine_insert @ItemId,@SaleId,@SaleQuantity,@RetailPrice,@LineTotal";
                 SqlDataAccess.RegisterData(sql, data);
             }
         }

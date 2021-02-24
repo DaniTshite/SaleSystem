@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataLibrary.Models
 {
+    /// <summary>
+    /// This class represents a line on a supply order
+    /// </summary>
     public class OrderLine
     {
         public Item SelectedItem { get; set; } = new Item();

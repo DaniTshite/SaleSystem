@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataLibrary.Models
 {
+    /// <summary>
+    /// This class represents a supply order
+    /// </summary>
     public class Orders
     {
         public string OrderNumber { get; set; }
@@ -15,7 +18,7 @@ namespace DataLibrary.Models
         public decimal  Tax { get; set; }
         public decimal Total { get; set; }
         public Supplier SelectedSupplier { get; set; }
-        public List<OrderLine> Details { get; set; } = new List<OrderLine>();
+        public List<OrderLine> SupplyOrderDetails { get; set; } = new List<OrderLine>();
         
     }
 }

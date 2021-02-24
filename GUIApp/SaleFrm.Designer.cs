@@ -79,6 +79,7 @@ namespace GUIApp
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.panel3);
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.panel1);
@@ -225,9 +226,9 @@ namespace GUIApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel1.Controls.Add(this.InvoiceNumberLbl);
-            this.panel1.Location = new System.Drawing.Point(18, 21);
+            this.panel1.Location = new System.Drawing.Point(18, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1113, 42);
+            this.panel1.Size = new System.Drawing.Size(1113, 50);
             this.panel1.TabIndex = 23;
             // 
             // InvoiceNumberLbl
@@ -236,7 +237,7 @@ namespace GUIApp
             this.InvoiceNumberLbl.AutoSize = true;
             this.InvoiceNumberLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.InvoiceNumberLbl.ForeColor = System.Drawing.Color.Blue;
-            this.InvoiceNumberLbl.Location = new System.Drawing.Point(9, 6);
+            this.InvoiceNumberLbl.Location = new System.Drawing.Point(9, 14);
             this.InvoiceNumberLbl.Name = "InvoiceNumberLbl";
             this.InvoiceNumberLbl.Size = new System.Drawing.Size(161, 26);
             this.InvoiceNumberLbl.TabIndex = 35;
@@ -304,6 +305,7 @@ namespace GUIApp
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
@@ -354,21 +356,21 @@ namespace GUIApp
             // SaleQuantityTxt
             // 
             this.SaleQuantityTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaleQuantityTxt.Location = new System.Drawing.Point(140, 369);
+            this.SaleQuantityTxt.Location = new System.Drawing.Point(245, 369);
             this.SaleQuantityTxt.Name = "SaleQuantityTxt";
-            this.SaleQuantityTxt.Size = new System.Drawing.Size(189, 22);
+            this.SaleQuantityTxt.Size = new System.Drawing.Size(84, 22);
             this.SaleQuantityTxt.TabIndex = 12;
             // 
             // StockQuantityLbl
             // 
             this.StockQuantityLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.StockQuantityLbl.AutoSize = true;
-            this.StockQuantityLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.StockQuantityLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StockQuantityLbl.ForeColor = System.Drawing.Color.Blue;
             this.StockQuantityLbl.Location = new System.Drawing.Point(262, 336);
             this.StockQuantityLbl.Name = "StockQuantityLbl";
             this.StockQuantityLbl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.StockQuantityLbl.Size = new System.Drawing.Size(53, 20);
+            this.StockQuantityLbl.Size = new System.Drawing.Size(85, 29);
             this.StockQuantityLbl.TabIndex = 11;
             this.StockQuantityLbl.Text = "label4";
             // 
@@ -376,12 +378,12 @@ namespace GUIApp
             // 
             this.RetailPriceLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.RetailPriceLbl.AutoSize = true;
-            this.RetailPriceLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.RetailPriceLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RetailPriceLbl.ForeColor = System.Drawing.Color.Blue;
-            this.RetailPriceLbl.Location = new System.Drawing.Point(247, 306);
+            this.RetailPriceLbl.Location = new System.Drawing.Point(258, 306);
             this.RetailPriceLbl.Name = "RetailPriceLbl";
             this.RetailPriceLbl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.RetailPriceLbl.Size = new System.Drawing.Size(53, 20);
+            this.RetailPriceLbl.Size = new System.Drawing.Size(85, 29);
             this.RetailPriceLbl.TabIndex = 10;
             this.RetailPriceLbl.Text = "label3";
             // 
@@ -392,7 +394,7 @@ namespace GUIApp
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Location = new System.Drawing.Point(6, 415);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(332, 48);
+            this.button7.Size = new System.Drawing.Size(332, 58);
             this.button7.TabIndex = 9;
             this.button7.Text = "Add To Chart";
             this.button7.UseVisualStyleBackColor = false;
@@ -402,7 +404,8 @@ namespace GUIApp
             // 
             this.ItemsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.ItemsListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ItemsListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ItemsListBox.ForeColor = System.Drawing.Color.Blue;
             this.ItemsListBox.FormattingEnabled = true;
             this.ItemsListBox.ItemHeight = 29;
             this.ItemsListBox.Location = new System.Drawing.Point(6, 21);
@@ -416,9 +419,9 @@ namespace GUIApp
             this.CancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CancelBtn.BackColor = System.Drawing.Color.White;
             this.CancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CancelBtn.Location = new System.Drawing.Point(25, 122);
+            this.CancelBtn.Location = new System.Drawing.Point(6, 122);
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(122, 85);
+            this.CancelBtn.Size = new System.Drawing.Size(162, 85);
             this.CancelBtn.TabIndex = 3;
             this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = false;
@@ -428,9 +431,9 @@ namespace GUIApp
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(189, 227);
+            this.button2.Location = new System.Drawing.Point(174, 227);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(122, 85);
+            this.button2.Size = new System.Drawing.Size(164, 85);
             this.button2.TabIndex = 4;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = false;
@@ -440,9 +443,9 @@ namespace GUIApp
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.BackColor = System.Drawing.Color.White;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(25, 227);
+            this.button3.Location = new System.Drawing.Point(6, 227);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(122, 85);
+            this.button3.Size = new System.Drawing.Size(162, 85);
             this.button3.TabIndex = 5;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = false;
@@ -452,9 +455,9 @@ namespace GUIApp
             this.ResetBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ResetBtn.BackColor = System.Drawing.Color.White;
             this.ResetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ResetBtn.Location = new System.Drawing.Point(189, 122);
+            this.ResetBtn.Location = new System.Drawing.Point(174, 122);
             this.ResetBtn.Name = "ResetBtn";
-            this.ResetBtn.Size = new System.Drawing.Size(122, 85);
+            this.ResetBtn.Size = new System.Drawing.Size(164, 85);
             this.ResetBtn.TabIndex = 6;
             this.ResetBtn.Text = "Reset";
             this.ResetBtn.UseVisualStyleBackColor = false;
@@ -463,6 +466,7 @@ namespace GUIApp
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.BackColor = System.Drawing.Color.White;
             this.groupBox3.Controls.Add(this.CashBtn);
             this.groupBox3.Controls.Add(this.CreditBtn);
             this.groupBox3.Controls.Add(this.CancelBtn);
@@ -481,9 +485,9 @@ namespace GUIApp
             this.CashBtn.BackColor = System.Drawing.Color.White;
             this.CashBtn.Enabled = false;
             this.CashBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CashBtn.Location = new System.Drawing.Point(25, 19);
+            this.CashBtn.Location = new System.Drawing.Point(6, 19);
             this.CashBtn.Name = "CashBtn";
-            this.CashBtn.Size = new System.Drawing.Size(122, 85);
+            this.CashBtn.Size = new System.Drawing.Size(162, 85);
             this.CashBtn.TabIndex = 7;
             this.CashBtn.Text = "Cash";
             this.CashBtn.UseVisualStyleBackColor = false;
@@ -495,9 +499,9 @@ namespace GUIApp
             this.CreditBtn.BackColor = System.Drawing.Color.White;
             this.CreditBtn.Enabled = false;
             this.CreditBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CreditBtn.Location = new System.Drawing.Point(189, 19);
+            this.CreditBtn.Location = new System.Drawing.Point(174, 19);
             this.CreditBtn.Name = "CreditBtn";
-            this.CreditBtn.Size = new System.Drawing.Size(122, 85);
+            this.CreditBtn.Size = new System.Drawing.Size(164, 85);
             this.CreditBtn.TabIndex = 8;
             this.CreditBtn.Text = "Credit";
             this.CreditBtn.UseVisualStyleBackColor = false;

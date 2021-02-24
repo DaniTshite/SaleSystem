@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace DataLibrary.Models
 {
-    public class Users
+    /// <summary>
+    /// This class represents a user of the system
+    /// </summary>
+    public class Users : IUsers
     {
         public int UserId { get; set; }
         public string TypeUser { get; set; }
         public string AccessCode { get; set; }
-        
+
         public string Name { get; set; }
         public string LastName { get; set; }
         public DateTime DoB { get; set; }

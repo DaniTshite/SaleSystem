@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataLibrary.Models
 {
+    /// <summary>
+    /// This class an item object
+    /// </summary>
     public class Item
     {
         [DisplayName("ITEM ID")]

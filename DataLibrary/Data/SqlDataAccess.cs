@@ -43,8 +43,8 @@ namespace DataLibrary.Data
                 };
                 
                 string sql = @"spOrders_FilterByDate @InferiorDate,@SuperiorDate";
-                var query = cn.Query<Orders,Supplier,Orders>(sql,
-                         (O,S) =>
+                var query = cn.Query<Orders, Supplier, Orders>(sql,
+                         (O, S) =>
                          {
                              O.SelectedSupplier = S;
                              return O;

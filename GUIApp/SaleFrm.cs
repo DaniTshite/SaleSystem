@@ -77,7 +77,7 @@ namespace GUIApp
                 {
                     if (int.Parse(ItemsListBox.SelectedValue.ToString()) == itemQuantity.SelectedItem.Itemid)
                     {
-                        StockQuantityLbl.Text = itemQuantity.PurchasedQuantity.ToString();
+                        StockQuantityLbl.Text = (itemQuantity.PurchasedQuantity).ToString();
                         //RetailPriceLbl.Text = String.Format("{0:C2}", ItemProcessor.CalculateSalePrice(itemQuantity.SelectedItem.Itemid));
                         //string.Format("{0:0.##}", 256.58);
                         RetailPriceLbl.Text = string.Format("{0:0.##}", ItemProcessor.CalculateSalePrice(itemQuantity.SelectedItem.Itemid));
@@ -236,6 +236,7 @@ namespace GUIApp
 
         private void CashBtn_Click(object sender, EventArgs e)
         {
+           
             Sales data = new Sales
             {
                 InvoiceNumber=CurrentInvoiceNumber,
@@ -245,12 +246,9 @@ namespace GUIApp
                 Total=10,
                 PaymentMode="cash",
                 DeliveryMode="cash and carry",
-
-                Details = itemsToSave
+                SaleOrderDetails = itemsToSave
             };
-
-         SalesProcessor.SaveSaleOrder(data);
-         MessageBox.Show("1 Record has been added Successfully !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+         MessageBox.Show(SalesProcessor.SaveSaleOrder(data), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
          ItemsGridView.DataSource = null;
          ResetAllControls();
         }

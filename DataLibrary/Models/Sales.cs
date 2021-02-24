@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataLibrary.Models
 {
+    /// <summary>
+    /// This class represents a sale order
+    /// </summary>
     public class Sales
     {
         public int SaleId { get; set; }
@@ -17,7 +20,7 @@ namespace DataLibrary.Models
         public decimal Total { get; set; }
         public string PaymentMode { get; set; }
         public string DeliveryMode { get; set; }
-        public List<SaleLine> Details { get; set; }
+        public List<SaleLine> SaleOrderDetails { get; set; }
         public CustomerAccount SelectedAccount { get; set; } = new CustomerAccount();
         public Quotations SelectedQuotation { get; set; } = new Quotations();
         public Users SelectedUser { get; set; } = new Users();

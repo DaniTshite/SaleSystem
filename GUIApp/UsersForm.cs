@@ -114,7 +114,7 @@ namespace GUIApp
             }
             if (LastNameTxt.Text == string.Empty)
             {
-                MessageBox.Show("The lastName is Required", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The LastName is Required", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LastNameTxt.Focus();
                 return false;
             }

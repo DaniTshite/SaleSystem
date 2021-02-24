@@ -228,7 +228,7 @@ namespace GUIApp
                     Tax = decimal.Parse(TaxTxt.Text),
                     Total = decimal.Parse(GdTotalTxt.Text),
                     SelectedSupplier = (Supplier)ListSuppliersCmb.SelectedValue,
-                    Details = gridItems
+                    SupplyOrderDetails = gridItems
                 };
 
                 OrdersProcessor.SaveSupplyOrder(data);
@@ -466,22 +466,22 @@ namespace GUIApp
 
         private void ListItemsCmb_SelectedValueChanged(object sender, EventArgs e)
         {
-            var listItemQuantities = OrderLineProcessor.GetEntryQuantityByItem();
-            bool IsItemFound = false;
-            foreach (var itemQuantity in listItemQuantities)
-            {
-                if (int.Parse(ListItemsCmb.SelectedValue.ToString()) == itemQuantity.SelectedItem.Itemid)
-                {
-                    StockQuantityTxt.Text = itemQuantity.PurchasedQuantity.ToString();
-                    purchasePriceTxt.Text = (ItemProcessor.CalculateSalePrice(itemQuantity.SelectedItem.Itemid)).ToString();
-                    IsItemFound = true;
-                }
-            }
-            if (!IsItemFound)
-            {
-                StockQuantityTxt.Text = "0";
-                purchasePriceTxt.Text = "0";
-            }
+            //var listItemQuantities = OrderLineProcessor.GetEntryQuantityByItem();
+            //bool IsItemFound = false;
+            //foreach (var itemQuantity in listItemQuantities)
+            //{
+            //    if (int.Parse(ListItemsCmb.SelectedValue.ToString()) == itemQuantity.SelectedItem.Itemid)
+            //    {
+            //        StockQuantityTxt.Text = itemQuantity.PurchasedQuantity.ToString();
+            //        purchasePriceTxt.Text = (ItemProcessor.CalculateSalePrice(itemQuantity.SelectedItem.Itemid)).ToString();
+            //        IsItemFound = true;
+            //    }
+            //}
+            //if (!IsItemFound)
+            //{
+            //    StockQuantityTxt.Text = "0";
+            //    purchasePriceTxt.Text = "0";
+            //}
         }
 
         private void ItemsGridView_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)

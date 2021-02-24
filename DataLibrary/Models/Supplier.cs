@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace DataLibrary.Models
 {
-    public class Supplier
+    /// <summary>
+    /// This class represents a supplier
+    /// </summary>
+    public class Supplier : ISupplier
     {
         public int SupplierId { get; set; }
         [DisplayName("NAME")]

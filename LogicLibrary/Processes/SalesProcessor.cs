@@ -21,29 +21,41 @@ namespace LogicLibrary.Processes
             return _random.Next (10000,9999999);
         }
 
-        public static void SaveSaleOrder(Sales model)
+        public static string SaveSaleOrder(Sales model)
         {
+            
             using (IDbConnection cn = new SqlConnection(SqlDataAccess.GetConnectionString()))
             {
-                var data = new DynamicParameters();
-                data.Add("@InvoiceNumber",model.InvoiceNumber);
-                data.Add("@Discount",model.Discount);
-                data.Add("@SubTotal",model.SubTotal);
-                data.Add("@Tax",model.Tax);
-                data.Add("@Total",model.Total);
-                data.Add("@PaymentMode",model.PaymentMode);
-                data.Add("@DeliveryMode",model.DeliveryMode);
-                //data.Add("@AccountId",model.SelectedAccount.AccountId);
-                //data.Add("@QuotationId",model.SelectedQuotation.QuotationId);
-                //data.Add("@UserId",model.SelectedUser.UserId);
-                data.Add("@AccountId", 1);
-                data.Add("@QuotationId",1);
-                data.Add("@UserId",1);
-                data.Add("@SaleId",0,dbType:DbType.Int32,direction:ParameterDirection.Output);
-                cn.Execute("spSales_insert",data,commandType:CommandType.StoredProcedure);
-
-                model.SaleId = data.Get<int>("@SaleId");
-                SaleLineProcessor.SaveSaleLine(model);
+                cn.Open();
+                using (var trans=cn.BeginTransaction())
+                {
+                    try
+                    {
+                        var data = new DynamicParameters();
+                        data.Add("@InvoiceNumber", model.InvoiceNumber);
+                        data.Add("@Discount", model.Discount);
+                        data.Add("@SubTotal", model.SubTotal);
+                        data.Add("@Tax", model.Tax);
+                        data.Add("@Total", model.Total);
+                        data.Add("@PaymentMode", model.PaymentMode);
+                        data.Add("@DeliveryMode", model.DeliveryMode);
+                        data.Add("@AccountId", 1);
+                        data.Add("@QuotationId", 1);
+                        data.Add("@UserId", 1);
+                        data.Add("@SaleId", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                        cn.Execute("spSales_insert", data,transaction:trans, commandType: CommandType.StoredProcedure);
+                        model.SaleId = data.Get<int>("@SaleId");
+                        SaleLineProcessor.SaveSaleLine(model);
+                        trans.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        trans.Rollback();
+                        return "An Error Occured";
+                    }
+                }
+                
+                return "1 Record has been added Successfully ";
             }
             
         }

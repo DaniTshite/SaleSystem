@@ -12,7 +12,7 @@ namespace LogicLibrary.Processes
     {
         public static void SaveOrderLine(Orders order)
         {
-            foreach (var item in order.Details)
+            foreach (var item in order.SupplyOrderDetails)
             {
                 var data = new 
                 {

@@ -16,16 +16,32 @@ namespace LogicLibrary.Processes
         
         public static void SaveSupplyOrder(Orders model)
         {
-             var data = new 
-            {
-                OrderNumber = model.OrderNumber,
-                OrderDate = model.OrderDate,
-                SubTotal = model.SubTotal,
-                Tax = model.Tax,
-                Total = model.Total,
-                SupplierId = model.SelectedSupplier.SupplierId,
-                Details = model.Details
-            };
+            //using (IDbConnection cn=new SqlConnection(SqlDataAccess.GetConnectionString()))
+            //{
+            //    cn.Open();
+            //    using (var trans = cn.BeginTransaction())
+            //    {
+            //        try
+            //        {
+
+            //            trans.Commit();
+            //        }
+            //        catch(Exception ex)
+            //        {
+            //            trans.Rollback();
+            //        }
+            //    }
+            //}
+                var data = new
+                {
+                    OrderNumber = model.OrderNumber,
+                    OrderDate = model.OrderDate,
+                    SubTotal = model.SubTotal,
+                    Tax = model.Tax,
+                    Total = model.Total,
+                    SupplierId = model.SelectedSupplier.SupplierId,
+                    Details = model.SupplyOrderDetails
+                };
             string sql = @"spOrders_insert @OrderNumber,@OrderDate,@SubTotal,@Tax,@Total,@SupplierId";
             SqlDataAccess.RegisterData(sql, data);
             OrderLineProcessor.SaveOrderLine(model);
