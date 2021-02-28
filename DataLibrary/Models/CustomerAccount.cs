@@ -9,7 +9,7 @@ namespace DataLibrary.Models
     /// <summary>
     /// This class represents a customer account
     /// </summary>
-    public class CustomerAccount
+    public class CustomerAccount : ICustomerAccount
     {
         public int AccountId { get; set; }
         public string FirstName { get; set; }

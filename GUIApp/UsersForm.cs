@@ -28,7 +28,7 @@ namespace GUIApp
         private void Initialize()
         {
             users = null;
-            SqlDataAccess.MultipleSets();
+            SqlDataAccess.LoadLists();
             users = SqlDataAccess.loadedUsers;
             UpdateUsersCmb.DataSource = users;
             UpdateUsersCmb.ValueMember = "UserId";
@@ -49,28 +49,14 @@ namespace GUIApp
                     UsersPictureBox.ImageLocation = imgLoc;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
+                MessageBox.Show(" Something went wrong !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void SaveUsersBtn_Click(object sender, EventArgs e)
         {
-            //if (Isvalidated())
-            //{
-            //    byte[] img = null;
-            //    FileStream fs = new FileStream(imgLoc, FileMode.Open, FileAccess.Read);
-            //    BinaryReader br = new BinaryReader(fs);
-            //    img = br.ReadBytes((int)fs.Length);
-            //    //SaveEmployees();
-
-            //    //employee instantiation
-
-            //    Employee emp1 = new Employee(EmpIdTxt.Text, EmpNameTxt.Text, EmpSurnameTxt.Text, EmpAddressTxt.Text, EmpPhoneTxt.Text, EmpEmailTxt.Text, Convert.ToDateTime(HiredateTimePicker.Text), Convert.ToDateTime(DobdateTimePicker.Text), EmpNationalityTxt.Text, img);
-
-            //    ResetAll();
-            //}
             
             if (Isvalidated())
             {
@@ -88,8 +74,7 @@ namespace GUIApp
                     IsActive = 1,
                     Photo = img
                 };
-                UsersProcessor.SaveUser(data);
-                MessageBox.Show("1 Record has been added Successfully !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(UsersProcessor.SaveUser(data), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }
@@ -183,8 +168,7 @@ namespace GUIApp
                     IsActive = IsActiveChkBtn.Checked == true ? 1 : 0,
                     Photo = img
                 };
-                UsersProcessor.UpdateUser(data);
-                MessageBox.Show("1 Record has been updated Successfully !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(UsersProcessor.UpdateUser(data), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }

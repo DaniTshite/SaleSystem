@@ -9,7 +9,7 @@ namespace DataLibrary.Models
     /// <summary>
     /// This class represents a sale order
     /// </summary>
-    public class Sales
+    public class Sales : ISales
     {
         public int SaleId { get; set; }
         public int InvoiceNumber { get; set; }
@@ -24,6 +24,6 @@ namespace DataLibrary.Models
         public CustomerAccount SelectedAccount { get; set; } = new CustomerAccount();
         public Quotations SelectedQuotation { get; set; } = new Quotations();
         public Users SelectedUser { get; set; } = new Users();
-        
+
     }
 }

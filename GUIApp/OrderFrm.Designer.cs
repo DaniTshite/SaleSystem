@@ -176,7 +176,6 @@ namespace GUIApp
             this.purchasePriceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.purchasePriceTxt.Location = new System.Drawing.Point(201, 95);
             this.purchasePriceTxt.Name = "purchasePriceTxt";
-            this.purchasePriceTxt.ReadOnly = true;
             this.purchasePriceTxt.Size = new System.Drawing.Size(289, 27);
             this.purchasePriceTxt.TabIndex = 6;
             // 

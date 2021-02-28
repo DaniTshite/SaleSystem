@@ -12,29 +12,59 @@ using System.Threading.Tasks;
 
 namespace LogicLibrary.Processes
 {
+    /// <summary>
+    /// This class contains operations related to suppliers
+    /// </summary>
     public class SupplierProcessor
     {
-        public static void SaveSupplier(Supplier model)
+        static ISupplier _supplier;
+        /// <summary>
+        /// This method save a supplier object into the DB
+        /// </summary>
+        /// <param name="supplier">It takes in an ISupplier object as parameter</param>
+        public static void SaveSupplier(ISupplier supplier)
         {
-           Supplier data = new Supplier
-            {
-               SupplierName= model.SupplierName,
-               SupplierTelephone= model.SupplierTelephone,
-               SupplierEmailAddress= model.SupplierEmailAddress,
-               SupplierPhysicalAddress= model.SupplierPhysicalAddress
-           };
-            
+            _supplier = supplier;
             string sql = @"spSupplier_insert @SupplierName,@SupplierTelephone,@SupplierEmailAddress,@SupplierPhysicalAddress";
 
-            SqlDataAccess.RegisterData(sql, data);
+            SqlDataAccess.RegisterData(sql, _supplier);
         }
-
+        /// <summary>
+        /// This method gets all suppliers from the DB
+        /// </summary>
+        /// <returns>It returns a list of supplier objects</returns>
         public static List<Supplier> LoadData()
         {
             string sql = @"spSupplier_GetAll";
             return SqlDataAccess.LoadData<Supplier>(sql);
         }
-
+        /// <summary>
+        /// This method delete a supplier in the DB
+        /// </summary>
+        /// <param name="supplierid">It takes in an integer representing the supplierId as parameter</param>
+        /// <returns>It returns a message showing whether the operation failed or succeeded</returns>
+        public static string DeleteSupplier(int supplierid)
+        {
+            try
+            {
+                var data = new
+                {
+                    SupplierId = supplierid
+                };
+                string sql = "spSupplier_Delete @SupplierId";
+                SqlDataAccess.RegisterData(sql, data);
+                return "1 Record has been deleted Successfully !";
+            }
+            catch (Exception)
+            {
+                return " Something went wrong !";
+            }
+        }
+        /// <summary>
+        /// This method validate an email address
+        /// </summary>
+        /// <param name="email">It takes in a string representing the email as parameter </param>
+        /// <returns>It returns true or false</returns>
         public static bool IsEmailValid(string email)
         {
             

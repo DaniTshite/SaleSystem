@@ -10,7 +10,7 @@ namespace DataLibrary.Models
     /// <summary>
     /// This class represents a line on a sale order
     /// </summary>
-    public class SaleLine
+    public class SaleLine : ISaleLine
     {
         public Item SelectedItem { get; set; } = new Item();
         public Sales Sale { get; set; } = new Sales();

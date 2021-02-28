@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HelperProcesses\HelperProcessor.cs" />
     <Compile Include="Processes\CategoryProcessor.cs" />
     <Compile Include="Processes\CustomerAccountProcessor.cs" />
     <Compile Include="Processes\ItemProcessor.cs" />
@@ -66,5 +67,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

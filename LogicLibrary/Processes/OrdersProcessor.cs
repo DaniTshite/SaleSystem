@@ -14,7 +14,7 @@ namespace LogicLibrary.Processes
     public class OrdersProcessor
     {
         
-        public static void SaveSupplyOrder(Orders model)
+        public static string SaveSupplyOrder(Orders model)
         {
             //using (IDbConnection cn=new SqlConnection(SqlDataAccess.GetConnectionString()))
             //{
@@ -32,6 +32,8 @@ namespace LogicLibrary.Processes
             //        }
             //    }
             //}
+            try
+            {
                 var data = new
                 {
                     OrderNumber = model.OrderNumber,
@@ -42,11 +44,18 @@ namespace LogicLibrary.Processes
                     SupplierId = model.SelectedSupplier.SupplierId,
                     Details = model.SupplyOrderDetails
                 };
-            string sql = @"spOrders_insert @OrderNumber,@OrderDate,@SubTotal,@Tax,@Total,@SupplierId";
-            SqlDataAccess.RegisterData(sql, data);
-            OrderLineProcessor.SaveOrderLine(model);
+                string sql = @"spOrders_insert @OrderNumber,@OrderDate,@SubTotal,@Tax,@Total,@SupplierId";
+                SqlDataAccess.RegisterData(sql, data);
+                OrderLineProcessor.SaveOrderLine(model);
+                return "1 Record has been added Successfully ";
+            }
+            catch (Exception)
+            {
+                return "Something went wrong";
+            }
+                
         }
-
+        //TO DO  check the list of order details is empty
         public static List<OrderLine> GetOrderDetails(string orderNumber)
         {
             var output = SqlDataAccess.LoadMultiData(orderNumber);
@@ -60,7 +69,7 @@ namespace LogicLibrary.Processes
 
         public static List<OrderLine> GetItemsToReorder(List<Item> items)
         {
-            SqlDataAccess.MultipleSets();
+            SqlDataAccess.LoadLists();
             List<OrderLine> ItemsToOrder = new List<OrderLine>();
             var listItemQuantities = OrderLineProcessor.GetEntryQuantityByItem();
             foreach (var itemQuantity in listItemQuantities)
@@ -88,7 +97,7 @@ namespace LogicLibrary.Processes
 
         public static List<OrderLine> GetInactiveItems(List<Item> items)
         {
-            SqlDataAccess.MultipleSets();
+            SqlDataAccess.LoadLists();
             List<OrderLine> ItemsToOrder = new List<OrderLine>();
             var listItemQuantities = OrderLineProcessor.GetEntryQuantityByItem();
             

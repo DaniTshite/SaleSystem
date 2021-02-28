@@ -102,5 +102,12 @@ namespace GUIApp
         {
             SupplierNameTxt.Focus();
         }
+
+        private void DeleteSupplierBtn_Click(object sender, EventArgs e)
+        {
+            int supplierId = (Int32)DeleteSupplierCmb.SelectedValue;
+            MessageBox.Show(SupplierProcessor.DeleteSupplier(supplierId), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Initialize();
+        }
     }
 }

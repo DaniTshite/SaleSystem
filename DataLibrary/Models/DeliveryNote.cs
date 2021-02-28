@@ -9,7 +9,7 @@ namespace DataLibrary.Models
     /// <summary>
     /// This class represents a delivery note of a sale order
     /// </summary>
-    public class Delivery
+    public class DeliveryNote : IDeliveryNote
     {
         public int DeliveryId { get; set; }
         public DateTime DeliveryDate { get; set; }

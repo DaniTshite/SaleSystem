@@ -29,7 +29,7 @@ namespace GUIApp
         {
             Categories = null;
             Items = null;
-            SqlDataAccess.MultipleSets();
+            SqlDataAccess.LoadLists();
             Items = SqlDataAccess.loadedItems;
             Categories = SqlDataAccess.loadedCategories;
             UpdateItemCmb.DataSource = Items;

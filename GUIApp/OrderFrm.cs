@@ -11,6 +11,7 @@ using DataLibrary.Models;
 using DataLibrary.Data;
 using LogicLibrary.Processes;
 using GUIApp.Models;
+using LogicLibrary.HelperProcesses;
 
 namespace GUIApp
 {
@@ -23,7 +24,7 @@ namespace GUIApp
         List<Supplier> suppliers = new List<Supplier>();
 
         List<OrderLine> gridItems;
-        List<OrderCart> gridOrderItems;
+        List<OrderCart> gridOrderItemsToDisplay;
 
         //print Order Document
 
@@ -34,7 +35,8 @@ namespace GUIApp
 
         int itemCounter = 1;
         List<OrderLine> orderDetails1;
-
+        private decimal PurchasePrice;
+        List<OrderLine> itemsToSave;
 
         public OrderFrm()
         {
@@ -48,7 +50,7 @@ namespace GUIApp
             items = null;
             suppliers = null;
             activeItems = null;
-            SqlDataAccess.MultipleSets();
+            SqlDataAccess.LoadLists();
             items = SqlDataAccess.loadedItems;
             suppliers = SqlDataAccess.loadedSuppliers;
             activeItems = ItemProcessor.LoadData();
@@ -61,8 +63,8 @@ namespace GUIApp
             ListSuppliersCmb.SelectedIndex = -1;
             ListItemsCmb.Text = "";
             gridItems = new List<OrderLine>();
-            gridOrderItems = new List<OrderCart>();
-            //orderDetails = new List<OrderFullDetails>();
+            gridOrderItemsToDisplay = new List<OrderCart>();
+            itemsToSave = new List<OrderLine>();
             orderDetails1 = new List<OrderLine>();
             ListItemsCmb.SelectedValueChanged += ListItemsCmb_SelectedValueChanged;
         }
@@ -96,9 +98,10 @@ namespace GUIApp
                     PurchasedQuantity = int.Parse(PurchasedQuantityTxt.Text),
                     LineTotal = decimal.Parse(PurchasedQuantityTxt.Text) * decimal.Parse(purchasePriceTxt.Text)
                 };
-
+                //checks if quantity to be sold is less than the stock
                 if (OrdersProcessor.IsStockQuantityEnough(int.Parse(PurchasedQuantityTxt.Text), int.Parse(StockQuantityTxt.Text)) == true)
                 {
+                    //checks if the selected item is already in the cart 
                     foreach (DataGridViewRow row in ItemsGridView.Rows)
                     {
                         if (Convert.ToString(row.Cells["Descript"].Value) == Convert.ToString(ListItemsCmb.Text))
@@ -110,25 +113,38 @@ namespace GUIApp
                         }
 
                     }
-
+                    //checks if the selected ittm is not in the cart 
                     if (ItemSelectedAgain == false)
                     {
-
+                        //instanciation of orderline object to save into the DB
+                        OrderLine p = new OrderLine
+                        {
+                            SelectedItem = (Item)ListItemsCmb.SelectedItem,
+                            PurchasePrice = PurchasePrice,
+                            PurchasedQuantity = line.PurchasedQuantity,
+                            LineTotal = line.LineTotal
+                        };
+                        //list of items to save into the DB
+                        itemsToSave.Add(p);
+                        //list of items to display in the cart
                         ItemsGridView.DataSource = null;
-                        gridOrderItems.Add(line);
-                        ItemsGridView.DataSource = gridOrderItems;
+                        gridOrderItemsToDisplay.Add(line);
+                        ItemsGridView.DataSource = gridOrderItemsToDisplay;
+                        //add currency symbol to retail price and net total
                         ItemsGridView.Columns[4].DefaultCellStyle.Format = "c2";
                         ItemsGridView.Columns[5].DefaultCellStyle.Format = "c2";
+                        //increment counter in the cart
                         itemCounter += 1;
                         SaveOrderBtn.Enabled = true;
 
                     }
-                    decimal subTotal = gridOrderItems.Sum(x => x.LineTotal);
+                    decimal subTotal = gridOrderItemsToDisplay.Sum(x => x.LineTotal);
                     STotalTxt.Text = subTotal.ToString();
                     GdTotalTxt.Text = subTotal.ToString();
                     ListSuppliersCmb.SelectedIndex = -1;
                     purchasePriceTxt.Clear();
                     PurchasedQuantityTxt.Clear();
+                    StockQuantityTxt.Clear();
                 }
                 else
                 {
@@ -227,12 +243,10 @@ namespace GUIApp
                     SubTotal = decimal.Parse(STotalTxt.Text),
                     Tax = decimal.Parse(TaxTxt.Text),
                     Total = decimal.Parse(GdTotalTxt.Text),
-                    SelectedSupplier = (Supplier)ListSuppliersCmb.SelectedValue,
-                    SupplyOrderDetails = gridItems
+                    SelectedSupplier = (Supplier)ListSuppliersCmb.SelectedItem,
+                    SupplyOrderDetails = itemsToSave
                 };
-
-                OrdersProcessor.SaveSupplyOrder(data);
-                MessageBox.Show("1 Record has been added Successfully !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(OrdersProcessor.SaveSupplyOrder(data), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetControls();
             }
         }
@@ -466,22 +480,22 @@ namespace GUIApp
 
         private void ListItemsCmb_SelectedValueChanged(object sender, EventArgs e)
         {
-            //var listItemQuantities = OrderLineProcessor.GetEntryQuantityByItem();
-            //bool IsItemFound = false;
-            //foreach (var itemQuantity in listItemQuantities)
-            //{
-            //    if (int.Parse(ListItemsCmb.SelectedValue.ToString()) == itemQuantity.SelectedItem.Itemid)
-            //    {
-            //        StockQuantityTxt.Text = itemQuantity.PurchasedQuantity.ToString();
-            //        purchasePriceTxt.Text = (ItemProcessor.CalculateSalePrice(itemQuantity.SelectedItem.Itemid)).ToString();
-            //        IsItemFound = true;
-            //    }
-            //}
-            //if (!IsItemFound)
-            //{
-            //    StockQuantityTxt.Text = "0";
-            //    purchasePriceTxt.Text = "0";
-            //}
+            var listItemQuantities = OrderLineProcessor.GetEntryQuantityByItem();
+            bool IsItemFound = false;
+            foreach (var itemQuantity in listItemQuantities)
+            {
+                if (int.Parse(ListItemsCmb.SelectedValue.ToString()) == itemQuantity.SelectedItem.Itemid)
+                {
+                    StockQuantityTxt.Text = HelperProcessor.GetStockQuantity(itemQuantity.SelectedItem.Itemid).ToString();
+                    //purchasePriceTxt.Text = (ItemProcessor.CalculateSalePrice(itemQuantity.SelectedItem.Itemid)).ToString();
+                    IsItemFound = true;
+                }
+            }
+            if (!IsItemFound)
+            {
+                StockQuantityTxt.Text = "0.00";
+                purchasePriceTxt.Text = "0.00";
+            }
         }
 
         private void ItemsGridView_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)

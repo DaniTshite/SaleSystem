@@ -9,7 +9,7 @@ namespace DataLibrary.Models
     /// <summary>
     /// this class represents a quotation of a sale order
     /// </summary>
-    public class Quotations
+    public class Quotations : IQuotations
     {
         public int QuotationId { get; set; }
         public DateTime QuotationDate { get; set; }

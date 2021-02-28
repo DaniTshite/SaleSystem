@@ -10,20 +10,12 @@ namespace LogicLibrary.Processes
 {
     public class ItemProcessor
     {
-        public static void SaveItem(Item model)
+        static IItem _item;
+        public static void SaveItem(IItem item)
         {
-            Item data = new Item
-            {
-                StockCode = model.StockCode,
-                Descript = model.Descript,
-                Vat = model.Vat,
-                CategoryId = model.CategoryId,
-                IsActive = model.IsActive,
-                ReOrderlevel = model.ReOrderlevel
-            };
+            _item = item;
             string sql = @"spItem_insert @StockCode,@Descript,@Vat,@CategoryId,@IsActive,@ReOrderlevel";
-
-            SqlDataAccess.RegisterData(sql, data);
+            SqlDataAccess.RegisterData(sql, _item);
         }
         public static List<Item> LoadData()
         {

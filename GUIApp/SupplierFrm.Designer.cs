@@ -267,6 +267,7 @@ namespace GUIApp
             this.DeleteSupplierBtn.TabIndex = 8;
             this.DeleteSupplierBtn.Text = "Delete";
             this.DeleteSupplierBtn.UseVisualStyleBackColor = true;
+            this.DeleteSupplierBtn.Click += new System.EventHandler(this.DeleteSupplierBtn_Click);
             // 
             // label4
             // 

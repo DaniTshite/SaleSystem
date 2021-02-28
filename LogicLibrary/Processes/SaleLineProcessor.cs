@@ -8,8 +8,15 @@ using System.Threading.Tasks;
 
 namespace LogicLibrary.Processes
 {
+    /// <summary>
+    /// This class contains processes related to sale order details
+    /// </summary>
     public class SaleLineProcessor
     {
+        /// <summary>
+        /// This method saves a saleline object into the the DB
+        /// </summary>
+        /// <param name="sale">this is a parameter of type Sales</param>
         public static void SaveSaleLine(Sales sale)
         {
             foreach (var item in sale.SaleOrderDetails)

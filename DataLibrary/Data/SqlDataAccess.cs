@@ -73,6 +73,22 @@ namespace DataLibrary.Data
             }
         }
         
+        public static List<SaleLine> LoadSoldQuantities()
+        {
+            using (IDbConnection cn = new SqlConnection(GetConnectionString()))
+            {
+                string sql = @"spSaleLine_GetSoldQuantityByItem";
+                var query = cn.Query<Item, SaleLine, SaleLine>(sql,
+                         (I, SL) =>
+                         {
+                             SL.SelectedItem = I;
+                             return SL;
+                         },
+                         splitOn: "SaleQuantity").AsQueryable();
+
+                return query.ToList();
+            }
+        }
         public static List<OrderLine> LoadMultiData(string orderNumber)
         {
             using (IDbConnection cn = new SqlConnection(GetConnectionString()))
@@ -105,7 +121,7 @@ namespace DataLibrary.Data
             }
         }
 
-        public static void MultipleSets()
+        public static void LoadLists()
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {

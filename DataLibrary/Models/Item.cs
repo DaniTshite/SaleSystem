@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace DataLibrary.Models
 {
     /// <summary>
-    /// This class an item object
+    /// This class represents an item object
     /// </summary>
-    public class Item
+    public class Item : IItem
     {
         [DisplayName("ITEM ID")]
         public int Itemid { get; set; }
@@ -20,7 +20,7 @@ namespace DataLibrary.Models
         public string barCode { get; set; }
         [DisplayName("DESCRIPTION")]
         public string Descript { get; set; }
-        
+
         [DisplayName("VAT")]
         public int Vat { get; set; }
         [DisplayName("CATEGORY")]

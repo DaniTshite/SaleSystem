@@ -8,41 +8,56 @@ using System.Threading.Tasks;
 
 namespace LogicLibrary.Processes
 {
+    /// <summary>
+    /// This class represents operations related to users
+    /// </summary>
     public class UsersProcessor
     {
-        public static void SaveUser(Users model)
+        static IUsers _user;
+        /// <summary>
+        /// This method saves a user object into the DB
+        /// </summary>
+        /// <param name="user">It takes in an IUsers object as parameter</param>
+        /// <returns>It returns a message showing the state of the operation</returns>
+        public static string SaveUser(IUsers user)
         {
-            var data = new
+            try
             {
-                TypeUser=model.TypeUser,
-                AccessCode=model.AccessCode,
-                Name=model.Name,
-                LastName=model.LastName,
-                DoB=model.DoB,
-                IsActive=model.IsActive,
-                Photo=model.Photo
-            };
-            string sql = @"spUsers_insert @TypeUser,@AccessCode,@Name,@LastName,@DoB,@IsActive,@Photo";
-            SqlDataAccess.RegisterData(sql, data);
+                _user = user;
+                string sql = @"spUsers_insert @TypeUser,@AccessCode,@Name,@LastName,@DoB,@IsActive,@Photo";
+                SqlDataAccess.RegisterData(sql, _user);
+                return "1 Record has been added Successfully !";
+            }
+            catch (Exception)
+            {
+                return " Something went wrong !";
+            }
+            
         }
-
-        public static void UpdateUser(Users model)
+        /// <summary>
+        /// This method updates a user
+        /// </summary>
+        /// <param name="user">It takes in an IUsers object as parameter</param>
+        /// <returns>It returns a message showing the state of the operation</returns>
+        public static string UpdateUser(IUsers user)
         {
-            var data = new
+            try
             {
-                UserId = model.UserId,
-                TypeUser = model.TypeUser,
-                AccessCode = model.AccessCode,
-                Name = model.Name,
-                LastName = model.LastName,
-                DoB = model.DoB,
-                IsActive = model.IsActive,
-                Photo = model.Photo
-            };
-            string sql = @"spUsers_update @UserId,@TypeUser,@AccessCode,@Name,@LastName,@DoB,@IsActive,@Photo";
-            SqlDataAccess.RegisterData(sql, data);
+                _user = user;
+                string sql = @"spUsers_update @UserId,@TypeUser,@AccessCode,@Name,@LastName,@DoB,@IsActive,@Photo";
+                SqlDataAccess.RegisterData(sql, _user);
+                return "1 Record has been updated Successfully !";
+            }
+            catch (Exception)
+            {
+                return " Something went wrong !";
+            }
+            
         }
-
+        /// <summary>
+        /// This method generate a random access code
+        /// </summary>
+        /// <returns>It returns a string representing the access code</returns>
         public static string GenerateAccessCode()
         {
             Random random = new Random();

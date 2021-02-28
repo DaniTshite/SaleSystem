@@ -10,17 +10,15 @@ namespace LogicLibrary.Processes
 {
     public class CategoryProcessor
     {
-        public static void SaveCategory(Category model)
+        static ICategory _category;
+        public static void SaveCategory(ICategory category)
         {
-            Category data = new Category
-            {
-                CategoryName=model.CategoryName
-            };
+            
+            _category = category;
             string sql = @"spCategory_insert @CategoryName";
-
-            SqlDataAccess.RegisterData(sql, data);
+            SqlDataAccess.RegisterData(sql, _category);
         }
-
+        
         public static List<Category> LoadData()
         {
             string sql = @"spCategory_GetAll";

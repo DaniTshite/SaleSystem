@@ -46,9 +46,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\SqlDataAccess.cs" />
+    <Compile Include="Factory.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CustomerAccount.cs" />
-    <Compile Include="Models\Delivery.cs" />
+    <Compile Include="Models\DeliveryNote.cs" />
+    <Compile Include="Models\ICategory.cs" />
+    <Compile Include="Models\ICustomerAccount.cs" />
+    <Compile Include="Models\IDeliveryNote.cs" />
+    <Compile Include="Models\IItem.cs" />
+    <Compile Include="Models\IOrderLine.cs" />
+    <Compile Include="Models\IOrders.cs" />
+    <Compile Include="Models\IQuotations.cs" />
+    <Compile Include="Models\ISaleLine.cs" />
+    <Compile Include="Models\ISales.cs" />
     <Compile Include="Models\ISupplier.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\IUsers.cs" />
