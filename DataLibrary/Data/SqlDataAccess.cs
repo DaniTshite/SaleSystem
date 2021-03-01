@@ -120,7 +120,8 @@ namespace DataLibrary.Data
                 return cn.Execute(sql, Data);
             }
         }
-
+        //constructor
+        
         public static void LoadLists()
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))

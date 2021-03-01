@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataLibrary.Models;
+using LogicLibrary.HelperProcesses;
 using LogicLibrary.Processes;
 
 namespace GUIApp
@@ -81,7 +82,7 @@ namespace GUIApp
             }
             else
             {
-                if(!( SupplierProcessor.IsEmailValid(SupplierEmailAddressTxt.Text)))
+                if(!( HelperProcessor.IsEmailValid(SupplierEmailAddressTxt.Text)))
                 {
                     MessageBox.Show("Invalid Email Address !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     SupplierEmailAddressTxt.Focus();

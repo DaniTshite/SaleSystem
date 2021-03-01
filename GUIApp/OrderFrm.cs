@@ -341,6 +341,8 @@ namespace GUIApp
             SupplierLinkLbl.Enabled = true;
             ItemLinkLbl.Enabled = true;
             UsersLinkLbl.Enabled = true;
+            CustomerAccountLinkLbl.Enabled = true;
+            SaleLinkLbl.Enabled = true;
             ItemsGridView.DataSource = null;
             ResetControls();
             ListItemsCmb.Focus();
@@ -777,6 +779,18 @@ namespace GUIApp
                 }
 
             }
+        }
+
+        private void CustomerAccountLinkLbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            CustomerAccountFrm ca = new CustomerAccountFrm();
+            ca.Show();
+        }
+
+        private void SalesLinkLbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SaleFrm sale = new SaleFrm();
+            sale.Show();
         }
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace LogicLibrary.HelperProcesses
@@ -43,6 +44,25 @@ namespace LogicLibrary.HelperProcesses
                 }
             }
              
+        }
+        /// <summary>
+        /// This method validate an email address
+        /// </summary>
+        /// <param name="email">It takes in a string representing the email as parameter </param>
+        /// <returns>It returns true or false</returns>
+        public static bool IsEmailValid(string email)
+        {
+
+            string pattern = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
+
+            if (Regex.IsMatch(email, pattern))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

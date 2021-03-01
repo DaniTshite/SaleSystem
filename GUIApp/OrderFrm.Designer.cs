@@ -92,6 +92,8 @@ namespace GUIApp
             this.label13 = new System.Windows.Forms.Label();
             this.UsersLinkLbl = new System.Windows.Forms.LinkLabel();
             this.TotalOrdersLbl = new System.Windows.Forms.Label();
+            this.CustomerAccountLinkLbl = new System.Windows.Forms.LinkLabel();
+            this.SaleLinkLbl = new System.Windows.Forms.LinkLabel();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -247,7 +249,7 @@ namespace GUIApp
             this.ItemLinkLbl.AutoSize = true;
             this.ItemLinkLbl.Enabled = false;
             this.ItemLinkLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ItemLinkLbl.Location = new System.Drawing.Point(1042, 335);
+            this.ItemLinkLbl.Location = new System.Drawing.Point(1072, 335);
             this.ItemLinkLbl.Name = "ItemLinkLbl";
             this.ItemLinkLbl.Size = new System.Drawing.Size(79, 20);
             this.ItemLinkLbl.TabIndex = 10;
@@ -261,7 +263,7 @@ namespace GUIApp
             this.SupplierLinkLbl.AutoSize = true;
             this.SupplierLinkLbl.Enabled = false;
             this.SupplierLinkLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SupplierLinkLbl.Location = new System.Drawing.Point(1366, 335);
+            this.SupplierLinkLbl.Location = new System.Drawing.Point(1393, 335);
             this.SupplierLinkLbl.Name = "SupplierLinkLbl";
             this.SupplierLinkLbl.Size = new System.Drawing.Size(108, 20);
             this.SupplierLinkLbl.TabIndex = 13;
@@ -772,7 +774,7 @@ namespace GUIApp
             this.UsersLinkLbl.AutoSize = true;
             this.UsersLinkLbl.Enabled = false;
             this.UsersLinkLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsersLinkLbl.Location = new System.Drawing.Point(1193, 335);
+            this.UsersLinkLbl.Location = new System.Drawing.Point(1166, 335);
             this.UsersLinkLbl.Name = "UsersLinkLbl";
             this.UsersLinkLbl.Size = new System.Drawing.Size(83, 20);
             this.UsersLinkLbl.TabIndex = 33;
@@ -793,12 +795,42 @@ namespace GUIApp
             this.TotalOrdersLbl.TabIndex = 34;
             this.TotalOrdersLbl.Text = "R";
             // 
+            // CustomerAccountLinkLbl
+            // 
+            this.CustomerAccountLinkLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CustomerAccountLinkLbl.AutoSize = true;
+            this.CustomerAccountLinkLbl.Enabled = false;
+            this.CustomerAccountLinkLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CustomerAccountLinkLbl.Location = new System.Drawing.Point(1255, 335);
+            this.CustomerAccountLinkLbl.Name = "CustomerAccountLinkLbl";
+            this.CustomerAccountLinkLbl.Size = new System.Drawing.Size(120, 20);
+            this.CustomerAccountLinkLbl.TabIndex = 35;
+            this.CustomerAccountLinkLbl.TabStop = true;
+            this.CustomerAccountLinkLbl.Text = "New Customer";
+            this.CustomerAccountLinkLbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CustomerAccountLinkLbl_LinkClicked);
+            // 
+            // SaleLinkLbl
+            // 
+            this.SaleLinkLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaleLinkLbl.AutoSize = true;
+            this.SaleLinkLbl.Enabled = false;
+            this.SaleLinkLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaleLinkLbl.Location = new System.Drawing.Point(987, 335);
+            this.SaleLinkLbl.Name = "SaleLinkLbl";
+            this.SaleLinkLbl.Size = new System.Drawing.Size(80, 20);
+            this.SaleLinkLbl.TabIndex = 36;
+            this.SaleLinkLbl.TabStop = true;
+            this.SaleLinkLbl.Text = "New Sale";
+            this.SaleLinkLbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SalesLinkLbl_LinkClicked);
+            // 
             // OrderFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1632, 812);
+            this.Controls.Add(this.SaleLinkLbl);
+            this.Controls.Add(this.CustomerAccountLinkLbl);
             this.Controls.Add(this.TotalOrdersLbl);
             this.Controls.Add(this.FilterOrdersByDateGroupBox);
             this.Controls.Add(this.UsersLinkLbl);
@@ -897,5 +929,7 @@ namespace GUIApp
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DateTimePicker SuperiorDateTimePicker;
         private System.Windows.Forms.Label TotalOrdersLbl;
+        private System.Windows.Forms.LinkLabel CustomerAccountLinkLbl;
+        private System.Windows.Forms.LinkLabel SaleLinkLbl;
     }
 }

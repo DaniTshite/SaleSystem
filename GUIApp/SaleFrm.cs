@@ -17,7 +17,6 @@ namespace GUIApp
 {
     public partial class SaleFrm : Form
     {
-        
         //list of active items
         List<Item> activeItems ;
         //other lists
@@ -77,6 +76,9 @@ namespace GUIApp
             bool IsItemFound = false;
             if (ItemsListBox.SelectedValue != null)
             {
+                AddToCartBtn.Enabled = true;
+                SaleQuantityTxt.Enabled = true;
+                
                 foreach (var itemQuantity in listItemQuantities)
                 {
                     if (int.Parse(ItemsListBox.SelectedValue.ToString()) == itemQuantity.SelectedItem.Itemid)
@@ -144,7 +146,15 @@ namespace GUIApp
             RetailPriceLbl.Text = "0.00";
             StockQuantityLbl.Text = "";
             SaleQuantityTxt.Clear();
+            SaleQuantityTxt.Enabled = false;
             PaidTxt.Clear();
+            PaidTxt.Enabled = false;
+            CashBtn.Enabled = false;
+            EFTBtn.Enabled = false;
+            AddToCartBtn.Enabled = false;
+            RefundBtn.Enabled = false;
+            VoucherBtn.Enabled = false;
+            ResetBtn.Enabled = false;
             CurrentInvoiceNumber = SalesProcessor.GetInvoiceNumber();
             InvoiceNumberLbl.Text = "INVOICE No : " + CurrentInvoiceNumber; ;
         }
@@ -239,8 +249,11 @@ namespace GUIApp
                         //increment counter in the cart
                         itemCounter += 1;
                         CashBtn.Enabled = true;
-                        CreditBtn.Enabled = true;
+                        EFTBtn.Enabled = true;
                         PaidTxt.Enabled = true;
+                        RefundBtn.Enabled = true;
+                        VoucherBtn.Enabled = true;
+                        ResetBtn.Enabled = true;
                     }
                     SubTotal = itemsToDisplay.Sum(x => x.LineTotal);
                     Total = SubTotal + Tax;
@@ -267,7 +280,7 @@ namespace GUIApp
 
         private void SaleFrm_Load(object sender, EventArgs e)
         {
-           
+            //UsersCmb.Text = "Please select a user";
         }
     }
 }

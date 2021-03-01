@@ -24,10 +24,18 @@ namespace LogicLibrary.Processes
         /// <param name="supplier">It takes in an ISupplier object as parameter</param>
         public static void SaveSupplier(ISupplier supplier)
         {
-            _supplier = supplier;
-            string sql = @"spSupplier_insert @SupplierName,@SupplierTelephone,@SupplierEmailAddress,@SupplierPhysicalAddress";
+            try
+            {
+                _supplier = supplier;
+                string sql = @"spSupplier_insert @SupplierName,@SupplierTelephone,@SupplierEmailAddress,@SupplierPhysicalAddress";
+                SqlDataAccess.RegisterData(sql, _supplier);
+            }
+            catch (Exception)
+            {
 
-            SqlDataAccess.RegisterData(sql, _supplier);
+                throw;
+            }
+            
         }
         /// <summary>
         /// This method gets all suppliers from the DB
@@ -35,8 +43,17 @@ namespace LogicLibrary.Processes
         /// <returns>It returns a list of supplier objects</returns>
         public static List<Supplier> LoadData()
         {
-            string sql = @"spSupplier_GetAll";
-            return SqlDataAccess.LoadData<Supplier>(sql);
+            try
+            {
+                string sql = @"spSupplier_GetAll";
+                return SqlDataAccess.LoadData<Supplier>(sql);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
         /// <summary>
         /// This method delete a supplier in the DB
@@ -60,24 +77,6 @@ namespace LogicLibrary.Processes
                 return " Something went wrong !";
             }
         }
-        /// <summary>
-        /// This method validate an email address
-        /// </summary>
-        /// <param name="email">It takes in a string representing the email as parameter </param>
-        /// <returns>It returns true or false</returns>
-        public static bool IsEmailValid(string email)
-        {
-            
-            string pattern = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
-
-            if (Regex.IsMatch(email, pattern))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        
     }
 }
