@@ -13,25 +13,8 @@ namespace LogicLibrary.Processes
 {
     public class OrdersProcessor
     {
-        
         public static string SaveSupplyOrder(Orders model)
         {
-            //using (IDbConnection cn=new SqlConnection(SqlDataAccess.GetConnectionString()))
-            //{
-            //    cn.Open();
-            //    using (var trans = cn.BeginTransaction())
-            //    {
-            //        try
-            //        {
-
-            //            trans.Commit();
-            //        }
-            //        catch(Exception ex)
-            //        {
-            //            trans.Rollback();
-            //        }
-            //    }
-            //}
             try
             {
                 var data = new
@@ -53,12 +36,11 @@ namespace LogicLibrary.Processes
             {
                 return "Something went wrong";
             }
-                
         }
         //TO DO  check the list of order details is empty
         public static List<OrderLine> GetOrderDetails(string orderNumber)
         {
-            var output = SqlDataAccess.LoadMultiData(orderNumber);
+            var output = SqlDataAccess.LoadOrderData(orderNumber);
             return output;
         }
         public static List<Orders> GetFilteredOrdersByDate(DateTime inferiorDate, DateTime superiorDate)
@@ -94,7 +76,6 @@ namespace LogicLibrary.Processes
             }
             return ItemsToOrder;
         }
-
         public static List<OrderLine> GetInactiveItems(List<Item> items)
         {
             SqlDataAccess.LoadLists();
@@ -123,8 +104,6 @@ namespace LogicLibrary.Processes
             }
             return ItemsToOrder;
         }
-
-       
         public static bool IsStockQuantityEnough(int firstNumber,int secondNumber)
         {
              return (firstNumber > secondNumber) ? false : true;

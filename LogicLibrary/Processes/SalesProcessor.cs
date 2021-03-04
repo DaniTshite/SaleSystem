@@ -17,14 +17,37 @@ namespace LogicLibrary.Processes
     public class SalesProcessor
     {
         private static readonly Random _random = new Random();
+        private static bool _doesInvoiceNumberExist = false;
         /// <summary>
         /// This method generate a random number for the invoice
         /// </summary>
         /// <returns>It returns an integer</returns>
-        public static int  GetInvoiceNumber()
+        private static int  GenerateNumber()
         {
-            return _random.Next (10000,9999999);
+            return _random.Next(10000, 9999999);
         }
+        /// <summary>
+        /// This method validate the invoice number
+        /// </summary>
+        /// <returns>it returns an integer</returns>
+        public static int GetInvoiceNumber()
+        {
+            int number = GenerateNumber();
+            List<SaleLine> listSales = GetSaleDetails(number.ToString());
+            while (!_doesInvoiceNumberExist)
+            {
+                if (listSales != null || listSales.Count > 0)
+                {
+                    _doesInvoiceNumberExist = true;
+                }
+                else
+                {
+                    number = GenerateNumber();
+                }
+            }
+            return number;
+        }
+        
         /// <summary>
         /// This method save a sale order object into the DB 
         /// </summary>
@@ -32,10 +55,8 @@ namespace LogicLibrary.Processes
         /// <returns>It returns a message showing if the operation failed or succeeded</returns>
         public static string SaveSaleOrder(Sales model)
         {
-            
             using (IDbConnection cn = new SqlConnection(SqlDataAccess.GetConnectionString()))
             {
-                
                 try
                 {
                     var data = new DynamicParameters();
@@ -59,9 +80,17 @@ namespace LogicLibrary.Processes
                 {
                     return "An Error Occured";
                 }
-                
             }
-            
+        }
+        /// <summary>
+        /// This method get sale order details from the DB
+        /// </summary>
+        /// <param name="invoiceNumber">This is a string representing the invoice number </param>
+        /// <returns>It returns a list of saleline objects </returns>
+        public static List<SaleLine> GetSaleDetails(string invoiceNumber)
+        {
+            var output = SqlDataAccess.LoadSaleData(invoiceNumber);
+            return output;
         }
     }
 }

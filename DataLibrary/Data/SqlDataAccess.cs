@@ -89,7 +89,7 @@ namespace DataLibrary.Data
                 return query.ToList();
             }
         }
-        public static List<OrderLine> LoadMultiData(string orderNumber)
+        public static List<OrderLine> LoadOrderData(string orderNumber)
         {
             using (IDbConnection cn = new SqlConnection(GetConnectionString()))
             {
@@ -112,7 +112,32 @@ namespace DataLibrary.Data
                 return query.ToList();
             }
         }
-        
+
+        public static List<SaleLine> LoadSaleData(string invoiceNumber)
+        {
+            using (IDbConnection cn = new SqlConnection(GetConnectionString()))
+            {
+                var p = new
+                {
+                    InvoiceNumber = invoiceNumber
+                };
+                string sql = @"spSales_GetAllByInvoiceNumber @InvoiceNumber";
+                var query = cn.Query<Item, SaleLine, Sales, Users, Quotations,CustomerAccount,SaleLine>(sql,
+                   (I, SL, S, U,Q,CA) =>
+                   {
+                       SL.SelectedItem = I;
+                       SL.Sale = S;
+                       SL.Sale.SelectedUser = U;
+                       SL.Sale.SelectedQuotation = Q;
+                       SL.Sale.SelectedAccount = CA;
+                       return SL;
+                   },
+                                 p,
+                                 splitOn: "ItemId,SaleId,UserId,QuotationId,AccountId").AsQueryable();
+
+                return query.ToList();
+            }
+        }
         public static int RegisterData<T>(string sql, T Data)
         {
             using (IDbConnection cn = new SqlConnection(GetConnectionString()))

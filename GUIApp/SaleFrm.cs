@@ -278,6 +278,26 @@ namespace GUIApp
             }
         }
 
+        private void EFTBtn_Click(object sender, EventArgs e)
+        {
+            int count = 0;
+            List<SaleLine> listSales = SalesProcessor.GetSaleDetails("9510780");
+            if(listSales != null)
+            {
+                if(listSales.Count > 0)
+                {
+                    foreach (var item in listSales)
+                    {
+                        if (item.Sale.InvoiceNumber.ToString() == InvoiceNumberLbl.Text)
+                        {
+
+                        }
+                        count += 1;
+                    }
+                }
+            }
+        }
+
         private void SaleFrm_Load(object sender, EventArgs e)
         {
             //UsersCmb.Text = "Please select a user";
