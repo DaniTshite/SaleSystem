@@ -103,7 +103,7 @@ namespace GUIApp
                 }
             }
         }
-        //This method validates input data
+        //This method validates input sale
         private bool IsSaleLineValid()
         {
             if (ItemsListBox.SelectedIndex == -1)
@@ -159,7 +159,6 @@ namespace GUIApp
             EFTBtn.Enabled = false;
             AddToCartBtn.Enabled = false;
             RefundBtn.Enabled = false;
-            VoucherBtn.Enabled = false;
             ResetBtn.Enabled = false;
             CurrentInvoiceNumber = _salesProcessor.GetInvoiceNumber();
             InvoiceNumberLbl.Text = "INVOICE No : " + CurrentInvoiceNumber; ;
@@ -172,11 +171,16 @@ namespace GUIApp
             ItemsGridView.DataSource = null;
             
         }
-        //This method saves data into the DB when using cash
+        //This method saves sale into the DB when using cash
         private void CashBtn_Click(object sender, EventArgs e)
         {
-            
-            Sales data = new Sales
+            DateTime dateValue = new DateTime();
+            if (DeliveryCmb.Text == "CASH AND CARRY")
+            {
+                dateValue = DateTime.Now.Date;
+            }
+            else dateValue = DeliveryDateTimePicker.Value;
+            Sales sale = new Sales
             {
                 InvoiceNumber=CurrentInvoiceNumber,
                 Discount=1,
@@ -184,12 +188,19 @@ namespace GUIApp
                 Tax=1,
                 Total= Total,
                 PaymentMode="cash",
-                DeliveryMode="cash and carry",
+                //DeliveryMode="cash and carry",
                 SaleOrderDetails = itemsToSave
             };
             
+            Delivery delivery = new Delivery
+            {
+               
+                DeliveryDate = dateValue,
+                DeliveryType = DeliveryCmb.Text
+            };
+            
             ChangeLbl.Text = String.Format("{0:C2}", (decimal.Parse(PaidTxt.Text) - Total));
-            MessageBox.Show(_salesProcessor.SaveSaleOrder(data), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(_salesProcessor.SaveSaleOrder(sale,delivery), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ItemsGridView.DataSource = null;
             ResetAllControls();
         }
@@ -258,7 +269,6 @@ namespace GUIApp
                         EFTBtn.Enabled = true;
                         PaidTxt.Enabled = true;
                         RefundBtn.Enabled = true;
-                        VoucherBtn.Enabled = true;
                         ResetBtn.Enabled = true;
                     }
                     SubTotal = itemsToDisplay.Sum(x => x.LineTotal);
@@ -283,7 +293,7 @@ namespace GUIApp
 
             }
         }
-        //This method save data into the DB when using the credit card
+        //This method save sale into the DB when using the credit card
         private void EFTBtn_Click(object sender, EventArgs e)
         {
             
@@ -298,6 +308,18 @@ namespace GUIApp
         {
             
 
+        }
+
+        private void DeliveryCmb_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if(DeliveryCmb.Text == "CASH AND CARRY")
+            {
+                DeliveryDateTimePicker.Enabled = false;
+            }
+            else
+            {
+                DeliveryDateTimePicker.Enabled = true;
+            }
         }
 
         private void SaleFrm_Load(object sender, EventArgs e)

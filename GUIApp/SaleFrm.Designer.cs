@@ -64,12 +64,15 @@ namespace GUIApp
             this.AddToCartBtn = new System.Windows.Forms.Button();
             this.ItemsListBox = new System.Windows.Forms.ListBox();
             this.RefundBtn = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.VoucherBtn = new System.Windows.Forms.Button();
             this.ResetBtn = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.CashBtn = new System.Windows.Forms.Button();
             this.EFTBtn = new System.Windows.Forms.Button();
+            this.DeliveryDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.DeliveryCmb = new System.Windows.Forms.ComboBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -78,6 +81,7 @@ namespace GUIApp
             ((System.ComponentModel.ISupportInitialize)(this.ItemsGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -102,8 +106,8 @@ namespace GUIApp
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.ChangeLbl);
+            this.panel4.Controls.Add(this.label9);
             this.panel4.Controls.Add(this.label4);
-            this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.PaidTxt);
             this.panel4.Location = new System.Drawing.Point(810, 650);
             this.panel4.Name = "panel4";
@@ -138,13 +142,13 @@ namespace GUIApp
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Blue;
-            this.label3.Location = new System.Drawing.Point(14, 24);
+            this.label3.Location = new System.Drawing.Point(9, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 29);
+            this.label3.Size = new System.Drawing.Size(135, 18);
             this.label3.TabIndex = 35;
-            this.label3.Text = "PAID  ";
+            this.label3.Text = "DELIVERY DATE";
             // 
             // PaidTxt
             // 
@@ -500,39 +504,12 @@ namespace GUIApp
             this.RefundBtn.Enabled = false;
             this.RefundBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RefundBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RefundBtn.Location = new System.Drawing.Point(6, 122);
+            this.RefundBtn.Location = new System.Drawing.Point(6, 96);
             this.RefundBtn.Name = "RefundBtn";
-            this.RefundBtn.Size = new System.Drawing.Size(162, 85);
+            this.RefundBtn.Size = new System.Drawing.Size(162, 65);
             this.RefundBtn.TabIndex = 3;
             this.RefundBtn.Text = "REFUND";
             this.RefundBtn.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(174, 227);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(164, 85);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // VoucherBtn
-            // 
-            this.VoucherBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.VoucherBtn.BackColor = System.Drawing.Color.White;
-            this.VoucherBtn.Enabled = false;
-            this.VoucherBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.VoucherBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VoucherBtn.Location = new System.Drawing.Point(6, 227);
-            this.VoucherBtn.Name = "VoucherBtn";
-            this.VoucherBtn.Size = new System.Drawing.Size(162, 85);
-            this.VoucherBtn.TabIndex = 5;
-            this.VoucherBtn.Text = "VOUCHER";
-            this.VoucherBtn.UseVisualStyleBackColor = false;
             // 
             // ResetBtn
             // 
@@ -541,9 +518,9 @@ namespace GUIApp
             this.ResetBtn.Enabled = false;
             this.ResetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ResetBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ResetBtn.Location = new System.Drawing.Point(174, 122);
+            this.ResetBtn.Location = new System.Drawing.Point(174, 96);
             this.ResetBtn.Name = "ResetBtn";
-            this.ResetBtn.Size = new System.Drawing.Size(164, 85);
+            this.ResetBtn.Size = new System.Drawing.Size(164, 65);
             this.ResetBtn.TabIndex = 6;
             this.ResetBtn.Text = "RESET";
             this.ResetBtn.UseVisualStyleBackColor = false;
@@ -553,15 +530,14 @@ namespace GUIApp
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.BackColor = System.Drawing.Color.White;
+            this.groupBox3.Controls.Add(this.panel5);
             this.groupBox3.Controls.Add(this.CashBtn);
             this.groupBox3.Controls.Add(this.EFTBtn);
             this.groupBox3.Controls.Add(this.RefundBtn);
             this.groupBox3.Controls.Add(this.ResetBtn);
-            this.groupBox3.Controls.Add(this.VoucherBtn);
-            this.groupBox3.Controls.Add(this.button2);
             this.groupBox3.Location = new System.Drawing.Point(1156, 497);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(344, 326);
+            this.groupBox3.Size = new System.Drawing.Size(344, 323);
             this.groupBox3.TabIndex = 41;
             this.groupBox3.TabStop = false;
             // 
@@ -572,9 +548,9 @@ namespace GUIApp
             this.CashBtn.Enabled = false;
             this.CashBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CashBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CashBtn.Location = new System.Drawing.Point(6, 19);
+            this.CashBtn.Location = new System.Drawing.Point(6, 11);
             this.CashBtn.Name = "CashBtn";
-            this.CashBtn.Size = new System.Drawing.Size(162, 85);
+            this.CashBtn.Size = new System.Drawing.Size(162, 79);
             this.CashBtn.TabIndex = 7;
             this.CashBtn.Text = "CASH";
             this.CashBtn.UseVisualStyleBackColor = false;
@@ -587,13 +563,76 @@ namespace GUIApp
             this.EFTBtn.Enabled = false;
             this.EFTBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EFTBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EFTBtn.Location = new System.Drawing.Point(174, 19);
+            this.EFTBtn.Location = new System.Drawing.Point(174, 11);
             this.EFTBtn.Name = "EFTBtn";
-            this.EFTBtn.Size = new System.Drawing.Size(164, 85);
+            this.EFTBtn.Size = new System.Drawing.Size(164, 79);
             this.EFTBtn.TabIndex = 8;
             this.EFTBtn.Text = "EFT";
             this.EFTBtn.UseVisualStyleBackColor = false;
             this.EFTBtn.Click += new System.EventHandler(this.EFTBtn_Click);
+            // 
+            // DeliveryDateTimePicker
+            // 
+            this.DeliveryDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeliveryDateTimePicker.Location = new System.Drawing.Point(16, 42);
+            this.DeliveryDateTimePicker.Name = "DeliveryDateTimePicker";
+            this.DeliveryDateTimePicker.Size = new System.Drawing.Size(304, 24);
+            this.DeliveryDateTimePicker.TabIndex = 9;
+            // 
+            // DeliveryCmb
+            // 
+            this.DeliveryCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DeliveryCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeliveryCmb.FormattingEnabled = true;
+            this.DeliveryCmb.Items.AddRange(new object[] {
+            "COMPANY TRUCK",
+            "CASH AND CARRY"});
+            this.DeliveryCmb.Location = new System.Drawing.Point(16, 109);
+            this.DeliveryCmb.Name = "DeliveryCmb";
+            this.DeliveryCmb.Size = new System.Drawing.Size(304, 26);
+            this.DeliveryCmb.TabIndex = 49;
+            this.DeliveryCmb.DropDown += new System.EventHandler(this.UsersCmb_DropDown);
+            this.DeliveryCmb.DropDownClosed += new System.EventHandler(this.UsersCmb_DropDownClosed);
+            this.DeliveryCmb.SelectedValueChanged += new System.EventHandler(this.DeliveryCmb_SelectedValueChanged);
+            this.DeliveryCmb.TextChanged += new System.EventHandler(this.UsersCmb_TextChanged);
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.DeliveryCmb);
+            this.panel5.Controls.Add(this.DeliveryDateTimePicker);
+            this.panel5.Controls.Add(this.label3);
+            this.panel5.Controls.Add(this.label8);
+            this.panel5.Location = new System.Drawing.Point(8, 167);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(330, 151);
+            this.panel5.TabIndex = 42;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Blue;
+            this.label8.Location = new System.Drawing.Point(9, 73);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(134, 18);
+            this.label8.TabIndex = 35;
+            this.label8.Text = "DELIVERY TYPE";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label9.ForeColor = System.Drawing.Color.Blue;
+            this.label9.Location = new System.Drawing.Point(14, 20);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(71, 29);
+            this.label9.TabIndex = 35;
+            this.label9.Text = "PAID";
             // 
             // SaleFrm
             // 
@@ -620,6 +659,8 @@ namespace GUIApp
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -629,8 +670,6 @@ namespace GUIApp
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListBox ItemsListBox;
         private System.Windows.Forms.Button RefundBtn;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button VoucherBtn;
         private System.Windows.Forms.Button ResetBtn;
         private System.Windows.Forms.DataGridView ItemsGridView;
         private System.Windows.Forms.Label TotalOrdersLbl;
@@ -661,5 +700,10 @@ namespace GUIApp
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox PaidTxt;
         private System.Windows.Forms.Label ChangeLbl;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DateTimePicker DeliveryDateTimePicker;
+        private System.Windows.Forms.ComboBox DeliveryCmb;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label8;
     }
 }

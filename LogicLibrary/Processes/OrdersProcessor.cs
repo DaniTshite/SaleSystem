@@ -16,7 +16,7 @@ namespace LogicLibrary.Processes
     /// </summary>
     public class OrdersProcessor : IOrdersProcessor
     {
-        OrderLineProcessor _orderLineProcessor = new OrderLineProcessor();
+        readonly OrderLineProcessor _orderLineProcessor = new OrderLineProcessor();
         /// <summary>
         /// This method saves data into the DB
         /// </summary>

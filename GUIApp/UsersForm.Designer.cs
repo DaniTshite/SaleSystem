@@ -30,7 +30,11 @@ namespace GUIApp
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.UpdateUsersBtn = new System.Windows.Forms.Button();
+            this.UpdateUsersCmb = new System.Windows.Forms.ComboBox();
             this.IsActiveChkBtn = new System.Windows.Forms.CheckBox();
+            this.SaveUsersBtn = new System.Windows.Forms.Button();
             this.TypeUserCmb = new System.Windows.Forms.ComboBox();
             this.SelectPictureBtn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -43,18 +47,15 @@ namespace GUIApp
             this.LastNameTxt = new System.Windows.Forms.TextBox();
             this.NameTxt = new System.Windows.Forms.TextBox();
             this.UsersPictureBox = new System.Windows.Forms.PictureBox();
-            this.SaveUsersBtn = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.UpdateUsersBtn = new System.Windows.Forms.Button();
-            this.UpdateUsersCmb = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UsersPictureBox)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UsersPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.IsActiveChkBtn);
             this.groupBox1.Controls.Add(this.SaveUsersBtn);
@@ -76,6 +77,41 @@ namespace GUIApp
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.UpdateUsersBtn);
+            this.groupBox2.Controls.Add(this.UpdateUsersCmb);
+            this.groupBox2.Location = new System.Drawing.Point(344, 424);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(420, 130);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Upddate";
+            // 
+            // UpdateUsersBtn
+            // 
+            this.UpdateUsersBtn.BackColor = System.Drawing.Color.Navy;
+            this.UpdateUsersBtn.FlatAppearance.BorderSize = 0;
+            this.UpdateUsersBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateUsersBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.UpdateUsersBtn.Location = new System.Drawing.Point(21, 84);
+            this.UpdateUsersBtn.Name = "UpdateUsersBtn";
+            this.UpdateUsersBtn.Size = new System.Drawing.Size(381, 30);
+            this.UpdateUsersBtn.TabIndex = 3;
+            this.UpdateUsersBtn.Text = "UPDATE";
+            this.UpdateUsersBtn.UseVisualStyleBackColor = false;
+            this.UpdateUsersBtn.Click += new System.EventHandler(this.UpdateUsersBtn_Click);
+            // 
+            // UpdateUsersCmb
+            // 
+            this.UpdateUsersCmb.FormattingEnabled = true;
+            this.UpdateUsersCmb.Location = new System.Drawing.Point(21, 38);
+            this.UpdateUsersCmb.Name = "UpdateUsersCmb";
+            this.UpdateUsersCmb.Size = new System.Drawing.Size(381, 24);
+            this.UpdateUsersCmb.TabIndex = 0;
+            this.UpdateUsersCmb.SelectedValueChanged += new System.EventHandler(this.UpdateUsersCmb_SelectedValueChanged);
+            // 
             // IsActiveChkBtn
             // 
             this.IsActiveChkBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -86,6 +122,20 @@ namespace GUIApp
             this.IsActiveChkBtn.TabIndex = 13;
             this.IsActiveChkBtn.Text = "ACTIVE";
             this.IsActiveChkBtn.UseVisualStyleBackColor = true;
+            // 
+            // SaveUsersBtn
+            // 
+            this.SaveUsersBtn.BackColor = System.Drawing.Color.Navy;
+            this.SaveUsersBtn.FlatAppearance.BorderSize = 0;
+            this.SaveUsersBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveUsersBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SaveUsersBtn.Location = new System.Drawing.Point(22, 508);
+            this.SaveUsersBtn.Name = "SaveUsersBtn";
+            this.SaveUsersBtn.Size = new System.Drawing.Size(209, 46);
+            this.SaveUsersBtn.TabIndex = 1;
+            this.SaveUsersBtn.Text = "SAVE";
+            this.SaveUsersBtn.UseVisualStyleBackColor = false;
+            this.SaveUsersBtn.Click += new System.EventHandler(this.SaveUsersBtn_Click);
             // 
             // TypeUserCmb
             // 
@@ -211,59 +261,11 @@ namespace GUIApp
             this.UsersPictureBox.TabIndex = 0;
             this.UsersPictureBox.TabStop = false;
             // 
-            // SaveUsersBtn
-            // 
-            this.SaveUsersBtn.BackColor = System.Drawing.Color.Navy;
-            this.SaveUsersBtn.FlatAppearance.BorderSize = 0;
-            this.SaveUsersBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveUsersBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.SaveUsersBtn.Location = new System.Drawing.Point(22, 508);
-            this.SaveUsersBtn.Name = "SaveUsersBtn";
-            this.SaveUsersBtn.Size = new System.Drawing.Size(209, 46);
-            this.SaveUsersBtn.TabIndex = 1;
-            this.SaveUsersBtn.Text = "SAVE";
-            this.SaveUsersBtn.UseVisualStyleBackColor = false;
-            this.SaveUsersBtn.Click += new System.EventHandler(this.SaveUsersBtn_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.UpdateUsersBtn);
-            this.groupBox2.Controls.Add(this.UpdateUsersCmb);
-            this.groupBox2.Location = new System.Drawing.Point(344, 424);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(420, 130);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Upddate";
-            // 
-            // UpdateUsersBtn
-            // 
-            this.UpdateUsersBtn.BackColor = System.Drawing.Color.Navy;
-            this.UpdateUsersBtn.FlatAppearance.BorderSize = 0;
-            this.UpdateUsersBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateUsersBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.UpdateUsersBtn.Location = new System.Drawing.Point(21, 84);
-            this.UpdateUsersBtn.Name = "UpdateUsersBtn";
-            this.UpdateUsersBtn.Size = new System.Drawing.Size(381, 30);
-            this.UpdateUsersBtn.TabIndex = 3;
-            this.UpdateUsersBtn.Text = "UPDATE";
-            this.UpdateUsersBtn.UseVisualStyleBackColor = false;
-            this.UpdateUsersBtn.Click += new System.EventHandler(this.UpdateUsersBtn_Click);
-            // 
-            // UpdateUsersCmb
-            // 
-            this.UpdateUsersCmb.FormattingEnabled = true;
-            this.UpdateUsersCmb.Location = new System.Drawing.Point(21, 38);
-            this.UpdateUsersCmb.Name = "UpdateUsersCmb";
-            this.UpdateUsersCmb.Size = new System.Drawing.Size(381, 24);
-            this.UpdateUsersCmb.TabIndex = 0;
-            this.UpdateUsersCmb.SelectedValueChanged += new System.EventHandler(this.UpdateUsersCmb_SelectedValueChanged);
-            // 
             // UsersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1512, 773);
             this.Controls.Add(this.groupBox1);
             this.MinimumSize = new System.Drawing.Size(818, 545);
@@ -273,8 +275,8 @@ namespace GUIApp
             this.Load += new System.EventHandler(this.UsersForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UsersPictureBox)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.UsersPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }

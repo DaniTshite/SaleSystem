@@ -17,8 +17,8 @@ namespace GUIApp
 {
     public partial class OrderFrm : Form
     {
-        IOrderLineProcessor _orderLineProcessor = new OrderLineProcessor();
-        IOrdersProcessor _ordersProcessor = new OrdersProcessor();
+        readonly IOrderLineProcessor _orderLineProcessor = new OrderLineProcessor();
+        readonly IOrdersProcessor _ordersProcessor = new OrdersProcessor();
         ItemProcessor _itemProcessor;
         SupplierProcessor _supplierProcessor;
         //Lists used for 2 comboboxes and OrderLineCart 

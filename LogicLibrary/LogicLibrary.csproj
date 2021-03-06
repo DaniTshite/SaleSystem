@@ -48,8 +48,10 @@
     <Compile Include="HelperProcesses\HelperProcessor.cs" />
     <Compile Include="Processes\CategoryProcessor.cs" />
     <Compile Include="Processes\CustomerAccountProcessor.cs" />
+    <Compile Include="Processes\DeliveryProcessor.cs" />
     <Compile Include="Processes\ICategoryProcessor.cs" />
     <Compile Include="Processes\ICustomerAccountProcessor.cs" />
+    <Compile Include="Processes\IDeliveryProcessor.cs" />
     <Compile Include="Processes\IItemProcessor.cs" />
     <Compile Include="Processes\IOrderLineProcessor.cs" />
     <Compile Include="Processes\IOrdersProcessor.cs" />

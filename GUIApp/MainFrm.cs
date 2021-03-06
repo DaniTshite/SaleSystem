@@ -15,7 +15,7 @@ namespace GUIApp
     {
         private Form activeForm;
         private Button currentButton;
-        private Random random;
+        private readonly Random random;
         private int tempIndex;
         public MainFrm()
         {

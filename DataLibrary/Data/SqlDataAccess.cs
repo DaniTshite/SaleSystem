@@ -13,12 +13,12 @@ namespace DataLibrary.Data
 {
     public class SqlDataAccess
     {
-        public static List<Item> loadedItems { set; get; } = null;
-        public static List<Supplier> loadedSuppliers { set; get; } = null;
-        public static List<Category> loadedCategories { set; get; } = null;
-        public static List<Users> loadedUsers { set; get; } = null;
-        public static List<Quotations> loadedQuotations { set; get; } = null;
-        public static List<CustomerAccount> loadedCustomerAccounts { set; get; } = null;
+        //public static List<Item> loadedItems { set; get; } = null;
+        //public static List<Supplier> loadedSuppliers { set; get; } = null;
+        //public static List<Category> loadedCategories { set; get; } = null;
+        //public static List<Users> loadedUsers { set; get; } = null;
+        //public static List<Quotations> loadedQuotations { set; get; } = null;
+        //public static List<CustomerAccount> loadedCustomerAccounts { set; get; } = null;
         public static string GetConnectionString(string name = "AspDb")
         {
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;

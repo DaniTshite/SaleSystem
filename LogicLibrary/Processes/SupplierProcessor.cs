@@ -17,7 +17,7 @@ namespace LogicLibrary.Processes
     /// </summary>
     public class SupplierProcessor : ISupplierProcessor
     {
-        static ISupplier _supplier;
+        ISupplier _supplier;
         /// <summary>
         /// This method saves a supplier object into the DB
         /// </summary>

@@ -5,7 +5,7 @@ namespace DataLibrary.Models
 {
     public interface ISales
     {
-        string DeliveryMode { get; set; }
+        //Delivery DeliveryMode { get; set; }
         int Discount { get; set; }
         int InvoiceNumber { get; set; }
         string PaymentMode { get; set; }

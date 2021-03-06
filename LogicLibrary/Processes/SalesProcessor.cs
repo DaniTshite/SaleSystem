@@ -16,7 +16,8 @@ namespace LogicLibrary.Processes
     /// </summary>
     public class SalesProcessor : ISalesProcessor
     {
-        ISaleLineProcessor _saleLineProcessor = new SaleLineProcessor();
+        readonly IDeliveryProcessor _deliveryProcessor = new DeliveryProcessor();
+        readonly ISaleLineProcessor _saleLineProcessor = new SaleLineProcessor();
         private readonly Random _random = new Random();
         private bool _doesInvoiceNumberExist = false;
         /// <summary>
@@ -54,27 +55,29 @@ namespace LogicLibrary.Processes
         /// </summary>
         /// <param name="model"></param>
         /// <returns>It returns a message showing if the operation failed or succeeded</returns>
-        public string SaveSaleOrder(Sales model)
+        public string SaveSaleOrder(ISales sale,IDelivery delivery)
         {
             using (IDbConnection cn = new SqlConnection(SqlDataAccess.GetConnectionString()))
             {
                 try
                 {
                     var data = new DynamicParameters();
-                    data.Add("@InvoiceNumber", model.InvoiceNumber);
-                    data.Add("@Discount", model.Discount);
-                    data.Add("@SubTotal", model.SubTotal);
-                    data.Add("@Tax", model.Tax);
-                    data.Add("@Total", model.Total);
-                    data.Add("@PaymentMode", model.PaymentMode);
-                    data.Add("@DeliveryMode", model.DeliveryMode);
+                    data.Add("@InvoiceNumber", sale.InvoiceNumber);
+                    data.Add("@Discount", sale.Discount);
+                    data.Add("@SubTotal", sale.SubTotal);
+                    data.Add("@Tax", sale.Tax);
+                    data.Add("@Total", sale.Total);
+                    data.Add("@PaymentMode", sale.PaymentMode);
+                    data.Add("@DeliveryMode", 1);
                     data.Add("@AccountId", 1);
                     data.Add("@QuotationId", 1);
                     data.Add("@UserId", 1);
                     data.Add("@SaleId", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
                     cn.Execute("spSales_insert", data, commandType: CommandType.StoredProcedure);
-                    model.SaleId = data.Get<int>("@SaleId");
-                    _saleLineProcessor.SaveSaleLine(model);
+                    sale.SaleId = data.Get<int>("@SaleId");
+                    delivery.SaleId = sale.SaleId;
+                    _saleLineProcessor.SaveSaleLine(sale);
+                    _deliveryProcessor.SaveDelivery(delivery);
                     return "1 Record has been added Successfully ";
                 }
                 catch (Exception)
