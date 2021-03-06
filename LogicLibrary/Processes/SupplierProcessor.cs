@@ -13,16 +13,16 @@ using System.Threading.Tasks;
 namespace LogicLibrary.Processes
 {
     /// <summary>
-    /// This class contains operations related to suppliers
+    /// This class contains processes relating to suppliers
     /// </summary>
-    public class SupplierProcessor
+    public class SupplierProcessor : ISupplierProcessor
     {
         static ISupplier _supplier;
         /// <summary>
-        /// This method save a supplier object into the DB
+        /// This method saves a supplier object into the DB
         /// </summary>
         /// <param name="supplier">It takes in an ISupplier object as parameter</param>
-        public static void SaveSupplier(ISupplier supplier)
+        public void SaveSupplier(ISupplier supplier)
         {
             try
             {
@@ -35,13 +35,13 @@ namespace LogicLibrary.Processes
 
                 throw;
             }
-            
+
         }
         /// <summary>
         /// This method gets all suppliers from the DB
         /// </summary>
         /// <returns>It returns a list of supplier objects</returns>
-        public static List<Supplier> LoadData()
+        public List<Supplier> GetSuppliers()
         {
             try
             {
@@ -53,14 +53,14 @@ namespace LogicLibrary.Processes
 
                 throw;
             }
-            
+
         }
         /// <summary>
-        /// This method delete a supplier in the DB
+        /// This method deletes a supplier in the DB
         /// </summary>
         /// <param name="supplierid">It takes in an integer representing the supplierId as parameter</param>
-        /// <returns>It returns a message showing whether the operation failed or succeeded</returns>
-        public static string DeleteSupplier(int supplierid)
+        /// <returns>It returns a message showing whether the operation fails or succeeds</returns>
+        public string DeleteSupplier(int supplierid)
         {
             try
             {
@@ -77,6 +77,6 @@ namespace LogicLibrary.Processes
                 return " Something went wrong !";
             }
         }
-        
+
     }
 }

@@ -17,8 +17,10 @@ namespace GUIApp
 {
     public partial class ItemFrm : Form
     {
-        List<Category> Categories = new List<Category>();
-        List<Item> Items = new List<Item>();
+        CategoryProcessor _categoryProcessor;
+        ItemProcessor _itemProcessor;
+        List<Category> categories;
+        List<Item> items;
         public ItemFrm()
         {
             InitializeComponent();
@@ -27,16 +29,19 @@ namespace GUIApp
 
         private void Initialize()
         {
-            Categories = null;
-            Items = null;
-            SqlDataAccess.LoadLists();
-            Items = SqlDataAccess.loadedItems;
-            Categories = SqlDataAccess.loadedCategories;
-            UpdateItemCmb.DataSource = Items;
+            _categoryProcessor = new CategoryProcessor();
+            _itemProcessor = new ItemProcessor();
+            categories = new List<Category>();
+            items = new List<Item>();
+            categories = null;
+            items = null;
+            items = _itemProcessor.GetItems();
+            categories = _categoryProcessor.GetCategories();
+            UpdateItemCmb.DataSource = items;
             UpdateItemCmb.DisplayMember = "Descript";
             UpdateItemCmb.ValueMember = "ItemId";
-            ListCategoryCmb.DataSource = Categories;
-            ItemsGridView.DataSource = Items;
+            ListCategoryCmb.DataSource = categories;
+            ItemsGridView.DataSource = items;
             ItemsGridView.Columns[2].Visible = false;
             ItemsGridView.Columns[5].Visible = false;
             ItemsGridView.Columns[6].Visible = false;
@@ -71,7 +76,7 @@ namespace GUIApp
                     ReOrderlevel = int.Parse(ReorderLevelTxt.Text)
                 };
 
-                ItemProcessor.SaveItem(data);
+                _itemProcessor.SaveItem(data);
                 MessageBox.Show(" 1 Record Has been added successfully! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 StockCodeTxt.Clear();
                 StockCodeTxt.Focus();
@@ -79,7 +84,6 @@ namespace GUIApp
                 ListCategoryCmb.SelectedIndex = -1;
                 IsActiveChkBtn.Checked = false;
                 Initialize();
-                //HightlightInactiveItems();
             }
 
         }
@@ -172,7 +176,7 @@ namespace GUIApp
                 {
                     CategoryName = CategoryNameTxt.Text
                 };
-                CategoryProcessor.SaveCategory(data);
+                _categoryProcessor.SaveCategory(data);
                 MessageBox.Show(" 1 Record Has been added successfully! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CategoryNameTxt.Clear();
                 CategoryNameTxt.Focus();
@@ -189,7 +193,7 @@ namespace GUIApp
             {
                 if (ItemsGridView.Rows.Count > 0)
                 {
-                    //int IsActiveColumnIndex = ItemsGridView.Columns["IsActive"].Index;
+                    
                     foreach (DataGridViewRow row in ItemsGridView.Rows)
                     {
                         if (int.Parse(row.Cells["IsActive"].Value.ToString()) == 0)
@@ -215,16 +219,17 @@ namespace GUIApp
             {
                 if (UpdateItemStatusChk.Checked == true)
                 {
-                    ItemProcessor.UpdateItemStatus(int.Parse(UpdateItemCmb.SelectedValue.ToString()), 1);
+                    _itemProcessor.UpdateItemStatus(int.Parse(UpdateItemCmb.SelectedValue.ToString()), 1);
                     MessageBox.Show(" The Item has been activated successfully ! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateItemStatusChk.Checked = false;
                 }
                 else
                 {
-                    ItemProcessor.UpdateItemStatus(int.Parse(UpdateItemCmb.SelectedValue.ToString()), 0);
+                    _itemProcessor.UpdateItemStatus(int.Parse(UpdateItemCmb.SelectedValue.ToString()), 0);
                     MessageBox.Show(" The Item has been Deactivated successfully ! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     UpdateItemStatusChk.Checked = false;
                 }
+                
                 Initialize();
                 HightlightInactiveItems();
             }
@@ -232,7 +237,7 @@ namespace GUIApp
 
         private void FilterByStockCodeTxt_TextChanged(object sender, EventArgs e)
         {
-            ItemsGridView.DataSource = Items.Where(x => x.StockCode.Contains ((FilterByStockCodeTxt.Text).ToUpper())).ToList();
+            ItemsGridView.DataSource = items.Where(x => x.StockCode.Contains ((FilterByStockCodeTxt.Text).ToUpper())).ToList();
             HightlightInactiveItems();
         }
 

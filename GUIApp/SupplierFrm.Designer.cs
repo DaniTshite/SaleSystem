@@ -29,11 +29,11 @@ namespace GUIApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.SupplierTelephoneTxt = new System.Windows.Forms.TextBox();
             this.TelephoneLbl = new System.Windows.Forms.Label();
@@ -58,7 +58,7 @@ namespace GUIApp
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.groupBox1.Controls.Add(this.SupplierTelephoneTxt);
             this.groupBox1.Controls.Add(this.TelephoneLbl);
             this.groupBox1.Controls.Add(this.SupplierEmailAddressTxt);
@@ -91,9 +91,9 @@ namespace GUIApp
             this.TelephoneLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TelephoneLbl.Location = new System.Drawing.Point(24, 90);
             this.TelephoneLbl.Name = "TelephoneLbl";
-            this.TelephoneLbl.Size = new System.Drawing.Size(86, 20);
+            this.TelephoneLbl.Size = new System.Drawing.Size(111, 20);
             this.TelephoneLbl.TabIndex = 6;
-            this.TelephoneLbl.Text = "Telephone";
+            this.TelephoneLbl.Text = "TELEPHONE";
             // 
             // SupplierEmailAddressTxt
             // 
@@ -113,9 +113,9 @@ namespace GUIApp
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(24, 145);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 20);
+            this.label3.Size = new System.Drawing.Size(59, 20);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Email";
+            this.label3.Text = "EMAIL";
             // 
             // SupplierPhysicalAddressTxt
             // 
@@ -135,9 +135,9 @@ namespace GUIApp
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(23, 188);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(139, 20);
+            this.label2.Size = new System.Drawing.Size(178, 20);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Physical Address";
+            this.label2.Text = "PHYSICAL ADDRESS";
             // 
             // SupplierNameTxt
             // 
@@ -157,21 +157,24 @@ namespace GUIApp
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(22, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 20);
+            this.label1.Size = new System.Drawing.Size(57, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
+            this.label1.Text = "NAME";
             // 
             // SaveSupplierBtn
             // 
-            this.SaveSupplierBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveSupplierBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.SaveSupplierBtn.BackColor = System.Drawing.Color.Navy;
+            this.SaveSupplierBtn.FlatAppearance.BorderSize = 0;
             this.SaveSupplierBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveSupplierBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveSupplierBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.SaveSupplierBtn.Location = new System.Drawing.Point(819, 669);
             this.SaveSupplierBtn.Name = "SaveSupplierBtn";
             this.SaveSupplierBtn.Size = new System.Drawing.Size(320, 49);
             this.SaveSupplierBtn.TabIndex = 5;
-            this.SaveSupplierBtn.Text = "Save";
-            this.SaveSupplierBtn.UseVisualStyleBackColor = true;
+            this.SaveSupplierBtn.Text = "SAVE";
+            this.SaveSupplierBtn.UseVisualStyleBackColor = false;
             this.SaveSupplierBtn.Click += new System.EventHandler(this.SaveSupplierBtn_Click);
             // 
             // GridGroupBox
@@ -192,10 +195,10 @@ namespace GUIApp
             this.SuppliersGridView.AllowUserToDeleteRows = false;
             this.SuppliersGridView.AllowUserToResizeColumns = false;
             this.SuppliersGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.SuppliersGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.SuppliersGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.SuppliersGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -203,49 +206,49 @@ namespace GUIApp
             this.SuppliersGridView.BackgroundColor = System.Drawing.Color.White;
             this.SuppliersGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.SuppliersGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.SuppliersGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.SuppliersGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.SuppliersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SuppliersGridView.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SuppliersGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SuppliersGridView.DefaultCellStyle = dataGridViewCellStyle8;
             this.SuppliersGridView.GridColor = System.Drawing.Color.White;
             this.SuppliersGridView.Location = new System.Drawing.Point(17, 21);
             this.SuppliersGridView.MultiSelect = false;
             this.SuppliersGridView.Name = "SuppliersGridView";
             this.SuppliersGridView.ReadOnly = true;
             this.SuppliersGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SuppliersGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SuppliersGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.SuppliersGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.SuppliersGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.SuppliersGridView.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.SuppliersGridView.RowTemplate.Height = 24;
             this.SuppliersGridView.Size = new System.Drawing.Size(1091, 422);
             this.SuppliersGridView.TabIndex = 22;
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.groupBox2.Controls.Add(this.DeleteSupplierBtn);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.DeleteSupplierCmb);
@@ -258,15 +261,17 @@ namespace GUIApp
             // 
             // DeleteSupplierBtn
             // 
-            this.DeleteSupplierBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteSupplierBtn.BackColor = System.Drawing.Color.Navy;
+            this.DeleteSupplierBtn.FlatAppearance.BorderSize = 0;
             this.DeleteSupplierBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteSupplierBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteSupplierBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.DeleteSupplierBtn.Location = new System.Drawing.Point(25, 118);
             this.DeleteSupplierBtn.Name = "DeleteSupplierBtn";
             this.DeleteSupplierBtn.Size = new System.Drawing.Size(263, 37);
             this.DeleteSupplierBtn.TabIndex = 8;
-            this.DeleteSupplierBtn.Text = "Delete";
-            this.DeleteSupplierBtn.UseVisualStyleBackColor = true;
+            this.DeleteSupplierBtn.Text = "DELETE";
+            this.DeleteSupplierBtn.UseVisualStyleBackColor = false;
             this.DeleteSupplierBtn.Click += new System.EventHandler(this.DeleteSupplierBtn_Click);
             // 
             // label4
@@ -277,9 +282,9 @@ namespace GUIApp
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(21, 23);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 20);
+            this.label4.Size = new System.Drawing.Size(91, 20);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Supplier";
+            this.label4.Text = "SUPPLIER";
             // 
             // DeleteSupplierCmb
             // 
@@ -301,7 +306,7 @@ namespace GUIApp
             this.MinimumSize = new System.Drawing.Size(1169, 779);
             this.Name = "SupplierFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Suppliers";
+            this.Text = "SUPPLIERS";
             this.Load += new System.EventHandler(this.SupplierFrm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

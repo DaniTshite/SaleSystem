@@ -14,15 +14,16 @@ namespace LogicLibrary.Processes
     /// <summary>
     /// This class contains processes related to sale orders
     /// </summary>
-    public class SalesProcessor
+    public class SalesProcessor : ISalesProcessor
     {
-        private static readonly Random _random = new Random();
-        private static bool _doesInvoiceNumberExist = false;
+        ISaleLineProcessor _saleLineProcessor = new SaleLineProcessor();
+        private readonly Random _random = new Random();
+        private bool _doesInvoiceNumberExist = false;
         /// <summary>
         /// This method generate a random number for the invoice
         /// </summary>
         /// <returns>It returns an integer</returns>
-        private static int  GenerateNumber()
+        private int GenerateNumber()
         {
             return _random.Next(10000, 9999999);
         }
@@ -30,7 +31,7 @@ namespace LogicLibrary.Processes
         /// This method validate the invoice number
         /// </summary>
         /// <returns>it returns an integer</returns>
-        public static int GetInvoiceNumber()
+        public int GetInvoiceNumber()
         {
             int number = GenerateNumber();
             List<SaleLine> listSales = GetSaleDetails(number.ToString());
@@ -47,13 +48,13 @@ namespace LogicLibrary.Processes
             }
             return number;
         }
-        
+
         /// <summary>
         /// This method save a sale order object into the DB 
         /// </summary>
         /// <param name="model"></param>
         /// <returns>It returns a message showing if the operation failed or succeeded</returns>
-        public static string SaveSaleOrder(Sales model)
+        public string SaveSaleOrder(Sales model)
         {
             using (IDbConnection cn = new SqlConnection(SqlDataAccess.GetConnectionString()))
             {
@@ -73,7 +74,7 @@ namespace LogicLibrary.Processes
                     data.Add("@SaleId", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
                     cn.Execute("spSales_insert", data, commandType: CommandType.StoredProcedure);
                     model.SaleId = data.Get<int>("@SaleId");
-                    SaleLineProcessor.SaveSaleLine(model);
+                    _saleLineProcessor.SaveSaleLine(model);
                     return "1 Record has been added Successfully ";
                 }
                 catch (Exception)
@@ -87,7 +88,7 @@ namespace LogicLibrary.Processes
         /// </summary>
         /// <param name="invoiceNumber">This is a string representing the invoice number </param>
         /// <returns>It returns a list of saleline objects </returns>
-        public static List<SaleLine> GetSaleDetails(string invoiceNumber)
+        public List<SaleLine> GetSaleDetails(string invoiceNumber)
         {
             var output = SqlDataAccess.LoadSaleData(invoiceNumber);
             return output;

@@ -64,5 +64,15 @@ namespace LogicLibrary.HelperProcesses
                 return false;
             }
         }
+        /// <summary>
+        /// This method compares two integers
+        /// </summary>
+        /// <param name="firstNumber">This is the first integer</param>
+        /// <param name="secondNumber">This is the second integer</param>
+        /// <returns>It returns a boolean value</returns>
+        public static bool IsStockQuantityEnough(int firstNumber, int secondNumber)
+        {
+            return (firstNumber > secondNumber) ? false : true;
+        }
     }
 }

@@ -17,9 +17,12 @@ namespace GUIApp
 {
     public partial class SaleFrm : Form
     {
-        //list of active items
+        ISalesProcessor _salesProcessor;
+        OrderLineProcessor _orderLineProcessor ;
+        CustomerAccountProcessor _customerAccountsProcessor;
+        UsersProcessor _usersProcessor;
+        ItemProcessor _itemProcessor;
         List<Item> activeItems ;
-        //other lists
         List<Quotations> quotations;
         List<Users> users;
         List<CustomerAccount> customerAccounts;
@@ -39,18 +42,22 @@ namespace GUIApp
             InitializeComponent();
             Initialize();
         }
-
+        //This method initialises comboboxes ,instantiates objects,resets controls ,etc 
         private void Initialize()
         {
             ItemsListBox.SelectedValueChanged -=ItemsListBox_SelectedValueChanged;
-            //lists instanciation
-            
-            SqlDataAccess.LoadLists();
-            users = SqlDataAccess.loadedUsers;
-            quotations = SqlDataAccess.loadedQuotations;
-            customerAccounts = SqlDataAccess.loadedCustomerAccounts;
+            _customerAccountsProcessor = new CustomerAccountProcessor();
+            _salesProcessor = new SalesProcessor();
+            _orderLineProcessor = new OrderLineProcessor();
+            _itemProcessor = new ItemProcessor();
+            _usersProcessor = new UsersProcessor();
+            quotations = new List<Quotations>();
+            users = new List<Users>();
+            users = _usersProcessor.GetUsers();
+            customerAccounts = new List<CustomerAccount>();
+            customerAccounts = _customerAccountsProcessor.GetCustomerAccounts();
             activeItems = new List<Item>();
-            activeItems = ItemProcessor.LoadData();
+            activeItems = _itemProcessor.GetActiveItems();
             ItemsListBox.DataSource = activeItems;
             ItemsListBox.DisplayMember = "Descript";
             ItemsListBox.ValueMember = "ItemId";
@@ -68,11 +75,11 @@ namespace GUIApp
             ResetAllControls();
             ItemsListBox.SelectedValueChanged += ItemsListBox_SelectedValueChanged;
         }
-
+        //This displays the retail price when a value is selected in the combobox
         private void ItemsListBox_SelectedValueChanged(object sender, EventArgs e)
         {
             
-            var listItemQuantities = OrderLineProcessor.GetEntryQuantityByItem();
+            var listItemQuantities = _orderLineProcessor.GetEntryQuantityByItem();
             bool IsItemFound = false;
             if (ItemsListBox.SelectedValue != null)
             {
@@ -84,7 +91,7 @@ namespace GUIApp
                     if (int.Parse(ItemsListBox.SelectedValue.ToString()) == itemQuantity.SelectedItem.Itemid)
                     {
                         StockQuantityLbl.Text = HelperProcessor.GetStockQuantity(itemQuantity.SelectedItem.Itemid).ToString();
-                        RetailPrice = ItemProcessor.CalculateSalePrice(itemQuantity.SelectedItem.Itemid);
+                        RetailPrice = _itemProcessor.CalculateSalePrice(itemQuantity.SelectedItem.Itemid);
                         RetailPriceLbl.Text = String.Format("{0:C2}", RetailPrice); ;
                         IsItemFound = true;
                     }
@@ -95,9 +102,8 @@ namespace GUIApp
                     RetailPriceLbl.Text = "0.00";
                 }
             }
-           
         }
-
+        //This method validates input data
         private bool IsSaleLineValid()
         {
             if (ItemsListBox.SelectedIndex == -1)
@@ -134,7 +140,7 @@ namespace GUIApp
             }
             return true;
         }
-
+        //This method resets all controls
         private void ResetAllControls()
         {
             StockQuantityLbl.Text = "0.00";
@@ -155,10 +161,10 @@ namespace GUIApp
             RefundBtn.Enabled = false;
             VoucherBtn.Enabled = false;
             ResetBtn.Enabled = false;
-            CurrentInvoiceNumber = SalesProcessor.GetInvoiceNumber();
+            CurrentInvoiceNumber = _salesProcessor.GetInvoiceNumber();
             InvoiceNumberLbl.Text = "INVOICE No : " + CurrentInvoiceNumber; ;
         }
-
+        //This method resets all controls including the gridview
         private void ResetBtn_Click(object sender, EventArgs e)
         {
             ResetAllControls();
@@ -166,7 +172,7 @@ namespace GUIApp
             ItemsGridView.DataSource = null;
             
         }
-
+        //This method saves data into the DB when using cash
         private void CashBtn_Click(object sender, EventArgs e)
         {
             
@@ -183,7 +189,7 @@ namespace GUIApp
             };
             
             ChangeLbl.Text = String.Format("{0:C2}", (decimal.Parse(PaidTxt.Text) - Total));
-            MessageBox.Show(SalesProcessor.SaveSaleOrder(data), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(_salesProcessor.SaveSaleOrder(data), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ItemsGridView.DataSource = null;
             ResetAllControls();
         }
@@ -192,7 +198,7 @@ namespace GUIApp
         {
             
         }
-
+        //Yhis method add an item into the cart 
         private void AddToCartBtn_Click(object sender, EventArgs e)
         {
             if (IsSaleLineValid())
@@ -211,7 +217,7 @@ namespace GUIApp
                 };
 
                 //checks if quantity to be sold is less than the stock
-                if (OrdersProcessor.IsStockQuantityEnough(int.Parse(SaleQuantityTxt.Text), int.Parse(StockQuantityLbl.Text)) == true)
+                if (HelperProcessor.IsStockQuantityEnough(int.Parse(SaleQuantityTxt.Text), int.Parse(StockQuantityLbl.Text)) == true)
                 {
                     //checks if the selected item is already in the cart 
                     foreach (DataGridViewRow row in ItemsGridView.Rows)
@@ -277,30 +283,26 @@ namespace GUIApp
 
             }
         }
-
+        //This method save data into the DB when using the credit card
         private void EFTBtn_Click(object sender, EventArgs e)
         {
-            int count = 0;
-            List<SaleLine> listSales = SalesProcessor.GetSaleDetails("9510780");
-            if(listSales != null)
-            {
-                if(listSales.Count > 0)
-                {
-                    foreach (var item in listSales)
-                    {
-                        if (item.Sale.InvoiceNumber.ToString() == InvoiceNumberLbl.Text)
-                        {
+            
+        }
 
-                        }
-                        count += 1;
-                    }
-                }
-            }
+        private void UsersCmb_DropDown(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void UsersCmb_DropDownClosed(object sender, EventArgs e)
+        {
+            
+
         }
 
         private void SaleFrm_Load(object sender, EventArgs e)
         {
-            //UsersCmb.Text = "Please select a user";
+            
         }
     }
 }

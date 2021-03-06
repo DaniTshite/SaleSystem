@@ -11,7 +11,7 @@ namespace LogicLibrary.Processes
     /// <summary>
     /// This class represents operations related to users
     /// </summary>
-    public class UsersProcessor
+    public class UsersProcessor : IUsersProcessor
     {
         static IUsers _user;
         /// <summary>
@@ -19,7 +19,7 @@ namespace LogicLibrary.Processes
         /// </summary>
         /// <param name="user">It takes in an IUsers object as parameter</param>
         /// <returns>It returns a message showing the state of the operation</returns>
-        public static string SaveUser(IUsers user)
+        public string SaveUser(IUsers user)
         {
             try
             {
@@ -32,14 +32,32 @@ namespace LogicLibrary.Processes
             {
                 return " Something went wrong !";
             }
-            
+
+        }
+        /// <summary>
+        /// This method gets all users from the DB
+        /// </summary>
+        /// <returns>It returns a list of users objects</returns>
+        public List<Users> GetUsers()
+        {
+            try
+            {
+                string sql = @"spUsers_GetAll";
+                return SqlDataAccess.LoadData<Users>(sql);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
         /// <summary>
         /// This method updates a user
         /// </summary>
         /// <param name="user">It takes in an IUsers object as parameter</param>
         /// <returns>It returns a message showing the state of the operation</returns>
-        public static string UpdateUser(IUsers user)
+        public string UpdateUser(IUsers user)
         {
             try
             {
@@ -52,13 +70,13 @@ namespace LogicLibrary.Processes
             {
                 return " Something went wrong !";
             }
-            
+
         }
         /// <summary>
         /// This method generate a random access code
         /// </summary>
         /// <returns>It returns a string representing the access code</returns>
-        public static string GenerateAccessCode()
+        public string GenerateAccessCode()
         {
             Random random = new Random();
             int orderNumber = random.Next(10000000);

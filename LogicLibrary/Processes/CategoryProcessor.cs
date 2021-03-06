@@ -8,18 +8,27 @@ using System.Threading.Tasks;
 
 namespace LogicLibrary.Processes
 {
-    public class CategoryProcessor
+    /// <summary>
+    /// This class contains processes relating to categories of an item
+    /// </summary>
+    public class CategoryProcessor : ICategoryProcessor
     {
         static ICategory _category;
-        public static void SaveCategory(ICategory category)
+        /// <summary>
+        /// This method saves a category object into a DB
+        /// </summary>
+        /// <param name="category">this is an ICategory object</param>
+        public void SaveCategory(ICategory category)
         {
-            
             _category = category;
             string sql = @"spCategory_insert @CategoryName";
             SqlDataAccess.RegisterData(sql, _category);
         }
-        
-        public static List<Category> LoadData()
+        /// <summary>
+        /// this method gets all categories from a DB
+        /// </summary>
+        /// <returns>It returns a list of category objects</returns>
+        public List<Category> GetCategories()
         {
             string sql = @"spCategory_GetAll";
             return SqlDataAccess.LoadData<Category>(sql);

@@ -8,22 +8,46 @@ using System.Threading.Tasks;
 
 namespace LogicLibrary.Processes
 {
-    public class ItemProcessor
+    /// <summary>
+    /// This class contains processes relating to items
+    /// </summary>
+    public class ItemProcessor : IItemProcessor
     {
         static IItem _item;
-        public static void SaveItem(IItem item)
+        /// <summary>
+        /// This method saves an item object into a DB
+        /// </summary>
+        /// <param name="item">It takes in an IItem as parameter </param>
+        public void SaveItem(IItem item)
         {
             _item = item;
             string sql = @"spItem_insert @StockCode,@Descript,@Vat,@CategoryId,@IsActive,@ReOrderlevel";
             SqlDataAccess.RegisterData(sql, _item);
         }
-        public static List<Item> LoadData()
+        /// <summary>
+        /// This method get all items from a DB
+        /// </summary>
+        /// <returns>It returns a list of Item objects</returns>
+        public List<Item> GetItems()
         {
             string sql = @"spItem_GetAll";
             return SqlDataAccess.LoadData<Item>(sql);
         }
-
-        public static void UpdateItemStatus(int itemId, int status)
+        /// <summary>
+        /// This method get all active items from a DB
+        /// </summary>
+        /// <returns>It returns a list of Item objects</returns>
+        public List<Item> GetActiveItems()
+        {
+            string sql = @"spItem_GetAllActive";
+            return SqlDataAccess.LoadData<Item>(sql);
+        }
+        /// <summary>
+        /// This method update the status of an item
+        /// </summary>
+        /// <param name="itemId">This is a int parameter representing the itemId</param>
+        /// <param name="status">This is a int parameter representing the status</param>
+        public void UpdateItemStatus(int itemId, int status)
         {
             var data = new
             {
@@ -34,7 +58,12 @@ namespace LogicLibrary.Processes
             string sql = "spItem_UpdateStatus @ItemId,@Status";
             SqlDataAccess.RegisterData(sql, data);
         }
-        public static decimal CalculateSalePrice(int itemId)
+        /// <summary>
+        /// This method calculate the sale price based on the purchase price and profit of an item
+        /// </summary>
+        /// <param name="itemId">this int parameter represents the itemId</param>
+        /// <returns>It returns a decimal value</returns>
+        public decimal CalculateSalePrice(int itemId)
         {
             List<OrderLine> output = (SqlDataAccess.LoadEntryQuantities()).Where(x => x.SelectedItem.Itemid == itemId).ToList();
             if (output.Count == 0 || output == null)
@@ -48,7 +77,7 @@ namespace LogicLibrary.Processes
                 decimal salePrice = price + (price * profit / 100);
                 return salePrice;
             }
-            
+
         }
     }
 }

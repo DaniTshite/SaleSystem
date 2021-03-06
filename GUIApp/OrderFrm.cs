@@ -17,6 +17,10 @@ namespace GUIApp
 {
     public partial class OrderFrm : Form
     {
+        IOrderLineProcessor _orderLineProcessor = new OrderLineProcessor();
+        IOrdersProcessor _ordersProcessor = new OrdersProcessor();
+        ItemProcessor _itemProcessor;
+        SupplierProcessor _supplierProcessor;
         //Lists used for 2 comboboxes and OrderLineCart 
 
         List<Item> items = new List<Item>();
@@ -47,13 +51,14 @@ namespace GUIApp
         private void Initialize()
         {
             ListItemsCmb.SelectedValueChanged -= ListItemsCmb_SelectedValueChanged;
-            items = null;
-            suppliers = null;
-            activeItems = null;
-            SqlDataAccess.LoadLists();
-            items = SqlDataAccess.loadedItems;
-            suppliers = SqlDataAccess.loadedSuppliers;
-            activeItems = ItemProcessor.LoadData();
+            _itemProcessor = new ItemProcessor();
+            _supplierProcessor = new SupplierProcessor();
+            items = new List<Item>();
+            suppliers = new List<Supplier>();
+            activeItems = new List<Item>();
+            items = _itemProcessor.GetItems();
+            suppliers = _supplierProcessor.GetSuppliers();
+            activeItems = _itemProcessor.GetActiveItems();
             ListItemsCmb.DataSource = activeItems;
             ListSuppliersCmb.DataSource = suppliers;
             ListSuppliersCmb.DisplayMember = "SupplierName";
@@ -99,7 +104,7 @@ namespace GUIApp
                     LineTotal = decimal.Parse(PurchasedQuantityTxt.Text) * decimal.Parse(purchasePriceTxt.Text)
                 };
                 //checks if quantity to be sold is less than the stock
-                if (OrdersProcessor.IsStockQuantityEnough(int.Parse(PurchasedQuantityTxt.Text), int.Parse(StockQuantityTxt.Text)) == true)
+                if (HelperProcessor.IsStockQuantityEnough(int.Parse(PurchasedQuantityTxt.Text), int.Parse(StockQuantityTxt.Text)) == true)
                 {
                     //checks if the selected item is already in the cart 
                     foreach (DataGridViewRow row in ItemsGridView.Rows)
@@ -246,7 +251,7 @@ namespace GUIApp
                     SelectedSupplier = (Supplier)ListSuppliersCmb.SelectedItem,
                     SupplyOrderDetails = itemsToSave
                 };
-                MessageBox.Show(OrdersProcessor.SaveSupplyOrder(data), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(_ordersProcessor.SaveSupplyOrder(data), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetControls();
             }
         }
@@ -420,7 +425,7 @@ namespace GUIApp
             }
             else
             {
-                orderDetails1 = OrdersProcessor.GetOrderDetails(SearchOrderNumberTxt.Text);
+                orderDetails1 = _ordersProcessor.GetOrderDetails(SearchOrderNumberTxt.Text);
                 if (orderDetails1.Count == 0 || orderDetails1 == null)
                 {
                     MessageBox.Show(" Order Number  " + SearchOrderNumberTxt.Text + "  does not exist in the System", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -482,7 +487,7 @@ namespace GUIApp
 
         private void ListItemsCmb_SelectedValueChanged(object sender, EventArgs e)
         {
-            var listItemQuantities = OrderLineProcessor.GetEntryQuantityByItem();
+            var listItemQuantities = _orderLineProcessor.GetEntryQuantityByItem();
             bool IsItemFound = false;
             foreach (var itemQuantity in listItemQuantities)
             {
@@ -520,7 +525,7 @@ namespace GUIApp
         {
             Initialize();
             ItemsGridView.DataSource = null;
-            var p = OrdersProcessor.GetItemsToReorder(items);
+            var p = _ordersProcessor.GetItemsToReorder(items);
             if (p.Count == 0)
             {
                 MessageBox.Show("There are no items to Reorder !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -549,7 +554,7 @@ namespace GUIApp
         private void InactiveItemsListBtn_Click(object sender, EventArgs e)
         {
             Initialize();
-            var p = OrdersProcessor.GetInactiveItems(items);
+            var p = _ordersProcessor.GetInactiveItems(items);
             ItemsGridView.DataSource = null;
             if (p.Count == 0)
             {
@@ -578,12 +583,12 @@ namespace GUIApp
 
         private void printItemsToReorderDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            List<OrderLine> itemsToReorder = OrdersProcessor.GetItemsToReorder(items) as dynamic;
+            List<OrderLine> itemsToReorder = _ordersProcessor.GetItemsToReorder(items) as dynamic;
             //int s = itemsToReorder[0].Id;
             //int t = s;
             e.Graphics.DrawString("Page   " + ((itemsPrintedSoFar % 7) == 0 ? (itemsPrintedSoFar / 7) + 1 : (itemsPrintedSoFar / 7) + 2),
                new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 50));
-            e.Graphics.DrawString("List of Items To Reorder", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(30, 330));
+            e.Graphics.DrawString("List of items To Reorder", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(30, 330));
             e.Graphics.DrawString("Date : " + DateTime.Now.ToLongDateString(), new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 370));
             e.Graphics.DrawString("", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 410));
             e.Graphics.DrawString("*****************************************************************************************************************************************",
@@ -635,7 +640,7 @@ namespace GUIApp
 
         private void PrintPreviewItemsToReorder_Click(object sender, EventArgs e)
         {
-            List<OrderLine> itemsToReorder = OrdersProcessor.GetItemsToReorder(items);
+            List<OrderLine> itemsToReorder = _ordersProcessor.GetItemsToReorder(items);
             if (itemsToReorder.Count > 0)
             {
                 printPreviewDialogOrder.Document = printItemsToReorderDocument;
@@ -649,7 +654,7 @@ namespace GUIApp
 
         private void HightlightInactiveItems()
         {
-            var listItemQuantities = OrderLineProcessor.GetEntryQuantityByItem();
+            var listItemQuantities = _orderLineProcessor.GetEntryQuantityByItem();
 
             if (ItemsGridView.DataSource != null)
             {

@@ -16,22 +16,25 @@ namespace GUIApp
 {
     public partial class CustomerAccountFrm : Form
     {
+        CustomerAccountProcessor _customerAccountProcessor;
         List<CustomerAccount> customerAccounts;
         public CustomerAccountFrm()
         {
             InitializeComponent();
             Initialize();
         }
-
+        //This method initialises controls,instantiate lists,etc
         private void Initialize()
         {
-            customerAccounts = CustomerAccountProcessor.LoadData();
+            _customerAccountProcessor = new CustomerAccountProcessor();
             CustomerAccountsGridView.DataSource = null;
+            customerAccounts = _customerAccountProcessor.GetCustomerAccounts();
             CustomerAccountsGridView.DataSource = customerAccounts;
             CustomerAccountsGridView.Columns[0].Visible = false;
+            //CustomerAccountsGridView.Columns[7].Visible = false;
             CustomerAccountsGridView.Columns[8].Visible = false;
         }
-
+        //This method saves the data if it is valid
         private void SaveCustomerAccountBtn_Click(object sender, EventArgs e)
         {
             if(IsValid()){
@@ -45,11 +48,24 @@ namespace GUIApp
                     PhysicalAddress=PhysicalAddressTxt.Text,
                     Gender=GenderCmb.Text
                 };
-                MessageBox.Show(CustomerAccountProcessor.SaveCustomerAccount(p), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                MessageBox.Show(_customerAccountProcessor.SaveCustomerAccount(p), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Initialize();
+                Reset();
             }
         }
-
+        //This method clears all textboxes and combobox
+        private void Reset()
+        {
+            FirstNameTxt.Clear();
+            FirstNameTxt.Focus();
+            LastNameTxt.Clear();
+            IdNumberTxt.Clear();
+            CellphoneTxt.Clear();
+            EmailAddressTxt.Clear();
+            PhysicalAddressTxt.Clear();
+            GenderCmb.Text = "";
+        }
+        //This method validate input data
         private bool IsValid()
         {
             if (FirstNameTxt.Text == string.Empty)

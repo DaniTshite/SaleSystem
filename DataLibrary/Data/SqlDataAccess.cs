@@ -151,17 +151,17 @@ namespace DataLibrary.Data
         {
             using (IDbConnection cnn = new SqlConnection(GetConnectionString()))
             {
-                string sql = @"spAlltables_GetAll";
+                //string sql = @"spAlltables_GetAll";
 
-                using (var lists = cnn.QueryMultiple(sql))
-                {
-                    loadedItems = lists.Read<Item>().ToList();
-                    loadedSuppliers = lists.Read<Supplier>().ToList();
-                    loadedCategories = lists.Read<Category>().ToList();
-                    loadedUsers = lists.Read<Users>().ToList();
-                    loadedQuotations= lists.Read<Quotations>().ToList();
-                    loadedCustomerAccounts = lists.Read<CustomerAccount>().ToList();
-                }
+                //using (var lists = cnn.QueryMultiple(sql))
+                //{
+                //    loadedItems = lists.Read<Item>().ToList();
+                //    loadedSuppliers = lists.Read<Supplier>().ToList();
+                //    loadedCategories = lists.Read<Category>().ToList();
+                //    loadedUsers = lists.Read<Users>().ToList();
+                //    loadedQuotations= lists.Read<Quotations>().ToList();
+                //    loadedCustomerAccounts = lists.Read<CustomerAccount>().ToList();
+                //}
 
             }
 

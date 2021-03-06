@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 namespace LogicLibrary.Processes
 {
     /// <summary>
-    /// This class contains operations related to customer account
+    /// This class contains operations relating to customer account
     /// </summary>
-    public class CustomerAccountProcessor
+    public class CustomerAccountProcessor : ICustomerAccountProcessor
     {
         static ICustomerAccount _customerAccount;
         /// <summary>
         /// This method saves a customerAccount object into the DB
         /// </summary>
         /// <param name="customerAccount">It takes in an ICustomerAccount object as parameter</param>
-        /// <returns>It returns a string</returns>
-        public static string SaveCustomerAccount(ICustomerAccount customerAccount)
+        /// <returns>It returns a string value</returns>
+        public string SaveCustomerAccount(ICustomerAccount customerAccount)
         {
             try
             {
@@ -32,13 +32,13 @@ namespace LogicLibrary.Processes
             {
                 return "Something went wrong !";
             }
-            
+
         }
         /// <summary>
         /// This method get all customer accounts from the DB
         /// </summary>
         /// <returns>It returns a list of CustomerAccounts</returns>
-        public static List<CustomerAccount> LoadData()
+        public List<CustomerAccount> GetCustomerAccounts()
         {
             try
             {
@@ -50,7 +50,7 @@ namespace LogicLibrary.Processes
 
                 throw;
             }
-            
+
         }
     }
 }

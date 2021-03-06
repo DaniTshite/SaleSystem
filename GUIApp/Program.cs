@@ -16,7 +16,7 @@ namespace GUIApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SaleFrm());
+            Application.Run(new MainFrm());
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,17 +16,19 @@ namespace GUIApp
 {
     public partial class SupplierFrm : Form
     {
+        ISupplierProcessor _supplierProcessor;
         List<Supplier> Suppliers;
         public SupplierFrm()
         {
             InitializeComponent();
             Initialize();
         }
-
+        //This method initialises comboboxes,instantiate objects ,etc
         private void Initialize()
         {
+            _supplierProcessor = new SupplierProcessor();
             Suppliers = new List<Supplier>();
-            Suppliers= SupplierProcessor.LoadData();
+            Suppliers= _supplierProcessor.GetSuppliers();
             SuppliersGridView.DataSource = null;
             SuppliersGridView.DataSource = Suppliers;
             DeleteSupplierCmb.DataSource = Suppliers;
@@ -33,13 +36,11 @@ namespace GUIApp
             DeleteSupplierCmb.ValueMember = "SupplierId";
             SuppliersGridView.Columns[0].Visible = false;
         }
-
+        //This method saves a supplier data if it is valid
         private void SaveSupplierBtn_Click(object sender, EventArgs e)
         {
             if(IsValid())
             {
-                
-
                 Supplier model = new Supplier
                 {
                     SupplierName = SupplierNameTxt.Text,
@@ -48,7 +49,7 @@ namespace GUIApp
                     SupplierPhysicalAddress = SupplierPhysicalAddressTxt.Text
                 };
 
-                SupplierProcessor.SaveSupplier(model);
+                //SupplierProcessor.SaveSupplier(model);
                 MessageBox.Show(" 1 Record Has been added successfully! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 SupplierNameTxt.Clear();
                 SupplierNameTxt.Focus();
@@ -59,7 +60,7 @@ namespace GUIApp
             }
 
         }
-
+        //This method validates input data
         private bool IsValid()
         {
             if(SupplierNameTxt.Text==string.Empty)
@@ -98,16 +99,16 @@ namespace GUIApp
             }
             return true;
         }
-
+        //This method places the focus on SupplierName textbox when the form is loading
         private void SupplierFrm_Load(object sender, EventArgs e)
         {
             SupplierNameTxt.Focus();
         }
-
+        //This method deletes the selected supplier
         private void DeleteSupplierBtn_Click(object sender, EventArgs e)
         {
             int supplierId = (Int32)DeleteSupplierCmb.SelectedValue;
-            MessageBox.Show(SupplierProcessor.DeleteSupplier(supplierId), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(_supplierProcessor.DeleteSupplier(supplierId), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Initialize();
         }
     }

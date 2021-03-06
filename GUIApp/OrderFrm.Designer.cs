@@ -616,7 +616,7 @@ namespace GUIApp
             this.ReOrderListBtn.Name = "ReOrderListBtn";
             this.ReOrderListBtn.Size = new System.Drawing.Size(246, 39);
             this.ReOrderListBtn.TabIndex = 28;
-            this.ReOrderListBtn.Text = "Items To ReOrder ";
+            this.ReOrderListBtn.Text = "items To ReOrder ";
             this.ReOrderListBtn.UseVisualStyleBackColor = true;
             this.ReOrderListBtn.Click += new System.EventHandler(this.ReOrderListBtn_Click);
             // 
@@ -645,7 +645,7 @@ namespace GUIApp
             this.InactiveItemsListBtn.Name = "InactiveItemsListBtn";
             this.InactiveItemsListBtn.Size = new System.Drawing.Size(246, 41);
             this.InactiveItemsListBtn.TabIndex = 29;
-            this.InactiveItemsListBtn.Text = "Inactive Items List";
+            this.InactiveItemsListBtn.Text = "Inactive items List";
             this.InactiveItemsListBtn.UseVisualStyleBackColor = true;
             this.InactiveItemsListBtn.Click += new System.EventHandler(this.InactiveItemsListBtn_Click);
             // 
@@ -668,7 +668,7 @@ namespace GUIApp
             this.ItemsToReorderGroupBox.Size = new System.Drawing.Size(285, 136);
             this.ItemsToReorderGroupBox.TabIndex = 30;
             this.ItemsToReorderGroupBox.TabStop = false;
-            this.ItemsToReorderGroupBox.Text = "Items To Reorder";
+            this.ItemsToReorderGroupBox.Text = "items To Reorder";
             // 
             // PrintPreviewItemsToReorder
             // 
@@ -694,7 +694,7 @@ namespace GUIApp
             this.InactiveItemsGroupBox.Size = new System.Drawing.Size(285, 121);
             this.InactiveItemsGroupBox.TabIndex = 31;
             this.InactiveItemsGroupBox.TabStop = false;
-            this.InactiveItemsGroupBox.Text = "Inactive Items";
+            this.InactiveItemsGroupBox.Text = "Inactive items";
             // 
             // button2
             // 
@@ -849,7 +849,7 @@ namespace GUIApp
             this.MinimumSize = new System.Drawing.Size(1650, 859);
             this.Name = "OrderFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Orders";
+            this.Text = "ORDERS";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.OrderFrm_Load);
             this.groupBox2.ResumeLayout(false);

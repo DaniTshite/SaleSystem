@@ -16,9 +16,10 @@ namespace GUIApp
 {
     public partial class UsersForm : Form
     {
-        List<Users> users = new List<Users>();
+        UsersProcessor _usersProcessor;
+        List<Users> users;
         string imgLoc;
-        Users SelectedUser;
+        Users SelectedUser ;
         public UsersForm()
         {
             InitializeComponent();
@@ -27,19 +28,21 @@ namespace GUIApp
 
         private void Initialize()
         {
-            users = null;
-            SqlDataAccess.LoadLists();
-            users = SqlDataAccess.loadedUsers;
+            UpdateUsersCmb.SelectedValueChanged +=UpdateUsersCmb_SelectedValueChanged;
+            _usersProcessor = new UsersProcessor();
+            users = new List<Users>();
+            SelectedUser = new Users();
+            users = _usersProcessor.GetUsers();
             UpdateUsersCmb.DataSource = users;
             UpdateUsersCmb.ValueMember = "UserId";
             UpdateUsersCmb.DisplayMember = "FullName";
+            UpdateUsersCmb.SelectedValueChanged -= UpdateUsersCmb_SelectedValueChanged;
         }
 
         private void SelectPictureBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                
                 OpenFileDialog fd = new OpenFileDialog();
                 fd.Filter = "JPG Files(*.jpg)|*.jpg|GIF Files (*.gif)|*.gif|All Files(*.*)|*.*";
                 fd.Title = "Select Employee picture";
@@ -67,14 +70,14 @@ namespace GUIApp
                 Users data = new Users
                 {
                     TypeUser = TypeUserCmb.Text,
-                    AccessCode = UsersProcessor.GenerateAccessCode(),
+                    AccessCode = _usersProcessor.GenerateAccessCode(),
                     Name = NameTxt.Text,
                     LastName = LastNameTxt.Text,
                     DoB = DoBTimePicker.Value,
                     IsActive = 1,
                     Photo = img
                 };
-                MessageBox.Show(UsersProcessor.SaveUser(data), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(_usersProcessor.SaveUser(data), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }
@@ -168,7 +171,7 @@ namespace GUIApp
                     IsActive = IsActiveChkBtn.Checked == true ? 1 : 0,
                     Photo = img
                 };
-                MessageBox.Show(UsersProcessor.UpdateUser(data), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(_usersProcessor.UpdateUser(data), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }
