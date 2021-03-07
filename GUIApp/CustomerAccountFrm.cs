@@ -1,5 +1,6 @@
 ﻿using DataLibrary.Data;
 using DataLibrary.Models;
+using LogicLibrary;
 using LogicLibrary.HelperProcesses;
 using LogicLibrary.Processes;
 using System;
@@ -16,7 +17,7 @@ namespace GUIApp
 {
     public partial class CustomerAccountFrm : Form
     {
-        CustomerAccountProcessor _customerAccountProcessor;
+        ICustomerAccountProcessor _customerAccountProcessor;
         List<CustomerAccount> customerAccounts;
         public CustomerAccountFrm()
         {
@@ -26,29 +27,26 @@ namespace GUIApp
         //This method initialises controls,instantiate lists,etc
         private void Initialize()
         {
-            _customerAccountProcessor = new CustomerAccountProcessor();
+            _customerAccountProcessor = ContainerConfig.CreateCustomerAccountProcessor() ;
             CustomerAccountsGridView.DataSource = null;
             customerAccounts = _customerAccountProcessor.GetCustomerAccounts();
             CustomerAccountsGridView.DataSource = customerAccounts;
             CustomerAccountsGridView.Columns[0].Visible = false;
-            //CustomerAccountsGridView.Columns[7].Visible = false;
             CustomerAccountsGridView.Columns[8].Visible = false;
         }
         //This method saves the data if it is valid
         private void SaveCustomerAccountBtn_Click(object sender, EventArgs e)
         {
             if(IsValid()){
-                CustomerAccount p = new CustomerAccount
-                {
-                    FirstName=FirstNameTxt.Text,
-                    LastName=LastNameTxt.Text,
-                    IdNumber=IdNumberTxt.Text,
-                    CellPhone=CellphoneTxt.Text,
-                    EmailAddress=EmailAddressTxt.Text,
-                    PhysicalAddress=PhysicalAddressTxt.Text,
-                    Gender=GenderCmb.Text
-                };
-                MessageBox.Show(_customerAccountProcessor.SaveCustomerAccount(p), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ICustomerAccount customerAccount = ContainerConfig.CreateCustomerAccount();
+                customerAccount.FirstName = FirstNameTxt.Text;
+                customerAccount.LastName = LastNameTxt.Text;
+                customerAccount.IdNumber = IdNumberTxt.Text;
+                customerAccount.CellPhone = CellphoneTxt.Text;
+                customerAccount.EmailAddress = EmailAddressTxt.Text;
+                customerAccount.PhysicalAddress = PhysicalAddressTxt.Text;
+                customerAccount.Gender = GenderCmb.Text;
+                MessageBox.Show(_customerAccountProcessor.SaveCustomerAccount(customerAccount), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Initialize();
                 Reset();
             }

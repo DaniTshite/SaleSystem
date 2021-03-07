@@ -12,15 +12,16 @@ using DataLibrary.Data;
 using LogicLibrary.Processes;
 using GUIApp.Models;
 using LogicLibrary.HelperProcesses;
+using LogicLibrary;
 
 namespace GUIApp
 {
     public partial class OrderFrm : Form
     {
-        readonly IOrderLineProcessor _orderLineProcessor = new OrderLineProcessor();
-        readonly IOrdersProcessor _ordersProcessor = new OrdersProcessor();
-        ItemProcessor _itemProcessor;
-        SupplierProcessor _supplierProcessor;
+        readonly IOrderLineProcessor _orderLineProcessor = ContainerConfig.CreateOrderLineProcessor();
+        readonly IOrdersProcessor _ordersProcessor = ContainerConfig.CreateOrdersProcessor();
+        IItemProcessor _itemProcessor;
+        ISupplierProcessor _supplierProcessor;
         //Lists used for 2 comboboxes and OrderLineCart 
 
         List<Item> items = new List<Item>();
@@ -40,7 +41,7 @@ namespace GUIApp
         int itemCounter = 1;
         List<OrderLine> orderDetails1;
         private decimal PurchasePrice;
-        List<OrderLine> itemsToSave;
+        List<IOrderLine> itemsToSave;
 
         public OrderFrm()
         {
@@ -51,8 +52,8 @@ namespace GUIApp
         private void Initialize()
         {
             ListItemsCmb.SelectedValueChanged -= ListItemsCmb_SelectedValueChanged;
-            _itemProcessor = new ItemProcessor();
-            _supplierProcessor = new SupplierProcessor();
+            _itemProcessor = ContainerConfig.CreateItemProcessor();
+            _supplierProcessor = ContainerConfig.CreateSupplierProcessor();
             items = new List<Item>();
             suppliers = new List<Supplier>();
             activeItems = new List<Item>();
@@ -69,7 +70,7 @@ namespace GUIApp
             ListItemsCmb.Text = "";
             gridItems = new List<OrderLine>();
             gridOrderItemsToDisplay = new List<OrderCart>();
-            itemsToSave = new List<OrderLine>();
+            itemsToSave = new List<IOrderLine>();
             orderDetails1 = new List<OrderLine>();
             ListItemsCmb.SelectedValueChanged += ListItemsCmb_SelectedValueChanged;
         }
@@ -122,15 +123,14 @@ namespace GUIApp
                     if (ItemSelectedAgain == false)
                     {
                         //instanciation of orderline object to save into the DB
-                        OrderLine p = new OrderLine
-                        {
-                            SelectedItem = (Item)ListItemsCmb.SelectedItem,
-                            PurchasePrice = PurchasePrice,
-                            PurchasedQuantity = line.PurchasedQuantity,
-                            LineTotal = line.LineTotal
-                        };
+                        IOrderLine orderline = ContainerConfig.CreateOrderLine();
+                        orderline.SelectedItem = (Item)ListItemsCmb.SelectedItem;
+                        orderline.PurchasePrice = PurchasePrice;
+                        orderline.PurchasedQuantity = line.PurchasedQuantity;
+                        orderline.LineTotal = line.LineTotal;
+                        
                         //list of items to save into the DB
-                        itemsToSave.Add(p);
+                        itemsToSave.Add(orderline);
                         //list of items to display in the cart
                         ItemsGridView.DataSource = null;
                         gridOrderItemsToDisplay.Add(line);
@@ -191,7 +191,7 @@ namespace GUIApp
                 }
                 if (TempUnitPrice <= 0)
                 {
-                    MessageBox.Show("Unit Price must be a positive number !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Unit Price must be a positive IsNumber !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     purchasePriceTxt.Clear();
                     purchasePriceTxt.Focus();
                     return false;
@@ -206,17 +206,17 @@ namespace GUIApp
             else
             {
                 int TempQty;
-                bool number = int.TryParse(PurchasedQuantityTxt.Text, out TempQty);
-                if (!number)
+                bool IsNumber = int.TryParse(PurchasedQuantityTxt.Text, out TempQty);
+                if (!IsNumber)
                 {
-                    MessageBox.Show("Quantity must be a number !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Quantity must be a IsNumber !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     PurchasedQuantityTxt.Clear();
                     PurchasedQuantityTxt.Focus();
                     return false;
                 }
                 if (TempQty <= 0)
                 {
-                    MessageBox.Show("Quantity must be a positive number !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Quantity must be a positive IsNumber !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     PurchasedQuantityTxt.Clear();
                     PurchasedQuantityTxt.Focus();
                     return false;
@@ -241,17 +241,15 @@ namespace GUIApp
         {
             if (IsOrderValid())
             {
-                Orders data = new Orders
-                {
-                    OrderNumber = OrderNumberTxt.Text,
-                    OrderDate = OrderDatePicker.Value.Date,
-                    SubTotal = decimal.Parse(STotalTxt.Text),
-                    Tax = decimal.Parse(TaxTxt.Text),
-                    Total = decimal.Parse(GdTotalTxt.Text),
-                    SelectedSupplier = (Supplier)ListSuppliersCmb.SelectedItem,
-                    SupplyOrderDetails = itemsToSave
-                };
-                MessageBox.Show(_ordersProcessor.SaveSupplyOrder(data), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                IOrders order = ContainerConfig.CreateOrders();
+                order.OrderNumber = OrderNumberTxt.Text;
+                order.OrderDate = OrderDatePicker.Value.Date;
+                order.SubTotal = decimal.Parse(STotalTxt.Text);
+                order.Tax = decimal.Parse(TaxTxt.Text);
+                order.Total = decimal.Parse(GdTotalTxt.Text);
+                order.SelectedSupplier = (Supplier)ListSuppliersCmb.SelectedItem;
+                order.SupplyOrderDetails = itemsToSave;
+                MessageBox.Show(_ordersProcessor.SaveSupplyOrder(order), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetControls();
             }
         }
@@ -442,7 +440,7 @@ namespace GUIApp
                     {
 
                         //order.Id = lineCounter;
-                        OrderCart line = new OrderCart
+                        OrderCart shoppingCartLine = new OrderCart
                         {
                             Id = lineCounter,
                             StockCode = order.SelectedItem.StockCode,
@@ -451,7 +449,7 @@ namespace GUIApp
                             PurchasePrice = order.PurchasePrice,
                             LineTotal = order.LineTotal
                         };
-                        OrderReportToDisplay.Add(line);
+                        OrderReportToDisplay.Add(shoppingCartLine);
                         lineCounter += 1;
                     }
                     ItemsGridView.DataSource = null;
@@ -484,7 +482,6 @@ namespace GUIApp
 
         }
 
-
         private void ListItemsCmb_SelectedValueChanged(object sender, EventArgs e)
         {
             var listItemQuantities = _orderLineProcessor.GetEntryQuantityByItem();
@@ -507,7 +504,7 @@ namespace GUIApp
 
         private void ItemsGridView_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            //checks if the list of ordercart items contains data so that it can show the contextual menu
+            //checks if the list of ordercart items contains order so that it can show the contextual menu
             if (gridItems.Count > 0)
             {
                 if (e.Button == MouseButtons.Right)

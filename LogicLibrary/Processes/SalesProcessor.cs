@@ -16,8 +16,8 @@ namespace LogicLibrary.Processes
     /// </summary>
     public class SalesProcessor : ISalesProcessor
     {
-        readonly IDeliveryProcessor _deliveryProcessor = new DeliveryProcessor();
-        readonly ISaleLineProcessor _saleLineProcessor = new SaleLineProcessor();
+        readonly IDeliveryProcessor _deliveryProcessor = ContainerConfig.CreateDeliveryProcessor();
+        readonly ISaleLineProcessor _saleLineProcessor = ContainerConfig.CreateSaleLineProcessor();
         private readonly Random _random = new Random();
         private bool _doesInvoiceNumberExist = false;
         /// <summary>

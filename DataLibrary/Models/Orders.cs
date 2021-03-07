@@ -18,7 +18,7 @@ namespace DataLibrary.Models
         public decimal Tax { get; set; }
         public decimal Total { get; set; }
         public Supplier SelectedSupplier { get; set; }
-        public List<OrderLine> SupplyOrderDetails { get; set; } = new List<OrderLine>();
+        public List<IOrderLine> SupplyOrderDetails { get; set; } = new List<IOrderLine>();
 
     }
 }

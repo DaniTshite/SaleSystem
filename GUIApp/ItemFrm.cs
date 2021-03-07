@@ -1,5 +1,6 @@
 ﻿using DataLibrary.Data;
 using DataLibrary.Models;
+using LogicLibrary;
 using LogicLibrary.Processes;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,8 @@ namespace GUIApp
 {
     public partial class ItemFrm : Form
     {
-        CategoryProcessor _categoryProcessor;
-        ItemProcessor _itemProcessor;
+        ICategoryProcessor _categoryProcessor;
+        IItemProcessor _itemProcessor;
         List<Category> categories;
         List<Item> items;
         public ItemFrm()
@@ -29,8 +30,8 @@ namespace GUIApp
 
         private void Initialize()
         {
-            _categoryProcessor = new CategoryProcessor();
-            _itemProcessor = new ItemProcessor();
+            _categoryProcessor = ContainerConfig.CreateCategoryProcessor();
+            _itemProcessor = ContainerConfig.CreateItemProcessor();
             categories = new List<Category>();
             items = new List<Item>();
             categories = null;
@@ -66,17 +67,14 @@ namespace GUIApp
                     IsCheccked = 0;
                 }
 
-                Item data = new Item
-                {
-                    StockCode = StockCodeTxt.Text,
-                    Descript = DescriptTxt.Text,
-                    Vat = int.Parse(TaxTxt.Text),
-                    CategoryId = int.Parse(ListCategoryCmb.SelectedValue.ToString()),
-                    IsActive = IsCheccked,
-                    ReOrderlevel = int.Parse(ReorderLevelTxt.Text)
-                };
-
-                _itemProcessor.SaveItem(data);
+                IItem item = ContainerConfig.CreateItem();
+                item.StockCode = StockCodeTxt.Text;
+                item.Descript = DescriptTxt.Text;
+                item.Vat = int.Parse(TaxTxt.Text);
+                item.CategoryId = int.Parse(ListCategoryCmb.SelectedValue.ToString());
+                item.IsActive = IsCheccked;
+                item.ReOrderlevel = int.Parse(ReorderLevelTxt.Text);
+                _itemProcessor.SaveItem(item);
                 MessageBox.Show(" 1 Record Has been added successfully! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 StockCodeTxt.Clear();
                 StockCodeTxt.Focus();
@@ -85,9 +83,7 @@ namespace GUIApp
                 IsActiveChkBtn.Checked = false;
                 Initialize();
             }
-
         }
-
         private bool IsValid()
         {
             if (StockCodeTxt.Text == string.Empty)
@@ -112,8 +108,8 @@ namespace GUIApp
             else
             {
                 int TempUnitPrice;
-                bool deciml = int.TryParse(TaxTxt.Text, out TempUnitPrice);
-                if (!deciml)
+                bool IsDecimalNumber = int.TryParse(TaxTxt.Text, out TempUnitPrice);
+                if (!IsDecimalNumber)
                 {
                     MessageBox.Show("Tax must be a number !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     TaxTxt.Clear();
@@ -172,11 +168,9 @@ namespace GUIApp
             }
             else
             {
-                Category data = new Category
-                {
-                    CategoryName = CategoryNameTxt.Text
-                };
-                _categoryProcessor.SaveCategory(data);
+                ICategory category = ContainerConfig.CreateCategory();
+                category.CategoryName = CategoryNameTxt.Text;
+                _categoryProcessor.SaveCategory(category);
                 MessageBox.Show(" 1 Record Has been added successfully! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CategoryNameTxt.Clear();
                 CategoryNameTxt.Focus();
@@ -198,9 +192,7 @@ namespace GUIApp
                     {
                         if (int.Parse(row.Cells["IsActive"].Value.ToString()) == 0)
                         {
-
                             row.DefaultCellStyle.BackColor = Color.Coral;
-
                         }
                     }
                 }

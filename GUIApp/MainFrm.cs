@@ -16,7 +16,7 @@ namespace GUIApp
         private Form activeForm;
         private Button currentButton;
         private readonly Random random;
-        private int tempIndex;
+        //private int tempIndex;
         public MainFrm()
         {
             InitializeComponent();

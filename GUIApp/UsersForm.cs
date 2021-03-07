@@ -1,5 +1,6 @@
 ﻿using DataLibrary.Data;
 using DataLibrary.Models;
+using LogicLibrary;
 using LogicLibrary.Processes;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,10 @@ namespace GUIApp
 {
     public partial class UsersForm : Form
     {
-        UsersProcessor _usersProcessor;
+        IUsersProcessor _usersProcessor;
         List<Users> users;
         string imgLoc;
-        Users SelectedUser ;
+        IUsers SelectedUser ;
         public UsersForm()
         {
             InitializeComponent();
@@ -29,9 +30,9 @@ namespace GUIApp
         private void Initialize()
         {
             UpdateUsersCmb.SelectedValueChanged +=UpdateUsersCmb_SelectedValueChanged;
-            _usersProcessor = new UsersProcessor();
+            _usersProcessor = ContainerConfig.CreateUsersProcessor();
             users = new List<Users>();
-            SelectedUser = new Users();
+            SelectedUser = ContainerConfig.CreateUser();
             users = _usersProcessor.GetUsers();
             UpdateUsersCmb.DataSource = users;
             UpdateUsersCmb.ValueMember = "UserId";
@@ -67,17 +68,16 @@ namespace GUIApp
                 FileStream fs = new FileStream(imgLoc, FileMode.Open, FileAccess.Read);
                 BinaryReader br = new BinaryReader(fs);
                 img = br.ReadBytes((int)fs.Length);
-                Users data = new Users
-                {
-                    TypeUser = TypeUserCmb.Text,
-                    AccessCode = _usersProcessor.GenerateAccessCode(),
-                    Name = NameTxt.Text,
-                    LastName = LastNameTxt.Text,
-                    DoB = DoBTimePicker.Value,
-                    IsActive = 1,
-                    Photo = img
-                };
-                MessageBox.Show(_usersProcessor.SaveUser(data), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                IUsers user = ContainerConfig.CreateUser();
+                user.TypeUser = TypeUserCmb.Text;
+                user.AccessCode = _usersProcessor.GenerateAccessCode();
+                user.Name = NameTxt.Text;
+                user.LastName = LastNameTxt.Text;
+                user.DoB = DoBTimePicker.Value;
+                user.IsActive = 1;
+                user.Photo = img;
+                
+                MessageBox.Show(_usersProcessor.SaveUser(user), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }
@@ -159,19 +159,17 @@ namespace GUIApp
                 FileStream fs = new FileStream(imgLoc, FileMode.Open, FileAccess.Read);
                 BinaryReader br = new BinaryReader(fs);
                 img = br.ReadBytes((int)fs.Length);
-                Users data = new Users
-                {
-
-                    UserId = SelectedUser.UserId,
-                    TypeUser = TypeUserCmb.Text,
-                    AccessCode = AccessCodeTxt.Text,
-                    Name = NameTxt.Text,
-                    LastName = LastNameTxt.Text,
-                    DoB = DoBTimePicker.Value,
-                    IsActive = IsActiveChkBtn.Checked == true ? 1 : 0,
-                    Photo = img
-                };
-                MessageBox.Show(_usersProcessor.UpdateUser(data), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                IUsers user = ContainerConfig.CreateUser();
+                user.UserId = SelectedUser.UserId;
+                user.TypeUser = TypeUserCmb.Text;
+                user.AccessCode = AccessCodeTxt.Text;
+                user.Name = NameTxt.Text;
+                user.LastName = LastNameTxt.Text;
+                user.DoB = DoBTimePicker.Value;
+                user.IsActive = IsActiveChkBtn.Checked == true ? 1 : 0;
+                user.Photo = img;
+                
+                MessageBox.Show(_usersProcessor.UpdateUser(user), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }

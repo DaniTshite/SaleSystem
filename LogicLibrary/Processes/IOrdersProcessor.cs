@@ -9,6 +9,6 @@ namespace LogicLibrary.Processes
         List<OrderLine> GetItemsToReorder(List<Item> items);
         List<OrderLine> GetOrderDetails(string orderNumber);
         //bool IsStockQuantityEnough(int firstNumber, int secondNumber);
-        string SaveSupplyOrder(Orders model);
+        string SaveSupplyOrder(IOrders order);
     }
 }

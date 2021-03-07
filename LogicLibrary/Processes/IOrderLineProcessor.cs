@@ -6,6 +6,6 @@ namespace LogicLibrary.Processes
     public interface IOrderLineProcessor
     {
         List<OrderLine> GetEntryQuantityByItem();
-        void SaveOrderLine(Orders order);
+        void SaveOrderLine(IOrders order);
     }
 }

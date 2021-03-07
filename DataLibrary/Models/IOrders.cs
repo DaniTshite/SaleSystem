@@ -9,7 +9,7 @@ namespace DataLibrary.Models
         string OrderNumber { get; set; }
         Supplier SelectedSupplier { get; set; }
         decimal SubTotal { get; set; }
-        List<OrderLine> SupplyOrderDetails { get; set; }
+        List<IOrderLine> SupplyOrderDetails { get; set; }
         decimal Tax { get; set; }
         decimal Total { get; set; }
     }

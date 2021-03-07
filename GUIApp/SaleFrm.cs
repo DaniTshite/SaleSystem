@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DataLibrary.Data;
 using DataLibrary.Models;
 using GUIApp.Models;
+using LogicLibrary;
 using LogicLibrary.HelperProcesses;
 using LogicLibrary.Processes;
 
@@ -18,10 +19,10 @@ namespace GUIApp
     public partial class SaleFrm : Form
     {
         ISalesProcessor _salesProcessor;
-        OrderLineProcessor _orderLineProcessor ;
-        CustomerAccountProcessor _customerAccountsProcessor;
-        UsersProcessor _usersProcessor;
-        ItemProcessor _itemProcessor;
+        IOrderLineProcessor _orderLineProcessor ;
+        ICustomerAccountProcessor _customerAccountsProcessor;
+        IUsersProcessor _usersProcessor;
+        IItemProcessor _itemProcessor;
         List<Item> activeItems ;
         List<Quotations> quotations;
         List<Users> users;
@@ -32,7 +33,7 @@ namespace GUIApp
         List<SaleLine> itemsToSave ;
         //counter used to count items in the shopping cart
         int itemCounter = 1;
-        //current invoice number
+        //current invoice IsNumber
         int CurrentInvoiceNumber;
         decimal RetailPrice;
         decimal SubTotal;
@@ -46,11 +47,11 @@ namespace GUIApp
         private void Initialize()
         {
             ItemsListBox.SelectedValueChanged -=ItemsListBox_SelectedValueChanged;
-            _customerAccountsProcessor = new CustomerAccountProcessor();
-            _salesProcessor = new SalesProcessor();
-            _orderLineProcessor = new OrderLineProcessor();
-            _itemProcessor = new ItemProcessor();
-            _usersProcessor = new UsersProcessor();
+            _customerAccountsProcessor = ContainerConfig.CreateCustomerAccountProcessor();
+            _salesProcessor = ContainerConfig.CreateSalesProcessor();
+            _orderLineProcessor = ContainerConfig.CreateOrderLineProcessor();
+            _itemProcessor = ContainerConfig.CreateItemProcessor();
+            _usersProcessor = ContainerConfig.CreateUsersProcessor();
             quotations = new List<Quotations>();
             users = new List<Users>();
             users = _usersProcessor.GetUsers();
@@ -122,17 +123,17 @@ namespace GUIApp
             else
             {
                 int TempQty;
-                bool number = int.TryParse(SaleQuantityTxt.Text, out TempQty);
-                if (!number)
+                bool IsNumber = int.TryParse(SaleQuantityTxt.Text, out TempQty);
+                if (!IsNumber)
                 {
-                    MessageBox.Show("Quantity must be a number !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Quantity must be a IsNumber !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     SaleQuantityTxt.Clear();
                     SaleQuantityTxt.Focus();
                     return false;
                 }
                 if (TempQty <= 0)
                 {
-                    MessageBox.Show("Quantity must be a positive number !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Quantity must be a positive IsNumber !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     SaleQuantityTxt.Clear();
                     SaleQuantityTxt.Focus();
                     return false;
@@ -175,29 +176,26 @@ namespace GUIApp
         private void CashBtn_Click(object sender, EventArgs e)
         {
             DateTime dateValue = new DateTime();
+
             if (DeliveryCmb.Text == "CASH AND CARRY")
             {
                 dateValue = DateTime.Now.Date;
             }
             else dateValue = DeliveryDateTimePicker.Value;
-            Sales sale = new Sales
-            {
-                InvoiceNumber=CurrentInvoiceNumber,
-                Discount=1,
-                SubTotal= SubTotal,
-                Tax=1,
-                Total= Total,
-                PaymentMode="cash",
-                //DeliveryMode="cash and carry",
-                SaleOrderDetails = itemsToSave
-            };
-            
-            Delivery delivery = new Delivery
-            {
-               
-                DeliveryDate = dateValue,
-                DeliveryType = DeliveryCmb.Text
-            };
+            //Instantiation of sales object
+            ISales sale = ContainerConfig.CreateSales();
+            sale.InvoiceNumber = CurrentInvoiceNumber;
+            sale.Discount = 1;
+            sale.SubTotal = SubTotal;
+            sale.Tax = 1;
+            sale.Total = Total;
+            sale.PaymentMode = "cash";
+            sale.SaleOrderDetails = itemsToSave;
+
+            // Instantiation of delivery object
+            IDelivery delivery = ContainerConfig.CreateDelivery();
+            delivery.DeliveryDate = dateValue;
+            delivery.DeliveryType = DeliveryCmb.Text;
             
             ChangeLbl.Text = String.Format("{0:C2}", (decimal.Parse(PaidTxt.Text) - Total));
             MessageBox.Show(_salesProcessor.SaveSaleOrder(sale,delivery), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -309,7 +307,7 @@ namespace GUIApp
             
 
         }
-
+        //This method disables the delivery datetimepicker when "cash and carry is selected "
         private void DeliveryCmb_SelectedValueChanged(object sender, EventArgs e)
         {
             if(DeliveryCmb.Text == "CASH AND CARRY")

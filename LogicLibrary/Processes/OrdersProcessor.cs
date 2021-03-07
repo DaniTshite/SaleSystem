@@ -22,23 +22,23 @@ namespace LogicLibrary.Processes
         /// </summary>
         /// <param name="model">This is an Orders object </param>
         /// <returns>It returns a string </returns>
-        public string SaveSupplyOrder(Orders model)
+        public string SaveSupplyOrder(IOrders order)
         {
             try
             {
                 var data = new
                 {
-                    OrderNumber = model.OrderNumber,
-                    OrderDate = model.OrderDate,
-                    SubTotal = model.SubTotal,
-                    Tax = model.Tax,
-                    Total = model.Total,
-                    SupplierId = model.SelectedSupplier.SupplierId,
-                    Details = model.SupplyOrderDetails
+                    OrderNumber = order.OrderNumber,
+                    OrderDate = order.OrderDate,
+                    SubTotal = order.SubTotal,
+                    Tax = order.Tax,
+                    Total = order.Total,
+                    SupplierId = order.SelectedSupplier.SupplierId,
+                    Details = order.SupplyOrderDetails
                 };
                 string sql = @"spOrders_insert @OrderNumber,@OrderDate,@SubTotal,@Tax,@Total,@SupplierId";
                 SqlDataAccess.RegisterData(sql, data);
-                _orderLineProcessor.SaveOrderLine(model);
+                _orderLineProcessor.SaveOrderLine(order);
                 return "1 Record has been added Successfully ";
             }
             catch (Exception)
@@ -116,7 +116,7 @@ namespace LogicLibrary.Processes
                 {
                     if ((itemQuantity.SelectedItem.Itemid == i.Itemid) && (i.IsActive == 0))
                     {
-                        OrderLine o = new OrderLine
+                        OrderLine orderline = new OrderLine
                         {
                             SelectedItem = new Item
                             {
@@ -126,7 +126,7 @@ namespace LogicLibrary.Processes
                             },
                             PurchasedQuantity = itemQuantity.PurchasedQuantity,
                         };
-                        ItemsToOrder.Add(o);
+                        ItemsToOrder.Add(orderline);
                     }
                 }
             }

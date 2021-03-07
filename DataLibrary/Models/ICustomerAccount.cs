@@ -9,5 +9,6 @@
         string IdNumber { get; set; }
         string LastName { get; set; }
         string PhysicalAddress { get; set; }
+        string Gender { get; set; }
     }
 }

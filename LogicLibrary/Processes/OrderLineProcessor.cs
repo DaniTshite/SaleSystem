@@ -17,7 +17,7 @@ namespace LogicLibrary.Processes
         /// This method saves an orderline object into the DB
         /// </summary>
         /// <param name="order">This is an order object</param>
-        public void SaveOrderLine(Orders order)
+        public void SaveOrderLine(IOrders order)
         {
             foreach (var item in order.SupplyOrderDetails)
             {

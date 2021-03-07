@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataLibrary.Models;
+using LogicLibrary;
 using LogicLibrary.HelperProcesses;
 using LogicLibrary.Processes;
 
@@ -26,7 +27,7 @@ namespace GUIApp
         //This method initialises comboboxes,instantiate objects ,etc
         private void Initialize()
         {
-            _supplierProcessor = new SupplierProcessor();
+            _supplierProcessor = ContainerConfig.CreateSupplierProcessor();
             Suppliers = new List<Supplier>();
             Suppliers= _supplierProcessor.GetSuppliers();
             SuppliersGridView.DataSource = null;
@@ -41,15 +42,13 @@ namespace GUIApp
         {
             if(IsValid())
             {
-                Supplier model = new Supplier
-                {
-                    SupplierName = SupplierNameTxt.Text,
-                    SupplierTelephone = SupplierTelephoneTxt.Text,
-                    SupplierEmailAddress = SupplierEmailAddressTxt.Text,
-                    SupplierPhysicalAddress = SupplierPhysicalAddressTxt.Text
-                };
-
-                //SupplierProcessor.SaveSupplier(model);
+                ISupplier supplier = ContainerConfig.CreateSupplier();
+                supplier.SupplierName = SupplierNameTxt.Text;
+                supplier.SupplierTelephone = SupplierTelephoneTxt.Text;
+                supplier.SupplierEmailAddress = SupplierEmailAddressTxt.Text;
+                supplier.SupplierPhysicalAddress = SupplierPhysicalAddressTxt.Text;
+                
+                //SupplierProcessor.SaveSupplier(supplier);
                 MessageBox.Show(" 1 Record Has been added successfully! ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 SupplierNameTxt.Clear();
                 SupplierNameTxt.Focus();

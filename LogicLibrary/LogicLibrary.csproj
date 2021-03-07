@@ -55,6 +55,7 @@
     <Compile Include="Processes\IItemProcessor.cs" />
     <Compile Include="Processes\IOrderLineProcessor.cs" />
     <Compile Include="Processes\IOrdersProcessor.cs" />
+    <Compile Include="Processes\IQuotationsProcessor.cs" />
     <Compile Include="Processes\ISaleLineProcessor.cs" />
     <Compile Include="Processes\ISalesProcessor.cs" />
     <Compile Include="Processes\ISupplierProcessor.cs" />
