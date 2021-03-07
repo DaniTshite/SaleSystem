@@ -100,5 +100,10 @@ namespace GUIApp
         {
             OpenChildForm(new SupplierFrm(), sender);
         }
+
+        private void QuotationsBtn_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new QuotationFrm(), sender);
+        }
     }
 }

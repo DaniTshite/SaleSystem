@@ -55,6 +55,7 @@
     <Compile Include="Models\IItem.cs" />
     <Compile Include="Models\IOrderLine.cs" />
     <Compile Include="Models\IOrders.cs" />
+    <Compile Include="Models\IQuotationLine.cs" />
     <Compile Include="Models\IQuotations.cs" />
     <Compile Include="Models\ISaleLine.cs" />
     <Compile Include="Models\ISales.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Models\IUsers.cs" />
     <Compile Include="Models\OrderLine.cs" />
     <Compile Include="Models\Orders.cs" />
+    <Compile Include="Models\QuotationLine.cs" />
     <Compile Include="Models\Quotations.cs" />
     <Compile Include="Models\SaleLine.cs" />
     <Compile Include="Models\Sales.cs" />

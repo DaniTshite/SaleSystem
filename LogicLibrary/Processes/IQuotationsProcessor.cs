@@ -10,7 +10,7 @@ namespace LogicLibrary.Processes
     public interface IQuotationsProcessor
     {
         int GetQuotationNumber();
-        List<SaleLine> GetSaleDetails(string quotationNumber);
-        string SaveSaleOrder(IQuotations quotation);
+        List<QuotationLine> GetQuotatioDetails(string quotationNumber);
+        string SaveQuotation(IQuotations quotation);
     }
 }

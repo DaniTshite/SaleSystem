@@ -54,6 +54,14 @@ namespace LogicLibrary
         {
             return new Sales();
         }
+        public static IQuotations CreateQuotations()
+        {
+            return new Quotations();
+        }
+        public static IQuotationLine CreateQuotationLine()
+        {
+            return new QuotationLine();
+        }
 
         //Processors
         public static ICategoryProcessor CreateCategoryProcessor()
@@ -99,6 +107,10 @@ namespace LogicLibrary
         public static IQuotationsProcessor CreateQuotationsProcessor()
         {
             return new QuotationsProcessor();
+        }
+        public static IQuotationLineProcessor CreateQuotationLineProcessor()
+        {
+            return new QuotationLineProcessor();
         }
     }
 }

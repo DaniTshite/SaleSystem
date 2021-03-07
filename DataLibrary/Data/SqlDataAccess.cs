@@ -56,6 +56,9 @@ namespace DataLibrary.Data
             }
            
         }
+
+        
+
         public static List<OrderLine> LoadEntryQuantities()
         {
             using (IDbConnection cn = new SqlConnection(GetConnectionString()))
@@ -134,6 +137,31 @@ namespace DataLibrary.Data
                    },
                                  p,
                                  splitOn: "ItemId,SaleId,UserId,QuotationId,AccountId").AsQueryable();
+
+                return query.ToList();
+            }
+        }
+
+        public static List<QuotationLine> LoadQuotationData(object quotationNumber)
+        {
+            using (IDbConnection cn = new SqlConnection(GetConnectionString()))
+            {
+                var p = new
+                {
+                    QuotationNumber = quotationNumber
+                };
+                string sql = @"spQuotations_GetAllByQuotationNumber @QuotationNumber";
+                var query = cn.Query<Item, QuotationLine, Quotations, Users,CustomerAccount, QuotationLine>(sql,
+                   (I, QL, Q, U, CA) =>
+                   {
+                       QL.SelectedItem = I;
+                       QL.Quotation = Q;
+                       QL.Quotation.SelectedUser = U;
+                       QL.Quotation.SelectedAccount = CA;
+                       return QL;
+                   },
+                                 p,
+                                 splitOn: "ItemId,QuotationId,UserId,AccountId").AsQueryable();
 
                 return query.ToList();
             }

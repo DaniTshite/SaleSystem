@@ -55,6 +55,7 @@
     <Compile Include="Processes\IItemProcessor.cs" />
     <Compile Include="Processes\IOrderLineProcessor.cs" />
     <Compile Include="Processes\IOrdersProcessor.cs" />
+    <Compile Include="Processes\IQuotationLineProcessor.cs" />
     <Compile Include="Processes\IQuotationsProcessor.cs" />
     <Compile Include="Processes\ISaleLineProcessor.cs" />
     <Compile Include="Processes\ISalesProcessor.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Processes\LoginProcessor.cs" />
     <Compile Include="Processes\OrderLineProcessor.cs" />
     <Compile Include="Processes\OrdersProcessor.cs" />
+    <Compile Include="Processes\QuotationLineProcessor.cs" />
     <Compile Include="Processes\QuotationsProcessor.cs" />
     <Compile Include="Processes\SaleLineProcessor.cs" />
     <Compile Include="Processes\SalesProcessor.cs" />

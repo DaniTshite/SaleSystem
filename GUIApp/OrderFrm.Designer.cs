@@ -820,7 +820,7 @@ namespace GUIApp
             this.SaleLinkLbl.Size = new System.Drawing.Size(80, 20);
             this.SaleLinkLbl.TabIndex = 36;
             this.SaleLinkLbl.TabStop = true;
-            this.SaleLinkLbl.Text = "New Sale";
+            this.SaleLinkLbl.Text = "New Quotation";
             this.SaleLinkLbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SalesLinkLbl_LinkClicked);
             // 
             // OrderFrm

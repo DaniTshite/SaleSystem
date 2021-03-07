@@ -53,7 +53,7 @@ namespace GUIApp
             // 
             // panelMenu
             // 
-            this.panelMenu.BackColor = System.Drawing.Color.DarkBlue;
+            this.panelMenu.BackColor = System.Drawing.Color.MidnightBlue;
             this.panelMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelMenu.Controls.Add(this.SettingsBtn);
             this.panelMenu.Controls.Add(this.SuppliersBtn);
@@ -68,35 +68,35 @@ namespace GUIApp
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(264, 789);
+            this.panelMenu.Size = new System.Drawing.Size(291, 789);
             this.panelMenu.TabIndex = 0;
             // 
             // SettingsBtn
             // 
-            this.SettingsBtn.BackColor = System.Drawing.Color.Navy;
+            this.SettingsBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.SettingsBtn.FlatAppearance.BorderSize = 0;
             this.SettingsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.SettingsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SettingsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.SettingsBtn.ForeColor = System.Drawing.Color.GhostWhite;
+            this.SettingsBtn.ForeColor = System.Drawing.Color.White;
             this.SettingsBtn.Location = new System.Drawing.Point(-1, 640);
             this.SettingsBtn.Name = "SettingsBtn";
-            this.SettingsBtn.Size = new System.Drawing.Size(264, 71);
+            this.SettingsBtn.Size = new System.Drawing.Size(291, 71);
             this.SettingsBtn.TabIndex = 0;
             this.SettingsBtn.Text = "SETTINGS";
             this.SettingsBtn.UseVisualStyleBackColor = false;
             // 
             // SuppliersBtn
             // 
-            this.SuppliersBtn.BackColor = System.Drawing.Color.Navy;
+            this.SuppliersBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.SuppliersBtn.FlatAppearance.BorderSize = 0;
             this.SuppliersBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.SuppliersBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SuppliersBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.SuppliersBtn.ForeColor = System.Drawing.Color.GhostWhite;
+            this.SuppliersBtn.ForeColor = System.Drawing.Color.White;
             this.SuppliersBtn.Location = new System.Drawing.Point(-1, 569);
             this.SuppliersBtn.Name = "SuppliersBtn";
-            this.SuppliersBtn.Size = new System.Drawing.Size(264, 71);
+            this.SuppliersBtn.Size = new System.Drawing.Size(291, 71);
             this.SuppliersBtn.TabIndex = 0;
             this.SuppliersBtn.Text = "SUPPLIERS";
             this.SuppliersBtn.UseVisualStyleBackColor = false;
@@ -104,60 +104,61 @@ namespace GUIApp
             // 
             // QuotationsBtn
             // 
-            this.QuotationsBtn.BackColor = System.Drawing.Color.Navy;
+            this.QuotationsBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.QuotationsBtn.FlatAppearance.BorderSize = 0;
             this.QuotationsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.QuotationsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.QuotationsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.QuotationsBtn.ForeColor = System.Drawing.Color.GhostWhite;
+            this.QuotationsBtn.ForeColor = System.Drawing.Color.White;
             this.QuotationsBtn.Location = new System.Drawing.Point(-1, 498);
             this.QuotationsBtn.Name = "QuotationsBtn";
-            this.QuotationsBtn.Size = new System.Drawing.Size(264, 71);
+            this.QuotationsBtn.Size = new System.Drawing.Size(291, 71);
             this.QuotationsBtn.TabIndex = 0;
             this.QuotationsBtn.Text = "QUOTATIONS";
             this.QuotationsBtn.UseVisualStyleBackColor = false;
+            this.QuotationsBtn.Click += new System.EventHandler(this.QuotationsBtn_Click);
             // 
             // ReportsBtn
             // 
-            this.ReportsBtn.BackColor = System.Drawing.Color.Navy;
+            this.ReportsBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.ReportsBtn.FlatAppearance.BorderSize = 0;
             this.ReportsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ReportsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ReportsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.ReportsBtn.ForeColor = System.Drawing.Color.GhostWhite;
+            this.ReportsBtn.ForeColor = System.Drawing.Color.White;
             this.ReportsBtn.Location = new System.Drawing.Point(-1, 427);
             this.ReportsBtn.Name = "ReportsBtn";
-            this.ReportsBtn.Size = new System.Drawing.Size(264, 71);
+            this.ReportsBtn.Size = new System.Drawing.Size(291, 71);
             this.ReportsBtn.TabIndex = 0;
             this.ReportsBtn.Text = "REPORTING";
             this.ReportsBtn.UseVisualStyleBackColor = false;
             // 
             // DeliveryBtn
             // 
-            this.DeliveryBtn.BackColor = System.Drawing.Color.Navy;
+            this.DeliveryBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.DeliveryBtn.FlatAppearance.BorderSize = 0;
             this.DeliveryBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.DeliveryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeliveryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.DeliveryBtn.ForeColor = System.Drawing.Color.GhostWhite;
+            this.DeliveryBtn.ForeColor = System.Drawing.Color.White;
             this.DeliveryBtn.Location = new System.Drawing.Point(-1, 356);
             this.DeliveryBtn.Name = "DeliveryBtn";
-            this.DeliveryBtn.Size = new System.Drawing.Size(264, 71);
+            this.DeliveryBtn.Size = new System.Drawing.Size(291, 71);
             this.DeliveryBtn.TabIndex = 0;
             this.DeliveryBtn.Text = "DELIVERY NOTES";
             this.DeliveryBtn.UseVisualStyleBackColor = false;
             // 
             // CustomersBtn
             // 
-            this.CustomersBtn.BackColor = System.Drawing.Color.Navy;
+            this.CustomersBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.CustomersBtn.FlatAppearance.BorderSize = 0;
             this.CustomersBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.CustomersBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CustomersBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.CustomersBtn.ForeColor = System.Drawing.Color.GhostWhite;
+            this.CustomersBtn.ForeColor = System.Drawing.Color.White;
             this.CustomersBtn.Location = new System.Drawing.Point(-1, 285);
             this.CustomersBtn.Name = "CustomersBtn";
-            this.CustomersBtn.Size = new System.Drawing.Size(264, 71);
+            this.CustomersBtn.Size = new System.Drawing.Size(291, 71);
             this.CustomersBtn.TabIndex = 0;
             this.CustomersBtn.Text = "CUSTOMERS";
             this.CustomersBtn.UseVisualStyleBackColor = false;
@@ -165,15 +166,15 @@ namespace GUIApp
             // 
             // SalesBtn
             // 
-            this.SalesBtn.BackColor = System.Drawing.Color.Navy;
+            this.SalesBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.SalesBtn.FlatAppearance.BorderSize = 0;
             this.SalesBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.SalesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SalesBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.SalesBtn.ForeColor = System.Drawing.Color.GhostWhite;
+            this.SalesBtn.ForeColor = System.Drawing.Color.White;
             this.SalesBtn.Location = new System.Drawing.Point(-1, 214);
             this.SalesBtn.Name = "SalesBtn";
-            this.SalesBtn.Size = new System.Drawing.Size(264, 71);
+            this.SalesBtn.Size = new System.Drawing.Size(291, 71);
             this.SalesBtn.TabIndex = 0;
             this.SalesBtn.Text = "SALE ORDERS";
             this.SalesBtn.UseVisualStyleBackColor = false;
@@ -181,15 +182,15 @@ namespace GUIApp
             // 
             // OrdersBtn
             // 
-            this.OrdersBtn.BackColor = System.Drawing.Color.Navy;
+            this.OrdersBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.OrdersBtn.FlatAppearance.BorderSize = 0;
             this.OrdersBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.OrdersBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OrdersBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.OrdersBtn.ForeColor = System.Drawing.Color.GhostWhite;
+            this.OrdersBtn.ForeColor = System.Drawing.Color.White;
             this.OrdersBtn.Location = new System.Drawing.Point(-1, 143);
             this.OrdersBtn.Name = "OrdersBtn";
-            this.OrdersBtn.Size = new System.Drawing.Size(264, 71);
+            this.OrdersBtn.Size = new System.Drawing.Size(291, 71);
             this.OrdersBtn.TabIndex = 0;
             this.OrdersBtn.Text = "SUPPLY ORDERS";
             this.OrdersBtn.UseVisualStyleBackColor = false;
@@ -197,15 +198,15 @@ namespace GUIApp
             // 
             // UsersBtn
             // 
-            this.UsersBtn.BackColor = System.Drawing.Color.Navy;
+            this.UsersBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.UsersBtn.FlatAppearance.BorderSize = 0;
             this.UsersBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.UsersBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UsersBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.UsersBtn.ForeColor = System.Drawing.Color.GhostWhite;
+            this.UsersBtn.ForeColor = System.Drawing.Color.White;
             this.UsersBtn.Location = new System.Drawing.Point(-1, 72);
             this.UsersBtn.Name = "UsersBtn";
-            this.UsersBtn.Size = new System.Drawing.Size(264, 71);
+            this.UsersBtn.Size = new System.Drawing.Size(291, 71);
             this.UsersBtn.TabIndex = 0;
             this.UsersBtn.Text = "USERS";
             this.UsersBtn.UseVisualStyleBackColor = false;
@@ -213,15 +214,15 @@ namespace GUIApp
             // 
             // ItemsBtn
             // 
-            this.ItemsBtn.BackColor = System.Drawing.Color.Navy;
+            this.ItemsBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.ItemsBtn.FlatAppearance.BorderSize = 0;
             this.ItemsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ItemsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ItemsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.ItemsBtn.ForeColor = System.Drawing.Color.GhostWhite;
+            this.ItemsBtn.ForeColor = System.Drawing.Color.White;
             this.ItemsBtn.Location = new System.Drawing.Point(-1, 1);
             this.ItemsBtn.Name = "ItemsBtn";
-            this.ItemsBtn.Size = new System.Drawing.Size(264, 71);
+            this.ItemsBtn.Size = new System.Drawing.Size(291, 71);
             this.ItemsBtn.TabIndex = 0;
             this.ItemsBtn.Text = "ITEMS AND CATEGORIES";
             this.ItemsBtn.UseVisualStyleBackColor = false;
@@ -233,9 +234,9 @@ namespace GUIApp
             this.panelTitle.Controls.Add(this.CloseChildFormBtn);
             this.panelTitle.Controls.Add(this.LblTitle);
             this.panelTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitle.Location = new System.Drawing.Point(264, 0);
+            this.panelTitle.Location = new System.Drawing.Point(291, 0);
             this.panelTitle.Name = "panelTitle";
-            this.panelTitle.Size = new System.Drawing.Size(1210, 48);
+            this.panelTitle.Size = new System.Drawing.Size(1183, 48);
             this.panelTitle.TabIndex = 1;
             // 
             // CloseChildFormBtn
@@ -244,7 +245,7 @@ namespace GUIApp
             this.CloseChildFormBtn.FlatAppearance.BorderSize = 0;
             this.CloseChildFormBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseChildFormBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.CloseChildFormBtn.Location = new System.Drawing.Point(1135, 0);
+            this.CloseChildFormBtn.Location = new System.Drawing.Point(1108, 0);
             this.CloseChildFormBtn.Name = "CloseChildFormBtn";
             this.CloseChildFormBtn.Size = new System.Drawing.Size(75, 48);
             this.CloseChildFormBtn.TabIndex = 1;
@@ -256,11 +257,11 @@ namespace GUIApp
             // 
             this.LblTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LblTitle.AutoSize = true;
-            this.LblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.LblTitle.Font = new System.Drawing.Font("Wide Latin", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTitle.ForeColor = System.Drawing.Color.Navy;
-            this.LblTitle.Location = new System.Drawing.Point(554, 9);
+            this.LblTitle.Location = new System.Drawing.Point(540, 9);
             this.LblTitle.Name = "LblTitle";
-            this.LblTitle.Size = new System.Drawing.Size(85, 29);
+            this.LblTitle.Size = new System.Drawing.Size(162, 29);
             this.LblTitle.TabIndex = 0;
             this.LblTitle.Text = "HOME";
             // 
@@ -269,9 +270,9 @@ namespace GUIApp
             this.panelDesktopPane.Controls.Add(this.label2);
             this.panelDesktopPane.Controls.Add(this.label1);
             this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktopPane.Location = new System.Drawing.Point(264, 48);
+            this.panelDesktopPane.Location = new System.Drawing.Point(291, 48);
             this.panelDesktopPane.Name = "panelDesktopPane";
-            this.panelDesktopPane.Size = new System.Drawing.Size(1210, 741);
+            this.panelDesktopPane.Size = new System.Drawing.Size(1183, 741);
             this.panelDesktopPane.TabIndex = 2;
             // 
             // label2
@@ -280,7 +281,7 @@ namespace GUIApp
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Navy;
-            this.label2.Location = new System.Drawing.Point(1025, 360);
+            this.label2.Location = new System.Drawing.Point(1011, 360);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(131, 20);
             this.label2.TabIndex = 1;
@@ -292,7 +293,7 @@ namespace GUIApp
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Elephant", 70.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Navy;
-            this.label1.Location = new System.Drawing.Point(26, 229);
+            this.label1.Location = new System.Drawing.Point(12, 229);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1165, 151);
             this.label1.TabIndex = 0;

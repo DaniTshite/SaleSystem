@@ -17,7 +17,10 @@ namespace DataLibrary.Models
         public decimal SubTotal { get; set; }
         public decimal Tax { get; set; }
         public decimal Total { get; set; }
-        public CustomerAccount Account { get; set; } = new CustomerAccount();
-        public Users User { get; set; } = new Users();
+        
+        public int QuotationNumber { get ; set ; }
+        public Users SelectedUser { get ; set ; }
+        public CustomerAccount SelectedAccount { get ; set ; }
+        public List<IQuotationLine> QuotationDetails { get ; set ; }
     }
 }
