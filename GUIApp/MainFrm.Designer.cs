@@ -310,7 +310,6 @@ namespace GUIApp
             this.MinimumSize = new System.Drawing.Size(1492, 836);
             this.Name = "MainFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainFrm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelMenu.ResumeLayout(false);
             this.panelTitle.ResumeLayout(false);

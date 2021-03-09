@@ -62,6 +62,18 @@
     <Compile Include="ItemFrm.Designer.cs">
       <DependentUpon>ItemFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoadingFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadingFrm.Designer.cs">
+      <DependentUpon>LoadingFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadingFrmTwo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadingFrmTwo.Designer.cs">
+      <DependentUpon>LoadingFrmTwo.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +133,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ItemFrm.resx">
       <DependentUpon>ItemFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingFrm.resx">
+      <DependentUpon>LoadingFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingFrmTwo.resx">
+      <DependentUpon>LoadingFrmTwo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginFrm.resx">
       <DependentUpon>LoginFrm.cs</DependentUpon>

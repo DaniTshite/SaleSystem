@@ -341,11 +341,6 @@ namespace GUIApp
             ItemsToReorderGroupBox.Enabled = true;
             FilterOrdersByDateGroupBox.Enabled = true;
             ResetBtn.Enabled = true;
-            SupplierLinkLbl.Enabled = true;
-            ItemLinkLbl.Enabled = true;
-            UsersLinkLbl.Enabled = true;
-            CustomerAccountLinkLbl.Enabled = true;
-            SaleLinkLbl.Enabled = true;
             ItemsGridView.DataSource = null;
             ResetControls();
             ListItemsCmb.Focus();
