@@ -29,11 +29,11 @@ namespace GUIApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.SaveBtn = new System.Windows.Forms.Button();
@@ -41,7 +41,6 @@ namespace GUIApp
             this.panel3 = new System.Windows.Forms.Panel();
             this.UsersCmb = new System.Windows.Forms.ComboBox();
             this.CustomerAccountsCmb = new System.Windows.Forms.ComboBox();
-            this.QuotationsCmb = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TotalOrdersLbl = new System.Windows.Forms.Label();
             this.TotalLbl = new System.Windows.Forms.Label();
@@ -61,6 +60,7 @@ namespace GUIApp
             this.RetailPriceLbl = new System.Windows.Forms.Label();
             this.AddToCartBtn = new System.Windows.Forms.Button();
             this.ItemsListBox = new System.Windows.Forms.ListBox();
+            this.QuotationValidityLbl = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -138,7 +138,6 @@ namespace GUIApp
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.UsersCmb);
             this.panel3.Controls.Add(this.CustomerAccountsCmb);
-            this.panel3.Controls.Add(this.QuotationsCmb);
             this.panel3.Location = new System.Drawing.Point(389, 602);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(332, 152);
@@ -163,16 +162,6 @@ namespace GUIApp
             this.CustomerAccountsCmb.Name = "CustomerAccountsCmb";
             this.CustomerAccountsCmb.Size = new System.Drawing.Size(283, 28);
             this.CustomerAccountsCmb.TabIndex = 47;
-            // 
-            // QuotationsCmb
-            // 
-            this.QuotationsCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.QuotationsCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.QuotationsCmb.FormattingEnabled = true;
-            this.QuotationsCmb.Location = new System.Drawing.Point(17, 62);
-            this.QuotationsCmb.Name = "QuotationsCmb";
-            this.QuotationsCmb.Size = new System.Drawing.Size(283, 28);
-            this.QuotationsCmb.TabIndex = 48;
             // 
             // panel2
             // 
@@ -268,6 +257,7 @@ namespace GUIApp
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.QuotationValidityLbl);
             this.panel1.Controls.Add(this.InvoiceNumberLbl);
             this.panel1.Location = new System.Drawing.Point(18, 13);
             this.panel1.Name = "panel1";
@@ -293,10 +283,10 @@ namespace GUIApp
             this.ItemsGridView.AllowUserToOrderColumns = true;
             this.ItemsGridView.AllowUserToResizeColumns = false;
             this.ItemsGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
-            this.ItemsGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.White;
+            this.ItemsGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.ItemsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -304,42 +294,42 @@ namespace GUIApp
             this.ItemsGridView.BackgroundColor = System.Drawing.Color.White;
             this.ItemsGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ItemsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ItemsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ItemsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.ItemsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ItemsGridView.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemsGridView.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsGridView.DefaultCellStyle = dataGridViewCellStyle23;
             this.ItemsGridView.GridColor = System.Drawing.Color.White;
             this.ItemsGridView.Location = new System.Drawing.Point(18, 69);
             this.ItemsGridView.MultiSelect = false;
             this.ItemsGridView.Name = "ItemsGridView";
             this.ItemsGridView.ReadOnly = true;
             this.ItemsGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemsGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.ItemsGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.ItemsGridView.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.ItemsGridView.RowsDefaultCellStyle = dataGridViewCellStyle25;
             this.ItemsGridView.RowTemplate.Height = 24;
             this.ItemsGridView.Size = new System.Drawing.Size(1070, 526);
             this.ItemsGridView.TabIndex = 22;
@@ -467,6 +457,18 @@ namespace GUIApp
             this.ItemsListBox.TabIndex = 0;
             this.ItemsListBox.SelectedValueChanged += new System.EventHandler(this.ItemsListBox_SelectedValueChanged);
             // 
+            // QuotationValidityLbl
+            // 
+            this.QuotationValidityLbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.QuotationValidityLbl.AutoSize = true;
+            this.QuotationValidityLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.QuotationValidityLbl.ForeColor = System.Drawing.Color.Blue;
+            this.QuotationValidityLbl.Location = new System.Drawing.Point(709, 5);
+            this.QuotationValidityLbl.Name = "QuotationValidityLbl";
+            this.QuotationValidityLbl.Size = new System.Drawing.Size(183, 26);
+            this.QuotationValidityLbl.TabIndex = 35;
+            this.QuotationValidityLbl.Text = "VALID UNTIL :  ";
+            // 
             // QuotationFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -476,6 +478,7 @@ namespace GUIApp
             this.Controls.Add(this.groupBox1);
             this.Name = "QuotationFrm";
             this.Text = "QUOTATIONS";
+            this.Load += new System.EventHandler(this.QuotationFrm_Load);
             this.groupBox1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -496,7 +499,6 @@ namespace GUIApp
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox UsersCmb;
         private System.Windows.Forms.ComboBox CustomerAccountsCmb;
-        private System.Windows.Forms.ComboBox QuotationsCmb;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label TotalOrdersLbl;
         private System.Windows.Forms.Label TotalLbl;
@@ -519,5 +521,6 @@ namespace GUIApp
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.Button ResetBtn;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label QuotationValidityLbl;
     }
 }

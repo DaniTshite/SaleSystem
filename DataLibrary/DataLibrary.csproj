@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Data\SqlDataAccess.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\DeliveryType.cs" />
     <Compile Include="Models\CustomerAccount.cs" />
     <Compile Include="Models\Delivery.cs" />
     <Compile Include="Models\ICategory.cs" />

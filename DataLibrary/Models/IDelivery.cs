@@ -7,6 +7,7 @@ namespace DataLibrary.Models
         int DeliveryId { get; set; }
         int SaleId { get; set; }
         DateTime DeliveryDate { get; set; }
-        string DeliveryType { get; set; }
+        DeliveryType TypeOfDelivery { get; set; }
+        string DeliveryNumber { get; set; }
     }
 }

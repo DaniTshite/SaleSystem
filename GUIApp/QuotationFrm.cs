@@ -36,6 +36,7 @@ namespace GUIApp
         //current invoice IsNumber
         int CurrentQuotatioNumber;
         decimal RetailPrice;
+        int StockQuantity;
         decimal SubTotal;
         decimal Total = 0, Tax = 0;
         
@@ -66,9 +67,6 @@ namespace GUIApp
             UsersCmb.DataSource = users;
             UsersCmb.DisplayMember = "FullName";
             UsersCmb.ValueMember = "userId";
-            //QuotationsCmb.DataSource = quotations;
-            QuotationsCmb.DisplayMember = "QuotationId";
-            QuotationsCmb.ValueMember = "QuotationId";
             CustomerAccountsCmb.DataSource = customerAccounts;
             CustomerAccountsCmb.DisplayMember = "FirstName";
             CustomerAccountsCmb.ValueMember = "AccountId";
@@ -77,7 +75,7 @@ namespace GUIApp
             ResetAllControls();
             ItemsListBox.SelectedValueChanged += ItemsListBox_SelectedValueChanged;
         }
-
+        //This method displays the retail price when a value is selected in the combobox
         private void ItemsListBox_SelectedValueChanged(object sender, EventArgs e)
         {
             var listItemQuantities = _orderLineProcessor.GetEntryQuantityByItem();
@@ -91,17 +89,29 @@ namespace GUIApp
                 {
                     if (int.Parse(ItemsListBox.SelectedValue.ToString()) == itemQuantity.SelectedItem.Itemid)
                     {
-                        StockQuantityLbl.Text = HelperProcessor.GetStockQuantity(itemQuantity.SelectedItem.Itemid).ToString();
+                        //checks if the item is already in the shopping cart so that we can substract that quantity from the stock quantity
+                        if (ItemsGridView.DataSource != null)
+                        {
+                            foreach (DataGridViewRow row in ItemsGridView.Rows)
+                            {
+                                if (Convert.ToString(row.Cells["Descript"].Value) == Convert.ToString(ItemsListBox.Text))
+                                {
+                                    StockQuantity = HelperProcessor.GetStockQuantity(itemQuantity.SelectedItem.Itemid) - (int)(row.Cells["PurchasedQuantity"].Value);
+                                    IsItemFound = true;
+                                }
+                            }
+                        }
+                        if (!IsItemFound)
+                        {
+                            StockQuantity = HelperProcessor.GetStockQuantity(itemQuantity.SelectedItem.Itemid);
+                        }
+                        StockQuantityLbl.Text = StockQuantity.ToString();
                         RetailPrice = _itemProcessor.CalculateSalePrice(itemQuantity.SelectedItem.Itemid);
                         RetailPriceLbl.Text = String.Format("{0:C2}", RetailPrice); ;
-                        IsItemFound = true;
+                        
                     }
                 }
-                if (!IsItemFound)
-                {
-                    StockQuantityLbl.Text = "0.00";
-                    RetailPriceLbl.Text = "0.00";
-                }
+               
             }
         }
 
@@ -235,6 +245,11 @@ namespace GUIApp
                 }
 
             }
+        }
+
+        private void QuotationFrm_Load(object sender, EventArgs e)
+        {
+            QuotationValidityLbl.Text = QuotationValidityLbl.Text + DateTime.Today.AddDays(7).ToLongDateString();
         }
 
         private bool IsSaleLineValid()

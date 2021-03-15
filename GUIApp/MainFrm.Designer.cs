@@ -132,6 +132,7 @@ namespace GUIApp
             this.ReportsBtn.TabIndex = 0;
             this.ReportsBtn.Text = "REPORTING";
             this.ReportsBtn.UseVisualStyleBackColor = false;
+            this.ReportsBtn.Click += new System.EventHandler(this.ReportsBtn_Click);
             // 
             // DeliveryBtn
             // 

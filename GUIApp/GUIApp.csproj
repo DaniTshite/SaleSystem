@@ -110,6 +110,12 @@
     <Compile Include="QuotationFrm.Designer.cs">
       <DependentUpon>QuotationFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportFrm.Designer.cs">
+      <DependentUpon>ReportFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SaleFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,12 @@
     </Compile>
     <Compile Include="UsersForm.Designer.cs">
       <DependentUpon>UsersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WaitProcessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaitProcessForm.Designer.cs">
+      <DependentUpon>WaitProcessForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="CustomerAccountFrm.resx">
       <DependentUpon>CustomerAccountFrm.cs</DependentUpon>
@@ -164,6 +176,9 @@
     <EmbeddedResource Include="QuotationFrm.resx">
       <DependentUpon>QuotationFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportFrm.resx">
+      <DependentUpon>ReportFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SaleFrm.resx">
       <DependentUpon>SaleFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsersForm.resx">
       <DependentUpon>UsersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitProcessForm.resx">
+      <DependentUpon>WaitProcessForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

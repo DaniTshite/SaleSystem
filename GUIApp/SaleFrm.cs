@@ -23,6 +23,7 @@ namespace GUIApp
         ICustomerAccountProcessor _customerAccountsProcessor;
         IUsersProcessor _usersProcessor;
         IItemProcessor _itemProcessor;
+        IQuotationsProcessor _quotationsProcessor;
         List<Item> activeItems ;
         List<Quotations> quotations;
         List<Users> users;
@@ -36,8 +37,12 @@ namespace GUIApp
         //current invoice IsNumber
         int CurrentInvoiceNumber;
         decimal RetailPrice;
+        int StockQuantity;
         decimal SubTotal;
         decimal Total=0,Tax=0;
+
+        //quotation details to display
+        List<QuotationLine> quotationDetails;
         public SaleFrm()
         {
             InitializeComponent();
@@ -47,12 +52,15 @@ namespace GUIApp
         private void Initialize()
         {
             ItemsListBox.SelectedValueChanged -=ItemsListBox_SelectedValueChanged;
+            QuotationsCmb.SelectedValueChanged -= QuotationsCmb_SelectedValueChanged;
             _customerAccountsProcessor = ContainerConfig.CreateCustomerAccountProcessor();
             _salesProcessor = ContainerConfig.CreateSalesProcessor();
             _orderLineProcessor = ContainerConfig.CreateOrderLineProcessor();
             _itemProcessor = ContainerConfig.CreateItemProcessor();
             _usersProcessor = ContainerConfig.CreateUsersProcessor();
+            _quotationsProcessor = ContainerConfig.CreateQuotationsProcessor();
             quotations = new List<Quotations>();
+            quotations = _quotationsProcessor.GetQuotations();
             users = new List<Users>();
             users = _usersProcessor.GetUsers();
             customerAccounts = new List<CustomerAccount>();
@@ -66,20 +74,20 @@ namespace GUIApp
             UsersCmb.DisplayMember = "FullName";
             UsersCmb.ValueMember = "userId";
             QuotationsCmb.DataSource = quotations;
-            QuotationsCmb.DisplayMember = "QuotationId";
-            QuotationsCmb.ValueMember = "QuotationId";
+            QuotationsCmb.DisplayMember = "QuotationNumber";
+            QuotationsCmb.ValueMember = "QuotationNumber";
             CustomerAccountsCmb.DataSource = customerAccounts;
             CustomerAccountsCmb.DisplayMember = "FirstName";
             CustomerAccountsCmb.ValueMember = "AccountId";
             itemsToDisplay = new List<OrderCart>();
             itemsToSave = new List<SaleLine>();
             ResetAllControls();
+            QuotationsCmb.SelectedValueChanged += QuotationsCmb_SelectedValueChanged;
             ItemsListBox.SelectedValueChanged += ItemsListBox_SelectedValueChanged;
         }
-        //This displays the retail price when a value is selected in the combobox
+        //This method displays the retail price when a value is selected in the combobox
         private void ItemsListBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            
             var listItemQuantities = _orderLineProcessor.GetEntryQuantityByItem();
             bool IsItemFound = false;
             if (ItemsListBox.SelectedValue != null)
@@ -91,16 +99,27 @@ namespace GUIApp
                 {
                     if (int.Parse(ItemsListBox.SelectedValue.ToString()) == itemQuantity.SelectedItem.Itemid)
                     {
-                        StockQuantityLbl.Text = HelperProcessor.GetStockQuantity(itemQuantity.SelectedItem.Itemid).ToString();
+                        //checks if the item is already in the shopping cart so that we can substract that quantity from the stock quantity
+                        if (ItemsGridView.DataSource != null)
+                        {
+                            foreach (DataGridViewRow row in ItemsGridView.Rows)
+                            {
+                                if (Convert.ToString(row.Cells["Descript"].Value) == Convert.ToString(ItemsListBox.Text))
+                                {
+                                    StockQuantity = HelperProcessor.GetStockQuantity(itemQuantity.SelectedItem.Itemid) - (int)(row.Cells["PurchasedQuantity"].Value);
+                                    IsItemFound = true;
+                                }
+                            }
+                        }
+                        if(!IsItemFound)
+                        {
+                            StockQuantity = HelperProcessor.GetStockQuantity(itemQuantity.SelectedItem.Itemid);
+                        }
+                        
+                        StockQuantityLbl.Text = StockQuantity.ToString();
                         RetailPrice = _itemProcessor.CalculateSalePrice(itemQuantity.SelectedItem.Itemid);
-                        RetailPriceLbl.Text = String.Format("{0:C2}", RetailPrice); ;
-                        IsItemFound = true;
+                        RetailPriceLbl.Text = String.Format("{0:C2}", RetailPrice);
                     }
-                }
-                if (!IsItemFound)
-                {
-                    StockQuantityLbl.Text = "0.00";
-                    RetailPriceLbl.Text = "0.00";
                 }
             }
         }
@@ -210,6 +229,27 @@ namespace GUIApp
         //Yhis method add an item into the cart 
         private void AddToCartBtn_Click(object sender, EventArgs e)
         {
+
+            if(quotationDetails != null)
+            {
+                //initialize line counter from the last value of the quotation deails
+                //populate the list of salelines to save
+                itemCounter = itemsToDisplay.Count + 1;
+                foreach (var quotation in quotationDetails)
+                {
+                    //instanciation of saleline object to save into the DB
+                    SaleLine saleLine = new SaleLine
+                    {
+                        SelectedItem = quotation.SelectedItem,
+                        RetailPrice = quotation.RetailPrice,
+                        SaleQuantity = quotation.QuotationQuantity,
+                        LineTotal = quotation.LineTotal
+                    };
+                    //list of items to save into the DB
+                    itemsToSave.Add(saleLine);
+                }
+                
+            }
             if (IsSaleLineValid())
             {
 
@@ -234,7 +274,7 @@ namespace GUIApp
                         if (Convert.ToString(row.Cells["Descript"].Value) == Convert.ToString(ItemsListBox.Text))
                         {
                             row.Cells["PurchasedQuantity"].Value = Convert.ToInt16(row.Cells["PurchasedQuantity"].Value) + Convert.ToInt16(SaleQuantityTxt.Text);
-                            row.Cells["LineTotal"].Value = Convert.ToDecimal(RetailPriceLbl.Text) * Convert.ToDecimal(row.Cells["PurchasedQuantity"].Value);
+                            row.Cells["LineTotal"].Value = RetailPrice * Convert.ToDecimal(row.Cells["PurchasedQuantity"].Value);
                             row.Cells["Id"].Value = row.Cells["Id"].Value;
                             ItemSelectedAgain = true;
                         }
@@ -279,14 +319,14 @@ namespace GUIApp
                     RetailPriceLbl.Text = "";
                     StockQuantityLbl.Text = "";
                     SaleQuantityTxt.Clear();
-
+                    quotationDetails = null;
                 }
                 else
                 {
                     MessageBox.Show(" There is no enough stock !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     SaleQuantityTxt.Clear();
-                    RetailPriceLbl.Text = "0.00";
-                    StockQuantityLbl.Text = "";
+                    RetailPriceLbl.Text = "0";
+                    StockQuantityLbl.Text = "0";
                 }
 
             }
@@ -319,6 +359,48 @@ namespace GUIApp
                 DeliveryDateTimePicker.Enabled = true;
             }
         }
+
+        private void QuotationsCmb_SelectedValueChanged(object sender, EventArgs e)
+        {
+            AddToCartBtn.Enabled = true;
+            CashBtn.Enabled = true;
+            EFTBtn.Enabled = true;
+            PaidTxt.Enabled = true;
+            RefundBtn.Enabled = true;
+            ResetBtn.Enabled = true;
+            quotationDetails = _quotationsProcessor.GetQuotationDetails(((Quotations)QuotationsCmb.SelectedItem).QuotationNumber.ToString());
+            itemsToDisplay = new List<OrderCart>();
+
+            int lineCounter = 1;
+
+            foreach (var quotation in quotationDetails)
+            {
+                OrderCart shoppingCartLine = new OrderCart
+                {
+                    Id = lineCounter,
+                    StockCode = quotation.SelectedItem.StockCode,
+                    Descript = quotation.SelectedItem.Descript,
+                    PurchasedQuantity = quotation.QuotationQuantity,
+                    PurchasePrice = quotation.RetailPrice,
+                    LineTotal = quotation.LineTotal
+                };
+                itemsToDisplay.Add(shoppingCartLine);
+                lineCounter += 1;
+            }
+            ItemsGridView.DataSource = null;
+            ItemsGridView.DataSource = itemsToDisplay;
+            //hide 2 columns(ItemId,OrderNumber) in the grid
+
+            ItemsGridView.Columns[4].DefaultCellStyle.Format = "c2";
+            ItemsGridView.Columns[5].DefaultCellStyle.Format = "c2";
+
+            SubTotal = itemsToDisplay.Sum(x => x.LineTotal);
+            Total = SubTotal;
+            SubTotalLbl.Text = String.Format("{0:C2}", SubTotal);
+            TotalLbl.Text = String.Format("{0:C2}", Total);
+            
+        }
+    
 
         private void SaleFrm_Load(object sender, EventArgs e)
         {

@@ -39,7 +39,7 @@ namespace GUIApp
         //Item counter for Order Cart
 
         int itemCounter = 1;
-        List<OrderLine> orderDetails1;
+        List<OrderLine> orderDetails;
         private decimal PurchasePrice;
         List<IOrderLine> itemsToSave;
 
@@ -71,7 +71,7 @@ namespace GUIApp
             gridItems = new List<OrderLine>();
             gridOrderItemsToDisplay = new List<OrderCart>();
             itemsToSave = new List<IOrderLine>();
-            orderDetails1 = new List<OrderLine>();
+            orderDetails = new List<OrderLine>();
             ListItemsCmb.SelectedValueChanged += ListItemsCmb_SelectedValueChanged;
         }
 
@@ -292,7 +292,7 @@ namespace GUIApp
             GdTotalTxt.Text = "0";
             OrderNumberTxt.Clear();
             ItemsGridView.DataSource = null;
-            orderDetails1 = null;
+            orderDetails = null;
             Initialize();
         }
 
@@ -354,8 +354,8 @@ namespace GUIApp
             e.Graphics.DrawString("Page   " + ((itemsPrintedSoFar % 7) == 0 ? (itemsPrintedSoFar / 7) + 1 : (itemsPrintedSoFar / 7) + 2),
                 new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 50));
             e.Graphics.DrawString("Order Report", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(30, 330));
-            e.Graphics.DrawString("Date : " + orderDetails1[0].Order.OrderDate.Date.ToLongDateString(), new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 370));
-            e.Graphics.DrawString("Order Number :  " + orderDetails1[0].Order.OrderNumber, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 410));
+            e.Graphics.DrawString("Date : " + orderDetails[0].Order.OrderDate.Date.ToLongDateString(), new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 370));
+            e.Graphics.DrawString("Order Number :  " + orderDetails[0].Order.OrderNumber, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 410));
             e.Graphics.DrawString("*****************************************************************************************************************************************",
                 new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(30, 440));
             e.Graphics.DrawString(" No ", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 460));
@@ -367,20 +367,20 @@ namespace GUIApp
                 new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(30, 490));
             int YPos = 490;
 
-            for (int i = itemsPrintedSoFar; i < orderDetails1.Count; i++)
+            for (int i = itemsPrintedSoFar; i < orderDetails.Count; i++)
             {
                 NumberOfItemsPage++;
                 if (NumberOfItemsPage <= 7)
                 {
                     itemsPrintedSoFar++;
 
-                    if (itemsPrintedSoFar <= orderDetails1.Count)
+                    if (itemsPrintedSoFar <= orderDetails.Count)
                     {
-                        //e.Graphics.DrawString(orderDetails1[i].Id.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(30, YPos + 30));
-                        e.Graphics.DrawString(orderDetails1[i].SelectedItem.Descript, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(70, YPos + 30));
-                        e.Graphics.DrawString(orderDetails1[i].PurchasePrice.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(370, YPos + 30));
-                        e.Graphics.DrawString(orderDetails1[i].PurchasedQuantity.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(480, YPos + 30));
-                        e.Graphics.DrawString(orderDetails1[i].LineTotal.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(640, YPos + 30));
+                        //e.Graphics.DrawString(orderDetails[i].Id.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(30, YPos + 30));
+                        e.Graphics.DrawString(orderDetails[i].SelectedItem.Descript, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(70, YPos + 30));
+                        e.Graphics.DrawString(orderDetails[i].PurchasePrice.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(370, YPos + 30));
+                        e.Graphics.DrawString(orderDetails[i].PurchasedQuantity.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(480, YPos + 30));
+                        e.Graphics.DrawString(orderDetails[i].LineTotal.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(640, YPos + 30));
                         YPos += 30;
                     }
                     else
@@ -397,13 +397,13 @@ namespace GUIApp
             }
             e.Graphics.DrawString("*******************************************************************************************************************",
                 new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(30, YPos + 30));
-            e.Graphics.DrawString(" Sub Total  (R) : " + orderDetails1[0].Order.SubTotal, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, YPos + 60));
-            e.Graphics.DrawString(" VAT    (R) : " + orderDetails1[0].Order.Tax, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, YPos + 90));
-            e.Graphics.DrawString(" Grand Total (R) : " + orderDetails1[0].Order.Total, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, YPos + 120));
-            e.Graphics.DrawString(" Supplied by : " + orderDetails1[0].Order.SelectedSupplier.SupplierName, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, YPos + 150));
-            e.Graphics.DrawString(" " + orderDetails1[0].Order.SelectedSupplier.SupplierTelephone, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(120, YPos + 180));
-            e.Graphics.DrawString(" " + orderDetails1[0].Order.SelectedSupplier.SupplierEmailAddress, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(120, YPos + 210));
-            e.Graphics.DrawString(" " + orderDetails1[0].Order.SelectedSupplier.SupplierPhysicalAddress, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(120, YPos + 240));
+            e.Graphics.DrawString(" Sub Total  (R) : " + orderDetails[0].Order.SubTotal, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, YPos + 60));
+            e.Graphics.DrawString(" VAT    (R) : " + orderDetails[0].Order.Tax, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, YPos + 90));
+            e.Graphics.DrawString(" Grand Total (R) : " + orderDetails[0].Order.Total, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, YPos + 120));
+            e.Graphics.DrawString(" Supplied by : " + orderDetails[0].Order.SelectedSupplier.SupplierName, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, YPos + 150));
+            e.Graphics.DrawString(" " + orderDetails[0].Order.SelectedSupplier.SupplierTelephone, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(120, YPos + 180));
+            e.Graphics.DrawString(" " + orderDetails[0].Order.SelectedSupplier.SupplierEmailAddress, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(120, YPos + 210));
+            e.Graphics.DrawString(" " + orderDetails[0].Order.SelectedSupplier.SupplierPhysicalAddress, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(120, YPos + 240));
             NumberOfItemsPage = 0;
             itemsPrintedSoFar = 0;
         }
@@ -418,8 +418,8 @@ namespace GUIApp
             }
             else
             {
-                orderDetails1 = _ordersProcessor.GetOrderDetails(SearchOrderNumberTxt.Text);
-                if (orderDetails1.Count == 0 || orderDetails1 == null)
+                orderDetails = _ordersProcessor.GetOrderDetails(SearchOrderNumberTxt.Text);
+                if (orderDetails.Count == 0 || orderDetails == null)
                 {
                     MessageBox.Show(" Order Number  " + SearchOrderNumberTxt.Text + "  does not exist in the System", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     SearchOrderNumberTxt.Clear();
@@ -431,7 +431,7 @@ namespace GUIApp
 
                     int lineCounter = 1;
 
-                    foreach (var order in orderDetails1)
+                    foreach (var order in orderDetails)
                     {
 
                         //order.Id = lineCounter;
@@ -453,9 +453,9 @@ namespace GUIApp
 
                     ItemsGridView.Columns[4].DefaultCellStyle.Format = "c2";
                     ItemsGridView.Columns[5].DefaultCellStyle.Format = "c2";
-                    STotalTxt.Text = orderDetails1[0].Order.SubTotal.ToString();
-                    TaxTxt.Text = orderDetails1[0].Order.Tax.ToString();
-                    GdTotalTxt.Text = orderDetails1[0].Order.Total.ToString();
+                    STotalTxt.Text = orderDetails[0].Order.SubTotal.ToString();
+                    TaxTxt.Text = orderDetails[0].Order.Tax.ToString();
+                    GdTotalTxt.Text = orderDetails[0].Order.Total.ToString();
                 }
             }
         }
@@ -463,7 +463,7 @@ namespace GUIApp
         private void PrintPreviewReportOrder_Click(object sender, EventArgs e)
         {
 
-            if (orderDetails1.Count == 0 || orderDetails1 == null)
+            if (orderDetails.Count == 0 || orderDetails == null)
             {
                 MessageBox.Show("The which order do you want to preview !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SearchOrderNumberTxt.Clear();

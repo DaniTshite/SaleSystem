@@ -105,5 +105,10 @@ namespace GUIApp
         {
             OpenChildForm(new QuotationFrm(), sender);
         }
+
+        private void ReportsBtn_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new ReportFrm(), sender);
+        }
     }
 }

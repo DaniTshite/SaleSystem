@@ -61,6 +61,7 @@ namespace GUIApp
             // 
             this.SecondPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.SecondPanel.BackColor = System.Drawing.Color.LimeGreen;
+            this.SecondPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.SecondPanel.Location = new System.Drawing.Point(0, 121);
             this.SecondPanel.Name = "SecondPanel";
             this.SecondPanel.Size = new System.Drawing.Size(72, 26);
@@ -76,7 +77,7 @@ namespace GUIApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Highlight;
+            this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(520, 147);
             this.Controls.Add(this.SecondPanel);
             this.Controls.Add(this.FirstPanel);

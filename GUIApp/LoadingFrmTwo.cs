@@ -23,7 +23,7 @@ namespace GUIApp
             if (SecondPanel.Width >=520)
             {
                 LoadingTimer.Stop();
-                //this.Hide();
+                this.Hide();
                 MainFrm mf = new MainFrm();
                 mf.ShowDialog();
                 this.Close();

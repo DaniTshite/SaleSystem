@@ -14,6 +14,7 @@ namespace DataLibrary.Models
         public int DeliveryId { get; set; }
         public int SaleId { get; set; }
         public DateTime DeliveryDate { get; set; }
-        public string DeliveryType { get; set; } 
+        public DeliveryType TypeOfDelivery { get; set; } 
+        public string DeliveryNumber { get; set; }
     }
 }

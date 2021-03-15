@@ -35,7 +35,7 @@ namespace LogicLibrary.Processes
         public int GetQuotationNumber()
         {
             int number = GenerateNumber();
-            List<QuotationLine> listSales = GetQuotatioDetails(number.ToString());
+            List<QuotationLine> listSales = GetQuotationDetails(number.ToString());
             while (!_doesQuotationNumberExist)
             {
                 if (listSales != null || listSales.Count > 0)
@@ -85,10 +85,15 @@ namespace LogicLibrary.Processes
         /// </summary>
         /// <param name="quotationNumber">This is a string representing the quotation number</param>
         /// <returns>It returns a list of QuotationLine objects</returns>
-        public List<QuotationLine> GetQuotatioDetails(string quotationNumber)
+        public List<QuotationLine> GetQuotationDetails(string quotationNumber)
         {
             var output = SqlDataAccess.LoadQuotationData(quotationNumber);
             return output;
+        }
+        public List<Quotations> GetQuotations()
+        {
+            string sql = $"spQuotations_GetAll";
+            return SqlDataAccess.LoadData<Quotations>(sql);
         }
     }
 }
