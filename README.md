@@ -1,2 +1,2 @@
 # SaleSystem
-A point of Sale System Built by Dani Tshite
+A point of Sale System Built that tracks all operations from supply to sale
