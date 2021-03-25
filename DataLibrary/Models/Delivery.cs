@@ -16,5 +16,6 @@ namespace DataLibrary.Models
         public DateTime DeliveryDate { get; set; }
         public DeliveryType TypeOfDelivery { get; set; } 
         public string DeliveryNumber { get; set; }
+        public int DeliveryStatus { get; set; }
     }
 }

@@ -19,20 +19,18 @@ namespace LogicLibrary.Processes
         /// </summary>
         /// <param name="delivery">This is an IDelivery object</param>
         /// <returns>It returns a string value</returns>
-        public string SaveDelivery(IDelivery delivery)
+        public void SaveDelivery(IDelivery delivery)
         {
             try
             {
                 _delivery = delivery;
-                string sql = @"spDelivery_insert @DeliveryDate,@SaleId,@DeliveryType";
+                string sql = @"spDelivery_insert @DeliveryDate,@SaleId,@TypeOfDelivery,@DeliveryNumber,@DeliveryStatus";
                 SqlDataAccess.RegisterData(sql, _delivery);
-                return "1 Record has been added Successfully !";
             }
-            catch (Exception)
+            catch (Exception )
             {
-                return " Something went wrong !";
+                throw;
             }
-
         }
         /// <summary>
         /// This method gets all delivery objects from the DB

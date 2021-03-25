@@ -249,7 +249,7 @@ namespace GUIApp
 
         private void QuotationFrm_Load(object sender, EventArgs e)
         {
-            QuotationValidityLbl.Text = QuotationValidityLbl.Text + DateTime.Today.AddDays(7).ToLongDateString();
+            QuotationValidityLbl.Text = QuotationValidityLbl.Text + DateTime.Today.AddDays(7).ToShortDateString();
         }
 
         private bool IsSaleLineValid()

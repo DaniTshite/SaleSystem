@@ -34,6 +34,7 @@ namespace GUIApp
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SaleFrm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.ChangeLbl = new System.Windows.Forms.Label();
@@ -378,6 +379,7 @@ namespace GUIApp
             this.ItemsGridView.RowTemplate.Height = 24;
             this.ItemsGridView.Size = new System.Drawing.Size(1141, 581);
             this.ItemsGridView.TabIndex = 22;
+            this.ItemsGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsGridView_CellContentClick);
             // 
             // label3
             // 
@@ -385,7 +387,7 @@ namespace GUIApp
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(7, 13);
+            this.label3.Location = new System.Drawing.Point(9, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(135, 18);
             this.label3.TabIndex = 35;
@@ -416,7 +418,7 @@ namespace GUIApp
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(22, 381);
+            this.label7.Location = new System.Drawing.Point(22, 372);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(136, 29);
             this.label7.TabIndex = 15;
@@ -428,7 +430,7 @@ namespace GUIApp
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(22, 343);
+            this.label6.Location = new System.Drawing.Point(22, 334);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(97, 29);
             this.label6.TabIndex = 14;
@@ -440,7 +442,7 @@ namespace GUIApp
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(22, 313);
+            this.label5.Location = new System.Drawing.Point(22, 304);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(148, 29);
             this.label5.TabIndex = 13;
@@ -452,7 +454,7 @@ namespace GUIApp
             this.SaleQuantityTxt.Enabled = false;
             this.SaleQuantityTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaleQuantityTxt.ForeColor = System.Drawing.Color.Navy;
-            this.SaleQuantityTxt.Location = new System.Drawing.Point(245, 376);
+            this.SaleQuantityTxt.Location = new System.Drawing.Point(245, 367);
             this.SaleQuantityTxt.Name = "SaleQuantityTxt";
             this.SaleQuantityTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.SaleQuantityTxt.Size = new System.Drawing.Size(84, 38);
@@ -464,7 +466,7 @@ namespace GUIApp
             this.StockQuantityLbl.AutoSize = true;
             this.StockQuantityLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StockQuantityLbl.ForeColor = System.Drawing.Color.White;
-            this.StockQuantityLbl.Location = new System.Drawing.Point(262, 343);
+            this.StockQuantityLbl.Location = new System.Drawing.Point(262, 334);
             this.StockQuantityLbl.Name = "StockQuantityLbl";
             this.StockQuantityLbl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StockQuantityLbl.Size = new System.Drawing.Size(62, 29);
@@ -477,7 +479,7 @@ namespace GUIApp
             this.RetailPriceLbl.AutoSize = true;
             this.RetailPriceLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RetailPriceLbl.ForeColor = System.Drawing.Color.White;
-            this.RetailPriceLbl.Location = new System.Drawing.Point(203, 313);
+            this.RetailPriceLbl.Location = new System.Drawing.Point(203, 304);
             this.RetailPriceLbl.Name = "RetailPriceLbl";
             this.RetailPriceLbl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RetailPriceLbl.Size = new System.Drawing.Size(62, 29);
@@ -488,15 +490,18 @@ namespace GUIApp
             // 
             this.AddToCartBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.AddToCartBtn.BackColor = System.Drawing.Color.DarkBlue;
+            this.AddToCartBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.AddToCartBtn.Enabled = false;
             this.AddToCartBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddToCartBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddToCartBtn.ForeColor = System.Drawing.Color.White;
-            this.AddToCartBtn.Location = new System.Drawing.Point(6, 422);
+            this.AddToCartBtn.Image = ((System.Drawing.Image)(resources.GetObject("AddToCartBtn.Image")));
+            this.AddToCartBtn.Location = new System.Drawing.Point(6, 411);
             this.AddToCartBtn.Name = "AddToCartBtn";
-            this.AddToCartBtn.Size = new System.Drawing.Size(332, 58);
+            this.AddToCartBtn.Size = new System.Drawing.Size(332, 69);
             this.AddToCartBtn.TabIndex = 9;
             this.AddToCartBtn.Text = "ADD TO CART";
+            this.AddToCartBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.AddToCartBtn.UseVisualStyleBackColor = false;
             this.AddToCartBtn.Click += new System.EventHandler(this.AddToCartBtn_Click);
             // 
@@ -522,9 +527,9 @@ namespace GUIApp
             this.RefundBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RefundBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RefundBtn.ForeColor = System.Drawing.Color.White;
-            this.RefundBtn.Location = new System.Drawing.Point(6, 96);
+            this.RefundBtn.Location = new System.Drawing.Point(6, 93);
             this.RefundBtn.Name = "RefundBtn";
-            this.RefundBtn.Size = new System.Drawing.Size(162, 65);
+            this.RefundBtn.Size = new System.Drawing.Size(162, 73);
             this.RefundBtn.TabIndex = 3;
             this.RefundBtn.Text = "REFUND";
             this.RefundBtn.UseVisualStyleBackColor = false;
@@ -535,13 +540,15 @@ namespace GUIApp
             this.ResetBtn.BackColor = System.Drawing.Color.DarkBlue;
             this.ResetBtn.Enabled = false;
             this.ResetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ResetBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResetBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.ResetBtn.ForeColor = System.Drawing.Color.White;
-            this.ResetBtn.Location = new System.Drawing.Point(174, 96);
+            this.ResetBtn.Image = ((System.Drawing.Image)(resources.GetObject("ResetBtn.Image")));
+            this.ResetBtn.Location = new System.Drawing.Point(174, 93);
             this.ResetBtn.Name = "ResetBtn";
-            this.ResetBtn.Size = new System.Drawing.Size(164, 65);
+            this.ResetBtn.Size = new System.Drawing.Size(164, 73);
             this.ResetBtn.TabIndex = 6;
             this.ResetBtn.Text = "RESET";
+            this.ResetBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ResetBtn.UseVisualStyleBackColor = false;
             this.ResetBtn.Click += new System.EventHandler(this.ResetBtn_Click);
             // 
@@ -556,7 +563,7 @@ namespace GUIApp
             this.groupBox3.Controls.Add(this.ResetBtn);
             this.groupBox3.Location = new System.Drawing.Point(1172, 492);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(344, 323);
+            this.groupBox3.Size = new System.Drawing.Size(344, 328);
             this.groupBox3.TabIndex = 41;
             this.groupBox3.TabStop = false;
             // 
@@ -569,9 +576,9 @@ namespace GUIApp
             this.panel5.Controls.Add(this.DeliveryDateTimePicker);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Controls.Add(this.label8);
-            this.panel5.Location = new System.Drawing.Point(8, 167);
+            this.panel5.Location = new System.Drawing.Point(6, 172);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(330, 151);
+            this.panel5.Size = new System.Drawing.Size(332, 151);
             this.panel5.TabIndex = 42;
             // 
             // DeliveryCmb
@@ -605,7 +612,7 @@ namespace GUIApp
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(7, 71);
+            this.label8.Location = new System.Drawing.Point(9, 71);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(134, 18);
             this.label8.TabIndex = 35;
@@ -619,11 +626,13 @@ namespace GUIApp
             this.CashBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CashBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CashBtn.ForeColor = System.Drawing.Color.White;
-            this.CashBtn.Location = new System.Drawing.Point(6, 11);
+            this.CashBtn.Image = ((System.Drawing.Image)(resources.GetObject("CashBtn.Image")));
+            this.CashBtn.Location = new System.Drawing.Point(6, 16);
             this.CashBtn.Name = "CashBtn";
-            this.CashBtn.Size = new System.Drawing.Size(162, 79);
+            this.CashBtn.Size = new System.Drawing.Size(162, 71);
             this.CashBtn.TabIndex = 7;
             this.CashBtn.Text = "CASH";
+            this.CashBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.CashBtn.UseVisualStyleBackColor = false;
             this.CashBtn.Click += new System.EventHandler(this.CashBtn_Click);
             // 
@@ -635,11 +644,13 @@ namespace GUIApp
             this.EFTBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EFTBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EFTBtn.ForeColor = System.Drawing.Color.White;
-            this.EFTBtn.Location = new System.Drawing.Point(174, 11);
+            this.EFTBtn.Image = ((System.Drawing.Image)(resources.GetObject("EFTBtn.Image")));
+            this.EFTBtn.Location = new System.Drawing.Point(174, 16);
             this.EFTBtn.Name = "EFTBtn";
-            this.EFTBtn.Size = new System.Drawing.Size(164, 79);
+            this.EFTBtn.Size = new System.Drawing.Size(164, 71);
             this.EFTBtn.TabIndex = 8;
             this.EFTBtn.Text = "EFT";
+            this.EFTBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.EFTBtn.UseVisualStyleBackColor = false;
             this.EFTBtn.Click += new System.EventHandler(this.EFTBtn_Click);
             // 

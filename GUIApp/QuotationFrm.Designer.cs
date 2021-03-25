@@ -29,11 +29,12 @@ namespace GUIApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuotationFrm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.SaveBtn = new System.Windows.Forms.Button();
@@ -49,6 +50,7 @@ namespace GUIApp
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.QuotationValidityLbl = new System.Windows.Forms.Label();
             this.InvoiceNumberLbl = new System.Windows.Forms.Label();
             this.ItemsGridView = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -60,7 +62,8 @@ namespace GUIApp
             this.RetailPriceLbl = new System.Windows.Forms.Label();
             this.AddToCartBtn = new System.Windows.Forms.Button();
             this.ItemsListBox = new System.Windows.Forms.ListBox();
-            this.QuotationValidityLbl = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -107,11 +110,13 @@ namespace GUIApp
             this.SaveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveBtn.ForeColor = System.Drawing.Color.White;
+            this.SaveBtn.Image = ((System.Drawing.Image)(resources.GetObject("SaveBtn.Image")));
             this.SaveBtn.Location = new System.Drawing.Point(3, 3);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(170, 139);
             this.SaveBtn.TabIndex = 7;
             this.SaveBtn.Text = "SAVE";
+            this.SaveBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SaveBtn.UseVisualStyleBackColor = false;
             this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
@@ -123,11 +128,13 @@ namespace GUIApp
             this.ResetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ResetBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ResetBtn.ForeColor = System.Drawing.Color.White;
+            this.ResetBtn.Image = ((System.Drawing.Image)(resources.GetObject("ResetBtn.Image")));
             this.ResetBtn.Location = new System.Drawing.Point(179, 3);
             this.ResetBtn.Name = "ResetBtn";
             this.ResetBtn.Size = new System.Drawing.Size(176, 139);
             this.ResetBtn.TabIndex = 6;
             this.ResetBtn.Text = "RESET";
+            this.ResetBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.ResetBtn.UseVisualStyleBackColor = false;
             this.ResetBtn.Click += new System.EventHandler(this.ResetBtn_Click);
             // 
@@ -138,6 +145,8 @@ namespace GUIApp
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.UsersCmb);
             this.panel3.Controls.Add(this.CustomerAccountsCmb);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.label3);
             this.panel3.Location = new System.Drawing.Point(389, 602);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(332, 152);
@@ -146,21 +155,21 @@ namespace GUIApp
             // UsersCmb
             // 
             this.UsersCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.UsersCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.UsersCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.UsersCmb.FormattingEnabled = true;
-            this.UsersCmb.Location = new System.Drawing.Point(17, 17);
+            this.UsersCmb.Location = new System.Drawing.Point(17, 29);
             this.UsersCmb.Name = "UsersCmb";
-            this.UsersCmb.Size = new System.Drawing.Size(283, 28);
+            this.UsersCmb.Size = new System.Drawing.Size(283, 39);
             this.UsersCmb.TabIndex = 49;
             // 
             // CustomerAccountsCmb
             // 
             this.CustomerAccountsCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CustomerAccountsCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.CustomerAccountsCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.CustomerAccountsCmb.FormattingEnabled = true;
-            this.CustomerAccountsCmb.Location = new System.Drawing.Point(17, 112);
+            this.CustomerAccountsCmb.Location = new System.Drawing.Point(17, 102);
             this.CustomerAccountsCmb.Name = "CustomerAccountsCmb";
-            this.CustomerAccountsCmb.Size = new System.Drawing.Size(283, 28);
+            this.CustomerAccountsCmb.Size = new System.Drawing.Size(283, 39);
             this.CustomerAccountsCmb.TabIndex = 47;
             // 
             // panel2
@@ -264,6 +273,18 @@ namespace GUIApp
             this.panel1.Size = new System.Drawing.Size(1070, 50);
             this.panel1.TabIndex = 23;
             // 
+            // QuotationValidityLbl
+            // 
+            this.QuotationValidityLbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.QuotationValidityLbl.AutoSize = true;
+            this.QuotationValidityLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.QuotationValidityLbl.ForeColor = System.Drawing.Color.Blue;
+            this.QuotationValidityLbl.Location = new System.Drawing.Point(764, 5);
+            this.QuotationValidityLbl.Name = "QuotationValidityLbl";
+            this.QuotationValidityLbl.Size = new System.Drawing.Size(183, 26);
+            this.QuotationValidityLbl.TabIndex = 35;
+            this.QuotationValidityLbl.Text = "VALID UNTIL :  ";
+            // 
             // InvoiceNumberLbl
             // 
             this.InvoiceNumberLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -283,10 +304,10 @@ namespace GUIApp
             this.ItemsGridView.AllowUserToOrderColumns = true;
             this.ItemsGridView.AllowUserToResizeColumns = false;
             this.ItemsGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.White;
-            this.ItemsGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.ItemsGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.ItemsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -294,42 +315,42 @@ namespace GUIApp
             this.ItemsGridView.BackgroundColor = System.Drawing.Color.White;
             this.ItemsGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ItemsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ItemsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ItemsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ItemsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ItemsGridView.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemsGridView.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.ItemsGridView.GridColor = System.Drawing.Color.White;
             this.ItemsGridView.Location = new System.Drawing.Point(18, 69);
             this.ItemsGridView.MultiSelect = false;
             this.ItemsGridView.Name = "ItemsGridView";
             this.ItemsGridView.ReadOnly = true;
             this.ItemsGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemsGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.ItemsGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.ItemsGridView.RowsDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.ItemsGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.ItemsGridView.RowTemplate.Height = 24;
             this.ItemsGridView.Size = new System.Drawing.Size(1070, 526);
             this.ItemsGridView.TabIndex = 22;
@@ -359,7 +380,7 @@ namespace GUIApp
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(22, 654);
+            this.label7.Location = new System.Drawing.Point(22, 643);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(136, 29);
             this.label7.TabIndex = 15;
@@ -371,7 +392,7 @@ namespace GUIApp
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(22, 616);
+            this.label6.Location = new System.Drawing.Point(22, 605);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(97, 29);
             this.label6.TabIndex = 14;
@@ -383,7 +404,7 @@ namespace GUIApp
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(22, 586);
+            this.label5.Location = new System.Drawing.Point(22, 575);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(148, 29);
             this.label5.TabIndex = 13;
@@ -395,7 +416,7 @@ namespace GUIApp
             this.QuotationQuantityTxt.Enabled = false;
             this.QuotationQuantityTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.QuotationQuantityTxt.ForeColor = System.Drawing.Color.DarkBlue;
-            this.QuotationQuantityTxt.Location = new System.Drawing.Point(245, 649);
+            this.QuotationQuantityTxt.Location = new System.Drawing.Point(245, 638);
             this.QuotationQuantityTxt.Name = "QuotationQuantityTxt";
             this.QuotationQuantityTxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.QuotationQuantityTxt.Size = new System.Drawing.Size(84, 38);
@@ -407,7 +428,7 @@ namespace GUIApp
             this.StockQuantityLbl.AutoSize = true;
             this.StockQuantityLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StockQuantityLbl.ForeColor = System.Drawing.Color.White;
-            this.StockQuantityLbl.Location = new System.Drawing.Point(262, 616);
+            this.StockQuantityLbl.Location = new System.Drawing.Point(262, 605);
             this.StockQuantityLbl.Name = "StockQuantityLbl";
             this.StockQuantityLbl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StockQuantityLbl.Size = new System.Drawing.Size(62, 29);
@@ -420,7 +441,7 @@ namespace GUIApp
             this.RetailPriceLbl.AutoSize = true;
             this.RetailPriceLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RetailPriceLbl.ForeColor = System.Drawing.Color.White;
-            this.RetailPriceLbl.Location = new System.Drawing.Point(203, 586);
+            this.RetailPriceLbl.Location = new System.Drawing.Point(203, 575);
             this.RetailPriceLbl.Name = "RetailPriceLbl";
             this.RetailPriceLbl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RetailPriceLbl.Size = new System.Drawing.Size(62, 29);
@@ -435,11 +456,13 @@ namespace GUIApp
             this.AddToCartBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddToCartBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddToCartBtn.ForeColor = System.Drawing.Color.White;
-            this.AddToCartBtn.Location = new System.Drawing.Point(6, 695);
+            this.AddToCartBtn.Image = ((System.Drawing.Image)(resources.GetObject("AddToCartBtn.Image")));
+            this.AddToCartBtn.Location = new System.Drawing.Point(6, 682);
             this.AddToCartBtn.Name = "AddToCartBtn";
-            this.AddToCartBtn.Size = new System.Drawing.Size(332, 58);
+            this.AddToCartBtn.Size = new System.Drawing.Size(332, 71);
             this.AddToCartBtn.TabIndex = 9;
             this.AddToCartBtn.Text = "ADD TO CART";
+            this.AddToCartBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.AddToCartBtn.UseVisualStyleBackColor = false;
             this.AddToCartBtn.Click += new System.EventHandler(this.AddToCartBtn_Click);
             // 
@@ -457,17 +480,29 @@ namespace GUIApp
             this.ItemsListBox.TabIndex = 0;
             this.ItemsListBox.SelectedValueChanged += new System.EventHandler(this.ItemsListBox_SelectedValueChanged);
             // 
-            // QuotationValidityLbl
+            // label3
             // 
-            this.QuotationValidityLbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.QuotationValidityLbl.AutoSize = true;
-            this.QuotationValidityLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.QuotationValidityLbl.ForeColor = System.Drawing.Color.Blue;
-            this.QuotationValidityLbl.Location = new System.Drawing.Point(709, 5);
-            this.QuotationValidityLbl.Name = "QuotationValidityLbl";
-            this.QuotationValidityLbl.Size = new System.Drawing.Size(183, 26);
-            this.QuotationValidityLbl.TabIndex = 35;
-            this.QuotationValidityLbl.Text = "VALID UNTIL :  ";
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(22, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 20);
+            this.label3.TabIndex = 44;
+            this.label3.Text = "User";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(22, 71);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 20);
+            this.label4.TabIndex = 44;
+            this.label4.Text = "Customer";
             // 
             // QuotationFrm
             // 
@@ -482,6 +517,7 @@ namespace GUIApp
             this.groupBox1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -522,5 +558,7 @@ namespace GUIApp
         private System.Windows.Forms.Button ResetBtn;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label QuotationValidityLbl;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
     }
 }

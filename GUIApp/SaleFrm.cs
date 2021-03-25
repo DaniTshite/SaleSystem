@@ -181,7 +181,7 @@ namespace GUIApp
             RefundBtn.Enabled = false;
             ResetBtn.Enabled = false;
             CurrentInvoiceNumber = _salesProcessor.GetInvoiceNumber();
-            InvoiceNumberLbl.Text = "INVOICE No : " + CurrentInvoiceNumber; ;
+            InvoiceNumberLbl.Text = "INVOICE No : " + CurrentInvoiceNumber; 
         }
         //This method resets all controls including the gridview
         private void ResetBtn_Click(object sender, EventArgs e)
@@ -194,32 +194,44 @@ namespace GUIApp
         //This method saves sale into the DB when using cash
         private void CashBtn_Click(object sender, EventArgs e)
         {
-            DateTime dateValue = new DateTime();
-
-            if (DeliveryCmb.Text == "CASH AND CARRY")
+            if (DeliveryCmb.Text==string.Empty)
             {
-                dateValue = DateTime.Now.Date;
+                MessageBox.Show("Select a Delivery Mode Please !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else dateValue = DeliveryDateTimePicker.Value;
-            //Instantiation of sales object
-            ISales sale = ContainerConfig.CreateSales();
-            sale.InvoiceNumber = CurrentInvoiceNumber;
-            sale.Discount = 1;
-            sale.SubTotal = SubTotal;
-            sale.Tax = 1;
-            sale.Total = Total;
-            sale.PaymentMode = "cash";
-            sale.SaleOrderDetails = itemsToSave;
+            else
+            {
+                IDelivery delivery = ContainerConfig.CreateDelivery();
+                if (DeliveryCmb.Text == "CASH AND CARRY")
+                {
+                    delivery.DeliveryDate = DateTime.Now.Date;
+                    delivery.TypeOfDelivery = DeliveryType.CashAndCarry;
+                    delivery.DeliveryStatus = 1;
+                }
+                else
+                {
+                    delivery.DeliveryDate = DeliveryDateTimePicker.Value;
+                    delivery.TypeOfDelivery = DeliveryType.CompanyTruck;
+                    delivery.DeliveryStatus = 0;
+                }
+                delivery.DeliveryNumber = CurrentInvoiceNumber.ToString();
 
-            // Instantiation of delivery object
-            IDelivery delivery = ContainerConfig.CreateDelivery();
-            delivery.DeliveryDate = dateValue;
-            delivery.DeliveryType = DeliveryCmb.Text;
+
+                //Instantiation of sales object
+                ISales sale = ContainerConfig.CreateSales();
+                sale.InvoiceNumber = CurrentInvoiceNumber;
+                sale.Discount = 1;
+                sale.SubTotal = SubTotal;
+                sale.Tax = 1;
+                sale.Total = Total;
+                sale.PaymentMode = "cash";
+                sale.SaleOrderDetails = itemsToSave;
+
+                ChangeLbl.Text = String.Format("{0:C2}", (decimal.Parse(PaidTxt.Text) - Total));
+                MessageBox.Show(_salesProcessor.SaveSaleOrder(sale, delivery), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ItemsGridView.DataSource = null;
+                ResetAllControls();
+            }
             
-            ChangeLbl.Text = String.Format("{0:C2}", (decimal.Parse(PaidTxt.Text) - Total));
-            MessageBox.Show(_salesProcessor.SaveSaleOrder(sale,delivery), "notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            ItemsGridView.DataSource = null;
-            ResetAllControls();
         }
 
         private void UsersCmb_TextChanged(object sender, EventArgs e)
@@ -400,7 +412,12 @@ namespace GUIApp
             TotalLbl.Text = String.Format("{0:C2}", Total);
             
         }
-    
+
+        private void ItemsGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+
+        }
 
         private void SaleFrm_Load(object sender, EventArgs e)
         {

@@ -8,7 +8,7 @@ namespace DataLibrary.Models
 {
     public enum DeliveryType
     {
-        CashAndCarry,
-        CompanyTruck
+        CashAndCarry = 1,
+        CompanyTruck = 2
     }
 }

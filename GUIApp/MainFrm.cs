@@ -17,6 +17,7 @@ namespace GUIApp
         private Button currentButton;
         private readonly Random random;
         //private int tempIndex;
+        public string _loggedInUser;
         public MainFrm()
         {
             InitializeComponent();
@@ -109,6 +110,16 @@ namespace GUIApp
         private void ReportsBtn_Click(object sender, EventArgs e)
         {
             OpenChildForm(new ReportFrm(), sender);
+        }
+
+        private void MainFrm_Load(object sender, EventArgs e)
+        {
+            LoggedInUserLbl.Text = LoggedInUserLbl.Text +" " + _loggedInUser;
+        }
+
+        private void DeliveryBtn_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new DeliveryFrm(), sender);
         }
     }
 }

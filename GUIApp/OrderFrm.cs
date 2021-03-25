@@ -774,7 +774,6 @@ namespace GUIApp
                     ItemsGridView.DataSource = null;
                     ItemsGridView.DataSource = ordersToDisplay;
                 }
-
             }
         }
 

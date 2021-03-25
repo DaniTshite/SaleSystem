@@ -47,10 +47,28 @@ namespace LogicLibrary.Processes
             }
             catch (Exception)
             {
-
                 throw;
             }
 
+        }
+        /// <summary>
+        /// This method checks if this user exists in the database
+        /// </summary>
+        /// <param name="name">this string parameter represents the name</param>
+        /// <param name="accessCode">this string parameter represents the accesscode</param>
+        /// <returns>it returns a boolean </returns>
+        public bool DoesUserExist(string name,string accessCode)
+        {
+            List<Users> users = new List<Users>();
+            users = GetUsers();
+            foreach (var user in users)
+            {
+                if (user.Name == name && user.AccessCode == accessCode)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         /// <summary>
         /// This method updates a user

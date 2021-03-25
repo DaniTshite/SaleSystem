@@ -6,6 +6,6 @@ namespace LogicLibrary.Processes
     public interface IDeliveryProcessor
     {
         List<Delivery> GetDeliveries();
-        string SaveDelivery(IDelivery delivery);
+        void SaveDelivery(IDelivery delivery);
     }
 }

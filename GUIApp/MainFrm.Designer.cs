@@ -29,7 +29,9 @@ namespace GUIApp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.LoggedInUserLbl = new System.Windows.Forms.Label();
             this.SettingsBtn = new System.Windows.Forms.Button();
             this.SuppliersBtn = new System.Windows.Forms.Button();
             this.QuotationsBtn = new System.Windows.Forms.Button();
@@ -44,7 +46,6 @@ namespace GUIApp
             this.CloseChildFormBtn = new System.Windows.Forms.Button();
             this.LblTitle = new System.Windows.Forms.Label();
             this.panelDesktopPane = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelTitle.SuspendLayout();
@@ -55,6 +56,7 @@ namespace GUIApp
             // 
             this.panelMenu.BackColor = System.Drawing.Color.MidnightBlue;
             this.panelMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelMenu.Controls.Add(this.LoggedInUserLbl);
             this.panelMenu.Controls.Add(this.SettingsBtn);
             this.panelMenu.Controls.Add(this.SuppliersBtn);
             this.panelMenu.Controls.Add(this.QuotationsBtn);
@@ -71,6 +73,18 @@ namespace GUIApp
             this.panelMenu.Size = new System.Drawing.Size(291, 789);
             this.panelMenu.TabIndex = 0;
             // 
+            // LoggedInUserLbl
+            // 
+            this.LoggedInUserLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.LoggedInUserLbl.AutoSize = true;
+            this.LoggedInUserLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.LoggedInUserLbl.ForeColor = System.Drawing.Color.White;
+            this.LoggedInUserLbl.Location = new System.Drawing.Point(3, 750);
+            this.LoggedInUserLbl.Name = "LoggedInUserLbl";
+            this.LoggedInUserLbl.Size = new System.Drawing.Size(121, 25);
+            this.LoggedInUserLbl.TabIndex = 1;
+            this.LoggedInUserLbl.Text = "Logged In :";
+            // 
             // SettingsBtn
             // 
             this.SettingsBtn.BackColor = System.Drawing.Color.MidnightBlue;
@@ -79,11 +93,13 @@ namespace GUIApp
             this.SettingsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SettingsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.SettingsBtn.ForeColor = System.Drawing.Color.White;
-            this.SettingsBtn.Location = new System.Drawing.Point(-1, 640);
+            this.SettingsBtn.Image = ((System.Drawing.Image)(resources.GetObject("SettingsBtn.Image")));
+            this.SettingsBtn.Location = new System.Drawing.Point(-1, 676);
             this.SettingsBtn.Name = "SettingsBtn";
-            this.SettingsBtn.Size = new System.Drawing.Size(291, 71);
+            this.SettingsBtn.Size = new System.Drawing.Size(291, 65);
             this.SettingsBtn.TabIndex = 0;
             this.SettingsBtn.Text = "SETTINGS";
+            this.SettingsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.SettingsBtn.UseVisualStyleBackColor = false;
             // 
             // SuppliersBtn
@@ -94,11 +110,13 @@ namespace GUIApp
             this.SuppliersBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SuppliersBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.SuppliersBtn.ForeColor = System.Drawing.Color.White;
-            this.SuppliersBtn.Location = new System.Drawing.Point(-1, 569);
+            this.SuppliersBtn.Image = ((System.Drawing.Image)(resources.GetObject("SuppliersBtn.Image")));
+            this.SuppliersBtn.Location = new System.Drawing.Point(-1, 601);
             this.SuppliersBtn.Name = "SuppliersBtn";
-            this.SuppliersBtn.Size = new System.Drawing.Size(291, 71);
+            this.SuppliersBtn.Size = new System.Drawing.Size(291, 75);
             this.SuppliersBtn.TabIndex = 0;
             this.SuppliersBtn.Text = "SUPPLIERS";
+            this.SuppliersBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.SuppliersBtn.UseVisualStyleBackColor = false;
             this.SuppliersBtn.Click += new System.EventHandler(this.SuppliersBtn_Click);
             // 
@@ -110,11 +128,13 @@ namespace GUIApp
             this.QuotationsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.QuotationsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.QuotationsBtn.ForeColor = System.Drawing.Color.White;
-            this.QuotationsBtn.Location = new System.Drawing.Point(-1, 498);
+            this.QuotationsBtn.Image = ((System.Drawing.Image)(resources.GetObject("QuotationsBtn.Image")));
+            this.QuotationsBtn.Location = new System.Drawing.Point(-1, 526);
             this.QuotationsBtn.Name = "QuotationsBtn";
-            this.QuotationsBtn.Size = new System.Drawing.Size(291, 71);
+            this.QuotationsBtn.Size = new System.Drawing.Size(291, 75);
             this.QuotationsBtn.TabIndex = 0;
             this.QuotationsBtn.Text = "QUOTATIONS";
+            this.QuotationsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.QuotationsBtn.UseVisualStyleBackColor = false;
             this.QuotationsBtn.Click += new System.EventHandler(this.QuotationsBtn_Click);
             // 
@@ -126,11 +146,13 @@ namespace GUIApp
             this.ReportsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ReportsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.ReportsBtn.ForeColor = System.Drawing.Color.White;
-            this.ReportsBtn.Location = new System.Drawing.Point(-1, 427);
+            this.ReportsBtn.Image = ((System.Drawing.Image)(resources.GetObject("ReportsBtn.Image")));
+            this.ReportsBtn.Location = new System.Drawing.Point(-1, 451);
             this.ReportsBtn.Name = "ReportsBtn";
-            this.ReportsBtn.Size = new System.Drawing.Size(291, 71);
+            this.ReportsBtn.Size = new System.Drawing.Size(291, 75);
             this.ReportsBtn.TabIndex = 0;
             this.ReportsBtn.Text = "REPORTING";
+            this.ReportsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ReportsBtn.UseVisualStyleBackColor = false;
             this.ReportsBtn.Click += new System.EventHandler(this.ReportsBtn_Click);
             // 
@@ -142,12 +164,15 @@ namespace GUIApp
             this.DeliveryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeliveryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.DeliveryBtn.ForeColor = System.Drawing.Color.White;
-            this.DeliveryBtn.Location = new System.Drawing.Point(-1, 356);
+            this.DeliveryBtn.Image = ((System.Drawing.Image)(resources.GetObject("DeliveryBtn.Image")));
+            this.DeliveryBtn.Location = new System.Drawing.Point(-1, 376);
             this.DeliveryBtn.Name = "DeliveryBtn";
-            this.DeliveryBtn.Size = new System.Drawing.Size(291, 71);
+            this.DeliveryBtn.Size = new System.Drawing.Size(291, 75);
             this.DeliveryBtn.TabIndex = 0;
-            this.DeliveryBtn.Text = "DELIVERY NOTES";
+            this.DeliveryBtn.Text = "DELIVERIES";
+            this.DeliveryBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.DeliveryBtn.UseVisualStyleBackColor = false;
+            this.DeliveryBtn.Click += new System.EventHandler(this.DeliveryBtn_Click);
             // 
             // CustomersBtn
             // 
@@ -157,11 +182,13 @@ namespace GUIApp
             this.CustomersBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CustomersBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.CustomersBtn.ForeColor = System.Drawing.Color.White;
-            this.CustomersBtn.Location = new System.Drawing.Point(-1, 285);
+            this.CustomersBtn.Image = ((System.Drawing.Image)(resources.GetObject("CustomersBtn.Image")));
+            this.CustomersBtn.Location = new System.Drawing.Point(-1, 301);
             this.CustomersBtn.Name = "CustomersBtn";
-            this.CustomersBtn.Size = new System.Drawing.Size(291, 71);
+            this.CustomersBtn.Size = new System.Drawing.Size(291, 75);
             this.CustomersBtn.TabIndex = 0;
             this.CustomersBtn.Text = "CUSTOMERS";
+            this.CustomersBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.CustomersBtn.UseVisualStyleBackColor = false;
             this.CustomersBtn.Click += new System.EventHandler(this.CustomersBtn_Click);
             // 
@@ -173,11 +200,13 @@ namespace GUIApp
             this.SalesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SalesBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.SalesBtn.ForeColor = System.Drawing.Color.White;
-            this.SalesBtn.Location = new System.Drawing.Point(-1, 214);
+            this.SalesBtn.Image = ((System.Drawing.Image)(resources.GetObject("SalesBtn.Image")));
+            this.SalesBtn.Location = new System.Drawing.Point(-1, 226);
             this.SalesBtn.Name = "SalesBtn";
-            this.SalesBtn.Size = new System.Drawing.Size(291, 71);
+            this.SalesBtn.Size = new System.Drawing.Size(291, 75);
             this.SalesBtn.TabIndex = 0;
             this.SalesBtn.Text = "SALE ORDERS";
+            this.SalesBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.SalesBtn.UseVisualStyleBackColor = false;
             this.SalesBtn.Click += new System.EventHandler(this.SalesBtn_Click);
             // 
@@ -189,11 +218,13 @@ namespace GUIApp
             this.OrdersBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OrdersBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.OrdersBtn.ForeColor = System.Drawing.Color.White;
-            this.OrdersBtn.Location = new System.Drawing.Point(-1, 143);
+            this.OrdersBtn.Image = ((System.Drawing.Image)(resources.GetObject("OrdersBtn.Image")));
+            this.OrdersBtn.Location = new System.Drawing.Point(-1, 151);
             this.OrdersBtn.Name = "OrdersBtn";
-            this.OrdersBtn.Size = new System.Drawing.Size(291, 71);
+            this.OrdersBtn.Size = new System.Drawing.Size(291, 75);
             this.OrdersBtn.TabIndex = 0;
             this.OrdersBtn.Text = "SUPPLY ORDERS";
+            this.OrdersBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.OrdersBtn.UseVisualStyleBackColor = false;
             this.OrdersBtn.Click += new System.EventHandler(this.OrdersBtn_Click);
             // 
@@ -205,11 +236,13 @@ namespace GUIApp
             this.UsersBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UsersBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.UsersBtn.ForeColor = System.Drawing.Color.White;
-            this.UsersBtn.Location = new System.Drawing.Point(-1, 72);
+            this.UsersBtn.Image = ((System.Drawing.Image)(resources.GetObject("UsersBtn.Image")));
+            this.UsersBtn.Location = new System.Drawing.Point(-1, 76);
             this.UsersBtn.Name = "UsersBtn";
-            this.UsersBtn.Size = new System.Drawing.Size(291, 71);
+            this.UsersBtn.Size = new System.Drawing.Size(291, 75);
             this.UsersBtn.TabIndex = 0;
             this.UsersBtn.Text = "USERS";
+            this.UsersBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.UsersBtn.UseVisualStyleBackColor = false;
             this.UsersBtn.Click += new System.EventHandler(this.UsersBtn_Click);
             // 
@@ -221,11 +254,13 @@ namespace GUIApp
             this.ItemsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ItemsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.ItemsBtn.ForeColor = System.Drawing.Color.White;
+            this.ItemsBtn.Image = ((System.Drawing.Image)(resources.GetObject("ItemsBtn.Image")));
             this.ItemsBtn.Location = new System.Drawing.Point(-1, 1);
             this.ItemsBtn.Name = "ItemsBtn";
-            this.ItemsBtn.Size = new System.Drawing.Size(291, 71);
+            this.ItemsBtn.Size = new System.Drawing.Size(291, 75);
             this.ItemsBtn.TabIndex = 0;
             this.ItemsBtn.Text = "ITEMS AND CATEGORIES";
+            this.ItemsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ItemsBtn.UseVisualStyleBackColor = false;
             this.ItemsBtn.Click += new System.EventHandler(this.ItemsBtn_Click);
             // 
@@ -268,25 +303,12 @@ namespace GUIApp
             // 
             // panelDesktopPane
             // 
-            this.panelDesktopPane.Controls.Add(this.label2);
             this.panelDesktopPane.Controls.Add(this.label1);
             this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopPane.Location = new System.Drawing.Point(291, 48);
             this.panelDesktopPane.Name = "panelDesktopPane";
             this.panelDesktopPane.Size = new System.Drawing.Size(1183, 741);
             this.panelDesktopPane.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Navy;
-            this.label2.Location = new System.Drawing.Point(1011, 360);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Danibytes Ltd.";
             // 
             // label1
             // 
@@ -312,7 +334,9 @@ namespace GUIApp
             this.Name = "MainFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainFrm_Load);
             this.panelMenu.ResumeLayout(false);
+            this.panelMenu.PerformLayout();
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();
             this.panelDesktopPane.ResumeLayout(false);
@@ -338,7 +362,7 @@ namespace GUIApp
         private System.Windows.Forms.Button SuppliersBtn;
         private System.Windows.Forms.Button SettingsBtn;
         private System.Windows.Forms.Button CloseChildFormBtn;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LoggedInUserLbl;
         private System.Windows.Forms.Label label1;
     }
 }

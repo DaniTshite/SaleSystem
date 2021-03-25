@@ -62,7 +62,6 @@
     <Compile Include="Processes\ISupplierProcessor.cs" />
     <Compile Include="Processes\ItemProcessor.cs" />
     <Compile Include="Processes\IUsersProcessor.cs" />
-    <Compile Include="Processes\LoginProcessor.cs" />
     <Compile Include="Processes\OrderLineProcessor.cs" />
     <Compile Include="Processes\OrdersProcessor.cs" />
     <Compile Include="Processes\QuotationLineProcessor.cs" />

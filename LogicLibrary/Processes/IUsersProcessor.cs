@@ -7,6 +7,7 @@ namespace LogicLibrary.Processes
     {
         string GenerateAccessCode();
         List<Users> GetUsers();
+        bool DoesUserExist(string name, string accessCode);
         string SaveUser(IUsers user);
         string UpdateUser(IUsers user);
     }
