@@ -28,25 +28,25 @@ namespace GUIApp
         private extern static void SendMessage(System.IntPtr hwnd,int wMsg,int wParam,int lParam);
         private void LoginBtn_Click(object sender, EventArgs e)
         {
-            if (IsValid())
-            {
-                if (_usersProcessor.DoesUserExist(UsernameTxt.Text.Trim(), AccessCodeTxt.Text.Trim()))
-                {
+            //if (IsValid())
+            //{
+            //    if (_usersProcessor.DoesUserExist(UsernameTxt.Text.Trim(), AccessCodeTxt.Text.Trim()))
+            //    {
                     MessageBox.Show("Welcome " + UsernameTxt.Text, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
                     MainFrm mf = new MainFrm();
                     mf._loggedInUser = UsernameTxt.Text;
                     mf.ShowDialog();
                     this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("The Username or Accesscode are incorrect !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    UsernameTxt.Clear();
-                    UsernameTxt.Focus();
-                    AccessCodeTxt.Clear();
-                }
-            }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("The Username or Accesscode are incorrect !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        UsernameTxt.Clear();
+            //        UsernameTxt.Focus();
+            //        AccessCodeTxt.Clear();
+            //    }
+            //}
         }
 
         private bool IsValid()
