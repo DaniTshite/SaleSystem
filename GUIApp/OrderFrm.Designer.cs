@@ -30,11 +30,11 @@ namespace GUIApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderFrm));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -69,11 +69,6 @@ namespace GUIApp
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printPreviewDialogOrder = new System.Windows.Forms.PrintPreviewDialog();
             this.printOrderDocument = new System.Drawing.Printing.PrintDocument();
-            this.SearchGroupBox = new System.Windows.Forms.GroupBox();
-            this.PrintPreviewReportOrder = new System.Windows.Forms.Button();
-            this.SearchOrderNumber = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.SearchOrderNumberTxt = new System.Windows.Forms.TextBox();
             this.ReOrderListBtn = new System.Windows.Forms.Button();
             this.TotalsGroupBox = new System.Windows.Forms.GroupBox();
             this.InactiveItemsListBtn = new System.Windows.Forms.Button();
@@ -83,24 +78,23 @@ namespace GUIApp
             this.PrintPreviewItemsToReorder = new System.Windows.Forms.Button();
             this.InactiveItemsGroupBox = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.FilterOrdersByDateGroupBox = new System.Windows.Forms.GroupBox();
-            this.SuperiorDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.InferiorDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.TotalOrdersLbl = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.SearchOrderNumberTxt = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.SearchOrderNumber = new System.Windows.Forms.Button();
+            this.PrintPreviewReportOrder = new System.Windows.Forms.Button();
+            this.SearchGroupBox = new System.Windows.Forms.GroupBox();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsGridView)).BeginInit();
             this.ModifyQuantityMenu.SuspendLayout();
-            this.SearchGroupBox.SuspendLayout();
             this.TotalsGroupBox.SuspendLayout();
             this.ItemsToReorderGroupBox.SuspendLayout();
             this.InactiveItemsGroupBox.SuspendLayout();
-            this.FilterOrdersByDateGroupBox.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.SearchGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -338,10 +332,10 @@ namespace GUIApp
             this.ItemsGridView.AllowUserToOrderColumns = true;
             this.ItemsGridView.AllowUserToResizeColumns = false;
             this.ItemsGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.White;
-            this.ItemsGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
+            this.ItemsGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             this.ItemsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -349,42 +343,42 @@ namespace GUIApp
             this.ItemsGridView.BackgroundColor = System.Drawing.Color.White;
             this.ItemsGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ItemsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ItemsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ItemsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.ItemsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ItemsGridView.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemsGridView.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsGridView.DefaultCellStyle = dataGridViewCellStyle18;
             this.ItemsGridView.GridColor = System.Drawing.Color.White;
             this.ItemsGridView.Location = new System.Drawing.Point(6, 28);
             this.ItemsGridView.MultiSelect = false;
             this.ItemsGridView.Name = "ItemsGridView";
             this.ItemsGridView.ReadOnly = true;
             this.ItemsGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemsGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.ItemsGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.ItemsGridView.RowsDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.ItemsGridView.RowsDefaultCellStyle = dataGridViewCellStyle20;
             this.ItemsGridView.RowTemplate.Height = 24;
             this.ItemsGridView.Size = new System.Drawing.Size(1155, 551);
             this.ItemsGridView.TabIndex = 21;
@@ -515,65 +509,6 @@ namespace GUIApp
             // 
             this.printOrderDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printOrderDocument_PrintPage);
             // 
-            // SearchGroupBox
-            // 
-            this.SearchGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchGroupBox.Controls.Add(this.PrintPreviewReportOrder);
-            this.SearchGroupBox.Controls.Add(this.SearchOrderNumber);
-            this.SearchGroupBox.Controls.Add(this.label6);
-            this.SearchGroupBox.Controls.Add(this.SearchOrderNumberTxt);
-            this.SearchGroupBox.Enabled = false;
-            this.SearchGroupBox.Location = new System.Drawing.Point(1193, 430);
-            this.SearchGroupBox.Name = "SearchGroupBox";
-            this.SearchGroupBox.Size = new System.Drawing.Size(337, 190);
-            this.SearchGroupBox.TabIndex = 19;
-            this.SearchGroupBox.TabStop = false;
-            this.SearchGroupBox.Text = "Search";
-            // 
-            // PrintPreviewReportOrder
-            // 
-            this.PrintPreviewReportOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.PrintPreviewReportOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PrintPreviewReportOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PrintPreviewReportOrder.Location = new System.Drawing.Point(8, 133);
-            this.PrintPreviewReportOrder.Name = "PrintPreviewReportOrder";
-            this.PrintPreviewReportOrder.Size = new System.Drawing.Size(313, 41);
-            this.PrintPreviewReportOrder.TabIndex = 27;
-            this.PrintPreviewReportOrder.Text = "Print Preview";
-            this.PrintPreviewReportOrder.UseVisualStyleBackColor = true;
-            this.PrintPreviewReportOrder.Click += new System.EventHandler(this.PrintPreviewReportOrder_Click);
-            // 
-            // SearchOrderNumber
-            // 
-            this.SearchOrderNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SearchOrderNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchOrderNumber.Location = new System.Drawing.Point(8, 80);
-            this.SearchOrderNumber.Name = "SearchOrderNumber";
-            this.SearchOrderNumber.Size = new System.Drawing.Size(313, 39);
-            this.SearchOrderNumber.TabIndex = 20;
-            this.SearchOrderNumber.Text = "Search";
-            this.SearchOrderNumber.UseVisualStyleBackColor = true;
-            this.SearchOrderNumber.Click += new System.EventHandler(this.SearchOrderNumber_Click);
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(17, 18);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(148, 20);
-            this.label6.TabIndex = 26;
-            this.label6.Text = "ORDER NUMBER";
-            // 
-            // SearchOrderNumberTxt
-            // 
-            this.SearchOrderNumberTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchOrderNumberTxt.Location = new System.Drawing.Point(8, 47);
-            this.SearchOrderNumberTxt.Name = "SearchOrderNumberTxt";
-            this.SearchOrderNumberTxt.Size = new System.Drawing.Size(313, 27);
-            this.SearchOrderNumberTxt.TabIndex = 25;
-            // 
             // ReOrderListBtn
             // 
             this.ReOrderListBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -585,7 +520,6 @@ namespace GUIApp
             this.ReOrderListBtn.TabIndex = 28;
             this.ReOrderListBtn.Text = "REORDER LIST";
             this.ReOrderListBtn.UseVisualStyleBackColor = true;
-            this.ReOrderListBtn.Click += new System.EventHandler(this.ReOrderListBtn_Click);
             // 
             // TotalsGroupBox
             // 
@@ -615,7 +549,6 @@ namespace GUIApp
             this.InactiveItemsListBtn.TabIndex = 29;
             this.InactiveItemsListBtn.Text = "INACTIVE ITEMS";
             this.InactiveItemsListBtn.UseVisualStyleBackColor = true;
-            this.InactiveItemsListBtn.Click += new System.EventHandler(this.InactiveItemsListBtn_Click);
             // 
             // printItemsToReorderDocument
             // 
@@ -675,63 +608,7 @@ namespace GUIApp
             this.button2.TabIndex = 29;
             this.button2.Text = "PRINT PREVIEW";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // FilterOrdersByDateGroupBox
-            // 
-            this.FilterOrdersByDateGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.FilterOrdersByDateGroupBox.Controls.Add(this.SuperiorDateTimePicker);
-            this.FilterOrdersByDateGroupBox.Controls.Add(this.InferiorDateTimePicker);
-            this.FilterOrdersByDateGroupBox.Controls.Add(this.label14);
-            this.FilterOrdersByDateGroupBox.Controls.Add(this.label13);
-            this.FilterOrdersByDateGroupBox.Enabled = false;
-            this.FilterOrdersByDateGroupBox.Location = new System.Drawing.Point(1187, 625);
-            this.FilterOrdersByDateGroupBox.Name = "FilterOrdersByDateGroupBox";
-            this.FilterOrdersByDateGroupBox.Size = new System.Drawing.Size(343, 159);
-            this.FilterOrdersByDateGroupBox.TabIndex = 32;
-            this.FilterOrdersByDateGroupBox.TabStop = false;
-            this.FilterOrdersByDateGroupBox.Text = "Filter Orders By Date";
-            // 
-            // SuperiorDateTimePicker
-            // 
-            this.SuperiorDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SuperiorDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SuperiorDateTimePicker.Location = new System.Drawing.Point(16, 118);
-            this.SuperiorDateTimePicker.Name = "SuperiorDateTimePicker";
-            this.SuperiorDateTimePicker.Size = new System.Drawing.Size(313, 27);
-            this.SuperiorDateTimePicker.TabIndex = 31;
-            this.SuperiorDateTimePicker.ValueChanged += new System.EventHandler(this.SuperiorDateTimePicker_ValueChanged);
-            // 
-            // InferiorDateTimePicker
-            // 
-            this.InferiorDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.InferiorDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InferiorDateTimePicker.Location = new System.Drawing.Point(16, 47);
-            this.InferiorDateTimePicker.Name = "InferiorDateTimePicker";
-            this.InferiorDateTimePicker.Size = new System.Drawing.Size(313, 27);
-            this.InferiorDateTimePicker.TabIndex = 25;
-            this.InferiorDateTimePicker.ValueChanged += new System.EventHandler(this.InferiorDateTimePicker_ValueChanged);
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(17, 88);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(95, 20);
-            this.label14.TabIndex = 30;
-            this.label14.Text = "END DATE";
-            // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(14, 18);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(113, 20);
-            this.label13.TabIndex = 28;
-            this.label13.Text = "START DATE";
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // TotalOrdersLbl
             // 
@@ -757,6 +634,65 @@ namespace GUIApp
             this.panel1.Size = new System.Drawing.Size(342, 138);
             this.panel1.TabIndex = 22;
             // 
+            // SearchOrderNumberTxt
+            // 
+            this.SearchOrderNumberTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchOrderNumberTxt.Location = new System.Drawing.Point(8, 47);
+            this.SearchOrderNumberTxt.Name = "SearchOrderNumberTxt";
+            this.SearchOrderNumberTxt.Size = new System.Drawing.Size(313, 27);
+            this.SearchOrderNumberTxt.TabIndex = 25;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(17, 18);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(148, 20);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "ORDER NUMBER";
+            // 
+            // SearchOrderNumber
+            // 
+            this.SearchOrderNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchOrderNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchOrderNumber.Location = new System.Drawing.Point(8, 80);
+            this.SearchOrderNumber.Name = "SearchOrderNumber";
+            this.SearchOrderNumber.Size = new System.Drawing.Size(313, 39);
+            this.SearchOrderNumber.TabIndex = 20;
+            this.SearchOrderNumber.Text = "Search";
+            this.SearchOrderNumber.UseVisualStyleBackColor = true;
+            this.SearchOrderNumber.Click += new System.EventHandler(this.SearchOrderNumber_Click);
+            // 
+            // PrintPreviewReportOrder
+            // 
+            this.PrintPreviewReportOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PrintPreviewReportOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PrintPreviewReportOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PrintPreviewReportOrder.Location = new System.Drawing.Point(8, 133);
+            this.PrintPreviewReportOrder.Name = "PrintPreviewReportOrder";
+            this.PrintPreviewReportOrder.Size = new System.Drawing.Size(313, 41);
+            this.PrintPreviewReportOrder.TabIndex = 27;
+            this.PrintPreviewReportOrder.Text = "Print Preview";
+            this.PrintPreviewReportOrder.UseVisualStyleBackColor = true;
+            this.PrintPreviewReportOrder.Click += new System.EventHandler(this.PrintPreviewReportOrder_Click);
+            // 
+            // SearchGroupBox
+            // 
+            this.SearchGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchGroupBox.Controls.Add(this.PrintPreviewReportOrder);
+            this.SearchGroupBox.Controls.Add(this.SearchOrderNumber);
+            this.SearchGroupBox.Controls.Add(this.label6);
+            this.SearchGroupBox.Controls.Add(this.SearchOrderNumberTxt);
+            this.SearchGroupBox.Enabled = false;
+            this.SearchGroupBox.Location = new System.Drawing.Point(1193, 430);
+            this.SearchGroupBox.Name = "SearchGroupBox";
+            this.SearchGroupBox.Size = new System.Drawing.Size(337, 190);
+            this.SearchGroupBox.TabIndex = 19;
+            this.SearchGroupBox.TabStop = false;
+            this.SearchGroupBox.Text = "Search";
+            // 
             // OrderFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -766,7 +702,6 @@ namespace GUIApp
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.SearchGroupBox);
             this.Controls.Add(this.TotalOrdersLbl);
-            this.Controls.Add(this.FilterOrdersByDateGroupBox);
             this.Controls.Add(this.InactiveItemsGroupBox);
             this.Controls.Add(this.ItemsToReorderGroupBox);
             this.Controls.Add(this.TotalsGroupBox);
@@ -786,15 +721,13 @@ namespace GUIApp
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ItemsGridView)).EndInit();
             this.ModifyQuantityMenu.ResumeLayout(false);
-            this.SearchGroupBox.ResumeLayout(false);
-            this.SearchGroupBox.PerformLayout();
             this.TotalsGroupBox.ResumeLayout(false);
             this.TotalsGroupBox.PerformLayout();
             this.ItemsToReorderGroupBox.ResumeLayout(false);
             this.InactiveItemsGroupBox.ResumeLayout(false);
-            this.FilterOrdersByDateGroupBox.ResumeLayout(false);
-            this.FilterOrdersByDateGroupBox.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.SearchGroupBox.ResumeLayout(false);
+            this.SearchGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -833,12 +766,7 @@ namespace GUIApp
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialogOrder;
         private System.Drawing.Printing.PrintDocument printOrderDocument;
-        private System.Windows.Forms.GroupBox SearchGroupBox;
-        private System.Windows.Forms.Button SearchOrderNumber;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox SearchOrderNumberTxt;
         private System.Windows.Forms.GroupBox TotalsGroupBox;
-        private System.Windows.Forms.Button PrintPreviewReportOrder;
         private System.Windows.Forms.DataGridView ItemsGridView;
         private System.Windows.Forms.Button ReOrderListBtn;
         private System.Windows.Forms.Button InactiveItemsListBtn;
@@ -848,12 +776,12 @@ namespace GUIApp
         private System.Windows.Forms.Button PrintPreviewItemsToReorder;
         private System.Windows.Forms.GroupBox InactiveItemsGroupBox;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox FilterOrdersByDateGroupBox;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DateTimePicker InferiorDateTimePicker;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DateTimePicker SuperiorDateTimePicker;
         private System.Windows.Forms.Label TotalOrdersLbl;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox SearchOrderNumberTxt;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button SearchOrderNumber;
+        private System.Windows.Forms.Button PrintPreviewReportOrder;
+        private System.Windows.Forms.GroupBox SearchGroupBox;
     }
 }
