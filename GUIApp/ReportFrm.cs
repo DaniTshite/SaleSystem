@@ -20,6 +20,16 @@ namespace GUIApp
         List<Item> items;
         List<OrderLine> orderDetails;
         IItemProcessor _itemProcessor;
+        //print Order Document
+
+        private int NumberOfItemsPage = 0;
+        private int itemsPrintedSoFar = 0;
+
+        //Item counter for Order Cart
+
+        int itemCounter = 1;
+        private decimal PurchasePrice;
+        List<IOrderLine> itemsToSave;
         public ReportFrm()
         {
             InitializeComponent();
@@ -247,6 +257,154 @@ namespace GUIApp
             {
                 MessageBox.Show("There are no items to Reorder !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void printOrderDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            ////Image image = SalesProject.Properties.Resources.logo;
+            ////e.Graphics.DrawImage(image,0,0,image.Width,image.Height);
+            ///
+            e.Graphics.DrawString("Page   " + ((itemsPrintedSoFar % 7) == 0 ? (itemsPrintedSoFar / 7) + 1 : (itemsPrintedSoFar / 7) + 2),
+                new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 50));
+            e.Graphics.DrawString("Order Report", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(30, 330));
+            e.Graphics.DrawString("Date : " + orderDetails[0].Order.OrderDate.Date.ToLongDateString(), new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 370));
+            e.Graphics.DrawString("Order Number :  " + orderDetails[0].Order.OrderNumber, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 410));
+            e.Graphics.DrawString("*****************************************************************************************************************************************",
+                new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(30, 440));
+            e.Graphics.DrawString(" No ", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 460));
+            e.Graphics.DrawString(" Designation ", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(70, 460));
+            e.Graphics.DrawString(" Unit Price ", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(360, 460));
+            e.Graphics.DrawString(" Quantity ", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(470, 460));
+            e.Graphics.DrawString(" Net Total  ", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(630, 460));
+            e.Graphics.DrawString("*****************************************************************************************************************************************",
+                new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(30, 490));
+            int YPos = 490;
+
+            for (int i = itemsPrintedSoFar; i < orderDetails.Count; i++)
+            {
+                NumberOfItemsPage++;
+                if (NumberOfItemsPage <= 7)
+                {
+                    itemsPrintedSoFar++;
+
+                    if (itemsPrintedSoFar <= orderDetails.Count)
+                    {
+                        //e.Graphics.DrawString(orderDetails[i].Id.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(30, YPos + 30));
+                        e.Graphics.DrawString(orderDetails[i].SelectedItem.Descript, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(70, YPos + 30));
+                        e.Graphics.DrawString(orderDetails[i].PurchasePrice.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(370, YPos + 30));
+                        e.Graphics.DrawString(orderDetails[i].PurchasedQuantity.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(480, YPos + 30));
+                        e.Graphics.DrawString(orderDetails[i].LineTotal.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(640, YPos + 30));
+                        YPos += 30;
+                    }
+                    else
+                    {
+                        e.HasMorePages = false;
+                    }
+                }
+                else
+                {
+                    NumberOfItemsPage = 0;
+                    e.HasMorePages = true;
+                    return;
+                }
+            }
+            e.Graphics.DrawString("*******************************************************************************************************************",
+                new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(30, YPos + 30));
+            e.Graphics.DrawString(" Sub Total  (R) : " + orderDetails[0].Order.SubTotal, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, YPos + 60));
+            e.Graphics.DrawString(" VAT    (R) : " + orderDetails[0].Order.Tax, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, YPos + 90));
+            e.Graphics.DrawString(" Grand Total (R) : " + orderDetails[0].Order.Total, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, YPos + 120));
+            e.Graphics.DrawString(" Supplied by : " + orderDetails[0].Order.SelectedSupplier.SupplierName, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, YPos + 150));
+            e.Graphics.DrawString(" " + orderDetails[0].Order.SelectedSupplier.SupplierTelephone, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(120, YPos + 180));
+            e.Graphics.DrawString(" " + orderDetails[0].Order.SelectedSupplier.SupplierEmailAddress, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(120, YPos + 210));
+            e.Graphics.DrawString(" " + orderDetails[0].Order.SelectedSupplier.SupplierPhysicalAddress, new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(120, YPos + 240));
+            NumberOfItemsPage = 0;
+            itemsPrintedSoFar = 0;
+        }
+
+        private void PrintPreviewItemsToReorder_Click(object sender, EventArgs e)
+        {
+            List<OrderLine> itemsToReorder = _ordersProcessor.GetItemsToReorder(items);
+            if (itemsToReorder.Count > 0)
+            {
+                printPreviewDialogOrder.Document = printItemsToReorderDocument;
+                printPreviewDialogOrder.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("There are no items to Reorder !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PrintPreviewReportOrder_Click(object sender, EventArgs e)
+        {
+            if (orderDetails.Count == 0 || orderDetails == null)
+            {
+                MessageBox.Show("The which order do you want to preview !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SearchOrderNumberTxt.Clear();
+                SearchOrderNumberTxt.Focus();
+            }
+            else
+            {
+                printPreviewDialogOrder.Document = printOrderDocument;
+                printPreviewDialogOrder.ShowDialog();
+            }
+        }
+
+        private void printItemsToReorderDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            List<OrderLine> itemsToReorder = _ordersProcessor.GetItemsToReorder(items) as dynamic;
+            //int s = itemsToReorder[0].Id;
+            //int t = s;
+            e.Graphics.DrawString("Page   " + ((itemsPrintedSoFar % 7) == 0 ? (itemsPrintedSoFar / 7) + 1 : (itemsPrintedSoFar / 7) + 2),
+               new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 50));
+            e.Graphics.DrawString("List of items To Reorder", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new Point(30, 330));
+            e.Graphics.DrawString("Date : " + DateTime.Now.ToLongDateString(), new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 370));
+            e.Graphics.DrawString("", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 410));
+            e.Graphics.DrawString("*****************************************************************************************************************************************",
+                new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(30, 440));
+            e.Graphics.DrawString(" No ", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(30, 460));
+            e.Graphics.DrawString(" Stock Code ", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(70, 460));
+            e.Graphics.DrawString(" Designation ", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(180, 460));
+            e.Graphics.DrawString(" In Stock ", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(480, 460));
+            e.Graphics.DrawString(" ReorderLevel  ", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(590, 460));
+            //e.Graphics.DrawString(" Measure  ", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new Point(720, 460));
+            e.Graphics.DrawString("*****************************************************************************************************************************************",
+                new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(30, 490));
+            int YPos = 490;
+            for (int i = itemsPrintedSoFar; i < itemsToReorder.Count; i++)
+            {
+                NumberOfItemsPage++;
+                if (NumberOfItemsPage <= 7)
+                {
+                    itemsPrintedSoFar++;
+
+                    if (itemsPrintedSoFar <= itemsToReorder.Count)
+                    {
+                        // e.Graphics.DrawString(itemsToReorder[i].Id.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(30, YPos + 30));
+                        e.Graphics.DrawString(itemsToReorder[i].SelectedItem.StockCode, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(70, YPos + 30));
+                        e.Graphics.DrawString(itemsToReorder[i].SelectedItem.Descript, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(180, YPos + 30));
+                        e.Graphics.DrawString(itemsToReorder[i].PurchasedQuantity.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(480, YPos + 30));
+                        e.Graphics.DrawString(itemsToReorder[i].SelectedItem.ReOrderlevel.ToString(), new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(590, YPos + 30));
+                        // e.Graphics.DrawString(itemsToReorder[i].MeasureName, new Font("Arial", 10, FontStyle.Regular), Brushes.Black, new Point(720, YPos + 30));
+                        YPos += 30;
+                    }
+                    else
+                    {
+                        e.HasMorePages = false;
+                    }
+                }
+                else
+                {
+                    NumberOfItemsPage = 0;
+                    e.HasMorePages = true;
+                    return;
+                }
+            }
+            e.Graphics.DrawString("*******************************************************************************************************************",
+                new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(30, YPos + 30));
+
+            NumberOfItemsPage = 0;
+            itemsPrintedSoFar = 0;
         }
     }
 }

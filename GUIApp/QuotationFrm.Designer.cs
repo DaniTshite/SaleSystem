@@ -42,6 +42,8 @@ namespace GUIApp
             this.panel3 = new System.Windows.Forms.Panel();
             this.UsersCmb = new System.Windows.Forms.ComboBox();
             this.CustomerAccountsCmb = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TotalOrdersLbl = new System.Windows.Forms.Label();
             this.TotalLbl = new System.Windows.Forms.Label();
@@ -62,8 +64,6 @@ namespace GUIApp
             this.RetailPriceLbl = new System.Windows.Forms.Label();
             this.AddToCartBtn = new System.Windows.Forms.Button();
             this.ItemsListBox = new System.Windows.Forms.ListBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -113,10 +113,10 @@ namespace GUIApp
             this.SaveBtn.Image = ((System.Drawing.Image)(resources.GetObject("SaveBtn.Image")));
             this.SaveBtn.Location = new System.Drawing.Point(3, 3);
             this.SaveBtn.Name = "SaveBtn";
-            this.SaveBtn.Size = new System.Drawing.Size(170, 139);
+            this.SaveBtn.Size = new System.Drawing.Size(170, 144);
             this.SaveBtn.TabIndex = 7;
             this.SaveBtn.Text = "SAVE";
-            this.SaveBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.SaveBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.SaveBtn.UseVisualStyleBackColor = false;
             this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
@@ -131,10 +131,10 @@ namespace GUIApp
             this.ResetBtn.Image = ((System.Drawing.Image)(resources.GetObject("ResetBtn.Image")));
             this.ResetBtn.Location = new System.Drawing.Point(179, 3);
             this.ResetBtn.Name = "ResetBtn";
-            this.ResetBtn.Size = new System.Drawing.Size(176, 139);
+            this.ResetBtn.Size = new System.Drawing.Size(176, 145);
             this.ResetBtn.TabIndex = 6;
             this.ResetBtn.Text = "RESET";
-            this.ResetBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.ResetBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.ResetBtn.UseVisualStyleBackColor = false;
             this.ResetBtn.Click += new System.EventHandler(this.ResetBtn_Click);
             // 
@@ -171,6 +171,30 @@ namespace GUIApp
             this.CustomerAccountsCmb.Name = "CustomerAccountsCmb";
             this.CustomerAccountsCmb.Size = new System.Drawing.Size(283, 39);
             this.CustomerAccountsCmb.TabIndex = 47;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(13, 79);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(112, 20);
+            this.label4.TabIndex = 44;
+            this.label4.Text = "CUSTOMER";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(13, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 20);
+            this.label3.TabIndex = 44;
+            this.label3.Text = "USER";
             // 
             // panel2
             // 
@@ -479,30 +503,6 @@ namespace GUIApp
             this.ItemsListBox.Size = new System.Drawing.Size(332, 554);
             this.ItemsListBox.TabIndex = 0;
             this.ItemsListBox.SelectedValueChanged += new System.EventHandler(this.ItemsListBox_SelectedValueChanged);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(22, 8);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 20);
-            this.label3.TabIndex = 44;
-            this.label3.Text = "User";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(22, 71);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 20);
-            this.label4.TabIndex = 44;
-            this.label4.Text = "Customer";
             // 
             // QuotationFrm
             // 
