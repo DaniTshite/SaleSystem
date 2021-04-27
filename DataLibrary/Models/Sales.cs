@@ -19,7 +19,7 @@ namespace DataLibrary.Models
         public decimal Tax { get; set; }
         public decimal Total { get; set; }
         public string PaymentMode { get; set; }
-        public Delivery DeliveryMode { get; set; } = new Delivery();
+        public int  DeliveryMode { get; set; }
         public List<SaleLine> SaleOrderDetails { get; set; }
         public CustomerAccount SelectedAccount { get; set; } = new CustomerAccount();
         public Quotations SelectedQuotation { get; set; } = new Quotations();

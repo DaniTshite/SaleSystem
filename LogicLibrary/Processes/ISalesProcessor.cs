@@ -8,5 +8,6 @@ namespace LogicLibrary.Processes
         int GetInvoiceNumber();
         List<SaleLine> GetSaleDetails(string invoiceNumber);
         string SaveSaleOrder(ISales model,IDelivery delivery);
+        List<Sales> GetNonDeliveredOrders();
     }
 }

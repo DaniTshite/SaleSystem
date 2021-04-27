@@ -5,7 +5,7 @@ namespace DataLibrary.Models
 {
     public interface ISales
     {
-        //Delivery DeliveryMode { get; set; }
+        int DeliveryMode { get; set; }
         int SaleId { get; set; }
         DateTime SaleDate { get; set; }
         int Discount { get; set; }

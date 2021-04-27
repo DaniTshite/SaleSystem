@@ -116,6 +116,7 @@ namespace DataLibrary.Data
             }
         }
 
+
         public static List<SaleLine> LoadSaleData(string invoiceNumber)
         {
             using (IDbConnection cn = new SqlConnection(GetConnectionString()))

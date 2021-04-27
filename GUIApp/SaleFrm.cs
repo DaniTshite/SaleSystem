@@ -205,13 +205,13 @@ namespace GUIApp
                 {
                     delivery.DeliveryDate = DateTime.Now.Date;
                     delivery.TypeOfDelivery = DeliveryType.CashAndCarry;
-                    delivery.DeliveryStatus = 1;
+                    delivery.DeliveryStatus = 0;
                 }
                 else
                 {
                     delivery.DeliveryDate = DeliveryDateTimePicker.Value;
                     delivery.TypeOfDelivery = DeliveryType.CompanyTruck;
-                    delivery.DeliveryStatus = 0;
+                    delivery.DeliveryStatus = 1;
                 }
                 delivery.DeliveryNumber = CurrentInvoiceNumber.ToString();
 
@@ -224,6 +224,8 @@ namespace GUIApp
                 sale.Tax = 1;
                 sale.Total = Total;
                 sale.PaymentMode = "cash";
+                sale.DeliveryMode = (int)delivery.TypeOfDelivery;
+                sale.SelectedUser = (Users)UsersCmb.SelectedItem;
                 sale.SaleOrderDetails = itemsToSave;
 
                 ChangeLbl.Text = String.Format("{0:C2}", (decimal.Parse(PaidTxt.Text) - Total));

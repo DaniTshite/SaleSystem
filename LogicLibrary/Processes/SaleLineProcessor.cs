@@ -29,7 +29,7 @@ namespace LogicLibrary.Processes
                     RetailPrice = item.RetailPrice,
                     LineTotal = item.LineTotal
                 };
-                string sql = @"spSaleLine_insert @ItemId,@SaleId,@QuotationQuantity,@RetailPrice,@LineTotal";
+                string sql = @"spSaleLine_insert @ItemId,@SaleId,@SaleQuantity,@RetailPrice,@LineTotal";
                 SqlDataAccess.RegisterData(sql, data);
             }
         }

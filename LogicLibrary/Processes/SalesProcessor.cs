@@ -68,10 +68,10 @@ namespace LogicLibrary.Processes
                     data.Add("@Tax", sale.Tax);
                     data.Add("@Total", sale.Total);
                     data.Add("@PaymentMode", sale.PaymentMode);
-                    data.Add("@DeliveryMode", 1);
+                    data.Add("@DeliveryMode", sale.DeliveryMode);
                     data.Add("@AccountId", 1);
                     data.Add("@QuotationId", 1);
-                    data.Add("@UserId", 1);
+                    data.Add("@UserId", sale.SelectedUser.UserId);
                     data.Add("@SaleId", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
                     cn.Execute("spSales_insert", data, commandType: CommandType.StoredProcedure);
                     sale.SaleId = data.Get<int>("@SaleId");
@@ -79,12 +79,12 @@ namespace LogicLibrary.Processes
                     _saleLineProcessor.SaveSaleLine(sale);
                     _deliveryProcessor.SaveDelivery(delivery);
                     return "1 Record has been added Successfully ";
-                }
-                catch (Exception)
-                {
-                    return "An Error Occured";
-                }
             }
+                catch (Exception)
+            {
+                return "An Error Occured";
+            }
+        }
         }
         /// <summary>
         /// This method get sale order details from the DB
@@ -95,6 +95,18 @@ namespace LogicLibrary.Processes
         {
             var output = SqlDataAccess.LoadSaleData(invoiceNumber);
             return output;
+        }
+        /// <summary>
+        /// This method get sale orders to be delivered by the company truck
+        /// </summary>
+        /// <returns>It returns a list of sale objects</returns>
+        public List<Sales> GetNonDeliveredOrders()
+        {
+            
+                string sql = @"spSales_GetNotDelivered";
+                var output = SqlDataAccess.LoadData<Sales>(sql);
+                return output;
+            
         }
     }
 }
