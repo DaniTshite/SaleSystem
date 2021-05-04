@@ -1,2 +1,2 @@
 # SaleSystem
-A Desktop Software System Built using C#,MS SQL SERVER that tracks all operations from supply to sales of differents products
+A Desktop Software System Built using C#,MS SQL SERVER, Dapper that tracks supply and sale operations of a small store allowing flexible management and easy administration of stock.
