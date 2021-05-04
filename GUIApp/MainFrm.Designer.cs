@@ -151,7 +151,7 @@ namespace GUIApp
             this.ReportsBtn.Name = "ReportsBtn";
             this.ReportsBtn.Size = new System.Drawing.Size(291, 75);
             this.ReportsBtn.TabIndex = 0;
-            this.ReportsBtn.Text = "REPORTING";
+            this.ReportsBtn.Text = "REPORTS";
             this.ReportsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ReportsBtn.UseVisualStyleBackColor = false;
             this.ReportsBtn.Click += new System.EventHandler(this.ReportsBtn_Click);

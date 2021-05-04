@@ -24,7 +24,7 @@ namespace LogicLibrary.Processes
             try
             {
                 _delivery = delivery;
-                string sql = @"spDelivery_insert @DeliveryDate,@SaleId,@TypeOfDelivery,@DeliveryNumber,@DeliveryStatus";
+                string sql = @"spDelivery_insert @DeliveryDate,@SaleId,@deliveryType,@DeliveryNumber,@DeliveryStatus";
                 SqlDataAccess.RegisterData(sql, _delivery);
             }
             catch (Exception )
@@ -41,7 +41,8 @@ namespace LogicLibrary.Processes
             try
             {
                 string sql = @"spDelivery_GetAll";
-                return SqlDataAccess.LoadData<Delivery>(sql);
+                var p= SqlDataAccess.LoadData<Delivery>(sql);
+                return p;
             }
             catch (Exception)
             {
@@ -49,6 +50,15 @@ namespace LogicLibrary.Processes
                 throw;
             }
 
+        }
+        public void UpdateDelivery(int saleId)
+        {
+            var data = new
+            {
+                SaleId = saleId
+            };
+            string sql = @"spDelivery_Update @SaleId";
+            SqlDataAccess.RegisterData(sql,data);
         }
         
     }

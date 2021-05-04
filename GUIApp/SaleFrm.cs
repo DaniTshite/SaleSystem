@@ -204,13 +204,13 @@ namespace GUIApp
                 if (DeliveryCmb.Text == "CASH AND CARRY")
                 {
                     delivery.DeliveryDate = DateTime.Now.Date;
-                    delivery.TypeOfDelivery = DeliveryType.CashAndCarry;
+                    delivery.deliveryType = DeliveryType.CashAndCarry;
                     delivery.DeliveryStatus = 0;
                 }
                 else
                 {
                     delivery.DeliveryDate = DeliveryDateTimePicker.Value;
-                    delivery.TypeOfDelivery = DeliveryType.CompanyTruck;
+                    delivery.deliveryType = DeliveryType.CompanyTruck;
                     delivery.DeliveryStatus = 1;
                 }
                 delivery.DeliveryNumber = CurrentInvoiceNumber.ToString();
@@ -224,7 +224,7 @@ namespace GUIApp
                 sale.Tax = 1;
                 sale.Total = Total;
                 sale.PaymentMode = "cash";
-                sale.DeliveryMode = (int)delivery.TypeOfDelivery;
+                sale.DeliveryMode = (int)delivery.deliveryType;
                 sale.SelectedUser = (Users)UsersCmb.SelectedItem;
                 sale.SaleOrderDetails = itemsToSave;
 

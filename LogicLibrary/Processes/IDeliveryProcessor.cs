@@ -7,6 +7,6 @@ namespace LogicLibrary.Processes
     {
         List<Delivery> GetDeliveries();
         void SaveDelivery(IDelivery delivery);
-        
+        void UpdateDelivery(int saleId);
     }
 }
