@@ -62,9 +62,9 @@ namespace GUIApp
             this.SupplierTelephoneTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SupplierTelephoneTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SupplierTelephoneTxt.Location = new System.Drawing.Point(18, 94);
+            this.SupplierTelephoneTxt.Location = new System.Drawing.Point(18, 135);
             this.SupplierTelephoneTxt.Name = "SupplierTelephoneTxt";
-            this.SupplierTelephoneTxt.Size = new System.Drawing.Size(299, 28);
+            this.SupplierTelephoneTxt.Size = new System.Drawing.Size(283, 28);
             this.SupplierTelephoneTxt.TabIndex = 2;
             // 
             // TelephoneLbl
@@ -74,7 +74,7 @@ namespace GUIApp
             this.TelephoneLbl.AutoSize = true;
             this.TelephoneLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TelephoneLbl.ForeColor = System.Drawing.Color.White;
-            this.TelephoneLbl.Location = new System.Drawing.Point(14, 71);
+            this.TelephoneLbl.Location = new System.Drawing.Point(14, 112);
             this.TelephoneLbl.Name = "TelephoneLbl";
             this.TelephoneLbl.Size = new System.Drawing.Size(111, 20);
             this.TelephoneLbl.TabIndex = 6;
@@ -85,9 +85,9 @@ namespace GUIApp
             this.SupplierEmailAddressTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SupplierEmailAddressTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SupplierEmailAddressTxt.Location = new System.Drawing.Point(16, 160);
+            this.SupplierEmailAddressTxt.Location = new System.Drawing.Point(16, 201);
             this.SupplierEmailAddressTxt.Name = "SupplierEmailAddressTxt";
-            this.SupplierEmailAddressTxt.Size = new System.Drawing.Size(301, 28);
+            this.SupplierEmailAddressTxt.Size = new System.Drawing.Size(285, 28);
             this.SupplierEmailAddressTxt.TabIndex = 3;
             // 
             // label3
@@ -97,7 +97,7 @@ namespace GUIApp
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(14, 137);
+            this.label3.Location = new System.Drawing.Point(14, 178);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 20);
             this.label3.TabIndex = 4;
@@ -108,9 +108,10 @@ namespace GUIApp
             this.SupplierPhysicalAddressTxt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SupplierPhysicalAddressTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SupplierPhysicalAddressTxt.Location = new System.Drawing.Point(16, 227);
+            this.SupplierPhysicalAddressTxt.Location = new System.Drawing.Point(16, 268);
+            this.SupplierPhysicalAddressTxt.Multiline = true;
             this.SupplierPhysicalAddressTxt.Name = "SupplierPhysicalAddressTxt";
-            this.SupplierPhysicalAddressTxt.Size = new System.Drawing.Size(301, 28);
+            this.SupplierPhysicalAddressTxt.Size = new System.Drawing.Size(285, 107);
             this.SupplierPhysicalAddressTxt.TabIndex = 4;
             // 
             // label2
@@ -120,7 +121,7 @@ namespace GUIApp
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(14, 204);
+            this.label2.Location = new System.Drawing.Point(14, 245);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(178, 20);
             this.label2.TabIndex = 2;
@@ -132,8 +133,9 @@ namespace GUIApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SupplierNameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SupplierNameTxt.Location = new System.Drawing.Point(16, 28);
+            this.SupplierNameTxt.Multiline = true;
             this.SupplierNameTxt.Name = "SupplierNameTxt";
-            this.SupplierNameTxt.Size = new System.Drawing.Size(301, 28);
+            this.SupplierNameTxt.Size = new System.Drawing.Size(285, 63);
             this.SupplierNameTxt.TabIndex = 1;
             // 
             // label1
@@ -182,7 +184,7 @@ namespace GUIApp
             this.SuppliersGridView.AllowUserToDeleteRows = false;
             this.SuppliersGridView.AllowUserToResizeColumns = false;
             this.SuppliersGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             this.SuppliersGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -264,7 +266,7 @@ namespace GUIApp
             this.DeleteSupplierCmb.FormattingEnabled = true;
             this.DeleteSupplierCmb.Location = new System.Drawing.Point(15, 54);
             this.DeleteSupplierCmb.Name = "DeleteSupplierCmb";
-            this.DeleteSupplierCmb.Size = new System.Drawing.Size(293, 30);
+            this.DeleteSupplierCmb.Size = new System.Drawing.Size(283, 30);
             this.DeleteSupplierCmb.TabIndex = 0;
             // 
             // DeleteSupplierBtn
@@ -286,6 +288,7 @@ namespace GUIApp
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.MidnightBlue;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.DeleteSupplierBtn);
             this.panel1.Controls.Add(this.SupplierPhysicalAddressTxt);
@@ -307,7 +310,7 @@ namespace GUIApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Navy;
+            this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(1488, 732);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.GridGroupBox);

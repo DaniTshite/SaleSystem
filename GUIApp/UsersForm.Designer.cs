@@ -33,8 +33,8 @@ namespace GUIApp
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.UpdateUsersBtn = new System.Windows.Forms.Button();
             this.UpdateUsersCmb = new System.Windows.Forms.ComboBox();
-            this.IsActiveChkBtn = new System.Windows.Forms.CheckBox();
             this.SaveUsersBtn = new System.Windows.Forms.Button();
+            this.IsActiveChkBtn = new System.Windows.Forms.CheckBox();
             this.TypeUserCmb = new System.Windows.Forms.ComboBox();
             this.SelectPictureBtn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -88,17 +88,6 @@ namespace GUIApp
             this.UpdateUsersCmb.TabIndex = 0;
             this.UpdateUsersCmb.SelectedValueChanged += new System.EventHandler(this.UpdateUsersCmb_SelectedValueChanged);
             // 
-            // IsActiveChkBtn
-            // 
-            this.IsActiveChkBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.IsActiveChkBtn.AutoSize = true;
-            this.IsActiveChkBtn.Location = new System.Drawing.Point(492, 61);
-            this.IsActiveChkBtn.Name = "IsActiveChkBtn";
-            this.IsActiveChkBtn.Size = new System.Drawing.Size(108, 29);
-            this.IsActiveChkBtn.TabIndex = 13;
-            this.IsActiveChkBtn.Text = "ACTIVE";
-            this.IsActiveChkBtn.UseVisualStyleBackColor = true;
-            // 
             // SaveUsersBtn
             // 
             this.SaveUsersBtn.BackColor = System.Drawing.Color.Navy;
@@ -112,6 +101,17 @@ namespace GUIApp
             this.SaveUsersBtn.UseVisualStyleBackColor = false;
             this.SaveUsersBtn.Click += new System.EventHandler(this.SaveUsersBtn_Click);
             // 
+            // IsActiveChkBtn
+            // 
+            this.IsActiveChkBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.IsActiveChkBtn.AutoSize = true;
+            this.IsActiveChkBtn.Location = new System.Drawing.Point(492, 61);
+            this.IsActiveChkBtn.Name = "IsActiveChkBtn";
+            this.IsActiveChkBtn.Size = new System.Drawing.Size(108, 29);
+            this.IsActiveChkBtn.TabIndex = 13;
+            this.IsActiveChkBtn.Text = "ACTIVE";
+            this.IsActiveChkBtn.UseVisualStyleBackColor = true;
+            // 
             // TypeUserCmb
             // 
             this.TypeUserCmb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -119,9 +119,9 @@ namespace GUIApp
             this.TypeUserCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.TypeUserCmb.FormattingEnabled = true;
             this.TypeUserCmb.Items.AddRange(new object[] {
-            "Admin",
-            "Manger",
-            "Cashier"});
+            "ADMIN",
+            "MANAGER",
+            "CASHIER"});
             this.TypeUserCmb.Location = new System.Drawing.Point(187, 57);
             this.TypeUserCmb.Name = "TypeUserCmb";
             this.TypeUserCmb.Size = new System.Drawing.Size(284, 33);
@@ -242,6 +242,7 @@ namespace GUIApp
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.groupBox2);
@@ -269,7 +270,7 @@ namespace GUIApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Navy;
+            this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(1512, 773);
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(818, 545);

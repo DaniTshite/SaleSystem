@@ -59,7 +59,7 @@ namespace GUIApp
             activeItems = new List<Item>();
             items = _itemProcessor.GetItems();
             suppliers = _supplierProcessor.GetSuppliers();
-            activeItems = _itemProcessor.GetActiveItems();
+            activeItems = _itemProcessor.GetActiveItemsSupply();
             ListItemsCmb.DataSource = activeItems;
             ListSuppliersCmb.DataSource = suppliers;
             ListSuppliersCmb.DisplayMember = "SupplierName";
@@ -105,8 +105,8 @@ namespace GUIApp
                     LineTotal = decimal.Parse(PurchasedQuantityTxt.Text) * decimal.Parse(purchasePriceTxt.Text)
                 };
                 //checks if quantity to be sold is less than the stock
-                if (HelperProcessor.IsStockQuantityEnough(int.Parse(PurchasedQuantityTxt.Text), int.Parse(StockQuantityTxt.Text)) == true)
-                {
+                //if (HelperProcessor.IsStockQuantityEnough(int.Parse(PurchasedQuantityTxt.Text), int.Parse(StockQuantityTxt.Text)) == true)
+                //{
                     //checks if the selected item is already in the cart 
                     foreach (DataGridViewRow row in ItemsGridView.Rows)
                     {
@@ -125,7 +125,7 @@ namespace GUIApp
                         //instanciation of orderline object to save into the DB
                         IOrderLine orderline = ContainerConfig.CreateOrderLine();
                         orderline.SelectedItem = (Item)ListItemsCmb.SelectedItem;
-                        orderline.PurchasePrice = PurchasePrice;
+                        orderline.PurchasePrice = decimal.Parse(purchasePriceTxt.Text);
                         orderline.PurchasedQuantity = line.PurchasedQuantity;
                         orderline.LineTotal = line.LineTotal;
                         
@@ -144,20 +144,23 @@ namespace GUIApp
 
                     }
                     decimal subTotal = gridOrderItemsToDisplay.Sum(x => x.LineTotal);
+                    decimal tax = subTotal * (decimal)0.15;
+                    decimal gdTotal = subTotal + tax; 
                     STotalTxt.Text = subTotal.ToString();
-                    GdTotalTxt.Text = subTotal.ToString();
+                    TaxTxt.Text = tax.ToString();
+                    GdTotalTxt.Text = gdTotal.ToString();
                     ListSuppliersCmb.SelectedIndex = -1;
                     purchasePriceTxt.Clear();
                     PurchasedQuantityTxt.Clear();
-                    StockQuantityTxt.Clear();
-                }
-                else
-                {
-                    MessageBox.Show(" There is no enough stock !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    PurchasedQuantityTxt.Clear();
-                    StockQuantityTxt.Clear();
-                    PurchasedQuantityTxt.Focus();
-                }
+                    StockQuantityLbl.Text="0";
+                //}
+                //else
+                //{
+                //    MessageBox.Show(" There is no enough stock !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    PurchasedQuantityTxt.Clear();
+                //    StockQuantityTxt.Clear();
+                //    PurchasedQuantityTxt.Focus();
+                //}
 
             }
         }
@@ -284,7 +287,7 @@ namespace GUIApp
             ListSuppliersCmb.SelectedIndex = -1;
             purchasePriceTxt.Clear();
             PurchasedQuantityTxt.Clear();
-            StockQuantityTxt.Clear();
+            StockQuantityLbl.Text="0";
             STotalTxt.Text = "0";
             TaxTxt.Text = "0";
             GdTotalTxt.Text = "0";
@@ -358,15 +361,15 @@ namespace GUIApp
             {
                 if (int.Parse(ListItemsCmb.SelectedValue.ToString()) == itemQuantity.SelectedItem.Itemid)
                 {
-                    StockQuantityTxt.Text = HelperProcessor.GetStockQuantity(itemQuantity.SelectedItem.Itemid).ToString();
+                    StockQuantityLbl.Text = HelperProcessor.GetStockQuantity(itemQuantity.SelectedItem.Itemid).ToString();
                     //purchasePriceTxt.Text = (ItemProcessor.CalculateSalePrice(itemQuantity.SelectedItem.Itemid)).ToString();
                     IsItemFound = true;
                 }
             }
             if (!IsItemFound)
             {
-                StockQuantityTxt.Text = "0.00";
-                purchasePriceTxt.Text = "0.00";
+                StockQuantityLbl.Text = "0";
+                purchasePriceTxt.Text = "0";
             }
         }
 
@@ -455,14 +458,12 @@ namespace GUIApp
 
         private void CustomerAccountLinkLbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            CustomerAccountFrm ca = new CustomerAccountFrm();
-            ca.Show();
+            
         }
 
         private void SalesLinkLbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            SaleFrm sale = new SaleFrm();
-            sale.Show();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

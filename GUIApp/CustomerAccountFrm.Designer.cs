@@ -77,8 +77,9 @@ namespace GUIApp
             this.CustomerAccountsGridView.AllowUserToDeleteRows = false;
             this.CustomerAccountsGridView.AllowUserToResizeColumns = false;
             this.CustomerAccountsGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.MidnightBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             this.CustomerAccountsGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.CustomerAccountsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -101,10 +102,10 @@ namespace GUIApp
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MidnightBlue;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.CustomerAccountsGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.CustomerAccountsGridView.GridColor = System.Drawing.Color.White;
             this.CustomerAccountsGridView.Location = new System.Drawing.Point(6, 18);
@@ -131,7 +132,7 @@ namespace GUIApp
             // SaveCustomerAccountBtn
             // 
             this.SaveCustomerAccountBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveCustomerAccountBtn.BackColor = System.Drawing.Color.Navy;
+            this.SaveCustomerAccountBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.SaveCustomerAccountBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveCustomerAccountBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveCustomerAccountBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -158,6 +159,7 @@ namespace GUIApp
             // GenderCmb
             // 
             this.GenderCmb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.GenderCmb.BackColor = System.Drawing.Color.White;
             this.GenderCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.GenderCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenderCmb.FormattingEnabled = true;
@@ -167,7 +169,7 @@ namespace GUIApp
             "other"});
             this.GenderCmb.Location = new System.Drawing.Point(8, 579);
             this.GenderCmb.Name = "GenderCmb";
-            this.GenderCmb.Size = new System.Drawing.Size(310, 33);
+            this.GenderCmb.Size = new System.Drawing.Size(295, 33);
             this.GenderCmb.TabIndex = 7;
             // 
             // IdNumberTxt
@@ -176,7 +178,7 @@ namespace GUIApp
             this.IdNumberTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IdNumberTxt.Location = new System.Drawing.Point(8, 187);
             this.IdNumberTxt.Name = "IdNumberTxt";
-            this.IdNumberTxt.Size = new System.Drawing.Size(310, 30);
+            this.IdNumberTxt.Size = new System.Drawing.Size(295, 30);
             this.IdNumberTxt.TabIndex = 3;
             // 
             // label4
@@ -197,7 +199,7 @@ namespace GUIApp
             this.CellphoneTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CellphoneTxt.Location = new System.Drawing.Point(8, 260);
             this.CellphoneTxt.Name = "CellphoneTxt";
-            this.CellphoneTxt.Size = new System.Drawing.Size(310, 30);
+            this.CellphoneTxt.Size = new System.Drawing.Size(295, 30);
             this.CellphoneTxt.TabIndex = 4;
             // 
             // label5
@@ -218,7 +220,7 @@ namespace GUIApp
             this.LastNameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LastNameTxt.Location = new System.Drawing.Point(8, 112);
             this.LastNameTxt.Name = "LastNameTxt";
-            this.LastNameTxt.Size = new System.Drawing.Size(310, 30);
+            this.LastNameTxt.Size = new System.Drawing.Size(295, 30);
             this.LastNameTxt.TabIndex = 2;
             // 
             // LastNameLbl
@@ -239,7 +241,7 @@ namespace GUIApp
             this.EmailAddressTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmailAddressTxt.Location = new System.Drawing.Point(8, 332);
             this.EmailAddressTxt.Name = "EmailAddressTxt";
-            this.EmailAddressTxt.Size = new System.Drawing.Size(310, 30);
+            this.EmailAddressTxt.Size = new System.Drawing.Size(295, 30);
             this.EmailAddressTxt.TabIndex = 5;
             // 
             // label3
@@ -261,7 +263,7 @@ namespace GUIApp
             this.PhysicalAddressTxt.Location = new System.Drawing.Point(8, 404);
             this.PhysicalAddressTxt.Multiline = true;
             this.PhysicalAddressTxt.Name = "PhysicalAddressTxt";
-            this.PhysicalAddressTxt.Size = new System.Drawing.Size(310, 144);
+            this.PhysicalAddressTxt.Size = new System.Drawing.Size(295, 144);
             this.PhysicalAddressTxt.TabIndex = 6;
             // 
             // label2
@@ -282,7 +284,7 @@ namespace GUIApp
             this.FirstNameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FirstNameTxt.Location = new System.Drawing.Point(8, 39);
             this.FirstNameTxt.Name = "FirstNameTxt";
-            this.FirstNameTxt.Size = new System.Drawing.Size(310, 30);
+            this.FirstNameTxt.Size = new System.Drawing.Size(295, 30);
             this.FirstNameTxt.TabIndex = 1;
             // 
             // FirstNameLbl
@@ -301,6 +303,7 @@ namespace GUIApp
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.MidnightBlue;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.SaveCustomerAccountBtn);
@@ -326,7 +329,7 @@ namespace GUIApp
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.Navy;
+            this.button1.BackColor = System.Drawing.Color.MidnightBlue;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -342,7 +345,7 @@ namespace GUIApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Navy;
+            this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(1539, 801);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.GridGroupBox);

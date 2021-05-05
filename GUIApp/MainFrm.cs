@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +18,7 @@ namespace GUIApp
         private Button currentButton;
         private readonly Random random;
         //private int tempIndex;
-        public string _loggedInUser;
+        public Users _loggedInUser;
         public MainFrm()
         {
             InitializeComponent();
@@ -73,7 +74,7 @@ namespace GUIApp
 
         private void SalesBtn_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SaleFrm(), sender);
+            OpenChildForm(new SaleFrm(this), sender);
         }
 
         private void CustomersBtn_Click(object sender, EventArgs e)
@@ -114,7 +115,7 @@ namespace GUIApp
 
         private void MainFrm_Load(object sender, EventArgs e)
         {
-            LoggedInUserLbl.Text = LoggedInUserLbl.Text +" " + _loggedInUser;
+            LoggedInUserLbl.Text = LoggedInUserLbl.Text + " " + _loggedInUser.Name;
         }
 
         private void DeliveryBtn_Click(object sender, EventArgs e)

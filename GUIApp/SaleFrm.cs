@@ -18,6 +18,7 @@ namespace GUIApp
 {
     public partial class SaleFrm : Form
     {
+        private MainFrm _mainForm;
         ISalesProcessor _salesProcessor;
         IOrderLineProcessor _orderLineProcessor ;
         ICustomerAccountProcessor _customerAccountsProcessor;
@@ -41,17 +42,19 @@ namespace GUIApp
         decimal SubTotal;
         decimal Total=0,Tax=0;
 
+
         //quotation details to display
         List<QuotationLine> quotationDetails;
-        public SaleFrm()
+        public SaleFrm(MainFrm mainForm)
         {
             InitializeComponent();
             Initialize();
+            _mainForm = mainForm;
         }
         //This method initialises comboboxes ,instantiates objects,resets controls ,etc 
         private void Initialize()
         {
-            ItemsListBox.SelectedValueChanged -=ItemsListBox_SelectedValueChanged;
+            ItemsListBox.SelectedValueChanged -= ItemsListBox_SelectedValueChanged;
             QuotationsCmb.SelectedValueChanged -= QuotationsCmb_SelectedValueChanged;
             _customerAccountsProcessor = ContainerConfig.CreateCustomerAccountProcessor();
             _salesProcessor = ContainerConfig.CreateSalesProcessor();
@@ -63,28 +66,41 @@ namespace GUIApp
             quotations = _quotationsProcessor.GetQuotations();
             users = new List<Users>();
             users = _usersProcessor.GetUsers();
+            users.Insert(0, new Users() { UserId = -1, Name = "             --   SELECT", LastName = " USER   --" });
             customerAccounts = new List<CustomerAccount>();
             customerAccounts = _customerAccountsProcessor.GetCustomerAccounts();
+            customerAccounts.Insert(0, new CustomerAccount() { AccountId = -1, FirstName = "          --   SELECT", LastName = " CUSTOMER   --" });
             activeItems = new List<Item>();
-            activeItems = _itemProcessor.GetActiveItems();
+            activeItems = _itemProcessor.GetActiveItemsSale();
             ItemsListBox.DataSource = activeItems;
             ItemsListBox.DisplayMember = "Descript";
             ItemsListBox.ValueMember = "ItemId";
-            UsersCmb.DataSource = users;
-            UsersCmb.DisplayMember = "FullName";
-            UsersCmb.ValueMember = "userId";
+            //UsersCmb.DataSource = users;
+            //UsersCmb.DisplayMember = "FullName";
+            //UsersCmb.ValueMember = "userId";
             QuotationsCmb.DataSource = quotations;
-            QuotationsCmb.DisplayMember = "QuotationNumber";
+            QuotationsCmb.DisplayMember = "FullReference";
             QuotationsCmb.ValueMember = "QuotationNumber";
             CustomerAccountsCmb.DataSource = customerAccounts;
-            CustomerAccountsCmb.DisplayMember = "FirstName";
+            CustomerAccountsCmb.DisplayMember = "FullName";
             CustomerAccountsCmb.ValueMember = "AccountId";
             itemsToDisplay = new List<OrderCart>();
             itemsToSave = new List<SaleLine>();
+            PopulateDeliveryCmb();
             ResetAllControls();
             QuotationsCmb.SelectedValueChanged += QuotationsCmb_SelectedValueChanged;
             ItemsListBox.SelectedValueChanged += ItemsListBox_SelectedValueChanged;
         }
+
+        private void PopulateDeliveryCmb()
+        {
+            var deliveryList = new List<string>();
+            deliveryList.Insert(0, "    - SELECT DELIVERY MODE -");
+            deliveryList.Insert(1, "    CASH AND CARRY");
+            deliveryList.Insert(2, "    COMPANY TRUCK");
+            DeliveryCmb.DataSource = deliveryList;
+        }
+
         //This method displays the retail price when a value is selected in the combobox
         private void ItemsListBox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -194,20 +210,24 @@ namespace GUIApp
         //This method saves sale into the DB when using cash
         private void CashBtn_Click(object sender, EventArgs e)
         {
-            if (DeliveryCmb.Text==string.Empty)
+            if (CustomerAccountsCmb.SelectedValue != null && Convert.ToInt32(CustomerAccountsCmb.SelectedValue) == -1)
+            {
+                MessageBox.Show("Please select a customer !");
+            }
+            else if (DeliveryCmb.Text.Trim()== "- SELECT DELIVERY MODE -")
             {
                 MessageBox.Show("Select a Delivery Mode Please !", "notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 IDelivery delivery = ContainerConfig.CreateDelivery();
-                if (DeliveryCmb.Text == "CASH AND CARRY")
+                if (DeliveryCmb.Text.Trim() == "CASH AND CARRY")
                 {
                     delivery.DeliveryDate = DateTime.Now.Date;
                     delivery.deliveryType = DeliveryType.CashAndCarry;
                     delivery.DeliveryStatus = 0;
                 }
-                else
+                if(DeliveryCmb.Text.Trim() == "COMPANY TRUCK")
                 {
                     delivery.DeliveryDate = DeliveryDateTimePicker.Value;
                     delivery.deliveryType = DeliveryType.CompanyTruck;
@@ -225,7 +245,7 @@ namespace GUIApp
                 sale.Total = Total;
                 sale.PaymentMode = "cash";
                 sale.DeliveryMode = (int)delivery.deliveryType;
-                sale.SelectedUser = (Users)UsersCmb.SelectedItem;
+                sale.SelectedUser = _mainForm._loggedInUser;
                 sale.SaleOrderDetails = itemsToSave;
 
                 ChangeLbl.Text = String.Format("{0:C2}", (decimal.Parse(PaidTxt.Text) - Total));
@@ -324,10 +344,12 @@ namespace GUIApp
                         ResetBtn.Enabled = true;
                     }
                     SubTotal = itemsToDisplay.Sum(x => x.LineTotal);
+                    Tax = SubTotal * (decimal)0.15;
                     Total = SubTotal + Tax;
                     //formatting these labels as currencies with 2 decimals after the comma
 
                     SubTotalLbl.Text = String.Format("{0:C2}", SubTotal);
+                    TaxLbl.Text= String.Format("{0:C2}", Tax);
                     TotalLbl.Text = String.Format("{0:C2}", Total);
                     ItemsListBox.SelectedIndex = -1;
                     RetailPriceLbl.Text = "";
@@ -364,7 +386,7 @@ namespace GUIApp
         //This method disables the delivery datetimepicker when "cash and carry is selected "
         private void DeliveryCmb_SelectedValueChanged(object sender, EventArgs e)
         {
-            if(DeliveryCmb.Text == "CASH AND CARRY")
+            if(DeliveryCmb.Text.Trim() == "CASH AND CARRY")
             {
                 DeliveryDateTimePicker.Enabled = false;
             }
@@ -409,8 +431,10 @@ namespace GUIApp
             ItemsGridView.Columns[5].DefaultCellStyle.Format = "c2";
 
             SubTotal = itemsToDisplay.Sum(x => x.LineTotal);
-            Total = SubTotal;
+            Tax = SubTotal * (decimal)0.15;
+            Total = SubTotal + Tax;
             SubTotalLbl.Text = String.Format("{0:C2}", SubTotal);
+            TaxLbl.Text = String.Format("{0:C2}", Tax);
             TotalLbl.Text = String.Format("{0:C2}", Total);
             
         }

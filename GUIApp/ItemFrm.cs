@@ -43,6 +43,7 @@ namespace GUIApp
             UpdateItemCmb.ValueMember = "ItemId";
             ListCategoryCmb.DataSource = categories;
             ItemsGridView.DataSource = items;
+            ItemsGridView.Columns[0].Visible = false;
             ItemsGridView.Columns[2].Visible = false;
             ItemsGridView.Columns[5].Visible = false;
             ItemsGridView.Columns[6].Visible = false;

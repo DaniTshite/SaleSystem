@@ -78,7 +78,7 @@ namespace GUIApp
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.BackColor = System.Drawing.Color.DarkBlue;
+            this.groupBox1.BackColor = System.Drawing.Color.MidnightBlue;
             this.groupBox1.Controls.Add(this.panel4);
             this.groupBox1.Controls.Add(this.panel3);
             this.groupBox1.Controls.Add(this.panel2);
@@ -105,7 +105,7 @@ namespace GUIApp
             // SaveBtn
             // 
             this.SaveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveBtn.BackColor = System.Drawing.Color.DarkBlue;
+            this.SaveBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.SaveBtn.Enabled = false;
             this.SaveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -123,7 +123,7 @@ namespace GUIApp
             // ResetBtn
             // 
             this.ResetBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ResetBtn.BackColor = System.Drawing.Color.DarkBlue;
+            this.ResetBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.ResetBtn.Enabled = false;
             this.ResetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ResetBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -141,7 +141,7 @@ namespace GUIApp
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.Color.DarkBlue;
+            this.panel3.BackColor = System.Drawing.Color.MidnightBlue;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.UsersCmb);
             this.panel3.Controls.Add(this.CustomerAccountsCmb);
@@ -200,7 +200,7 @@ namespace GUIApp
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.DarkBlue;
+            this.panel2.BackColor = System.Drawing.Color.MidnightBlue;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.TotalOrdersLbl);
             this.panel2.Controls.Add(this.TotalLbl);
@@ -302,7 +302,7 @@ namespace GUIApp
             this.QuotationValidityLbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.QuotationValidityLbl.AutoSize = true;
             this.QuotationValidityLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.QuotationValidityLbl.ForeColor = System.Drawing.Color.Blue;
+            this.QuotationValidityLbl.ForeColor = System.Drawing.Color.MidnightBlue;
             this.QuotationValidityLbl.Location = new System.Drawing.Point(764, 5);
             this.QuotationValidityLbl.Name = "QuotationValidityLbl";
             this.QuotationValidityLbl.Size = new System.Drawing.Size(183, 26);
@@ -314,7 +314,7 @@ namespace GUIApp
             this.InvoiceNumberLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.InvoiceNumberLbl.AutoSize = true;
             this.InvoiceNumberLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InvoiceNumberLbl.ForeColor = System.Drawing.Color.Blue;
+            this.InvoiceNumberLbl.ForeColor = System.Drawing.Color.MidnightBlue;
             this.InvoiceNumberLbl.Location = new System.Drawing.Point(3, 7);
             this.InvoiceNumberLbl.Name = "InvoiceNumberLbl";
             this.InvoiceNumberLbl.Size = new System.Drawing.Size(214, 26);
@@ -328,9 +328,11 @@ namespace GUIApp
             this.ItemsGridView.AllowUserToOrderColumns = true;
             this.ItemsGridView.AllowUserToResizeColumns = false;
             this.ItemsGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.MidnightBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ItemsGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.ItemsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -352,13 +354,13 @@ namespace GUIApp
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MidnightBlue;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ItemsGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.ItemsGridView.GridColor = System.Drawing.Color.White;
-            this.ItemsGridView.Location = new System.Drawing.Point(18, 69);
+            this.ItemsGridView.Location = new System.Drawing.Point(18, 62);
             this.ItemsGridView.MultiSelect = false;
             this.ItemsGridView.Name = "ItemsGridView";
             this.ItemsGridView.ReadOnly = true;
@@ -376,14 +378,14 @@ namespace GUIApp
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Narrow", 10F);
             this.ItemsGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.ItemsGridView.RowTemplate.Height = 24;
-            this.ItemsGridView.Size = new System.Drawing.Size(1070, 526);
+            this.ItemsGridView.Size = new System.Drawing.Size(1070, 533);
             this.ItemsGridView.TabIndex = 22;
             // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.BackColor = System.Drawing.Color.DarkBlue;
+            this.groupBox2.BackColor = System.Drawing.Color.MidnightBlue;
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
@@ -475,7 +477,7 @@ namespace GUIApp
             // AddToCartBtn
             // 
             this.AddToCartBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddToCartBtn.BackColor = System.Drawing.Color.DarkBlue;
+            this.AddToCartBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.AddToCartBtn.Enabled = false;
             this.AddToCartBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddToCartBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -495,7 +497,7 @@ namespace GUIApp
             this.ItemsListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ItemsListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.ItemsListBox.ForeColor = System.Drawing.Color.Blue;
+            this.ItemsListBox.ForeColor = System.Drawing.Color.MidnightBlue;
             this.ItemsListBox.FormattingEnabled = true;
             this.ItemsListBox.ItemHeight = 25;
             this.ItemsListBox.Location = new System.Drawing.Point(6, 14);
@@ -508,6 +510,7 @@ namespace GUIApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(1470, 766);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

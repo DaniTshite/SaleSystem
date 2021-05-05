@@ -55,7 +55,6 @@ namespace GUIApp
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.MidnightBlue;
-            this.panelMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelMenu.Controls.Add(this.LoggedInUserLbl);
             this.panelMenu.Controls.Add(this.SettingsBtn);
             this.panelMenu.Controls.Add(this.SuppliersBtn);
@@ -79,7 +78,7 @@ namespace GUIApp
             this.LoggedInUserLbl.AutoSize = true;
             this.LoggedInUserLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.LoggedInUserLbl.ForeColor = System.Drawing.Color.White;
-            this.LoggedInUserLbl.Location = new System.Drawing.Point(3, 750);
+            this.LoggedInUserLbl.Location = new System.Drawing.Point(3, 752);
             this.LoggedInUserLbl.Name = "LoggedInUserLbl";
             this.LoggedInUserLbl.Size = new System.Drawing.Size(121, 25);
             this.LoggedInUserLbl.TabIndex = 1;
@@ -266,24 +265,27 @@ namespace GUIApp
             // 
             // panelTitle
             // 
-            this.panelTitle.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panelTitle.BackColor = System.Drawing.Color.MidnightBlue;
             this.panelTitle.Controls.Add(this.CloseChildFormBtn);
             this.panelTitle.Controls.Add(this.LblTitle);
             this.panelTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitle.Font = new System.Drawing.Font("Arial Narrow", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelTitle.Location = new System.Drawing.Point(291, 0);
             this.panelTitle.Name = "panelTitle";
-            this.panelTitle.Size = new System.Drawing.Size(1183, 48);
+            this.panelTitle.Size = new System.Drawing.Size(1183, 42);
             this.panelTitle.TabIndex = 1;
             // 
             // CloseChildFormBtn
             // 
             this.CloseChildFormBtn.Dock = System.Windows.Forms.DockStyle.Right;
             this.CloseChildFormBtn.FlatAppearance.BorderSize = 0;
+            this.CloseChildFormBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.CloseChildFormBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseChildFormBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.CloseChildFormBtn.Location = new System.Drawing.Point(1108, 0);
+            this.CloseChildFormBtn.ForeColor = System.Drawing.Color.Red;
+            this.CloseChildFormBtn.Location = new System.Drawing.Point(1117, 0);
             this.CloseChildFormBtn.Name = "CloseChildFormBtn";
-            this.CloseChildFormBtn.Size = new System.Drawing.Size(75, 48);
+            this.CloseChildFormBtn.Size = new System.Drawing.Size(66, 42);
             this.CloseChildFormBtn.TabIndex = 1;
             this.CloseChildFormBtn.Text = "X";
             this.CloseChildFormBtn.UseVisualStyleBackColor = true;
@@ -293,11 +295,11 @@ namespace GUIApp
             // 
             this.LblTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LblTitle.AutoSize = true;
-            this.LblTitle.Font = new System.Drawing.Font("Wide Latin", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitle.ForeColor = System.Drawing.Color.Navy;
-            this.LblTitle.Location = new System.Drawing.Point(540, 9);
+            this.LblTitle.Font = new System.Drawing.Font("Arial Nova", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTitle.ForeColor = System.Drawing.Color.White;
+            this.LblTitle.Location = new System.Drawing.Point(510, 9);
             this.LblTitle.Name = "LblTitle";
-            this.LblTitle.Size = new System.Drawing.Size(162, 29);
+            this.LblTitle.Size = new System.Drawing.Size(85, 29);
             this.LblTitle.TabIndex = 0;
             this.LblTitle.Text = "HOME";
             // 
@@ -305,9 +307,9 @@ namespace GUIApp
             // 
             this.panelDesktopPane.Controls.Add(this.label1);
             this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktopPane.Location = new System.Drawing.Point(291, 48);
+            this.panelDesktopPane.Location = new System.Drawing.Point(291, 42);
             this.panelDesktopPane.Name = "panelDesktopPane";
-            this.panelDesktopPane.Size = new System.Drawing.Size(1183, 741);
+            this.panelDesktopPane.Size = new System.Drawing.Size(1183, 747);
             this.panelDesktopPane.TabIndex = 2;
             // 
             // label1
@@ -316,7 +318,7 @@ namespace GUIApp
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Elephant", 70.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Navy;
-            this.label1.Location = new System.Drawing.Point(12, 229);
+            this.label1.Location = new System.Drawing.Point(12, 232);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1165, 151);
             this.label1.TabIndex = 0;

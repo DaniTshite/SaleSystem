@@ -39,6 +39,7 @@ namespace GUIApp
             InvoicesListBox.DataSource = nonDeliveredSales;
             DeliveryGridView.DataSource = deliveries;
             DeliveryGridView.Columns[0].Visible = false;
+            DeliveryGridView.Columns[5].Visible = false;
             InvoicesListBox.DisplayMember = "InvoiceNumber";
             InvoicesListBox.ValueMember = "InvoiceNumber";
             HighlightSaleOrdersToDeliver();

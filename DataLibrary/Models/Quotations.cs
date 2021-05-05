@@ -22,5 +22,9 @@ namespace DataLibrary.Models
         public Users SelectedUser { get ; set ; }
         public CustomerAccount SelectedAccount { get ; set ; }
         public List<IQuotationLine> QuotationDetails { get ; set ; }
+        public string FullReference
+        {
+            get { return $"{QuotationDate.ToShortDateString()} / {QuotationNumber}"; }
+        }
     }
 }

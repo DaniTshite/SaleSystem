@@ -34,12 +34,21 @@ namespace LogicLibrary.Processes
             return SqlDataAccess.LoadData<Item>(sql);
         }
         /// <summary>
-        /// This method get all active items from a DB
+        /// This method get all active items from a DB to be used on sales
         /// </summary>
         /// <returns>It returns a list of Item objects</returns>
-        public List<Item> GetActiveItems()
+        public List<Item> GetActiveItemsSale()
         {
             string sql = @"spItem_GetAllActive";
+            return SqlDataAccess.LoadData<Item>(sql);
+        }
+        /// <summary>
+        /// This method get all active items from a DB to be used on supplies
+        /// </summary>
+        /// <returns>It returns a list of Item objects</returns>
+        public List<Item> GetActiveItemsSupply()
+        {
+            string sql = @"spItem_GetAllActiveSupply";
             return SqlDataAccess.LoadData<Item>(sql);
         }
         /// <summary>

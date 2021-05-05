@@ -37,6 +37,12 @@ namespace GUIApp
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemFrm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ItemsGridView = new System.Windows.Forms.DataGridView();
+            this.FilterGhroupBox = new System.Windows.Forms.GroupBox();
+            this.PrintPreviewBtn = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.FilterBycategoryTxt = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.FilterByStockCodeTxt = new System.Windows.Forms.TextBox();
             this.SaveItemBtn = new System.Windows.Forms.Button();
             this.ReorderLevelTxt = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -49,12 +55,6 @@ namespace GUIApp
             this.ListCategoryCmb = new System.Windows.Forms.ComboBox();
             this.DescriptTxt = new System.Windows.Forms.TextBox();
             this.StockCodeTxt = new System.Windows.Forms.TextBox();
-            this.FilterGhroupBox = new System.Windows.Forms.GroupBox();
-            this.PrintPreviewBtn = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.FilterBycategoryTxt = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.FilterByStockCodeTxt = new System.Windows.Forms.TextBox();
             this.CategoryGroupBox = new System.Windows.Forms.GroupBox();
             this.SaveCategoryBtn = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -91,9 +91,12 @@ namespace GUIApp
             this.ItemsGridView.AllowUserToDeleteRows = false;
             this.ItemsGridView.AllowUserToResizeColumns = false;
             this.ItemsGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.MidnightBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ItemsGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.ItemsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -114,11 +117,11 @@ namespace GUIApp
             this.ItemsGridView.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Black", 10.2F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.MidnightBlue;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MidnightBlue;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ItemsGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.ItemsGridView.GridColor = System.Drawing.Color.White;
             this.ItemsGridView.Location = new System.Drawing.Point(6, 15);
@@ -136,146 +139,11 @@ namespace GUIApp
             this.ItemsGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.ItemsGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Narrow", 10.2F);
             this.ItemsGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.ItemsGridView.RowTemplate.Height = 24;
             this.ItemsGridView.Size = new System.Drawing.Size(1117, 782);
             this.ItemsGridView.TabIndex = 11;
-            // 
-            // SaveItemBtn
-            // 
-            this.SaveItemBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveItemBtn.BackColor = System.Drawing.Color.Navy;
-            this.SaveItemBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveItemBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SaveItemBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.SaveItemBtn.Image = ((System.Drawing.Image)(resources.GetObject("SaveItemBtn.Image")));
-            this.SaveItemBtn.Location = new System.Drawing.Point(224, 369);
-            this.SaveItemBtn.Name = "SaveItemBtn";
-            this.SaveItemBtn.Size = new System.Drawing.Size(130, 90);
-            this.SaveItemBtn.TabIndex = 6;
-            this.SaveItemBtn.UseVisualStyleBackColor = false;
-            this.SaveItemBtn.Click += new System.EventHandler(this.SaveItemBtn_Click);
-            // 
-            // ReorderLevelTxt
-            // 
-            this.ReorderLevelTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ReorderLevelTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReorderLevelTxt.Location = new System.Drawing.Point(15, 276);
-            this.ReorderLevelTxt.Name = "ReorderLevelTxt";
-            this.ReorderLevelTxt.Size = new System.Drawing.Size(339, 27);
-            this.ReorderLevelTxt.TabIndex = 11;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(11, 253);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(146, 18);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "REORDER LEVEL";
-            // 
-            // TaxTxt
-            // 
-            this.TaxTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TaxTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TaxTxt.Location = new System.Drawing.Point(10, 212);
-            this.TaxTxt.Name = "TaxTxt";
-            this.TaxTxt.Size = new System.Drawing.Size(344, 27);
-            this.TaxTxt.TabIndex = 9;
-            // 
-            // IsActiveChkBtn
-            // 
-            this.IsActiveChkBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.IsActiveChkBtn.AutoSize = true;
-            this.IsActiveChkBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IsActiveChkBtn.ForeColor = System.Drawing.Color.White;
-            this.IsActiveChkBtn.Location = new System.Drawing.Point(267, 91);
-            this.IsActiveChkBtn.Name = "IsActiveChkBtn";
-            this.IsActiveChkBtn.Size = new System.Drawing.Size(87, 22);
-            this.IsActiveChkBtn.TabIndex = 3;
-            this.IsActiveChkBtn.Text = "ACTIVE";
-            this.IsActiveChkBtn.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(11, 312);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 18);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "CATEGORY";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(11, 189);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 18);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "TAX";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(11, 68);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 18);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "DESCRIPTION";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(11, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 18);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "STOCK CODE";
-            // 
-            // ListCategoryCmb
-            // 
-            this.ListCategoryCmb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ListCategoryCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ListCategoryCmb.FormattingEnabled = true;
-            this.ListCategoryCmb.Location = new System.Drawing.Point(15, 335);
-            this.ListCategoryCmb.Name = "ListCategoryCmb";
-            this.ListCategoryCmb.Size = new System.Drawing.Size(339, 28);
-            this.ListCategoryCmb.TabIndex = 5;
-            // 
-            // DescriptTxt
-            // 
-            this.DescriptTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DescriptTxt.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.DescriptTxt.Location = new System.Drawing.Point(15, 91);
-            this.DescriptTxt.Multiline = true;
-            this.DescriptTxt.Name = "DescriptTxt";
-            this.DescriptTxt.Size = new System.Drawing.Size(232, 84);
-            this.DescriptTxt.TabIndex = 2;
-            // 
-            // StockCodeTxt
-            // 
-            this.StockCodeTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.StockCodeTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StockCodeTxt.Location = new System.Drawing.Point(15, 27);
-            this.StockCodeTxt.Name = "StockCodeTxt";
-            this.StockCodeTxt.Size = new System.Drawing.Size(344, 27);
-            this.StockCodeTxt.TabIndex = 1;
             // 
             // FilterGhroupBox
             // 
@@ -350,6 +218,141 @@ namespace GUIApp
             this.FilterByStockCodeTxt.TabIndex = 13;
             this.FilterByStockCodeTxt.TextChanged += new System.EventHandler(this.FilterByStockCodeTxt_TextChanged);
             // 
+            // SaveItemBtn
+            // 
+            this.SaveItemBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveItemBtn.BackColor = System.Drawing.Color.MidnightBlue;
+            this.SaveItemBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveItemBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveItemBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.SaveItemBtn.Image = ((System.Drawing.Image)(resources.GetObject("SaveItemBtn.Image")));
+            this.SaveItemBtn.Location = new System.Drawing.Point(212, 369);
+            this.SaveItemBtn.Name = "SaveItemBtn";
+            this.SaveItemBtn.Size = new System.Drawing.Size(130, 90);
+            this.SaveItemBtn.TabIndex = 6;
+            this.SaveItemBtn.UseVisualStyleBackColor = false;
+            this.SaveItemBtn.Click += new System.EventHandler(this.SaveItemBtn_Click);
+            // 
+            // ReorderLevelTxt
+            // 
+            this.ReorderLevelTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReorderLevelTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReorderLevelTxt.Location = new System.Drawing.Point(15, 276);
+            this.ReorderLevelTxt.Name = "ReorderLevelTxt";
+            this.ReorderLevelTxt.Size = new System.Drawing.Size(327, 27);
+            this.ReorderLevelTxt.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(11, 253);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(146, 18);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "REORDER LEVEL";
+            // 
+            // TaxTxt
+            // 
+            this.TaxTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TaxTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TaxTxt.Location = new System.Drawing.Point(10, 212);
+            this.TaxTxt.Name = "TaxTxt";
+            this.TaxTxt.Size = new System.Drawing.Size(332, 27);
+            this.TaxTxt.TabIndex = 9;
+            // 
+            // IsActiveChkBtn
+            // 
+            this.IsActiveChkBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.IsActiveChkBtn.AutoSize = true;
+            this.IsActiveChkBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IsActiveChkBtn.ForeColor = System.Drawing.Color.White;
+            this.IsActiveChkBtn.Location = new System.Drawing.Point(255, 91);
+            this.IsActiveChkBtn.Name = "IsActiveChkBtn";
+            this.IsActiveChkBtn.Size = new System.Drawing.Size(87, 22);
+            this.IsActiveChkBtn.TabIndex = 3;
+            this.IsActiveChkBtn.Text = "ACTIVE";
+            this.IsActiveChkBtn.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(11, 312);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(99, 18);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "CATEGORY";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(11, 189);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 18);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "TAX";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(11, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 18);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "DESCRIPTION";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(11, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 18);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "STOCK CODE";
+            // 
+            // ListCategoryCmb
+            // 
+            this.ListCategoryCmb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListCategoryCmb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListCategoryCmb.FormattingEnabled = true;
+            this.ListCategoryCmb.Location = new System.Drawing.Point(15, 335);
+            this.ListCategoryCmb.Name = "ListCategoryCmb";
+            this.ListCategoryCmb.Size = new System.Drawing.Size(327, 28);
+            this.ListCategoryCmb.TabIndex = 5;
+            // 
+            // DescriptTxt
+            // 
+            this.DescriptTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DescriptTxt.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.DescriptTxt.Location = new System.Drawing.Point(15, 91);
+            this.DescriptTxt.Multiline = true;
+            this.DescriptTxt.Name = "DescriptTxt";
+            this.DescriptTxt.Size = new System.Drawing.Size(213, 84);
+            this.DescriptTxt.TabIndex = 2;
+            // 
+            // StockCodeTxt
+            // 
+            this.StockCodeTxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StockCodeTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StockCodeTxt.Location = new System.Drawing.Point(15, 27);
+            this.StockCodeTxt.Name = "StockCodeTxt";
+            this.StockCodeTxt.Size = new System.Drawing.Size(327, 27);
+            this.StockCodeTxt.TabIndex = 1;
+            // 
             // CategoryGroupBox
             // 
             this.CategoryGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -368,12 +371,12 @@ namespace GUIApp
             // SaveCategoryBtn
             // 
             this.SaveCategoryBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveCategoryBtn.BackColor = System.Drawing.Color.Navy;
+            this.SaveCategoryBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.SaveCategoryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveCategoryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveCategoryBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.SaveCategoryBtn.Image = ((System.Drawing.Image)(resources.GetObject("SaveCategoryBtn.Image")));
-            this.SaveCategoryBtn.Location = new System.Drawing.Point(226, 79);
+            this.SaveCategoryBtn.Location = new System.Drawing.Point(214, 79);
             this.SaveCategoryBtn.Name = "SaveCategoryBtn";
             this.SaveCategoryBtn.Size = new System.Drawing.Size(130, 75);
             this.SaveCategoryBtn.TabIndex = 9;
@@ -398,7 +401,7 @@ namespace GUIApp
             this.CategoryNameTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CategoryNameTxt.Location = new System.Drawing.Point(12, 46);
             this.CategoryNameTxt.Name = "CategoryNameTxt";
-            this.CategoryNameTxt.Size = new System.Drawing.Size(344, 27);
+            this.CategoryNameTxt.Size = new System.Drawing.Size(332, 27);
             this.CategoryNameTxt.TabIndex = 8;
             // 
             // groupBox3
@@ -418,12 +421,12 @@ namespace GUIApp
             // 
             // UpdateIsActiveBtn
             // 
-            this.UpdateIsActiveBtn.BackColor = System.Drawing.Color.Navy;
+            this.UpdateIsActiveBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.UpdateIsActiveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpdateIsActiveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.UpdateIsActiveBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.UpdateIsActiveBtn.Image = ((System.Drawing.Image)(resources.GetObject("UpdateIsActiveBtn.Image")));
-            this.UpdateIsActiveBtn.Location = new System.Drawing.Point(226, 55);
+            this.UpdateIsActiveBtn.Location = new System.Drawing.Point(214, 55);
             this.UpdateIsActiveBtn.Name = "UpdateIsActiveBtn";
             this.UpdateIsActiveBtn.Size = new System.Drawing.Size(130, 98);
             this.UpdateIsActiveBtn.TabIndex = 3;
@@ -447,7 +450,7 @@ namespace GUIApp
             this.UpdateItemCmb.FormattingEnabled = true;
             this.UpdateItemCmb.Location = new System.Drawing.Point(12, 21);
             this.UpdateItemCmb.Name = "UpdateItemCmb";
-            this.UpdateItemCmb.Size = new System.Drawing.Size(344, 28);
+            this.UpdateItemCmb.Size = new System.Drawing.Size(332, 28);
             this.UpdateItemCmb.TabIndex = 0;
             // 
             // panel1
@@ -476,7 +479,7 @@ namespace GUIApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Navy;
+            this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(1525, 823);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox3);

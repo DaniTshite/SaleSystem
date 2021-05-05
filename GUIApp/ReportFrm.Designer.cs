@@ -29,13 +29,18 @@ namespace GUIApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportFrm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.PrintPreviewReportSaleOrder = new System.Windows.Forms.Button();
+            this.SearchSaleOrderNumberBtn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SearchGroupBox = new System.Windows.Forms.GroupBox();
             this.PrintPreviewReportSupplyOrder = new System.Windows.Forms.Button();
             this.SearchSupplyOrderNumberBtn = new System.Windows.Forms.Button();
@@ -61,19 +66,14 @@ namespace GUIApp
             this.printOrderDocument = new System.Drawing.Printing.PrintDocument();
             this.printItemsToReorderDocument = new System.Drawing.Printing.PrintDocument();
             this.printInactiveItemsDocument = new System.Drawing.Printing.PrintDocument();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.PrintPreviewReportSaleOrder = new System.Windows.Forms.Button();
-            this.SearchSaleOrderNumberBtn = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SearchGroupBox.SuspendLayout();
             this.InactiveItemsGroupBox.SuspendLayout();
             this.ItemsToReorderGroupBox.SuspendLayout();
             this.panel2.SuspendLayout();
             this.FilterOrdersByDateGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsGridView)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -81,7 +81,7 @@ namespace GUIApp
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.Navy;
+            this.panel1.BackColor = System.Drawing.Color.MidnightBlue;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.SearchGroupBox);
@@ -95,6 +95,70 @@ namespace GUIApp
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1402, 770);
             this.panel1.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.PrintPreviewReportSaleOrder);
+            this.groupBox1.Controls.Add(this.SearchSaleOrderNumberBtn);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
+            this.groupBox1.Location = new System.Drawing.Point(1083, 517);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(304, 145);
+            this.groupBox1.TabIndex = 50;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Search";
+            // 
+            // PrintPreviewReportSaleOrder
+            // 
+            this.PrintPreviewReportSaleOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PrintPreviewReportSaleOrder.BackColor = System.Drawing.Color.MidnightBlue;
+            this.PrintPreviewReportSaleOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PrintPreviewReportSaleOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PrintPreviewReportSaleOrder.Image = ((System.Drawing.Image)(resources.GetObject("PrintPreviewReportSaleOrder.Image")));
+            this.PrintPreviewReportSaleOrder.Location = new System.Drawing.Point(162, 73);
+            this.PrintPreviewReportSaleOrder.Name = "PrintPreviewReportSaleOrder";
+            this.PrintPreviewReportSaleOrder.Size = new System.Drawing.Size(137, 66);
+            this.PrintPreviewReportSaleOrder.TabIndex = 27;
+            this.PrintPreviewReportSaleOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.PrintPreviewReportSaleOrder.UseVisualStyleBackColor = false;
+            this.PrintPreviewReportSaleOrder.Click += new System.EventHandler(this.PrintPreviewReportOrder_Click);
+            // 
+            // SearchSaleOrderNumberBtn
+            // 
+            this.SearchSaleOrderNumberBtn.BackColor = System.Drawing.Color.MidnightBlue;
+            this.SearchSaleOrderNumberBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchSaleOrderNumberBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchSaleOrderNumberBtn.Image = ((System.Drawing.Image)(resources.GetObject("SearchSaleOrderNumberBtn.Image")));
+            this.SearchSaleOrderNumberBtn.Location = new System.Drawing.Point(8, 74);
+            this.SearchSaleOrderNumberBtn.Name = "SearchSaleOrderNumberBtn";
+            this.SearchSaleOrderNumberBtn.Size = new System.Drawing.Size(150, 66);
+            this.SearchSaleOrderNumberBtn.TabIndex = 20;
+            this.SearchSaleOrderNumberBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SearchSaleOrderNumberBtn.UseVisualStyleBackColor = false;
+            this.SearchSaleOrderNumberBtn.Click += new System.EventHandler(this.SearchOrderNumber_Click);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(10, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(196, 20);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "SALE ORDER NUMBER";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(9, 41);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(288, 27);
+            this.textBox1.TabIndex = 25;
             // 
             // SearchGroupBox
             // 
@@ -115,6 +179,7 @@ namespace GUIApp
             // PrintPreviewReportSupplyOrder
             // 
             this.PrintPreviewReportSupplyOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PrintPreviewReportSupplyOrder.BackColor = System.Drawing.Color.MidnightBlue;
             this.PrintPreviewReportSupplyOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PrintPreviewReportSupplyOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PrintPreviewReportSupplyOrder.Image = ((System.Drawing.Image)(resources.GetObject("PrintPreviewReportSupplyOrder.Image")));
@@ -123,11 +188,12 @@ namespace GUIApp
             this.PrintPreviewReportSupplyOrder.Size = new System.Drawing.Size(137, 66);
             this.PrintPreviewReportSupplyOrder.TabIndex = 27;
             this.PrintPreviewReportSupplyOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.PrintPreviewReportSupplyOrder.UseVisualStyleBackColor = true;
+            this.PrintPreviewReportSupplyOrder.UseVisualStyleBackColor = false;
             this.PrintPreviewReportSupplyOrder.Click += new System.EventHandler(this.PrintPreviewReportOrder_Click);
             // 
             // SearchSupplyOrderNumberBtn
             // 
+            this.SearchSupplyOrderNumberBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.SearchSupplyOrderNumberBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchSupplyOrderNumberBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchSupplyOrderNumberBtn.Image = ((System.Drawing.Image)(resources.GetObject("SearchSupplyOrderNumberBtn.Image")));
@@ -136,7 +202,7 @@ namespace GUIApp
             this.SearchSupplyOrderNumberBtn.Size = new System.Drawing.Size(150, 66);
             this.SearchSupplyOrderNumberBtn.TabIndex = 20;
             this.SearchSupplyOrderNumberBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.SearchSupplyOrderNumberBtn.UseVisualStyleBackColor = true;
+            this.SearchSupplyOrderNumberBtn.UseVisualStyleBackColor = false;
             this.SearchSupplyOrderNumberBtn.Click += new System.EventHandler(this.SearchOrderNumber_Click);
             // 
             // label6
@@ -175,7 +241,7 @@ namespace GUIApp
             // button7
             // 
             this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button7.BackColor = System.Drawing.Color.Navy;
+            this.button7.BackColor = System.Drawing.Color.MidnightBlue;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.White;
@@ -190,7 +256,7 @@ namespace GUIApp
             // InactiveItemsListBtn
             // 
             this.InactiveItemsListBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.InactiveItemsListBtn.BackColor = System.Drawing.Color.Navy;
+            this.InactiveItemsListBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.InactiveItemsListBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.InactiveItemsListBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InactiveItemsListBtn.ForeColor = System.Drawing.Color.White;
@@ -220,7 +286,7 @@ namespace GUIApp
             // PrintPreviewItemsToReorder
             // 
             this.PrintPreviewItemsToReorder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.PrintPreviewItemsToReorder.BackColor = System.Drawing.Color.Navy;
+            this.PrintPreviewItemsToReorder.BackColor = System.Drawing.Color.MidnightBlue;
             this.PrintPreviewItemsToReorder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PrintPreviewItemsToReorder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PrintPreviewItemsToReorder.ForeColor = System.Drawing.Color.White;
@@ -236,7 +302,7 @@ namespace GUIApp
             // ReOrderListBtn
             // 
             this.ReOrderListBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ReOrderListBtn.BackColor = System.Drawing.Color.Navy;
+            this.ReOrderListBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.ReOrderListBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ReOrderListBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReOrderListBtn.ForeColor = System.Drawing.Color.White;
@@ -351,7 +417,7 @@ namespace GUIApp
             // PrintBtn
             // 
             this.PrintBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PrintBtn.BackColor = System.Drawing.Color.DarkBlue;
+            this.PrintBtn.BackColor = System.Drawing.Color.MidnightBlue;
             this.PrintBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PrintBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PrintBtn.ForeColor = System.Drawing.Color.White;
@@ -371,10 +437,10 @@ namespace GUIApp
             this.ItemsGridView.AllowUserToOrderColumns = true;
             this.ItemsGridView.AllowUserToResizeColumns = false;
             this.ItemsGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.ItemsGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.ItemsGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.ItemsGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -382,42 +448,42 @@ namespace GUIApp
             this.ItemsGridView.BackgroundColor = System.Drawing.Color.White;
             this.ItemsGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ItemsGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ItemsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ItemsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.ItemsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ItemsGridView.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemsGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsGridView.DefaultCellStyle = dataGridViewCellStyle8;
             this.ItemsGridView.GridColor = System.Drawing.Color.White;
             this.ItemsGridView.Location = new System.Drawing.Point(3, 3);
             this.ItemsGridView.MultiSelect = false;
             this.ItemsGridView.Name = "ItemsGridView";
             this.ItemsGridView.ReadOnly = true;
             this.ItemsGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemsGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemsGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.ItemsGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Narrow", 10F);
-            this.ItemsGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial Narrow", 10F);
+            this.ItemsGridView.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.ItemsGridView.RowTemplate.Height = 24;
             this.ItemsGridView.Size = new System.Drawing.Size(1073, 708);
             this.ItemsGridView.TabIndex = 23;
@@ -440,78 +506,19 @@ namespace GUIApp
             // 
             this.printItemsToReorderDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printItemsToReorderDocument_PrintPage);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.PrintPreviewReportSaleOrder);
-            this.groupBox1.Controls.Add(this.SearchSaleOrderNumberBtn);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(1083, 517);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(304, 145);
-            this.groupBox1.TabIndex = 50;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Search";
-            // 
-            // PrintPreviewReportSaleOrder
-            // 
-            this.PrintPreviewReportSaleOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.PrintPreviewReportSaleOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PrintPreviewReportSaleOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PrintPreviewReportSaleOrder.Image = ((System.Drawing.Image)(resources.GetObject("PrintPreviewReportSaleOrder.Image")));
-            this.PrintPreviewReportSaleOrder.Location = new System.Drawing.Point(162, 73);
-            this.PrintPreviewReportSaleOrder.Name = "PrintPreviewReportSaleOrder";
-            this.PrintPreviewReportSaleOrder.Size = new System.Drawing.Size(137, 66);
-            this.PrintPreviewReportSaleOrder.TabIndex = 27;
-            this.PrintPreviewReportSaleOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.PrintPreviewReportSaleOrder.UseVisualStyleBackColor = true;
-            this.PrintPreviewReportSaleOrder.Click += new System.EventHandler(this.PrintPreviewReportOrder_Click);
-            // 
-            // SearchSaleOrderNumberBtn
-            // 
-            this.SearchSaleOrderNumberBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SearchSaleOrderNumberBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchSaleOrderNumberBtn.Image = ((System.Drawing.Image)(resources.GetObject("SearchSaleOrderNumberBtn.Image")));
-            this.SearchSaleOrderNumberBtn.Location = new System.Drawing.Point(8, 74);
-            this.SearchSaleOrderNumberBtn.Name = "SearchSaleOrderNumberBtn";
-            this.SearchSaleOrderNumberBtn.Size = new System.Drawing.Size(150, 66);
-            this.SearchSaleOrderNumberBtn.TabIndex = 20;
-            this.SearchSaleOrderNumberBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.SearchSaleOrderNumberBtn.UseVisualStyleBackColor = true;
-            this.SearchSaleOrderNumberBtn.Click += new System.EventHandler(this.SearchOrderNumber_Click);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(10, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(196, 20);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "SALE ORDER NUMBER";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(9, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(288, 27);
-            this.textBox1.TabIndex = 25;
-            // 
             // ReportFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(1427, 795);
             this.Controls.Add(this.panel1);
             this.Name = "ReportFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reports";
             this.panel1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.SearchGroupBox.ResumeLayout(false);
             this.SearchGroupBox.PerformLayout();
             this.InactiveItemsGroupBox.ResumeLayout(false);
@@ -521,8 +528,6 @@ namespace GUIApp
             this.FilterOrdersByDateGroupBox.ResumeLayout(false);
             this.FilterOrdersByDateGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ItemsGridView)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }

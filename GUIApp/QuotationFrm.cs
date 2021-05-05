@@ -60,7 +60,7 @@ namespace GUIApp
             customerAccounts = new List<CustomerAccount>();
             customerAccounts = _customerAccountsProcessor.GetCustomerAccounts();
             activeItems = new List<Item>();
-            activeItems = _itemProcessor.GetActiveItems();
+            activeItems = _itemProcessor.GetActiveItemsSale();
             ItemsListBox.DataSource = activeItems;
             ItemsListBox.DisplayMember = "Descript";
             ItemsListBox.ValueMember = "ItemId";

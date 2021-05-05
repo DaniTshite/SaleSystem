@@ -17,10 +17,12 @@ namespace GUIApp
     public partial class LoginFrm : Form
     {
         IUsersProcessor _usersProcessor;
+        private List<Users> allUsers = new List<Users>();
         public LoginFrm()
         {
             InitializeComponent();
             _usersProcessor = ContainerConfig.CreateUsersProcessor();
+            allUsers = _usersProcessor.GetUsers();
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -28,25 +30,25 @@ namespace GUIApp
         private extern static void SendMessage(System.IntPtr hwnd,int wMsg,int wParam,int lParam);
         private void LoginBtn_Click(object sender, EventArgs e)
         {
-            //if (IsValid())
-            //{
-            //    if (_usersProcessor.DoesUserExist(UsernameTxt.Text.Trim(), AccessCodeTxt.Text.Trim()))
-            //    {
-                    MessageBox.Show("Welcome " + UsernameTxt.Text, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (IsValid())
+            {
+                if (_usersProcessor.DoesUserExist(UsernameTxt.Text.Trim(), AccessCodeTxt.Text.Trim()))
+                {    
                     this.Hide();
                     MainFrm mf = new MainFrm();
-                    mf._loggedInUser = UsernameTxt.Text;
+                    mf._loggedInUser = allUsers.Where(x=>x.AccessCode== AccessCodeTxt.Text.Trim()).FirstOrDefault();
+                    MessageBox.Show("Welcome " + mf._loggedInUser.FullName, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     mf.ShowDialog();
                     this.Close();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("The Username or Accesscode are incorrect !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        UsernameTxt.Clear();
-            //        UsernameTxt.Focus();
-            //        AccessCodeTxt.Clear();
-            //    }
-            //}
+                }
+                else
+                {
+                    MessageBox.Show("The Username or Accesscode are incorrect !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    UsernameTxt.Clear();
+                    UsernameTxt.Focus();
+                    AccessCodeTxt.Clear();
+                }
+            }
         }
 
         private bool IsValid()
